@@ -397,7 +397,7 @@
      height="55"
      width="55" /><path
      style="opacity:0.15;fill:#fafafa;stroke:#fafafa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-     d="m 33,59 -8,-6 -7,1 7,-2 13,7 z"
+     d="m 33,59 -8,-10 -8,3 8,-4 13,11 z"
      id="path28"
      sodipodi:nodetypes="cccccc" /><path
      style="opacity:0.15;fill:#fafafa;stroke:#fafafa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
@@ -417,7 +417,7 @@
      id="path12"
      sodipodi:nodetypes="cccc" /><path
      style="opacity:1;fill:#0e141f;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.501961"
-     d="m 34,59 -9,-7 -7,1 7,-2 14,8 z"
+     d="m 34,59 -9,-10 -8,2 8,-4 14,12 z"
      id="path15"
      sodipodi:nodetypes="cccccc" /><path
      style="opacity:0.15;fill:#fafafa;stroke:#fafafa;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
