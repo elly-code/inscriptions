@@ -36,9 +36,10 @@ public class Inscriptions.MainWindow : Gtk.Window {
     public SimpleActionGroup actions { get; construct; }
     public const string ACTION_PREFIX = "window.";
     public const string ACTION_MENU = "menu";
-    public const string ACTION_SWITCH_LANG = "switch_languages";
-    public const string ACTION_TOGGLE_MESSAGES = "toggle_messages";
-    public const string ACTION_TOGGLE_ORIENTATION = "toggle_orientation";
+    public const string ACTION_SWITCH_LANG = "switch-languages";
+    public const string ACTION_TOGGLE_MESSAGES = "toggle-messages";
+    public const string ACTION_TOGGLE_ORIENTATION = "toggle-orientation";
+    public const string ACTION_TOGGLE_HIGHLIGHT = "toggle-highlight";
     public const string ACTION_TRANSLATE = "translate";
     public const string ACTION_CLEAR_TEXT = "clear_text";
     public const string ACTION_LOAD_TEXT = "load_text";
@@ -50,6 +51,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         { ACTION_SWITCH_LANG, switch_languages}, 
         { ACTION_TOGGLE_MESSAGES, action_toggle_messages}, 
         { ACTION_TOGGLE_ORIENTATION, action_toggle_orientation}, 
+        { ACTION_TOGGLE_HIGHLIGHT, action_toggle_highlight}, 
         { ACTION_TRANSLATE, action_translate}, 
         { ACTION_CLEAR_TEXT, action_clear_text}, 
         { ACTION_LOAD_TEXT, action_load_text}, 
@@ -320,6 +322,10 @@ public class Inscriptions.MainWindow : Gtk.Window {
         translation_view.toggle_orientation ();
     }
 
+    public void action_toggle_highlight () {
+        translation_view.toggle_highlight ();
+    }
+
     public void action_translate () {
         translation_view.translate_now ();
     }
@@ -331,7 +337,6 @@ public class Inscriptions.MainWindow : Gtk.Window {
     public void action_load_text () {
         translation_view.action_load_text ();
     }
-
 
     public void action_save_text () {
         translation_view.action_save_text ();

@@ -14,7 +14,7 @@ public class Inscriptions.Pane : Gtk.Box {
     public Gtk.Revealer dropdown_revealer;
     public Gtk.DropDown dropdown;
     public Inscriptions.Lang selected;
-    public Gtk.TextView textview;
+    public Inscriptions.TextView textview;
     public Gtk.ScrolledWindow scrolledwindow;
     public Gtk.ActionBar actionbar;
 
@@ -65,16 +65,7 @@ public class Inscriptions.Pane : Gtk.Box {
         };
 
         /* ---------------- VIEW ---------------- */
-        textview = new Gtk.TextView () {
-            hexpand = true,
-            vexpand = true,
-            valign = Gtk.Align.FILL,
-            halign = Gtk.Align.FILL,
-            left_margin = 12,
-            right_margin = 12,
-            top_margin = 6,
-            bottom_margin = 6
-        };
+        textview = new Inscriptions.TextView ();
         textview.set_wrap_mode (Gtk.WrapMode.WORD_CHAR);
 
         scrolledwindow = new Gtk.ScrolledWindow () {
