@@ -102,7 +102,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         headerbar = new Gtk.HeaderBar () {
             title_widget = title_stack
         };
-        headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
+        //headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
         set_titlebar (headerbar);
 
 
@@ -131,7 +131,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
             tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>H"}, _("Highlight each source and target sentences"))
         };
 
-        var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
+        var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         toolbar.append (switchlang_button);
         toolbar.append (toggle_highlight);
 
@@ -161,8 +161,6 @@ public class Inscriptions.MainWindow : Gtk.Window {
         var menu_popover = new Inscriptions.SettingsPopover ();
         popover_button.popover = menu_popover;
 
-        headerbar.pack_end (popover_button);
-
         //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
         var translate_button = new Gtk.Button () {
             label = _("Translate"),
@@ -176,7 +174,11 @@ public class Inscriptions.MainWindow : Gtk.Window {
             transition_type = Gtk.RevealerTransitionType.SWING_RIGHT
         };
         
-        headerbar.pack_end (translate_revealer);
+        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        toolbar_right.append (translate_revealer);
+        toolbar_right.append (popover_button);
+
+        headerbar.pack_end (toolbar_right);
 
 
         /* ---------------- MAIN VIEW ---------------- */

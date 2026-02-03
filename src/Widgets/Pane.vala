@@ -58,11 +58,6 @@ public class Inscriptions.Pane : Gtk.Box {
         };
 		dropdown.notify["selected-item"].connect(on_selected_language);
 
-        dropdown_revealer = new Gtk.Revealer () {
-            child = dropdown,
-            reveal_child = true,
-            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
-        };
 
         /* ---------------- VIEW ---------------- */
         textview = new Inscriptions.TextView ();
@@ -115,7 +110,7 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         stack.add_child (main_view);
 
-        append (dropdown_revealer);
+        append (dropdown);
         append (stack);
     }
 
