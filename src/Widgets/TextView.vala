@@ -43,42 +43,52 @@ public class Inscriptions.TextView : Gtk.TextView {
     }
 
     private void set_highlighting (bool is_set) {
-        Gtk.TextIter start_sentence, end_sentence;
-        buffer.get_bounds (out start_sentence, out end_sentence);
+        Gtk.TextIter start_sentence, end_sentence, end_buffer;
+        buffer.get_bounds (out start_sentence, out end_buffer);
 
         if (!is_set) {
-            buffer.remove_all_tags (start_sentence, end_sentence);
+            buffer.remove_all_tags (start_sentence, end_buffer);
             return;
         }
 
         end_sentence = start_sentence;
-        var iterate_colors = 0;
+        end_sentence.forward_sentence_end (); // Else the While will not run at all.
+
         HighlightColor tag;
+        var iterate_colors = 0;
         string suffix = "-light";
 
         if (gtk_settings.gtk_application_prefer_dark_theme) {
             suffix = "-dark";
         };
 
-        while (!start_sentence.is_end ()) {
+        // Ensure we do not do a death loop of buffer-changed handlers
+        buffer.freeze_notify ();
+        while (start_sentence.get_offset () != end_sentence.get_offset ()) {
 
-            end_sentence.forward_sentence_end ();
-            tag = all_colors[iterate_colors];
-            
-            print ("\nTag: " + tag.to_string () + " for sentence: " + start_sentence.get_offset ().to_string ());
-
-            buffer.freeze_notify ();
+            // Apply color
+            tag = all_colors[iterate_colors];            
             buffer.apply_tag_by_name (tag.to_string () + suffix, start_sentence, end_sentence);
-            buffer.thaw_notify ();
+            //print ("\nTag: " + tag.to_string () + " for sentence: " + start_sentence.get_offset ().to_string () + "| End: " + end_sentence.get_offset ().to_string ());
 
+            // Jump to next sentence
             start_sentence = end_sentence;
+            end_sentence.forward_sentence_end ();
 
+            // Ensure we switch color
             if (iterate_colors == (all_colors.length - 1)) {
+                print ("\niter at %i".printf (iterate_colors));
                 iterate_colors = 0;
             } else {
                 iterate_colors++;
             };
         }
+
+        // Dont forget the last one
+        // There is probably a more elegant way to do this but it is two in the morning
+        tag = all_colors[iterate_colors];
+        buffer.apply_tag_by_name (tag.to_string () + suffix, start_sentence, end_buffer);
+        buffer.thaw_notify ();
     }
 
     private void set_unset_handlers (bool if_set) {
