@@ -128,7 +128,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
 
         var toggle_highlight = new Gtk.ToggleButton () {
             icon_name = "format-text-highlight",
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>H"}, _("Highlight each source and target sentences"))
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>H"}, _("Highlight source and target sentences"))
         };
 
         var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
