@@ -131,7 +131,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
             tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>H"}, _("Highlight each source and target sentences"))
         };
 
-        var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+        var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
         toolbar.append (switchlang_button);
         toolbar.append (toggle_highlight);
 
