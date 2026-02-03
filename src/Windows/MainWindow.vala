@@ -102,7 +102,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         headerbar = new Gtk.HeaderBar () {
             title_widget = title_stack
         };
-        //headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
+        headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
         set_titlebar (headerbar);
 
 
