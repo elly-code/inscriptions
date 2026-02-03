@@ -16,9 +16,9 @@
     <p>Some points of note:</p>
       <ul>
             <li>Nimble: Paste your DeepL api key (Whichever the plan), and here you go!</li>
-            <li>Out of your way: Remembers context, formality, languages, auto or manual, ...</li>
-            <li>Handy: No ten thousands menus or awkward dialogs. Everything is a click away</li>
-            <li>Comprehensive: No scary angry dialogs - If something goes wrong, explain nicely, </li>
+            <li>Thoughtful: Just what you need, out of your way and a click away</li>
+            <li>Comprehensive: No scary angry dialogs - If something goes wrong, explain nicely</li>
+            <li>Lean: Limiting resource usage and internet communications to the minimum</li>
             <li>Supported languages: All those available via DeepL API!</li>
       </ul>
     <p>If you like this app please do not hesitate to donate to encourage its development!</p>
@@ -26,12 +26,12 @@
 
   <screenshots>
     <screenshot type="default" environment="pantheon">
-      <caption>Main window</caption>
-      <image>https://raw.githubusercontent.com/elly_code/inscriptions/@version@/data/screenshots/window-light.png</image>
+      <caption>Main window, showcasing a translation with the highlighting feature</caption>
+      <image>https://raw.githubusercontent.com/elly_code/inscriptions/1.0.0/data/screenshots/window-light.png</image>
     </screenshot>
     <screenshot environment="pantheon:dark">
-      <caption>Main window with dark theme</caption>
-      <image>https://raw.githubusercontent.com/elly_code/inscriptions/@version@/data/screenshots/window-dark.png</image>
+      <caption>Main window with dark theme, showcasing a translation with the highlighting feature</caption>
+      <image>https://raw.githubusercontent.com/elly_code/inscriptions/1.0.0/data/screenshots/window-dark.png</image>
     </screenshot>
   </screenshots>
 

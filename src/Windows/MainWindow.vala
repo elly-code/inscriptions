@@ -22,7 +22,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
 
     Gtk.Revealer back_revealer;
     Gtk.Button switchlang_button;
-    Gtk.Revealer switchlang_revealer;
+    Gtk.Revealer toolbar_revealer;
     Gtk.MenuButton popover_button;
 
     Gtk.Stack stack_window_view;
@@ -36,9 +36,10 @@ public class Inscriptions.MainWindow : Gtk.Window {
     public SimpleActionGroup actions { get; construct; }
     public const string ACTION_PREFIX = "window.";
     public const string ACTION_MENU = "menu";
-    public const string ACTION_SWITCH_LANG = "switch_languages";
-    public const string ACTION_TOGGLE_MESSAGES = "toggle_messages";
-    public const string ACTION_TOGGLE_ORIENTATION = "toggle_orientation";
+    public const string ACTION_SWITCH_LANG = "switch-languages";
+    public const string ACTION_TOGGLE_MESSAGES = "toggle-messages";
+    public const string ACTION_TOGGLE_ORIENTATION = "toggle-orientation";
+    public const string ACTION_TOGGLE_HIGHLIGHT = "toggle-highlight";
     public const string ACTION_TRANSLATE = "translate";
     public const string ACTION_CLEAR_TEXT = "clear_text";
     public const string ACTION_LOAD_TEXT = "load_text";
@@ -50,6 +51,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         { ACTION_SWITCH_LANG, switch_languages}, 
         { ACTION_TOGGLE_MESSAGES, action_toggle_messages}, 
         { ACTION_TOGGLE_ORIENTATION, action_toggle_orientation}, 
+        { ACTION_TOGGLE_HIGHLIGHT, action_toggle_highlight}, 
         { ACTION_TRANSLATE, action_translate}, 
         { ACTION_CLEAR_TEXT, action_clear_text}, 
         { ACTION_LOAD_TEXT, action_load_text}, 
@@ -124,13 +126,26 @@ public class Inscriptions.MainWindow : Gtk.Window {
         };
         switchlang_button.action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_SWITCH_LANG;
 
-        switchlang_revealer = new Gtk.Revealer () {
-            child = switchlang_button,
+        var toggle_highlight = new Gtk.ToggleButton () {
+            icon_name = "format-text-highlight",
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>H"}, _("Highlight source and target sentences"))
+        };
+
+        var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        toolbar.append (switchlang_button);
+        toolbar.append (toggle_highlight);
+
+        toolbar_revealer = new Gtk.Revealer () {
+            child = toolbar,
             transition_type = Gtk.RevealerTransitionType.SWING_LEFT,
             reveal_child = true
         };
 
-        headerbar.pack_start (switchlang_revealer);
+        headerbar.pack_start (toolbar_revealer);
+
+
+
+      Application.settings.bind ("highlight", toggle_highlight, "active", GLib.SettingsBindFlags.DEFAULT);
 
 
         /* ---------------- PACK END ---------------- */
@@ -146,8 +161,6 @@ public class Inscriptions.MainWindow : Gtk.Window {
         var menu_popover = new Inscriptions.SettingsPopover ();
         popover_button.popover = menu_popover;
 
-        headerbar.pack_end (popover_button);
-
         //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
         var translate_button = new Gtk.Button () {
             label = _("Translate"),
@@ -161,7 +174,11 @@ public class Inscriptions.MainWindow : Gtk.Window {
             transition_type = Gtk.RevealerTransitionType.SWING_RIGHT
         };
         
-        headerbar.pack_end (translate_revealer);
+        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        toolbar_right.append (translate_revealer);
+        toolbar_right.append (popover_button);
+
+        headerbar.pack_end (toolbar_right);
 
 
         /* ---------------- MAIN VIEW ---------------- */
@@ -264,7 +281,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         stack_window_view.remove (errorview);
         errorview = null;
         back_revealer.reveal_child = false;
-        switchlang_revealer.reveal_child = true;
+        toolbar_revealer.reveal_child = true;
 
         if (retry) {
             translation_view.on_text_to_translate ();
@@ -291,7 +308,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         stack_window_view.add_titled (errorview, "error", _("Error"));
         stack_window_view.visible_child = errorview;
 
-        switchlang_revealer.reveal_child = false;
+        toolbar_revealer.reveal_child = false;
         
         //if ((status_code != Soup.Status.FORBIDDEN) && (status_code != Inscriptions.StatusCode.NO_KEY)) {
             back_revealer.reveal_child = true;
@@ -320,6 +337,10 @@ public class Inscriptions.MainWindow : Gtk.Window {
         translation_view.toggle_orientation ();
     }
 
+    public void action_toggle_highlight () {
+        translation_view.toggle_highlight ();
+    }
+
     public void action_translate () {
         translation_view.translate_now ();
     }
@@ -331,7 +352,6 @@ public class Inscriptions.MainWindow : Gtk.Window {
     public void action_load_text () {
         translation_view.action_load_text ();
     }
-
 
     public void action_save_text () {
         translation_view.action_save_text ();

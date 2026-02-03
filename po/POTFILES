@@ -13,6 +13,7 @@ src/Widgets/SourcePane.vala
 src/Widgets/TargetPane.vala
 src/Widgets/RetryButton.vala
 src/Widgets/SendCodeButton.vala
+src/Widgets/TextView.vala
 src/Backend/DeepL.vala
 src/Constants.vala
 src/Application.vala
