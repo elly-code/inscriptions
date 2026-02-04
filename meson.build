@@ -50,6 +50,7 @@ executable(
   'src' / 'Enums' / 'Formality.vala',
   'src' / 'Enums' / 'StatusCode.vala',
   'src' / 'Enums' / 'HighlightColor.vala',
+  'src' / 'Enums' / 'PossibleBackends.vala',
   'src' / 'Objects' / 'Lang.vala',
   'src' / 'Objects' / 'DDModel.vala',
 

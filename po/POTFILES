@@ -15,5 +15,6 @@ src/Widgets/RetryButton.vala
 src/Widgets/SendCodeButton.vala
 src/Widgets/TextView.vala
 src/Backend/DeepL.vala
+src/Enums/PossibleBackends.vala
 src/Constants.vala
 src/Application.vala
