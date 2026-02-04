@@ -36,6 +36,6 @@
 	color: #FFFFFF;
 }
 
-.primary-background windowcontrols image {
-	color: #FFFFFF;
+.primary-background .button {
+	background-color: @bg_color;
 }
