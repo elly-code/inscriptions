@@ -29,3 +29,13 @@
     box-shadow: none;
     background: none;
 }
+
+/* Pretty coloured titlebar */
+.primary-background {
+	background-color: rgba(44, 57, 68, 1);
+	color: #FFFFFF;
+}
+
+.primary-background windowcontrols image {
+	color: #FFFFFF;
+}

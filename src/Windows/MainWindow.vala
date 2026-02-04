@@ -29,8 +29,6 @@ public class Inscriptions.MainWindow : Gtk.Window {
     public Inscriptions.TranslationView translation_view;
     Inscriptions.ErrorView? errorview = null;
 
-
-
     public Inscriptions.SettingsPopover menu_popover;
 
     public SimpleActionGroup actions { get; construct; }
@@ -103,6 +101,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
             title_widget = title_stack
         };
         headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
+        headerbar.add_css_class (CSS_COLORED_HEADER);
         set_titlebar (headerbar);
 
 

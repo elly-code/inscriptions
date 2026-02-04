@@ -6,6 +6,8 @@
 
 namespace Inscriptions {
 
+    public const string CSS_COLORED_HEADER = "primary-background";
+
 	public const int SPACING_TOOLBAR_HEADER = 5;
 	public const int SPACING_TOOLBAR_MINI = 3;
 
