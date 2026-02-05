@@ -51,11 +51,12 @@ public class Inscriptions.Application : Gtk.Application {
 
         // Window
         set_accels_for_action ("window.menu", {"<Control>m"});
-        set_accels_for_action ("window.switch_languages", {"<Control>i"});
-        set_accels_for_action ("window.toggle_messages", {"<Control><Shift>m"});
+        set_accels_for_action ("window.switch-languages", {"<Control>i"});
+        set_accels_for_action ("window.toggle-messages", {"<Control><Shift>m"});
 
         // Translation view
-        set_accels_for_action ("window.toggle_orientation", {"<Control><Shift>o"});
+        set_accels_for_action ("window.toggle-orientation", {"<Control><Shift>o"});
+        set_accels_for_action ("window.toggle-highlight", {"<Control>h"});
         set_accels_for_action ("window.translate", {"<Control>t"});
         set_accels_for_action ("window.clear_text", {"<Control>l"});
 
@@ -78,7 +79,7 @@ public class Inscriptions.Application : Gtk.Application {
         });
 
         var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/io.github.elly_code.inscriptions/Application.css");
+        provider.load_from_resource ("/io/github/elly_code/inscriptions/Application.css");
 
         Gtk.StyleContext.add_provider_for_display (
             Gdk.Display.get_default (),

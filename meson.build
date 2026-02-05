@@ -49,6 +49,7 @@ executable(
   'src' / 'Constants.vala',
   'src' / 'Enums' / 'Formality.vala',
   'src' / 'Enums' / 'StatusCode.vala',
+  'src' / 'Enums' / 'HighlightColor.vala',
   'src' / 'Objects' / 'Lang.vala',
   'src' / 'Objects' / 'DDModel.vala',
 
@@ -66,6 +67,7 @@ executable(
   'src' / 'Widgets' / 'RetryButton.vala',
   'src' / 'Widgets' / 'SendCodeButton.vala',
   'src' / 'Widgets' / 'ErrorBonusBox.vala',
+  'src' / 'Widgets' / 'TextView.vala',
 
   'src' / 'Views' / 'TranslationView.vala',
   'src' / 'Views' / 'ErrorView.vala',
