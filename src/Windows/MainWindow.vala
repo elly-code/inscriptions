@@ -200,7 +200,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         });  */
 
         stack_window_view.add_titled (new LogView (), "messages", _("Messages"));
-
+        stack_window_view.add_titled (new TweaksView (), "tweaks", _("Tweaks"));
 
         // I know you can do this with binds, but it adds unnecessary read/writes everytime you do shit
         default_height = Application.settings.get_int ("window-height");

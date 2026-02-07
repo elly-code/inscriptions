@@ -69,5 +69,10 @@
       <summary>Whether to highlight both source and target</summary>
       <description>Highlights alternating colours on both source and target in the TextView</description>
     </key>
+    <key name="debounce" type="d">
+      <default>1.250</default>
+      <summary>Delay in s before sending requests in auto</summary>
+      <description>Delay in s before sending requests in auto</description>
+    </key>
   </schema>
 </schemalist>

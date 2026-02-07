@@ -12,7 +12,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
 
-    private const float DEBOUNCE_IN_S = ((float)TranslationView.DEBOUNCE_INTERVAL) / 1000;
+    double debounce_in_s;
 
     public TargetPane () {
         var model = new Inscriptions.DDModel ();
@@ -25,6 +25,9 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     construct {
         dropdown.tooltip_text = _("Set the language to translate to");
         //textview.editable = false;
+
+        Application.settings.changed["debounce"].connect (on_debounce_changed);
+        on_debounce_changed ();
 
         /* -------- PLACEHOLDER -------- */
         var placeholder_box = new Gtk.Box (VERTICAL, 12) {
@@ -39,7 +42,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var placeholder_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {
-            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S),
+            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (debounce_in_s),
             halign = Gtk.Align.CENTER,
         };
 
@@ -68,7 +71,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         /* -------- TOOLBAR -------- */
         var auto_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {
-            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S)
+            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (debounce_in_s)
         };
 
         actionbar.pack_start (auto_switcher);
@@ -117,7 +120,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     private void on_auto_translate_changed () {        
         if (Application.settings.get_boolean ("auto-translate")) {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
-            message (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S));
+            message (_("Translation %.2fs after typing").printf (debounce_in_s));
 
         } else {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
@@ -197,5 +200,9 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
                 warning ("Failed to save file: %s", err.message);
             }
         });
+    }
+
+    private void on_debounce_changed () {
+        debounce_in_s = Application.settings.get_double ("debounce");
     }
 }

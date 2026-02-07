@@ -72,6 +72,7 @@ executable(
   'src' / 'Views' / 'TranslationView.vala',
   'src' / 'Views' / 'ErrorView.vala',
   'src' / 'Views' / 'LogView.vala',
+  'src' / 'Views' / 'TweaksView.vala',
   'src' / 'Windows' / 'MainWindow.vala',
   'src' / 'Application.vala',
   dependencies: deps,

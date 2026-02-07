@@ -155,7 +155,8 @@ public class Inscriptions.TranslationView : Gtk.Box {
             GLib.Source.remove (debounce_timer_id);
         }
 
-        debounce_timer_id = Timeout.add (DEBOUNCE_INTERVAL, () => {
+        var debounce = (int)(Application.settings.get_double ("debounce") * 1000);
+        debounce_timer_id = Timeout.add (debounce, () => {
             debounce_timer_id = 0;
             translate_now ();
             return GLib.Source.REMOVE;
