@@ -19,7 +19,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     //halign = Gtk.Align.END;
 
     var box = new Gtk.Box (VERTICAL, 9) {
-      margin_top = 12,
+      margin_top = MARGIN_MENU_BIG,
       margin_bottom = 6
     };
 
@@ -38,12 +38,12 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (new Gtk.Separator (HORIZONTAL));
 
     var cb = new Gtk.CenterBox () {
-      margin_end = 12
+      margin_end = MARGIN_MENU_BIG
     };
 
     var api_label = new Gtk.Label (_("DeepL API Key")) {
       halign = Gtk.Align.START,
-      margin_start = 12,
+      margin_start = MARGIN_MENU_BIG,
       margin_top = 3
     };
     api_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
@@ -58,15 +58,15 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (cb);
 
     api_entry = new Inscriptions.ApiEntry () {
-      margin_start = 12,
-      margin_end = 12
+      margin_start = MARGIN_MENU_BIG,
+      margin_end = MARGIN_MENU_BIG
     };
 
     box.append (api_entry);
 
     var api_level = new Inscriptions.ApiLevel () {
-      margin_start = 15,
-      margin_end = 15,
+      margin_start = MARGIN_MENU_BIG,
+      margin_end = MARGIN_MENU_BIG,
       margin_top = 3
     };
 
@@ -84,7 +84,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       halign = Gtk.Align.START,
       hexpand = true,
       margin_bottom = 6,
-      margin_start = 12
+      margin_start = MARGIN_MENU_BIG
     };
     box.append (support_button);
 

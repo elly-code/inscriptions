@@ -18,6 +18,15 @@ public class Inscriptions.Application : Gtk.Application {
         { ACTION_QUIT, quit}
     };
 
+    // Access to application from anywhere
+    private static Application? instance;
+    public static Application get_default () {
+        if (instance == null) {
+            instance = new Application ();
+        }
+        return instance;
+    }
+
     public Application () {
         Object (
             application_id: "io.github.elly_code.inscriptions",
