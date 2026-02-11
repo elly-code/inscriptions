@@ -33,11 +33,6 @@ public class Inscriptions.Pane : Gtk.Box {
         set { set_selected_language (value);}
     }
 
-    public bool show_ui {
-        get { return actionbar.revealed;}
-        set { dropdown_revealer.reveal_child = actionbar.revealed = value;}
-    }
-
     public signal void language_changed (string code = "");
 
     public Pane (DDModel model) {
