@@ -77,9 +77,7 @@ public class Inscriptions.Pane : Gtk.Box {
         actionbar = new Gtk.ActionBar () {
             hexpand = true,
             vexpand = false,
-            valign = Gtk.Align.END,
-            height_request = 32,
-            revealed = true
+            valign = Gtk.Align.END
         };
         actionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
 

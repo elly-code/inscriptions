@@ -49,9 +49,11 @@ public class Inscriptions.TranslationView : Gtk.Box {
         var selected_target_language = Application.settings.get_string ("target-language");
         target_pane.language = selected_target_language;
 
-        paned = new Gtk.Paned (HORIZONTAL);
-        paned.start_child = source_pane;
-        paned.end_child = target_pane;
+        paned = new Gtk.Paned (HORIZONTAL) {
+            start_child = source_pane,
+            end_child = target_pane,
+            shrink_start_child = shrink_end_child = false
+        };
 
         append (paned);
         
