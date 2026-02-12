@@ -141,7 +141,7 @@ public class Inscriptions.Pane : Gtk.Box {
         this.textview.buffer.text = "";
     }
 
-    public void message (string text, bool? undo = false) {
+    public void message (string text) {
         toast.title = text;
         toast.send_notification ();
     }

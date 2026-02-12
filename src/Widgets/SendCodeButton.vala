@@ -9,7 +9,7 @@
  */
 public class Inscriptions.SendCodeButton : Gtk.Box {
 
-  private int status_code = 200;
+  int status_code = 200;
 
   public SendCodeButton () {
       Object (

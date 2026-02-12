@@ -4,7 +4,7 @@
  */
 
 /**
- * 
+ * Used in the custom TextView, alternates background color between sentences.
  */
 public enum Inscriptions.HighlightColor {
     BLUEBERRY,

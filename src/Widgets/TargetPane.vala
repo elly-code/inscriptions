@@ -103,8 +103,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         language = Application.settings.get_string ("target-language");
         Application.settings.bind (
           "target-language", 
-          this, 
-          "language", 
+          this, "language", 
           GLib.SettingsBindFlags.DEFAULT
         );
 

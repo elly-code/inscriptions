@@ -9,10 +9,9 @@
  */
 public class Inscriptions.ApiLevel : Gtk.Box {
 
-    private Gtk.LevelBar api_usage;
-
-    private Gtk.Spinner loading;
-    private Gtk.Stack refresher;
+    Gtk.LevelBar api_usage;
+    Gtk.Spinner loading;
+    Gtk.Stack refresher;
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;

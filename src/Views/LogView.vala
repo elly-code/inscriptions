@@ -9,9 +9,9 @@
  */
 public class Inscriptions.LogView : Gtk.Box {
 
-    private string placeholder = _("Requests and server responses will show up here\n\n");
-    private Gtk.TextView textview;
-    private Gtk.Button clear_button;
+    string placeholder = _("Requests and server responses will show up here\n\n");
+    Gtk.TextView textview;
+    Gtk.Button clear_button;
 
     construct {
         orientation = VERTICAL;
@@ -23,10 +23,10 @@ public class Inscriptions.LogView : Gtk.Box {
             wrap_mode = Gtk.WrapMode.WORD_CHAR,
             vexpand = true,
             hexpand = true,
-            top_margin = 12,
-            left_margin = 12,
-            right_margin = 12,
-            bottom_margin = 12
+            top_margin = MARGIN_MENU_BIG,
+            left_margin = MARGIN_MENU_BIG,
+            right_margin = MARGIN_MENU_BIG,
+            bottom_margin = MARGIN_MENU_BIG
         };
         textview.add_css_class (Granite.STYLE_CLASS_TERMINAL);
 
@@ -63,7 +63,7 @@ public class Inscriptions.LogView : Gtk.Box {
         var request_button = new Gtk.Button () {
             child = request_button_box,
             tooltip_text = _("Send a request"),
-            margin_end = 12
+            margin_end = MARGIN_MENU_BIG
         };
         request_button.add_css_class (Granite.STYLE_CLASS_FLAT);
         request_button_label.mnemonic_widget = request_button;

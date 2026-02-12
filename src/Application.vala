@@ -11,7 +11,6 @@ public class Inscriptions.Application : Gtk.Application {
 
     public const string ACTION_PREFIX = "app.";
     public const string ACTION_QUIT = "action_quit";
-
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
@@ -20,7 +19,7 @@ public class Inscriptions.Application : Gtk.Application {
 
     public Application () {
         Object (
-            application_id: "io.github.elly_code.inscriptions",
+            application_id: RDNN,
             flags: ApplicationFlags.HANDLES_OPEN
         );
     }
@@ -33,7 +32,7 @@ public class Inscriptions.Application : Gtk.Application {
     }
 
     static construct {
-        settings = new GLib.Settings ("io.github.elly_code.inscriptions");
+        settings = new GLib.Settings (RDNN);
 
         // Backend takes care of the async for us. We give it the text
         // And it will emit a signal whenever finished, which we can connect to
@@ -45,16 +44,13 @@ public class Inscriptions.Application : Gtk.Application {
         Gtk.init ();
         Granite.init ();
 
-        // App
         add_action_entries (ACTION_ENTRIES, this);
         set_accels_for_action ("app.action_quit", {"<Control>q"});
 
-
-
+        // Styling
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
 
-        // Also follow dark if system is dark lIke mY sOul.
         gtk_settings.gtk_application_prefer_dark_theme = (
 	            granite_settings.prefers_color_scheme == DARK
             );

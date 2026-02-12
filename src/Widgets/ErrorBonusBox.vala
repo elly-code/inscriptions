@@ -9,8 +9,8 @@
  */
 public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
-    private const string ISSUES = "https://github.com/teamcons/inscriptions/issues/";
-    private const string LINK = "https://www.deepl.com/your-account/keys";
+    const string ISSUES = "https://github.com/teamcons/inscriptions/issues/";
+    const string LINK = "https://www.deepl.com/your-account/keys";
     public uint status { get; construct; }
     public bool if_report { get; construct; }
 

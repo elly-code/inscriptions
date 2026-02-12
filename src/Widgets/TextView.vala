@@ -27,10 +27,10 @@ public class Inscriptions.TextView : Gtk.TextView {
     construct {
         hexpand = true;
         vexpand = true;
-        left_margin = 12;
-        right_margin = 12;
-        top_margin = 6;
-        bottom_margin = 6;
+        left_margin = MARGIN_MENU_BIG;
+        right_margin = MARGIN_MENU_BIG;
+        top_margin = MARGIN_MENU_STANDARD;
+        bottom_margin = MARGIN_MENU_STANDARD;
 
         foreach (var color in all_colors) {
             buffer.tag_table.add (color.to_tag_dark ());

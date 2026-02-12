@@ -11,25 +11,25 @@ public class Inscriptions.DeepL : Object {
 
   private const uint TIMEOUT = 3000;
 
-  private Soup.Session session;
+  Soup.Session session;
   internal Soup.Logger logger;
-  private Secrets secrets;
+  Secrets secrets;
 
-  private string source_lang;
-  private string target_lang;
-  private string api_key;
-  private string base_url;
+  string source_lang;
+  string target_lang;
+  string api_key;
+  string base_url;
   public string system_language;
-  private string context;
+  string context;
 
   public signal void answer_received (uint status, string? translated_text = null);
   public signal void language_detected (string? detected_language_code = null);
   public signal void usage_retrieved (uint status);
 
-  private const string URL_DEEPL_FREE = "https://api-free.deepl.com";
-  private const string URL_DEEPL_PRO = "https://api.deepl.com";
-  private const string REST_OF_THE_URL = "/v2/translate";
-  private const string URL_USAGE = "/v2/usage";
+  const string URL_DEEPL_FREE = "https://api-free.deepl.com";
+  const string URL_DEEPL_PRO = "https://api.deepl.com";
+  const string REST_OF_THE_URL = "/v2/translate";
+  const string URL_USAGE = "/v2/usage";
 
   public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
 
@@ -37,8 +37,8 @@ public class Inscriptions.DeepL : Object {
   public int max_usage = 0;
 
   // Private debounce to not constantly check usage on key change
-  private int interval = 1000; // ms
-  private uint debounce_timer_id = 0;
+  int interval = 1000; // ms
+  uint debounce_timer_id = 0;
 
   construct {
     session = new Soup.Session () {

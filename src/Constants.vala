@@ -3,9 +3,13 @@
  * SPDX-FileCopyrightText:  2025 Stella & Charlie (teamcons.carrd.co)
  */
 
-
 namespace Inscriptions {
 
+	// Alkrjnlgjrt
+	public const string RDNN = "io.github.elly_code.inscriptions";
+
+
+	// Styling
     public const string CSS_COLORED_HEADER = "primary-background";
 
 	public const int SPACING_TOOLBAR_HEADER = 5;
@@ -16,6 +20,27 @@ namespace Inscriptions {
 	public const int MARGIN_MENU_BIG = 12;
 	public const int MARGIN_MENU_BIGGER = 24;
 
+	// Autocomplete, save me!
+	// Windows
+	public const string KEY_WINDOW_HEIGHT = "window-height";
+	public const string KEY_WINDOW_WIDTH = "window-width";
+	public const string KEY_WINDOW_MAXIMIZED = "window-maximized";
+
+	// UI
+	public const string KEY_VERTICAL_LAYOUT = "vertical-layout";
+	public const string KEY_AUTO_TRANSLATE = "auto-translate";
+	public const string KEY_HIGHLIGHT = "highlight";
+
+	// Backend
+	public const string KEY_SOURCE_LANGUAGE = "source-language";
+	public const string KEY_TARGET_LANGUAGE = "target-language";
+	public const string KEY_CONTEXT = "context";
+	public const string KEY_FORMALITY = "formality";
+	public const string KEY_CURRENT_USAGE = "current-usage";
+	public const string KEY_MAX_USAGE = "max-usage";
+}
+
+namespace Inscriptions {
 	// https://developers.deepl.com/docs/getting-started/supported-languages
 	// TODO: In the far future people might declare their own in a backend file
 	public Lang[] SourceLang () {
