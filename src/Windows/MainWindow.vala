@@ -58,9 +58,9 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
 
 
-        default_height = Application.settings.get_int ("window-height");
-        default_width = Application.settings.get_int ("window-width");
-        maximized = Application.settings.get_boolean ("window-maximized");
+        default_height = Application.settings.get_int (KEY_WINDOW_HEIGHT);
+        default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
+        maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
 
         /* ---------------- HEADERBAR ---------------- */
 
@@ -194,9 +194,9 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
 
         // I know you can do this with binds, but it adds unnecessary read/writes everytime you do shit
-        default_height = Application.settings.get_int ("window-height");
-        default_width = Application.settings.get_int ("window-width");
-        maximized = Application.settings.get_boolean ("window-maximized");
+        default_height = Application.settings.get_int (KEY_WINDOW_HEIGHT);
+        default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
+        maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
 
         /***************** CONNECTS AND BINDS *****************/
         check_up_key.begin (null);

@@ -81,15 +81,9 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         actionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
 
-        /*          count = new Gtk.Label ("") {
-            sensitive = false
-        };
-        actionbar.pack_start (count);  */
-
         var handle = new Gtk.WindowHandle () {
             child = actionbar
         };
-
 
 
         /* ---------------- STACK ---------------- */
@@ -129,13 +123,6 @@ public class Inscriptions.Pane : Gtk.Box {
         selected = dropdown.get_selected_item () as Lang;
         return selected.name;
     }
-
-/*      private void on_buffer_changed () {
-        var len = textview.buffer.text.length.to_string ();
-        count.label = len;
-        ///TRANSLATORS: %s is replaced by a number
-        count.tooltip_text = _("Counted %s characters").printf (len);
-    }  */
 
     public void clear () {
         this.textview.buffer.text = "";

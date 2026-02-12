@@ -51,15 +51,10 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     };
     cb.end_widget = hint;
 
-  
-    box.append (cb);
-
     api_entry = new Inscriptions.ApiEntry () {
       margin_start = MARGIN_MENU_BIG,
       margin_end = MARGIN_MENU_BIG
     };
-
-    box.append (api_entry);
 
     var api_level = new Inscriptions.ApiLevel () {
       margin_start = MARGIN_MENU_BIG,
@@ -80,6 +75,8 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       margin_start = MARGIN_MENU_BIG
     };
 
+    box.append (cb);
+    box.append (api_entry);
     box.append (usage_revealer);
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (support_button);
