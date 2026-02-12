@@ -9,7 +9,7 @@
 public class Inscriptions.OrientationBox : Gtk.Box {
 
     construct {
-        orientation = Gtk.Orientation.VERTICAL;
+        orientation = Gtk.Orientation.HORIZONTAL;
         spacing = 0;
         homogeneous = true;
         hexpand = true;
