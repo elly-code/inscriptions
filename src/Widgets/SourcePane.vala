@@ -40,9 +40,12 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
 
 
       var clear = new Gtk.Button.from_icon_name ("edit-clear-all-symbolic") {
-          action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_CLEAR_TEXT,
-          tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>L"}, _("Clear text")),
-            margin_start = 3
+          action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_CLEAR_TEXT,
+          tooltip_markup = Granite.markup_accel_tooltip (
+            {"<Ctrl>L"}, 
+            _("Clear text")
+          ),
+          margin_start = 3
       };
       actionbar.pack_end (clear);
 
@@ -53,7 +56,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       actionbar.pack_end (paste);
 
       var open_button = new Gtk.Button.from_icon_name ("document-open-symbolic") {
-          action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_LOAD_TEXT,
+          action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_LOAD_TEXT,
           tooltip_markup = Granite.markup_accel_tooltip (
                   {"<Control>o"}, 
                   _("Load text from a file")

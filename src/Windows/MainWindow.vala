@@ -34,26 +34,13 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     public SimpleActionGroup actions { get; construct; }
     public const string ACTION_PREFIX = "window.";
     public const string ACTION_MENU = "menu";
-    public const string ACTION_SWITCH_LANG = "switch-languages";
     public const string ACTION_TOGGLE_MESSAGES = "toggle-messages";
-    public const string ACTION_TOGGLE_ORIENTATION = "toggle-orientation";
-    public const string ACTION_TOGGLE_HIGHLIGHT = "toggle-highlight";
-    public const string ACTION_TRANSLATE = "translate";
-    public const string ACTION_CLEAR_TEXT = "clear_text";
-    public const string ACTION_LOAD_TEXT = "load_text";
-    public const string ACTION_SAVE_TEXT = "save_text";
+
 
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
-        { ACTION_MENU, on_menu},  
-        { ACTION_SWITCH_LANG, switch_languages}, 
+        { ACTION_MENU, on_menu}, 
         { ACTION_TOGGLE_MESSAGES, action_toggle_messages}, 
-        { ACTION_TOGGLE_ORIENTATION, action_toggle_orientation}, 
-        { ACTION_TOGGLE_HIGHLIGHT, action_toggle_highlight}, 
-        { ACTION_TRANSLATE, action_translate}, 
-        { ACTION_CLEAR_TEXT, action_clear_text}, 
-        { ACTION_LOAD_TEXT, action_load_text}, 
-        { ACTION_SAVE_TEXT, action_save_text}
     };
 
     construct {
@@ -67,18 +54,8 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         // Window
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());
         app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>m"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_SWITCH_LANG, {"<Control>i"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
 
-        // Translation view
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_ORIENTATION, {"<Control><Shift>o"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_HIGHLIGHT, {"<Control>h"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_TRANSLATE, {"<Control>Return", "<Control>t"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_CLEAR_TEXT, {"<Control>l"});
-
-        // Source & target
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_LOAD_TEXT, {"<Control>o"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVE_TEXT, {"<Control>s", "<Control><Shift>s"});
 
 
         default_height = Application.settings.get_int ("window-height");
@@ -134,7 +111,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat") {
             tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages"))
         };
-        switchlang_button.action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_SWITCH_LANG;
+        switchlang_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG;
 
         var toggle_highlight = new Gtk.ToggleButton () {
             icon_name = "format-text-highlight",
@@ -174,10 +151,13 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
         var translate_button = new Gtk.Button () {
             label = _("Translate"),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Control>Return", "<Ctrl>T"}, _("Start translating the entered text"))
+            tooltip_markup = Granite.markup_accel_tooltip (
+                {"<Control>Return", "<Ctrl>T"}, 
+                _("Start translating the entered text")
+            )
         };
         translate_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
-        translate_button.action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_TRANSLATE;
+        translate_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE;
 
         var translate_revealer = new Gtk.Revealer () {
             child = translate_button,
@@ -343,36 +323,8 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         translation_view.source_pane.text = content;
     }
 
-    public void action_toggle_orientation () {
-        translation_view.toggle_orientation ();
-    }
-
-    public void action_toggle_highlight () {
-        translation_view.toggle_highlight ();
-    }
-
-    public void action_translate () {
-        translation_view.translate_now ();
-    }
-
-    public void action_clear_text () {
-        translation_view.action_clear_text ();
-    }
-
-    public void action_load_text () {
-        translation_view.action_load_text ();
-    }
-
-    public void action_save_text () {
-        translation_view.action_save_text ();
-    }
-
     private void on_menu () {
         popover_button.activate ();
-    }
-
-    private void switch_languages () {
-        translation_view.switch_languages ();
     }
 
     /**
@@ -390,6 +342,5 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
             title_stack.visible_child = title_label;
         }
     }
-
 }
 

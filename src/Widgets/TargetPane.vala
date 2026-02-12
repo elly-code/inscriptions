@@ -81,7 +81,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         actionbar.pack_end (copy);
 
         var save_as_button = new Gtk.Button.from_icon_name ("document-save-as-symbolic") {
-            action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_SAVE_TEXT,
+            action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SAVE_TEXT,
             tooltip_markup = Granite.markup_accel_tooltip (
                     {"<Control><Shift>s"}, 
                     _("Save the translation in a text file")
@@ -161,7 +161,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     }
 
     public void action_save_text () {
-
         var all_files_filter = new Gtk.FileFilter () {
         name = _("All files"),
         };
@@ -186,7 +185,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             modal = true
         };
 
-        
         save_dialog.save.begin (Application.main_window, null, (obj, res) => {
             try {
                 var file = save_dialog.save.end (res);
