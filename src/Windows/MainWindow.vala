@@ -163,7 +163,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
         //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
         var translate_button = new Gtk.Button () {
             label = _("Translate"),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Control>return", "<Ctrl>T"}, _("Start translating the entered text"))
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Control>Return", "<Ctrl>T"}, _("Start translating the entered text"))
         };
         translate_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         translate_button.action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_TRANSLATE;

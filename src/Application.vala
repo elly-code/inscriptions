@@ -66,7 +66,7 @@ public class Inscriptions.Application : Gtk.Application {
         // Translation view
         set_accels_for_action ("window.toggle-orientation", {"<Control><Shift>o"});
         set_accels_for_action ("window.toggle-highlight", {"<Control>h"});
-        set_accels_for_action ("window.translate", {"<Control>return", "<Control>t"});
+        set_accels_for_action ("window.translate", {"<Control>Return", "<Control>t"});
         set_accels_for_action ("window.clear_text", {"<Control>l"});
 
         // Source & target
