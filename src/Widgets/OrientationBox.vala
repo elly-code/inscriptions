@@ -8,13 +8,15 @@
  */
 public class Inscriptions.OrientationBox : Gtk.Box {
 
-
     construct {
+        orientation = Gtk.Orientation.VERTICAL;
+        spacing = 0;
         homogeneous = true;
         hexpand = true;
         margin_start = MARGIN_MENU_BIG;
         margin_end = MARGIN_MENU_BIG;
         margin_bottom = MARGIN_MENU_HALF;
+        add_css_class (Granite.STYLE_CLASS_LINKED);
 
         var box_horiz = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {
             halign = Gtk.Align.CENTER
@@ -24,10 +26,11 @@ public class Inscriptions.OrientationBox : Gtk.Box {
 
         var toggle_horizontal = new Gtk.ToggleButton () {
             child = box_horiz,
-            tooltip_text = _("Switch the view to horizontally aligned panes")
+            tooltip_markup = Granite.markup_accel_tooltip (
+                {"<Control><Shift>o"},
+                _("Switch the view to horizontally aligned panes")
+            )
         };
-        //toggle_horizontal.add_css_class ("rotated");
-
 
         var box_vert = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {
             halign = Gtk.Align.CENTER
@@ -39,7 +42,10 @@ public class Inscriptions.OrientationBox : Gtk.Box {
 
         var toggle_vertical = new Gtk.ToggleButton () {
             child = box_vert,
-            tooltip_text = _("Switch the view to vertically stacked panes")
+            tooltip_markup = Granite.markup_accel_tooltip (
+                {"<Control><Shift>o"},
+    _("Switch the view to vertically stacked panes")
+            )
         };
 
         /***************** CONNECTS *****************/
@@ -55,7 +61,5 @@ public class Inscriptions.OrientationBox : Gtk.Box {
 
         append (toggle_horizontal);
         append (toggle_vertical);
-
-        add_css_class (Granite.STYLE_CLASS_LINKED);
     }
 }

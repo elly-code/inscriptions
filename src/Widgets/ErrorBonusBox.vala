@@ -21,9 +21,9 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
-        spacing = 12;
-        margin_top = 6;
-        margin_bottom = 6;
+        spacing = MARGIN_MENU_BIG;
+        margin_top = MARGIN_MENU_STANDARD;
+        margin_bottom = MARGIN_MENU_STANDARD;
 
         // In the event the API is the issue, ask user
         if (status == Soup.Status.FORBIDDEN || status == StatusCode.NO_KEY) {

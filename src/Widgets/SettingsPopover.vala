@@ -13,14 +13,11 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
   construct {
     width_request = 200;
-    //halign = Gtk.Align.END;
 
     var box = new Gtk.Box (VERTICAL, 9) {
       margin_top = MARGIN_MENU_BIG,
       margin_bottom = MARGIN_MENU_STANDARD
     };
-
-    box.append (new OrientationBox ());
 
     //TRANSLATORS: The two following texts are for a switch button that does not show up in the UI
     //The functionality is disabled. You can safely ignore this for the time being
@@ -30,10 +27,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       margin_top = MARGIN_MENU_HALF
     };
 
-    //box.append (auto_switch);
-
-    box.append (new Gtk.Separator (HORIZONTAL));
-
+    /* -------------------- SEPARATOR -------------------- */
     var cb = new Gtk.CenterBox () {
       margin_end = MARGIN_MENU_BIG
     };
@@ -68,6 +62,8 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       child = api_level
     };
 
+    /* -------------------- SEPARATOR -------------------- */
+
     var support_button = new Gtk.LinkButton.with_label (DONATE_LINK, _("Support us!")) {
       halign = Gtk.Align.START,
       hexpand = true,
@@ -75,6 +71,9 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       margin_start = MARGIN_MENU_BIG
     };
 
+    box.append (new OrientationBox ());
+    //box.append (auto_switch);
+    box.append (new Gtk.Separator (HORIZONTAL));
     box.append (cb);
     box.append (api_entry);
     box.append (usage_revealer);
@@ -83,6 +82,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
     child = box;
 
+    /* -------------------- CONNECTS AND BINDS -------------------- */
     hint.clicked.connect (open_webpage);
     api_entry.api_entry.changed.connect (relevant_levelbar);
     relevant_levelbar ();

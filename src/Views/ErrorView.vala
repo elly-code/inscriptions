@@ -9,16 +9,15 @@
  */
 public class Inscriptions.ErrorView : Granite.Bin {
 
-    private const string LINK = "https://www.deepl.com/your-account/keys";
-    private const uint WAIT_BEFORE_MAIN = 1500; //In milliseconds
+    const uint WAIT_BEFORE_MAIN = 1500; //In milliseconds
 
     public uint status { get; construct; }
     public string message { get; construct; }
-    private string icon_name = "dialog-error";
-
-    private string explanation_title;
-    private string explanation_text;
-    private bool report_link;
+    
+    string icon_name = "dialog-error";
+    string explanation_title;
+    string explanation_text;
+    bool report_link;
 
     public signal void return_to_main (bool? retry = true);
 
@@ -31,12 +30,12 @@ public class Inscriptions.ErrorView : Granite.Bin {
     }
 
     construct {
-        var box = new Gtk.Box (VERTICAL, 12) {
+        var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
             valign = Gtk.Align.CENTER,
             halign = Gtk.Align.CENTER,
-            margin_start = 24,
-            margin_end = 24,
-            margin_bottom = 24,
+            margin_start = MARGIN_MENU_BIGGER,
+            margin_end = MARGIN_MENU_BIGGER,
+            margin_bottom = MARGIN_MENU_BIGGER,
         };
 
         status_to_message (status);
