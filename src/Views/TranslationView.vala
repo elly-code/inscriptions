@@ -8,7 +8,8 @@
  */
 public class Inscriptions.TranslationView : Gtk.Box {
 
-    private Gtk.Paned paned {get; set;}
+    public Inscriptions.MainWindow main_window {get; construct;}
+    Gtk.Paned paned {get; set;}
     public Inscriptions.SourcePane source_pane;
     public Inscriptions.TargetPane target_pane;
 
@@ -30,6 +31,10 @@ public class Inscriptions.TranslationView : Gtk.Box {
         { ACTION_TRANSLATE, translate_now},
         { ACTION_CLEAR_TEXT, action_clear_text}
     };
+
+    public TranslationView (Inscriptions.MainWindow main_window) {
+        Object (main_window: main_window);
+    }
 
     construct {
         orientation = HORIZONTAL;

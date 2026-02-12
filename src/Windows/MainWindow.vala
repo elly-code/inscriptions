@@ -7,7 +7,7 @@
  * Aside from bonus actions, the Window is centered around a Gtk.Stack to switch views.
  * Usually when switching to an ErrorView, status code handling is disabled to let it managed, and a "Back" button is added to set it back.
  */
-public class Inscriptions.MainWindow : Gtk.Window {
+public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     Gtk.HeaderBar headerbar;
     Gtk.Stack title_stack;
@@ -56,19 +56,30 @@ public class Inscriptions.MainWindow : Gtk.Window {
         { ACTION_SAVE_TEXT, action_save_text}
     };
 
-    public MainWindow (Gtk.Application application) {
-        Object (
-            application: application, 
-            icon_name: "io.github.elly_code.inscriptions"
-        );
-    }
-
     construct {
+        icon_name = "io.github.elly_code.inscriptions";
         Intl.setlocale ();
 
         var actions = new SimpleActionGroup ();
         actions.add_action_entries (ACTION_ENTRIES, this);
         insert_action_group ("window", actions);
+
+        // Window
+        unowned var app = ((Gtk.Application) GLib.Application.get_default ());
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>m"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_SWITCH_LANG, {"<Control>i"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
+
+        // Translation view
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_ORIENTATION, {"<Control><Shift>o"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_HIGHLIGHT, {"<Control>h"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_TRANSLATE, {"<Control>Return", "<Control>t"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_CLEAR_TEXT, {"<Control>l"});
+
+        // Source & target
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_LOAD_TEXT, {"<Control>o"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVE_TEXT, {"<Control>s", "<Control><Shift>s"});
+
 
         default_height = Application.settings.get_int ("window-height");
         default_width = Application.settings.get_int ("window-width");
@@ -181,7 +192,7 @@ public class Inscriptions.MainWindow : Gtk.Window {
 
 
         /* ---------------- MAIN VIEW ---------------- */
-        translation_view = new Inscriptions.TranslationView ();
+        translation_view = new Inscriptions.TranslationView (this);
 
         stack_window_view.add_titled (translation_view, "translation", _("Translations"));
 
