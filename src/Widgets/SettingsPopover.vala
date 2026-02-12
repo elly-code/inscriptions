@@ -7,12 +7,9 @@
  * Popover for the rightmost button. Kept to a minimum, and allows quick access to the user
  */
 public class Inscriptions.SettingsPopover : Gtk.Popover {
-  
-  const string DONATE_LINK = "https://ko-fi.com/teamcons";
 
-  private Inscriptions.ApiEntry api_entry;
-  private Gtk.Revealer usage_revealer;
-  private const string LINK = "https://www.deepl.com/your-account/keys";
+  Inscriptions.ApiEntry api_entry;
+  Gtk.Revealer usage_revealer;
 
   construct {
     width_request = 200;
@@ -20,7 +17,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
     var box = new Gtk.Box (VERTICAL, 9) {
       margin_top = MARGIN_MENU_BIG,
-      margin_bottom = 6
+      margin_bottom = MARGIN_MENU_STANDARD
     };
 
     box.append (new OrientationBox ());
@@ -30,7 +27,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
       description = _("The translation will start 1.5 seconds after typing has stopped"),
       hexpand = true,
-      margin_top = 3
+      margin_top = MARGIN_MENU_HALF
     };
 
     //box.append (auto_switch);
@@ -44,7 +41,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     var api_label = new Gtk.Label (_("DeepL API Key")) {
       halign = Gtk.Align.START,
       margin_start = MARGIN_MENU_BIG,
-      margin_top = 3
+      margin_top = MARGIN_MENU_HALF
     };
     api_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
     cb.start_widget = api_label;
@@ -67,7 +64,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     var api_level = new Inscriptions.ApiLevel () {
       margin_start = MARGIN_MENU_BIG,
       margin_end = MARGIN_MENU_BIG,
-      margin_top = 3
+      margin_top = MARGIN_MENU_HALF
     };
 
     usage_revealer = new Gtk.Revealer () {
@@ -76,18 +73,16 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       child = api_level
     };
 
-    box.append (usage_revealer);
-
-    box.append (new Gtk.Separator (HORIZONTAL));
-
     var support_button = new Gtk.LinkButton.with_label (DONATE_LINK, _("Support us!")) {
       halign = Gtk.Align.START,
       hexpand = true,
-      margin_bottom = 6,
+      margin_bottom = MARGIN_MENU_STANDARD,
       margin_start = MARGIN_MENU_BIG
     };
-    box.append (support_button);
 
+    box.append (usage_revealer);
+    box.append (new Gtk.Separator (HORIZONTAL));
+    box.append (support_button);
 
     child = box;
 
@@ -95,16 +90,14 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     api_entry.api_entry.changed.connect (relevant_levelbar);
     relevant_levelbar ();
 
-    Application.settings.bind ("auto-translate", auto_switch, "active", SettingsBindFlags.DEFAULT);
+    Application.settings.bind ("auto-translate", 
+      auto_switch, "active", 
+      SettingsBindFlags.DEFAULT);
   }
 
-  private void relevant_levelbar () {
-    if (api_entry.api_entry.text == "") {
-      usage_revealer.reveal_child = false;
 
-    } else {
-      usage_revealer.reveal_child = true;
-    }
+  private void relevant_levelbar () {
+    usage_revealer.reveal_child = (api_entry.api_entry.text != "");
   }
 
   private void open_webpage () {

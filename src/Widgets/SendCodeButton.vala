@@ -11,15 +11,9 @@ public class Inscriptions.SendCodeButton : Gtk.Box {
 
   int status_code = 200;
 
-  public SendCodeButton () {
-      Object (
-          orientation: Gtk.Orientation.HORIZONTAL,
-          spacing: 0
-      );
-  }
-
   construct {
-    //add_css_class (Granite.STYLE_CLASS_LINKED);
+    orientation = Gtk.Orientation.HORIZONTAL;
+    spacing = 0;
 
     var send_button_label = new Gtk.Label (_("Clear"));
     var send_button_box = new Gtk.Box (HORIZONTAL, 0);
@@ -30,7 +24,6 @@ public class Inscriptions.SendCodeButton : Gtk.Box {
       tooltip_text = _("Simulate a fake status code answer for debugging purposes")
     };
     send_button.add_css_class (Granite.STYLE_CLASS_FLAT);
-
 
     Granite.ValidatedEntry entry;
     Regex? regex = null;
@@ -45,16 +38,6 @@ public class Inscriptions.SendCodeButton : Gtk.Box {
       max_width_chars = 4,
       max_length = 3
     };
-
-    //  var popover = new Gtk.Popover () {
-    //    child = entry,
-    //    position = Gtk.PositionType.TOP
-    //  };
-
-    //  var send_menu = new Gtk.MenuButton () {
-    //    direction = Gtk.ArrowType.UP,
-    //    popover = popover
-    //  };
 
     append (send_button);
     append (entry);

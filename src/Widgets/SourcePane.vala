@@ -8,13 +8,13 @@
  */
 public class Inscriptions.SourcePane : Inscriptions.Pane {
 
-    public SourcePane () {
-        var model = new Inscriptions.DDModel ();
-        foreach (var language in Inscriptions.SourceLang ()) {
-            model.model_append (language);
-        }
-        base (model);
-    }
+  public SourcePane () {
+      var model = new Inscriptions.DDModel ();
+      foreach (var language in Inscriptions.SourceLang ()) {
+          model.model_append (language);
+      }
+      base (model);
+  }
 
   construct {
       stack.visible_child = main_view;
@@ -45,14 +45,15 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
             {"<Ctrl>L"}, 
             _("Clear text")
           ),
-          margin_start = 3
+          margin_start = MARGIN_MENU_HALF
       };
-      actionbar.pack_end (clear);
 
       var paste = new Gtk.Button.from_icon_name ("edit-paste-symbolic") {
           tooltip_text = _("Paste from clipboard"),
             margin_start = 3
       };
+
+      actionbar.pack_end (clear);
       actionbar.pack_end (paste);
 
       var open_button = new Gtk.Button.from_icon_name ("document-open-symbolic") {
@@ -64,13 +65,11 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       };
       actionbar.pack_end (open_button);
 
-      /***************** CONNECTS *****************/
+      /***************** CONNECTS AND BINDS *****************/
 
       language = Application.settings.get_string ("source-language");
-      Application.settings.bind (
-        "source-language", 
-        this, 
-        "language", 
+      Application.settings.bind ("source-language", 
+        this, "language", 
         GLib.SettingsBindFlags.DEFAULT
       );
 

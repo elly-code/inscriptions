@@ -6,11 +6,13 @@
 namespace Inscriptions {
 
 	// Alkrjnlgjrt
-	public const string RDNN = "io.github.elly_code.inscriptions";
-
+	public const string RDNN = "io.github.elly_code.inscriptions";  
+	public const string DONATE_LINK = "https://ko-fi.com/teamcons";
+	public const string LINK = "https://www.deepl.com/your-account/keys";
 
 	// Styling
-    public const string CSS_COLORED_HEADER = "primary-background";
+    public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
+    public const string STYLE_CLASS_ROTATED = "rotated";
 
 	public const int SPACING_TOOLBAR_HEADER = 5;
 	public const int SPACING_TOOLBAR_MINI = 3;

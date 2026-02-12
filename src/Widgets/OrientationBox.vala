@@ -8,16 +8,15 @@
  */
 public class Inscriptions.OrientationBox : Gtk.Box {
 
-    public const string STYLE_CLASS_ROTATED = "rotated";
 
     construct {
         homogeneous = true;
         hexpand = true;
-        margin_start = 12;
-        margin_end = 12;
-        margin_bottom = 3;
+        margin_start = MARGIN_MENU_BIG;
+        margin_end = MARGIN_MENU_BIG;
+        margin_bottom = MARGIN_MENU_HALF;
 
-        var box_horiz = new Gtk.Box (HORIZONTAL, 3) {
+        var box_horiz = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {
             halign = Gtk.Align.CENTER
         };
         box_horiz.append (new Gtk.Image.from_icon_name ("view-dual"));
@@ -30,7 +29,7 @@ public class Inscriptions.OrientationBox : Gtk.Box {
         //toggle_horizontal.add_css_class ("rotated");
 
 
-        var box_vert = new Gtk.Box (HORIZONTAL, 3) {
+        var box_vert = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {
             halign = Gtk.Align.CENTER
         };
         //TRANSLATORS: This refers to the view: Either the panels are stacked vertically, or lined horizontally
@@ -44,17 +43,13 @@ public class Inscriptions.OrientationBox : Gtk.Box {
         };
 
         /***************** CONNECTS *****************/
-        Application.settings.bind (
-            "vertical-layout",
-            toggle_horizontal,
-            "active",
+        Application.settings.bind (KEY_VERTICAL_LAYOUT,
+            toggle_horizontal, "active",
             SettingsBindFlags.INVERT_BOOLEAN
         );
 
-        Application.settings.bind (
-            "vertical-layout",
-            toggle_vertical,
-            "active",
+        Application.settings.bind (KEY_VERTICAL_LAYOUT,
+            toggle_vertical, "active",
             SettingsBindFlags.DEFAULT
         );
 
