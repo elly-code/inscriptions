@@ -250,15 +250,24 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         translation_view.target_pane.spin (false);
 
         // The user may be doing something else. So notify them.
-        if (!this.is_active) {
-            var title = _("%s to %s").printf (
-                translation_view.source_pane.language_localized_name (), 
-                translation_view.target_pane.language_localized_name ());
+        //  if (!this.is_active) {
+        //      var title = _("%s to %s").printf (
+        //          translation_view.source_pane.language_localized_name (), 
+        //          translation_view.target_pane.language_localized_name ());
             
-            var notification = new GLib.Notification (title);
-            notification.set_body (answer);
-            application.send_notification (application.application_id, notification);
-        }
+        //      var notification = new GLib.Notification (title);
+        //      notification.set_body (answer);
+        //      application.send_notification (application.application_id, notification);
+
+
+        //      Granite.Services.Application.set_badge_visible.begin (true, (obj, res) => {
+        //          try {
+        //              Granite.Services.Application.set_badge_visible.end (res);
+        //          } catch (GLib.Error e) {
+        //              critical (e.message);
+        //          }
+        //      });
+        //  }
     }
 
     /**
