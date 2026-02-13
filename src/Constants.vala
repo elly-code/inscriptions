@@ -14,6 +14,7 @@ namespace Inscriptions {
 	// Styling
     public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
     public const string STYLE_CLASS_ROTATED = "rotated";
+	public const string STYLE_CLASS_CONSOLE = "console";
 
 	public const int SPACING_TOOLBAR_HEADER = 5;
 	public const int SPACING_TOOLBAR_MINI = 3;

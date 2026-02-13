@@ -39,3 +39,8 @@
 .primary-background .button {
 	background-color: @bg_color;
 }
+
+/* Pretend the log textview is a console */
+.console {
+ 	background-color: #002B36;
+}

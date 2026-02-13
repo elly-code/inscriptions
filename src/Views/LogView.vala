@@ -29,7 +29,7 @@ public class Inscriptions.LogView : Gtk.Box {
             bottom_margin = MARGIN_MENU_BIG
         };
         textview.add_css_class (Granite.STYLE_CLASS_TERMINAL);
-
+        textview.add_css_class (STYLE_CLASS_CONSOLE);
         textview.buffer.text = placeholder;
 
         var scroll_box = new Gtk.ScrolledWindow () {
