@@ -9,58 +9,22 @@
  */
 public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
-    Gtk.HeaderBar headerbar;
-    Gtk.Stack title_stack;
-    Gtk.Label title_label;
-    Gtk.StackSwitcher title_switcher;
-
-    // Secret switch showing with ctrl+shift+M
-    private bool show_switcher {
-        get {return title_stack.visible_child == title_switcher;}
-        set {switcher_state (value);}
-    }
-
-    Gtk.Revealer back_revealer;
-    Gtk.Button switchlang_button;
-    Gtk.Revealer toolbar_revealer;
-    Gtk.MenuButton popover_button;
-
+    Inscriptions.HeaderBar headerbar;
     Gtk.Stack stack_window_view;
+
     public Inscriptions.TranslationView translation_view;
     Inscriptions.ErrorView? errorview = null;
 
-    public Inscriptions.SettingsPopover menu_popover;
-
-    public SimpleActionGroup actions { get; construct; }
-    public const string ACTION_PREFIX = "window.";
-    public const string ACTION_MENU = "menu";
-    public const string ACTION_TOGGLE_MESSAGES = "toggle-messages";
-
-
-    public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
-    private const GLib.ActionEntry[] ACTION_ENTRIES = {
-        { ACTION_MENU, on_menu}, 
-        { ACTION_TOGGLE_MESSAGES, action_toggle_messages}, 
-    };
-
     construct {
-        icon_name = "io.github.elly_code.inscriptions";
         Intl.setlocale ();
+        title = _("Inscriptions");
+        icon_name = RDNN;
 
-        var actions = new SimpleActionGroup ();
-        actions.add_action_entries (ACTION_ENTRIES, this);
-        insert_action_group ("window", actions);
-
-        // Window
-        unowned var app = ((Gtk.Application) GLib.Application.get_default ());
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>m"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
-
-
-
+        // I know you can do this with binds, but it adds unnecessary read/writes everytime you do shit
         default_height = Application.settings.get_int (KEY_WINDOW_HEIGHT);
         default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
         maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
+
 
         /* ---------------- HEADERBAR ---------------- */
 
@@ -68,150 +32,32 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         };
 
-        title_stack = new Gtk.Stack () {
-            transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN
-        };
+        headerbar = new Inscriptions.HeaderBar (stack_window_view);
+        insert_action_group ("headerbar", headerbar.actions);
 
-        title_label = new Gtk.Label (_("Inscriptions"));
-        title_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
 
-        title_switcher = new Gtk.StackSwitcher () {
-            stack = stack_window_view
-        };
-        
-        title_stack.add_child (title_label);
-        title_stack.add_child (title_switcher);
-        title_stack.visible_child = title_label;
-
-        //TRANSLATORS: Do not translate the name itself. You can write it in your writing system if that is usually done for your language
-        title = _("Inscriptions");
-        headerbar = new Gtk.HeaderBar () {
-            title_widget = title_stack
-        };
-        headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-        //headerbar.add_css_class (CSS_COLORED_HEADER);
         set_titlebar (headerbar);
 
 
-        /* ---------------- PACK START ---------------- */
-
-        //TRANSLATORS: Back button to go back to translating
-        var back_button = new Gtk.Button.with_label (_("Back"));
-        back_button.add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
-
-        back_revealer = new Gtk.Revealer () {
-            child = back_button,
-            transition_type = Gtk.RevealerTransitionType.SWING_LEFT,
-            reveal_child = false
-        };
-        headerbar.pack_start (back_revealer);
-        
-
-        //TRANSLATORS: This is for a button that switches source and target language
-        switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat") {
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages"))
-        };
-        switchlang_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG;
-
-        var toggle_highlight = new Gtk.ToggleButton () {
-            icon_name = "format-text-highlight",
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>H"}, _("Highlight source and target sentences"))
-        };
-
-        var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        toolbar.append (switchlang_button);
-        toolbar.append (toggle_highlight);
-
-        toolbar_revealer = new Gtk.Revealer () {
-            child = toolbar,
-            transition_type = Gtk.RevealerTransitionType.SWING_LEFT,
-            reveal_child = true
-        };
-
-        headerbar.pack_start (toolbar_revealer);
-
-
-
-      Application.settings.bind ("highlight", toggle_highlight, "active", GLib.SettingsBindFlags.DEFAULT);
-
-
-        /* ---------------- PACK END ---------------- */
-
-        popover_button = new Gtk.MenuButton () {
-            icon_name = "open-menu",
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>M"}, _("Settings")),
-        };
-
-        popover_button.set_primary (true);
-        popover_button.set_direction (Gtk.ArrowType.NONE);
-
-        var menu_popover = new Inscriptions.SettingsPopover ();
-        popover_button.popover = menu_popover;
-
-        //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
-        var translate_button = new Gtk.Button () {
-            label = _("Translate"),
-            tooltip_markup = Granite.markup_accel_tooltip (
-                {"<Control>Return", "<Ctrl>T"}, 
-                _("Start translating the entered text")
-            )
-        };
-        translate_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
-        translate_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE;
-
-        var translate_revealer = new Gtk.Revealer () {
-            child = translate_button,
-            transition_type = Gtk.RevealerTransitionType.SWING_RIGHT
-        };
-        
-        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        toolbar_right.append (translate_revealer);
-        toolbar_right.append (popover_button);
-
-        headerbar.pack_end (toolbar_right);
-
 
         /* ---------------- MAIN VIEW ---------------- */
-        translation_view = new Inscriptions.TranslationView (this);
+        translation_view = new Inscriptions.TranslationView ();
+        insert_action_group ("translation-view", translation_view.actions);
 
         stack_window_view.add_titled (translation_view, "translation", _("Translations"));
-
+        stack_window_view.add_titled (new LogView (), "messages", _("Messages"));
 
         child = stack_window_view;
 
         stack_window_view.visible_child = translation_view;
         set_focus (translation_view.source_pane.textview);
 
-        // Listen if the backend recognize a language to switch to it
-        // debatable whether to keep this idk
-/*          backend.language_detected.connect ((detected_language_code) => {
-            if (detected_language_code != null) {
-                source_pane.pane.set_selected_language (detected_language_code);
-            }
-        });  */
-
-        stack_window_view.add_titled (new LogView (), "messages", _("Messages"));
 
 
-        // I know you can do this with binds, but it adds unnecessary read/writes everytime you do shit
-        default_height = Application.settings.get_int (KEY_WINDOW_HEIGHT);
-        default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
-        maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
-
-        /***************** CONNECTS AND BINDS *****************/
+        /* -------------------- CONNECTS AND BINDS -------------------- */
         check_up_key.begin (null);
-
         Application.backend.answer_received.connect (on_answer_received);
-
-        Application.settings.bind (
-            "auto-translate", 
-            translate_revealer, 
-            "reveal_child", 
-            SettingsBindFlags.INVERT_BOOLEAN
-        );
-
-        back_button.clicked.connect (() => {on_back_clicked ();});
-
+        headerbar.back_requested.connect (() => {on_back_clicked ();});
         close_request.connect (on_close);
     }
 
@@ -248,26 +94,6 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
         translation_view.target_pane.text = answer;
         translation_view.target_pane.spin (false);
-
-        // The user may be doing something else. So notify them.
-        //  if (!this.is_active) {
-        //      var title = _("%s to %s").printf (
-        //          translation_view.source_pane.language_localized_name (), 
-        //          translation_view.target_pane.language_localized_name ());
-            
-        //      var notification = new GLib.Notification (title);
-        //      notification.set_body (answer);
-        //      application.send_notification (application.application_id, notification);
-
-
-        //      Granite.Services.Application.set_badge_visible.begin (true, (obj, res) => {
-        //          try {
-        //              Granite.Services.Application.set_badge_visible.end (res);
-        //          } catch (GLib.Error e) {
-        //              critical (e.message);
-        //          }
-        //      });
-        //  }
     }
 
     /**
@@ -279,8 +105,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         stack_window_view.visible_child = translation_view;
         stack_window_view.remove (errorview);
         errorview = null;
-        back_revealer.reveal_child = false;
-        toolbar_revealer.reveal_child = true;
+        headerbar.on_main_view = true;
 
         if (retry) {
             translation_view.on_text_to_translate ();
@@ -292,14 +117,6 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
      */
     private void on_error (uint status_code, string? answer = _("No details available")) {
 
-        // The user may be doing something else. If the window is unfocused we tell them by notification
-        if (!this.is_active) {
-            var title = _("Error %u").printf (status_code);
-            var notification = new GLib.Notification (title);
-            notification.set_body (answer);
-            application.send_notification (application.application_id, notification);
-        }
-        
         // ErrorView may need to do some fiddling. We reconnect when going back to main view via on_back_clicked
         Application.backend.answer_received.disconnect (on_answer_received);
         
@@ -307,12 +124,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         stack_window_view.add_titled (errorview, "error", _("Error"));
         stack_window_view.visible_child = errorview;
 
-        toolbar_revealer.reveal_child = false;
-        
-        //if ((status_code != Soup.Status.FORBIDDEN) && (status_code != Inscriptions.StatusCode.NO_KEY)) {
-            back_revealer.reveal_child = true;
-        //}
-    
+        headerbar.on_main_view = false;
         errorview.return_to_main.connect (on_back_clicked);
     }
 
@@ -330,26 +142,6 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     public void open (string content) {
         translation_view.source_pane.text = content;
-    }
-
-    private void on_menu () {
-        popover_button.activate ();
-    }
-
-    /**
-     * The two below manage the super secret debug mode enabled/disabled with Ctrl+shift+M
-     */
-    private void action_toggle_messages () {
-        switcher_state (!show_switcher);
-    }
-
-    private void switcher_state (bool if_show_switcher) {
-        if (if_show_switcher) {
-            title_stack.visible_child = title_switcher;
-
-        } else {
-            title_stack.visible_child = title_label;
-        }
     }
 }
 

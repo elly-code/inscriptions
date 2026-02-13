@@ -1,5 +1,6 @@
 src/Views/TranslationView.vala
 src/Views/ErrorView.vala
+src/Widgets/HeaderBar.vala
 src/Widgets/ErrorBonusBox.vala
 src/Views/LogView.vala
 src/Windows/MainWindow.vala

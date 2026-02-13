@@ -13,7 +13,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.WindowHandle spin_view;
 
     // Careful when using this to wrap to .2f decimals
-    const float DEBOUNCE_IN_S = ((float)TranslationView.DEBOUNCE_INTERVAL) / 1000;
+    const float DEBOUNCE_IN_S = ((float)DEBOUNCE_INTERVAL) / 1000;
 
     public TargetPane () {
         var model = new Inscriptions.DDModel ();

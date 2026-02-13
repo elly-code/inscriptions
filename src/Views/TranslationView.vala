@@ -8,13 +8,11 @@
  */
 public class Inscriptions.TranslationView : Gtk.Box {
 
-    public Inscriptions.MainWindow main_window {get; construct;}
     Gtk.Paned paned {get; set;}
     public Inscriptions.SourcePane source_pane;
     public Inscriptions.TargetPane target_pane;
 
     // Add a debounce so we aren't requesting the API constantly
-    public const int DEBOUNCE_INTERVAL = 1250; // ms
     public uint debounce_timer_id = 0;
 
     public SimpleActionGroup actions { get; construct; }
@@ -38,17 +36,12 @@ public class Inscriptions.TranslationView : Gtk.Box {
         { ACTION_SAVE_TEXT, action_save_text}
     };
 
-    public TranslationView (Inscriptions.MainWindow main_window) {
-        Object (main_window: main_window);
-    }
-
     construct {
         orientation = HORIZONTAL;
         spacing = 0;
 
-        var actions = new SimpleActionGroup ();
+        actions = new SimpleActionGroup ();
         actions.add_action_entries (ACTION_ENTRIES, this);
-        main_window.insert_action_group ("translation-view", actions);
 
         // Translation view
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());

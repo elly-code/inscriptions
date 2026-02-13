@@ -15,6 +15,7 @@ sources = files (
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 
+  'Widgets' / 'HeaderBar.vala',
   'Widgets' / 'OrientationBox.vala',
   'Widgets' / 'ApiEntry.vala',
   'Widgets' / 'ApiLevel.vala',
