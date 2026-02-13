@@ -12,9 +12,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
 
-    // Careful when using this to wrap to .2f decimals
-    const float DEBOUNCE_IN_S = ((float)DEBOUNCE_INTERVAL) / 1000;
-
     public TargetPane () {
         var model = new Inscriptions.DDModel ();
         foreach (var language in Inscriptions.TargetLang ()) {

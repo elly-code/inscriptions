@@ -22,7 +22,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     //TRANSLATORS: The two following texts are for a switch button that does not show up in the UI
     //The functionality is disabled. You can safely ignore this for the time being
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
-      description = _("The translation will start 1.5 seconds after typing has stopped"),
+      description = _("The translation will start %.2f seconds after typing has stopped".printf (DEBOUNCE_IN_S)),
       hexpand = true,
       margin_top = MARGIN_MENU_HALF
     };

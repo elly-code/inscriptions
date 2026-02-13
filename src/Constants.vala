@@ -11,6 +11,9 @@ namespace Inscriptions {
 	public const string LINK = "https://www.deepl.com/your-account/keys";
     public const int DEBOUNCE_INTERVAL = 1250; // ms
 
+    // Careful when using this to wrap to .2f decimals
+    const float DEBOUNCE_IN_S = ((float)DEBOUNCE_INTERVAL) / 1000;
+
 	// Styling
     public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
     public const string STYLE_CLASS_ROTATED = "rotated";
