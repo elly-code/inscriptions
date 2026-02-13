@@ -17,6 +17,13 @@
 * Boston, MA 02110-1301 USA
 */
 
+/*
+Picked: #2c3944d9
+Base from wpkelso: #33434eff
+*/
+
+@define-color accent_color #33434eff;
+
 /* Used in the OrientationsBox for the preview icon */
 .rotated * {
     -gtk-icon-transform: rotate(90deg);
@@ -32,7 +39,7 @@
 
 /* Pretty coloured titlebar */
 .primary-background {
-	background-color: rgba(44, 57, 68, 1);
+	background-color: #33434eff;
 	color: #FFFFFF;
 }
 
