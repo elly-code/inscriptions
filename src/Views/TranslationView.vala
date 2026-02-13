@@ -116,6 +116,8 @@ public class Inscriptions.TranslationView : Gtk.Box {
      * Target is source, source is target.
      */
     public void switch_languages () {
+
+        // Disconnect everything temporarily to avoid a deathloop
         connect_all (false);
 
         // Temp variables
@@ -132,8 +134,10 @@ public class Inscriptions.TranslationView : Gtk.Box {
         target_pane.language = newtarget;
         target_pane.text = newtarget_text;
 
+        source_pane.textview.refresh ();
+        target_pane.textview.refresh ();
+
         connect_all (true);
-        source_pane.textview.buffer.changed ();
     }
 
     /**
