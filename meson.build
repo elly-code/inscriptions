@@ -41,43 +41,7 @@ deps = [
   dependency ('libsecret-1')
 ]
 
-# Create a new executable, list the files we want to compile, and install
-executable(
-  meson.project_name (),
-  config_file,
-  gresource,
-  'src' / 'Constants.vala',
-  'src' / 'Enums' / 'Formality.vala',
-  'src' / 'Enums' / 'StatusCode.vala',
-  'src' / 'Enums' / 'HighlightColor.vala',
-  'src' / 'Objects' / 'Lang.vala',
-  'src' / 'Objects' / 'DDModel.vala',
-
-  'src' / 'Services' / 'Secrets.vala',
-  'src' / 'Backend' / 'DeepL.vala',
-
-  'src' / 'Widgets' / 'OrientationBox.vala',
-  'src' / 'Widgets' / 'ApiEntry.vala',
-  'src' / 'Widgets' / 'ApiLevel.vala',
-  'src' / 'Widgets' / 'SettingsPopover.vala',
-  'src' / 'Widgets' / 'OptionsPopover.vala',
-  'src' / 'Widgets' / 'Pane.vala',
-  'src' / 'Widgets' / 'SourcePane.vala',
-  'src' / 'Widgets' / 'TargetPane.vala',
-  'src' / 'Widgets' / 'RetryButton.vala',
-  'src' / 'Widgets' / 'SendCodeButton.vala',
-  'src' / 'Widgets' / 'ErrorBonusBox.vala',
-  'src' / 'Widgets' / 'TextView.vala',
-
-  'src' / 'Views' / 'TranslationView.vala',
-  'src' / 'Views' / 'ErrorView.vala',
-  'src' / 'Views' / 'LogView.vala',
-  'src' / 'Windows' / 'MainWindow.vala',
-  'src' / 'Application.vala',
-  dependencies: deps,
-  install: true
-)
-
+subdir ('src')
 subdir('data')
 subdir('po')
 
