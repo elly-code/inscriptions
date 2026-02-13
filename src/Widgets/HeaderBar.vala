@@ -44,6 +44,12 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         set {
             toolbar_revealer.reveal_child = value;
             back_revealer.reveal_child = !value;
+
+            //  if (value) {
+            //      headerbar.remove_css_class (Granite.STYLE_CLASS_FLAT);
+            //  } else {
+            //      headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
+            //  }
         }
     }
 
@@ -160,8 +166,8 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         back_button.clicked.connect (() => {back_requested ();});
 
         Application.settings.bind (KEY_HIGHLIGHT,
-        toggle_highlight, "active",
-        GLib.SettingsBindFlags.DEFAULT);
+            toggle_highlight, "active",
+            GLib.SettingsBindFlags.DEFAULT);
 
         Application.settings.bind (KEY_AUTO_TRANSLATE, 
             translate_revealer, "reveal_child", 
