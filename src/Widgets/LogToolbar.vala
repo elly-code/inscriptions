@@ -30,14 +30,14 @@ public class Inscriptions.SendCodeButton : Gtk.Box {
 
     /* ---------- Status code selector ---------- */
 
-    string[] choices = {
-      "Manual",
-      "",
-      "",
-      "",
-      ""
-    };
-    var selector = new Gtk.DropDown.from_strings (choices);
+    //  string[] choices = {
+    //    "Manual",
+    //    "",
+    //    "",
+    //    "",
+    //    ""
+    //  };
+    //  var selector = new Gtk.DropDown.from_strings (choices);
 
 
 

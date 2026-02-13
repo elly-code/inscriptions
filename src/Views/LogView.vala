@@ -39,7 +39,7 @@ public class Inscriptions.LogView : Gtk.Box {
         append (scroll_box);
 
         var box = new Gtk.ActionBar ();
-        //box.add_css_class (Granite.STYLE_CLASS_FLAT);
+        box.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         var clear_button_label = new Gtk.Label (_("Clear"));
         var clear_button_box = new Gtk.Box (HORIZONTAL, 0);
