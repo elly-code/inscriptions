@@ -5,15 +5,25 @@ project(
   version: '1.0.0'
 )
 
+#================================
 # Include Gnome and the translations module
 gnome = import('gnome')
 i18n = import('i18n')
 
 # Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+windows_build = build_machine.system() == 'windows'
+
+vala_flags = []
+# Windows needs icons, special arguments, and skip libportal
+if windows_build
+    vala_flags += ['--define', 'WINDOWS']
+endif
+
+add_project_arguments(vala_flags, language: 'vala')
 
 
-## Set de config data
+#================================
 config_data = configuration_data()
 config_data.set('version', meson.project_version())
 config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
@@ -31,8 +41,8 @@ gresource = gnome.compile_resources(
   c_name: 'as'
 )
 
-# List the dependencies we need
-# need for libcurl
+#================================
+# dependencies
 deps = [
   dependency ('granite-7'),
   dependency ('gtk4'),
@@ -40,6 +50,15 @@ deps = [
   dependency ('json-glib-1.0'),
   dependency ('libsecret-1')
 ]
+
+# We need to compile an icon into the exe to avoid "missing icon" icon at every turn
+if windows_build
+  deps += dependency('gio-windows-2.0')
+  ico_src = import('windows').compile_resources('windows/icons/ico.rc')
+
+else
+  deps += dependency('gio-unix-2.0')
+endif
 
 subdir ('src')
 subdir('data')

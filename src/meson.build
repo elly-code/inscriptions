@@ -38,10 +38,11 @@ sources = files (
 
 # Create a new executable, list the files we want to compile, and install
 executable(
-  meson.project_name (),
-  config_file,
-  gresource,
+    meson.project_name (),
+    config_file,
+    gresource,
     sources,
-  dependencies: deps,
-  install: true
+    dependencies: deps,
+    win_subsystem: 'windows',
+    install: true
 )
