@@ -23,7 +23,7 @@ sources = files (
   'Widgets' / 'SourcePane.vala',
   'Widgets' / 'TargetPane.vala',
   'Widgets' / 'Buttons' / 'RetryButton.vala',
-  'Widgets' / 'Buttons' / 'SendCodeButton.vala',
+  'Widgets' / 'LogToolbar.vala',
   'Widgets' / 'ErrorBonusBox.vala',
   'Widgets' / 'TextView.vala',
 
