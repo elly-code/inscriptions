@@ -16,18 +16,16 @@ msgid "Inscriptions"
 msgstr "Inscriptions"
 
 #: src/Windows/MainWindow.vala:47
-#, fuzzy
 msgid "Translations"
-msgstr "Übersetzen"
+msgstr "Übersetzungen"
 
 #: src/Windows/MainWindow.vala:48
 msgid "Messages"
 msgstr "Nachrichten"
 
 #: src/Windows/MainWindow.vala:71
-#, fuzzy
 msgid "No saved API Key"
-msgstr "Kein DeepL API-Schlüssel"
+msgstr "Kein gespeicherter API-Schlüssel"
 
 #. *
 #. * Convenience function to move to dedicated error view, disable and enable whatever is needed
@@ -42,18 +40,16 @@ msgid "Error"
 msgstr "Fehler"
 
 #: src/Views/TranslationView.vala:152
-#, fuzzy
 msgid "Nothing to translate"
-msgstr "Bereit zum Übersetzen"
+msgstr "Nichts zum Übersetzen"
 
 #: src/Views/TranslationView.vala:167
 msgid "Target language is the same as source"
-msgstr ""
+msgstr "Zielsprache ist die gleiche wie die Ausgangssprache"
 
 #: src/Views/TranslationView.vala:219
-#, fuzzy
 msgid "Cleared"
-msgstr "Leeren"
+msgstr "Gelöscht"
 
 #. headerbar.add_css_class (CSS_COLORED_HEADER);
 #. ---------------- PACK START ----------------
@@ -95,16 +91,12 @@ msgid "Hello, World!"
 msgstr "Hallo Welt!"
 
 #: src/Views/ErrorView.vala:101
-#, fuzzy
 msgid ""
 "You need a DeepL API key to translate text\n"
 "It can be either DeepL Free or Pro"
 msgstr ""
-"Sie benötigen einen DeepL API-Schlüssel, um Text zu übersetzen\n"
-"Ein API-Schlüssel ist wie ein Passwort, das von DeepL in den "
-"Kontoeinstellungen vergeben wird, damit Sie es von Anwendungen aus nutzen "
-"können.\n"
-"Er kann entweder DeepL Free oder Pro sein."
+"Sie benötigen einen DeepL API-Schlüssel, um Text\n zu übersetzen"
+"Es kann entweder DeepL Free oder Pro sein"
 
 #: src/Views/ErrorView.vala:106
 msgid "No Internet"
@@ -112,7 +104,7 @@ msgstr "Kein Internet"
 
 #. /TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
 #: src/Views/ErrorView.vala:111
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Please verify you are <a href='%s'>connected to the internet</a>, and that "
 "this app has <a href='%s'>permission to access it</a>"
@@ -121,7 +113,6 @@ msgstr ""
 "Anwendung die Erlaubnis hat, darauf zuzugreifen"
 
 #: src/Views/ErrorView.vala:113
-#, fuzzy
 msgid ""
 "Please verify you are connected to the internet, and that this app has "
 "permission to access it"
@@ -145,7 +136,6 @@ msgid "Bad request"
 msgstr "Schlechte Anfrage"
 
 #: src/Views/ErrorView.vala:126
-#, fuzzy
 msgid ""
 "The app sent a wrong translation request to DeepL\n"
 "Please report this to the app's developer with as much details as you can"
@@ -341,9 +331,9 @@ msgid "Translate automatically"
 msgstr "Automatisch übersetzen"
 
 #: src/Widgets/Popovers/SettingsPopover.vala:25
-#, fuzzy, c-format
+#, c-format
 msgid "The translation will start %.2f seconds after typing has stopped"
-msgstr "Die Übersetzung beginnt 1,5 Sekunden nach Beendigung des Tippens."
+msgstr "Die Übersetzung beginnt %.2f Sekunden nach Beendigung des Tippens."
 
 #: src/Widgets/Popovers/SettingsPopover.vala:35
 msgid "DeepL API Key"
@@ -401,7 +391,7 @@ msgstr "Text aus einer Datei laden"
 
 #: src/Widgets/Panes/SourcePane.vala:94
 msgid "Pasted"
-msgstr ""
+msgstr "Eingefügt"
 
 #: src/Widgets/Panes/SourcePane.vala:105 src/Widgets/Panes/TargetPane.vala:163
 msgid "All files"
@@ -432,7 +422,8 @@ msgstr "Bereit zum Übersetzen"
 #, fuzzy, c-format
 msgid ""
 "Switch between click to translate // translate %.2fs after typing has stopped"
-msgstr "Die Übersetzung beginnt 1,5 Sekunden nach Beendigung des Tippens."
+msgstr ""
+"Umschalten zwischen Klicken und Übersetzen // Übersetzen %.2fs nach Beendigung des Tippens"
 
 #: src/Widgets/Panes/TargetPane.vala:78
 msgid "Copy to clipboard"
@@ -446,16 +437,16 @@ msgstr "Speichern Sie die Übersetzung in einer Textdatei"
 #: src/Widgets/Panes/TargetPane.vala:118
 #, c-format
 msgid "Translation %.2fs after typing"
-msgstr ""
+msgstr "Übersetzung %.2fs nach Tippens"
 
 #. TRANSLATORS: This is for a small notification toast. Very little space is available
 #: src/Widgets/Panes/TargetPane.vala:122
 msgid "Automatic translation paused"
-msgstr ""
+msgstr "Automatische Übersetzung pausiert"
 
 #: src/Widgets/Panes/TargetPane.vala:134
 msgid "Copied"
-msgstr ""
+msgstr "Kopiert"
 
 #. TRANSLATORS: The following text is for the dialog to save the translation
 #: src/Widgets/Panes/TargetPane.vala:178
@@ -497,22 +488,22 @@ msgstr "Statuscode %s: Kein Bezug zur Authentifizierung"
 
 #. ---------- SEND BUTTON ----------
 #: src/Widgets/LogToolbar.vala:19
-#, fuzzy
+#, 
 msgid "Receive status code: "
-msgstr "Statuscode %s"
+msgstr "Statuscode %s Empfangen:"
 
 #: src/Widgets/LogToolbar.vala:26
 msgid "Simulate a fake status code answer for debugging purposes"
 msgstr ""
+"Simulieren eine gefälschte Statuscode-Antwort zu Debugging-Zwecken"
 
 #: src/Widgets/LogToolbar.vala:72
-#, fuzzy
 msgid "Simulated status code"
-msgstr "Statuscode %s"
+msgstr "Simulierten Statuscode"
 
 #: src/Backend/DeepL/DeepL.vala:104
 msgid "Missing API Key"
-msgstr ""
+msgstr "Fehlender API-Schlüssel"
 
 #: src/Backend/DeepL/DeepL.vala:221
 msgid "Cannot detect!"

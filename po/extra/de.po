@@ -21,10 +21,9 @@ msgid "Translate text elegantly"
 msgstr "Elegantes Übersetzen von Text"
 
 #: data/inscriptions.metainfo.xml.in:15
-#, fuzzy
 msgid "A fast, pretty, and ready translation app using DeepL free and paid API"
 msgstr ""
-"Eine einfache, saubere und effiziente Übersetzungs-App, die die kostenlose "
+"Eine schnelle, hübsche und bereite Übersetzungs-App, die die kostenlose "
 "und kostenpflichtige API von DeepL nutzt."
 
 #: data/inscriptions.metainfo.xml.in:16
@@ -32,29 +31,30 @@ msgid "Libretranslate support is considered, but"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:17
-#, fuzzy
 msgid "Some points of note:"
 msgstr "Einige Punkte:"
 
 #: data/inscriptions.metainfo.xml.in:19
-#, fuzzy
 msgid "Nimble: Paste your DeepL api key (Whichever the plan), and here you go!"
-msgstr "Flink: Fügen Sie Ihren Api-Schlüssel ein, und los geht's!"
+msgstr "Flink: Fügen Sie Ihren DeepL api-Schlüssel ein (egal welcher Plan), und los geht's!"
 
 #: data/inscriptions.metainfo.xml.in:20
 msgid "Thoughtful: Just what you need, out of your way and a click away"
-msgstr ""
+msgstr "Gut gedacht: Genau das, was Sie brauchen, aus dem Weg und einen Klick entfernt"
 
 #: data/inscriptions.metainfo.xml.in:21
 msgid ""
 "Comprehensive: No scary angry dialogs - If something goes wrong, explain "
 "nicely"
 msgstr ""
+"Umfassend: Keine beängstigenden, wütenden Dialoge - Wenn etwas schief geht,"
+" einfach erklären"
 
 #: data/inscriptions.metainfo.xml.in:22
 msgid ""
 "Lean: Limiting resource usage and internet communications to the minimum"
 msgstr ""
+"Schlank: Begrenzung der Ressourcennutzung und der Internetkommunikation auf ein Minimum"
 
 #: data/inscriptions.metainfo.xml.in:23
 msgid "Supported languages: All those available via DeepL API!"
@@ -70,17 +70,19 @@ msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:30
 msgid "Main window, showcasing a translation with the highlighting feature"
-msgstr ""
+msgstr "Hauptfenster, das eine Übersetzung mit der Hervorhebungsfunktion zeigt"
 
 #: data/inscriptions.metainfo.xml.in:34
 msgid ""
 "Main window with dark theme, showcasing a translation with the highlighting "
 "feature"
 msgstr ""
+"Hauptfenster mit dunklem Thema, das eine Übersetzung mit der "
+"Hervorhebungsfunktion zeigt"
 
 #: data/inscriptions.metainfo.xml.in:42
 msgid "Stella and Charlie!"
-msgstr ""
+msgstr "Stella und Charlie"
 
 #: data/inscriptions.metainfo.xml.in:62
 msgid "Translation"

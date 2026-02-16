@@ -32,7 +32,6 @@ msgid "Libretranslate support is considered, but"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:17
-#, fuzzy
 msgid "Some points of note:"
 msgstr "Quelques points :"
 
