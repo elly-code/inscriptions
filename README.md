@@ -1,7 +1,7 @@
 <div align="center">
   <img alt="An icon representing " src="data/icons/hicolor/128.png" />
   <h1>Inscriptions</h1>
-  <h3>The power of language in the palm of your hand</h3>
+  <h3>Translate text elegantly</h3>
 <span align="center"> <img class="center" src="https://github.com/elly-code/inscriptions/blob/main/data/screenshots/window-light.png" alt="Screenshot of a translator app window"></span>
 </div>
 
@@ -18,13 +18,13 @@ You can download and install Inscriptions from various sources:
 
 ## 🛣️ Roadmap
 
-- icon
-
 -Switch backends
 
 ## 💝 Donations
 
 Yes please (https://ko-fi.com/teamcons)
+
+Wpkelso did the icon: https://github.com/wpkelso
 
 ## 🏗️ Building
 
