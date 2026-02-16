@@ -1,134 +1,200 @@
 msgid ""
 msgstr ""
-"Content-Transfer-Encoding: 8bit\n"
-"Content-Type: text/plain; charset=ASCII\n"
-"Language: de\n"
-"Language-Team: none\n"
-"Last-Translator: Automatically generated\n"
-"MIME-Version: 1.0\n"
-"PO-Revision-Date: 2025-12-03 23:11+0100\n"
-"POT-Creation-Date: 2025-12-03 23:11+0100\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-16 22:12+0100\n"
+"PO-Revision-Date: 2025-12-03 23:11+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/inscriptions.metainfo.xml.in:12
-msgid "inscriptions"
-msgstr "inscriptions"
+#: data/inscriptions.metainfo.xml.in:12 data/inscriptions.desktop.in:6
+msgid "Inscriptions"
+msgstr "Herr Weltweit"
 
-#: data/inscriptions.metainfo.xml.in:13
-#: data/inscriptions.desktop.in:8
+#: data/inscriptions.metainfo.xml.in:13 data/inscriptions.desktop.in:8
 msgid "Translate text elegantly"
 msgstr "Elegantes Übersetzen von Text"
 
 #: data/inscriptions.metainfo.xml.in:15
-msgid "The power of language in the palm of your hand!"
-msgstr "Die Macht der Sprache in Ihrer Handfläche!"
+#, fuzzy
+msgid "A fast, pretty, and ready translation app using DeepL free and paid API"
+msgstr ""
+"Eine einfache, saubere und effiziente Übersetzungs-App, die die kostenlose "
+"und kostenpflichtige API von DeepL nutzt."
 
 #: data/inscriptions.metainfo.xml.in:16
-msgid "No nonsense, simple, clean, efficient translation app using DeepL free and paid API"
-msgstr "Eine einfache, saubere und effiziente Übersetzungs-App, die die kostenlose und kostenpflichtige API von DeepL nutzt."
+msgid "Libretranslate support is considered, but"
+msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:19
-msgid "Some points:"
+#: data/inscriptions.metainfo.xml.in:17
+#, fuzzy
+msgid "Some points of note:"
 msgstr "Einige Punkte:"
 
-#: data/inscriptions.metainfo.xml.in:21
-msgid "Nimble: Paste your api key, and here you go!"
+#: data/inscriptions.metainfo.xml.in:19
+#, fuzzy
+msgid "Nimble: Paste your DeepL api key (Whichever the plan), and here you go!"
 msgstr "Flink: Fügen Sie Ihren Api-Schlüssel ein, und los geht's!"
 
+#: data/inscriptions.metainfo.xml.in:20
+msgid "Thoughtful: Just what you need, out of your way and a click away"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:21
+msgid ""
+"Comprehensive: No scary angry dialogs - If something goes wrong, explain "
+"nicely"
+msgstr ""
+
 #: data/inscriptions.metainfo.xml.in:22
-msgid "Out of your way: Remembers context, formality, languages"
-msgstr "Aus dem Weg gehen: Erinnert sich an Kontext, Formalitäten, Sprachen"
+msgid ""
+"Lean: Limiting resource usage and internet communications to the minimum"
+msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:23
-msgid "Convenient: lets you check how much you have left"
-msgstr "Praktisch: Sie können überprüfen, wie viel Sie noch haben"
-
-#: data/inscriptions.metainfo.xml.in:24
 msgid "Supported languages: All those available via DeepL API!"
 msgstr "Unterstützte Sprachen: Alle, die über DeepL API verfügbar sind!"
 
-#: data/inscriptions.metainfo.xml.in:26
-msgid "If you like this app please do not hesitate to donate to encourage its development!"
-msgstr "Wenn Ihnen diese Anwendung gefällt, zögern Sie bitte nicht, zu spenden, um ihre Entwicklung zu fördern!"
+#: data/inscriptions.metainfo.xml.in:25
+msgid ""
+"If you like this app please do not hesitate to donate to encourage its "
+"development!"
+msgstr ""
+"Wenn Ihnen diese Anwendung gefällt, zögern Sie bitte nicht, zu spenden, um "
+"ihre Entwicklung zu fördern!"
 
-#: data/inscriptions.metainfo.xml.in:31
-msgid "Main window"
-msgstr "Hauptfenster"
+#: data/inscriptions.metainfo.xml.in:30
+msgid "Main window, showcasing a translation with the highlighting feature"
+msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:37
-msgid "Main window with dark theme"
-msgstr "Hauptfenster mit dunklem Thema"
+#: data/inscriptions.metainfo.xml.in:34
+msgid ""
+"Main window with dark theme, showcasing a translation with the highlighting "
+"feature"
+msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:47
-msgid "Teamcons"
-msgstr "Teamcons"
+#: data/inscriptions.metainfo.xml.in:42
+msgid "Stella and Charlie!"
+msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:66
+#: data/inscriptions.metainfo.xml.in:62
 msgid "Translation"
 msgstr "Übersetzung"
 
-#: data/inscriptions.metainfo.xml.in:67
+#: data/inscriptions.metainfo.xml.in:63
 msgid "Translate"
 msgstr "Übersetzen Sie"
 
-#: data/inscriptions.metainfo.xml.in:68
+#: data/inscriptions.metainfo.xml.in:64
 msgid "NMT"
 msgstr "NMT"
 
-#: data/inscriptions.metainfo.xml.in:69
+#: data/inscriptions.metainfo.xml.in:65
 msgid "DeepL"
 msgstr "DeepL"
 
-#: data/inscriptions.metainfo.xml.in:70
+#: data/inscriptions.metainfo.xml.in:66
 msgid "Localization"
 msgstr "Lokalisierung"
 
-#: data/inscriptions.metainfo.xml.in:71
+#: data/inscriptions.metainfo.xml.in:67
 msgid "Internationalization"
 msgstr "Internationalisierung"
 
-#: data/inscriptions.metainfo.xml.in:72
+#: data/inscriptions.metainfo.xml.in:68
 msgid "l10n"
 msgstr "l10n"
 
-#: data/inscriptions.metainfo.xml.in:73
+#: data/inscriptions.metainfo.xml.in:69
 msgid "i18n"
 msgstr "i18n"
 
-#: data/inscriptions.metainfo.xml.in:74
+#: data/inscriptions.metainfo.xml.in:70
 msgid "Localize"
 msgstr "Lokalisieren Sie"
 
-#: data/inscriptions.metainfo.xml.in:75
+#: data/inscriptions.metainfo.xml.in:71
 msgid "Languages"
 msgstr "Sprachen"
 
-#: data/inscriptions.metainfo.xml.in:76
+#: data/inscriptions.metainfo.xml.in:72
 msgid "Pantheon"
 msgstr "Pantheon"
 
-#: data/inscriptions.metainfo.xml.in:77
+#: data/inscriptions.metainfo.xml.in:73
 msgid "elementary OS"
 msgstr "grundlegendes Betriebssystem"
 
-#: data/inscriptions.metainfo.xml.in:93
-msgid "Initial Release"
+#: data/inscriptions.metainfo.xml.in:89
+#, fuzzy
+msgid "🚀 1.0.0 Initial release!"
 msgstr "Erste Veröffentlichung"
 
-#: data/inscriptions.metainfo.xml.in:95
-msgid "Updated translations"
-msgstr "Aktualisierte Übersetzungen"
+#: data/inscriptions.metainfo.xml.in:91
+msgid "It came to me in a dream"
+msgstr ""
 
-#: data/inscriptions.desktop.in:6
-msgid "Inscriptions"
-msgstr "Herr Weltweit"
+#: data/inscriptions.metainfo.xml.in:93
+msgid "😎 Guests stars:"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:95
+msgid "Amazing supercool icon designed by @wpkelso!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:96
+msgid "Amazing supercool icon funded by @t3rminus!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:97
+msgid "Initial Italian translation thanks to @albanobattistella!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:98
+msgid "Initial Swedish translation thanks to @yeager!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:99
+msgid "You, the user, for trying this supercool app!"
+msgstr ""
 
 #: data/inscriptions.desktop.in:7
 msgid "Text translator"
 msgstr "Text-Übersetzer"
 
-#: data/inscriptions.desktop.in:10
-msgid "text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;localization;internationalization;"
-msgstr "text;übersetzen;Übersetzung;Übersetzer;deepl;NMT;lang;lokalisieren;l10n;i18n;Lokalisierung;Internationalisierung;"
+#: data/inscriptions.desktop.in:13
+msgid ""
+"text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
+"localization;internationalization;"
+msgstr ""
+"text;übersetzen;Übersetzung;Übersetzer;deepl;NMT;lang;lokalisieren;l10n;i18n;"
+"Lokalisierung;Internationalisierung;"
+
+#~ msgid "inscriptions"
+#~ msgstr "inscriptions"
+
+#~ msgid "The power of language in the palm of your hand!"
+#~ msgstr "Die Macht der Sprache in Ihrer Handfläche!"
+
+#~ msgid "Out of your way: Remembers context, formality, languages"
+#~ msgstr "Aus dem Weg gehen: Erinnert sich an Kontext, Formalitäten, Sprachen"
+
+#~ msgid "Convenient: lets you check how much you have left"
+#~ msgstr "Praktisch: Sie können überprüfen, wie viel Sie noch haben"
+
+#~ msgid "Main window"
+#~ msgstr "Hauptfenster"
+
+#~ msgid "Main window with dark theme"
+#~ msgstr "Hauptfenster mit dunklem Thema"
+
+#~ msgid "Teamcons"
+#~ msgstr "Teamcons"
+
+#~ msgid "Updated translations"
+#~ msgstr "Aktualisierte Übersetzungen"

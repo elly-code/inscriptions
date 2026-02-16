@@ -7,7 +7,7 @@
  * Small horizontal box to simulate return codes in the LogView.
  * It mostly just sends signals on the backend behalf for valid codes.
  */
-public class Inscriptions.SendCodeButton : Gtk.Box {
+public class Inscriptions.LogToolbar : Gtk.Box {
 
   int status_code = 200;
 

@@ -69,7 +69,7 @@ public class Inscriptions.LogView : Gtk.Box {
         request_button_label.mnemonic_widget = request_button;
 
         box.pack_start (request_button);
-        box.pack_start (new SendCodeButton ());
+        box.pack_start (new LogToolbar ());
 
         box.pack_end (clear_button);
         

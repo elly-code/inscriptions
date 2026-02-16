@@ -15,20 +15,23 @@ sources = files (
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 
-  'Widgets' / 'HeaderBar.vala',
-  'Widgets' / 'Buttons' / 'OrientationBox.vala',
-  'Widgets' / 'ApiEntry.vala',
-  'Widgets' / 'ApiLevel.vala',
-  'Widgets' / 'Pane.vala',
-  'Widgets' / 'SourcePane.vala',
-  'Widgets' / 'TargetPane.vala',
-  'Widgets' / 'Buttons' / 'RetryButton.vala',
+  'Widgets' / 'Panes' / 'Pane.vala',
+  'Widgets' / 'Panes' / 'SourcePane.vala',
+  'Widgets' / 'Panes' / 'TargetPane.vala',
+
   'Widgets' / 'LogToolbar.vala',
   'Widgets' / 'ErrorBonusBox.vala',
   'Widgets' / 'TextView.vala',
+  'Widgets' / 'HeaderBar.vala',
+
+  'Widgets' / 'Buttons' / 'OrientationBox.vala',
+  'Widgets' / 'Buttons' / 'RetryButton.vala',
 
   'Widgets' / 'Popovers' / 'SettingsPopover.vala',
   'Widgets' / 'Popovers' / 'OptionsPopover.vala',
+
+  'Widgets' / 'PopoverWidgets' / 'ApiEntry.vala',
+  'Widgets' / 'PopoverWidgets' / 'ApiLevel.vala',
 
   'Views' / 'TranslationView.vala',
   'Views' / 'ErrorView.vala',

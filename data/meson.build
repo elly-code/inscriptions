@@ -8,7 +8,7 @@ install_data(
 # metainfo confuses windows, and icons are 
 if not windows_build
 
-    icon_sizes = ['16', '24', '32', '48', '64', '128']
+    icon_sizes = ['16', '32', '48', '64', '128']
 
     foreach i : icon_sizes
         install_data(
