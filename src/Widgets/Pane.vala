@@ -14,7 +14,7 @@ public class Inscriptions.Pane : Gtk.Box {
     public Gtk.Revealer dropdown_revealer;
     public Gtk.DropDown dropdown;
     public Inscriptions.Lang selected;
-    public Gtk.TextView textview;
+    public Inscriptions.TextView textview;
     public Gtk.ScrolledWindow scrolledwindow;
     public Gtk.ActionBar actionbar;
 
@@ -58,23 +58,9 @@ public class Inscriptions.Pane : Gtk.Box {
         };
 		dropdown.notify["selected-item"].connect(on_selected_language);
 
-        dropdown_revealer = new Gtk.Revealer () {
-            child = dropdown,
-            reveal_child = true,
-            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
-        };
 
         /* ---------------- VIEW ---------------- */
-        textview = new Gtk.TextView () {
-            hexpand = true,
-            vexpand = true,
-            valign = Gtk.Align.FILL,
-            halign = Gtk.Align.FILL,
-            left_margin = 12,
-            right_margin = 12,
-            top_margin = 6,
-            bottom_margin = 6
-        };
+        textview = new Inscriptions.TextView ();
         textview.set_wrap_mode (Gtk.WrapMode.WORD_CHAR);
 
         scrolledwindow = new Gtk.ScrolledWindow () {
@@ -124,7 +110,7 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         stack.add_child (main_view);
 
-        append (dropdown_revealer);
+        append (dropdown);
         append (stack);
     }
 

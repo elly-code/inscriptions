@@ -18,13 +18,15 @@ public class Inscriptions.TranslationView : Gtk.Box {
 
     public SimpleActionGroup actions { get; construct; }
     public const string ACTION_PREFIX = "translation-view.";
-    public const string ACTION_TOGGLE_ORIENTATION = "toggle_orientation";
+    public const string ACTION_TOGGLE_ORIENTATION = "toggle-orientation";
+    public const string ACTION_TOGGLE_HIGHLIGHT = "toggle-highlight";
     public const string ACTION_TRANSLATE = "translate";
     public const string ACTION_CLEAR_TEXT = "clear_text";
 
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
         { ACTION_TOGGLE_ORIENTATION, toggle_orientation},
+        { ACTION_TOGGLE_HIGHLIGHT, toggle_highlight},
         { ACTION_TRANSLATE, translate_now},
         { ACTION_CLEAR_TEXT, action_clear_text}
     };
@@ -178,6 +180,13 @@ public class Inscriptions.TranslationView : Gtk.Box {
         } else {
             paned.orientation = Gtk.Orientation.HORIZONTAL;
         }
+    }
+
+    public void toggle_highlight () {
+        Application.settings.set_boolean (
+            "highlight",
+            ! Application.settings.get_boolean ("highlight")
+        );
     }
 
     public void action_clear_text () {

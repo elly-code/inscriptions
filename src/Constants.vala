@@ -6,6 +6,16 @@
 
 namespace Inscriptions {
 
+    public const string CSS_COLORED_HEADER = "primary-background";
+
+	public const int SPACING_TOOLBAR_HEADER = 5;
+	public const int SPACING_TOOLBAR_MINI = 3;
+
+	public const int MARGIN_MENU_HALF = 3;
+	public const int MARGIN_MENU_STANDARD = 6;
+	public const int MARGIN_MENU_BIG = 12;
+	public const int MARGIN_MENU_BIGGER = 24;
+
 	// https://developers.deepl.com/docs/getting-started/supported-languages
 	// TODO: In the far future people might declare their own in a backend file
 	public Lang[] SourceLang () {
