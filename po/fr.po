@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:11+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,16 +110,15 @@ msgid ""
 "this app has <a href='%s'>permission to access it</a>"
 msgstr ""
 "Vérifiez que vous êtes bien connecté à Internet et que cette application a "
-"la permission d'y accéder.\n"
+"la permission d'y accéder"
 
 #: src/Views/ErrorView.vala:113
-#, 
 msgid ""
 "Please verify you are connected to the internet, and that this app has "
 "permission to access it"
 msgstr ""
 "Vérifiez que vous êtes bien connecté à Internet et que cette application a "
-"la permission d'y accéder.\n"
+"la permission d'y accéder"
 
 #: src/Views/ErrorView.vala:119
 msgid "Everything works great :)"
@@ -243,7 +242,7 @@ msgstr ""
 
 #: src/Widgets/ErrorBonusBox.vala:54
 msgid "Report issue to the developer"
-msgstr ""
+msgstr "Soumettre un problème à la développeuse"
 
 #: src/Views/LogView.vala:12
 msgid ""
@@ -423,11 +422,12 @@ msgid "Ready to translate"
 msgstr "Prêt à traduire"
 
 #: src/Widgets/Panes/TargetPane.vala:42 src/Widgets/Panes/TargetPane.vala:71
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Switch between click to translate // translate %.2fs after typing has stopped"
 msgstr ""
-"Basculer entre cliquer pour traduire // traduire %.2fs après l'arrêt de la frappe"
+"Basculer entre cliquer pour traduire // traduire %.2fs après l'arrêt de la "
+"frappe"
 
 #: src/Widgets/Panes/TargetPane.vala:78
 msgid "Copy to clipboard"
@@ -688,7 +688,7 @@ msgstr "Chinois (simplifié)"
 msgid "Chinese (Traditional)"
 msgstr "Chinois (traditionnel)"
 
-#: src/Application.vala:106
+#: src/Application.vala:107
 msgid "Couldn't open file"
 msgstr "Impossible d'ouvrir le fichier"
 

@@ -83,10 +83,11 @@ public class Inscriptions.Application : Gtk.Application {
             return;
         }
 
-        main_window = new MainWindow ();
+        main_window = new MainWindow () {
+            application = this
+        };
         main_window.show ();
         main_window.present ();
-        add_window (main_window);
     }
 
     protected override void open (File[] files, string hint) {

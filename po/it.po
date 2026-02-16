@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:11+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
 "PO-Revision-Date: 2025-12-27 17:27+0100\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -700,7 +700,7 @@ msgstr "Cinese (Semplificato)"
 msgid "Chinese (Traditional)"
 msgstr "Cinese (Tradizionale)"
 
-#: src/Application.vala:106
+#: src/Application.vala:107
 msgid "Couldn't open file"
 msgstr "Impossibile aprire il file"
 

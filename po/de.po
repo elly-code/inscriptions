@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:11+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,8 +95,8 @@ msgid ""
 "You need a DeepL API key to translate text\n"
 "It can be either DeepL Free or Pro"
 msgstr ""
-"Sie benötigen einen DeepL API-Schlüssel, um Text\n zu übersetzen"
-"Es kann entweder DeepL Free oder Pro sein"
+"Sie benötigen einen DeepL API-Schlüssel, um Text\n"
+" zu übersetzenEs kann entweder DeepL Free oder Pro sein"
 
 #: src/Views/ErrorView.vala:106
 msgid "No Internet"
@@ -423,7 +423,8 @@ msgstr "Bereit zum Übersetzen"
 msgid ""
 "Switch between click to translate // translate %.2fs after typing has stopped"
 msgstr ""
-"Umschalten zwischen Klicken und Übersetzen // Übersetzen %.2fs nach Beendigung des Tippens"
+"Umschalten zwischen Klicken und Übersetzen // Übersetzen %.2fs nach "
+"Beendigung des Tippens"
 
 #: src/Widgets/Panes/TargetPane.vala:78
 msgid "Copy to clipboard"
@@ -488,14 +489,12 @@ msgstr "Statuscode %s: Kein Bezug zur Authentifizierung"
 
 #. ---------- SEND BUTTON ----------
 #: src/Widgets/LogToolbar.vala:19
-#, 
 msgid "Receive status code: "
 msgstr "Statuscode %s Empfangen:"
 
 #: src/Widgets/LogToolbar.vala:26
 msgid "Simulate a fake status code answer for debugging purposes"
-msgstr ""
-"Simulieren eine gefälschte Statuscode-Antwort zu Debugging-Zwecken"
+msgstr "Simulieren eine gefälschte Statuscode-Antwort zu Debugging-Zwecken"
 
 #: src/Widgets/LogToolbar.vala:72
 msgid "Simulated status code"
@@ -686,7 +685,7 @@ msgstr "Chinesisch (vereinfacht)"
 msgid "Chinese (Traditional)"
 msgstr "Chinesisch (traditionell)"
 
-#: src/Application.vala:106
+#: src/Application.vala:107
 msgid "Couldn't open file"
 msgstr "Datei konnte nicht geöffnet werden"
 
