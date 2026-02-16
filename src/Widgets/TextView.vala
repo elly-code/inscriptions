@@ -27,17 +27,18 @@ public class Inscriptions.TextView : Gtk.TextView {
     construct {
         hexpand = true;
         vexpand = true;
-        left_margin = 12;
-        right_margin = 12;
-        top_margin = 6;
-        bottom_margin = 6;
+        left_margin = MARGIN_MENU_BIG;
+        right_margin = MARGIN_MENU_BIG;
+        top_margin = MARGIN_MENU_STANDARD;
+        bottom_margin = MARGIN_MENU_STANDARD;
 
+        // We need highlighting adapted for each light and dark themes 
         foreach (var color in all_colors) {
             buffer.tag_table.add (color.to_tag_dark ());
             buffer.tag_table.add (color.to_tag_light ());
         }
 
-        Application.settings.bind ("highlight", 
+        Application.settings.bind (KEY_HIGHLIGHT, 
             this, "highlight", 
             GLib.SettingsBindFlags.DEFAULT);
     }
@@ -58,6 +59,7 @@ public class Inscriptions.TextView : Gtk.TextView {
         var iterate_colors = 0;
         string suffix = "-light";
 
+        // Setting suffix manually is hacky but honestly fuck this
         if (gtk_settings.gtk_application_prefer_dark_theme) {
             suffix = "-dark";
         };
@@ -91,6 +93,9 @@ public class Inscriptions.TextView : Gtk.TextView {
         buffer.thaw_notify ();
     }
 
+    /**
+     * Set and unset handlers depending on if we need to refresh highlighting
+     */
     private void set_unset_handlers (bool if_set) {
         if (if_set) {
             Application.backend.answer_received.connect_after (refresh);
@@ -102,8 +107,10 @@ public class Inscriptions.TextView : Gtk.TextView {
         gtk_settings.notify["gtk-application-prefer-dark-theme"].disconnect (refresh);
     }
 
-    private void refresh () {
-        set_highlighting (false);
-        set_highlighting (true);
+    /**
+     * Ensure current highlighting state is correct by redoing the whole shebang
+     */
+    public void refresh () {
+        set_highlighting (_priv_highlight);
     }
 }

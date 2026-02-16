@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 23:12+0100\n"
+"POT-Creation-Date: 2026-02-16 22:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/inscriptions.metainfo.xml.in:12
-msgid "inscriptions"
+#: data/inscriptions.metainfo.xml.in:12 data/inscriptions.desktop.in:6
+msgid "Inscriptions"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:13 data/inscriptions.desktop.in:8
@@ -26,118 +26,145 @@ msgid "Translate text elegantly"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:15
-msgid "The power of language in the palm of your hand!"
+msgid "A fast, pretty, and ready translation app using DeepL free and paid API"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:16
-msgid ""
-"No nonsense, simple, clean, efficient translation app using DeepL free and "
-"paid API"
+msgid "Libretranslate support is considered, but"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:17
+msgid "Some points of note:"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:19
-msgid "Some points:"
+msgid "Nimble: Paste your DeepL api key (Whichever the plan), and here you go!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:20
+msgid "Thoughtful: Just what you need, out of your way and a click away"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:21
-msgid "Nimble: Paste your api key, and here you go!"
+msgid ""
+"Comprehensive: No scary angry dialogs - If something goes wrong, explain "
+"nicely"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:22
-msgid "Out of your way: Remembers context, formality, languages"
+msgid ""
+"Lean: Limiting resource usage and internet communications to the minimum"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:23
-msgid "Convenient: lets you check how much you have left"
-msgstr ""
-
-#: data/inscriptions.metainfo.xml.in:24
 msgid "Supported languages: All those available via DeepL API!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:26
+#: data/inscriptions.metainfo.xml.in:25
 msgid ""
 "If you like this app please do not hesitate to donate to encourage its "
 "development!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:31
-msgid "Main window"
+#: data/inscriptions.metainfo.xml.in:30
+msgid "Main window, showcasing a translation with the highlighting feature"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:37
-msgid "Main window with dark theme"
+#: data/inscriptions.metainfo.xml.in:34
+msgid ""
+"Main window with dark theme, showcasing a translation with the highlighting "
+"feature"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:47
-msgid "Teamcons"
+#: data/inscriptions.metainfo.xml.in:42
+msgid "Stella and Charlie!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:66
+#: data/inscriptions.metainfo.xml.in:62
 msgid "Translation"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:67
+#: data/inscriptions.metainfo.xml.in:63
 msgid "Translate"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:68
+#: data/inscriptions.metainfo.xml.in:64
 msgid "NMT"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:69
+#: data/inscriptions.metainfo.xml.in:65
 msgid "DeepL"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:70
+#: data/inscriptions.metainfo.xml.in:66
 msgid "Localization"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:71
+#: data/inscriptions.metainfo.xml.in:67
 msgid "Internationalization"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:72
+#: data/inscriptions.metainfo.xml.in:68
 msgid "l10n"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:73
+#: data/inscriptions.metainfo.xml.in:69
 msgid "i18n"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:74
+#: data/inscriptions.metainfo.xml.in:70
 msgid "Localize"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:75
+#: data/inscriptions.metainfo.xml.in:71
 msgid "Languages"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:76
+#: data/inscriptions.metainfo.xml.in:72
 msgid "Pantheon"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:77
+#: data/inscriptions.metainfo.xml.in:73
 msgid "elementary OS"
 msgstr ""
 
+#: data/inscriptions.metainfo.xml.in:89
+msgid "🚀 1.0.0 Initial release!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:91
+msgid "It came to me in a dream"
+msgstr ""
+
 #: data/inscriptions.metainfo.xml.in:93
-msgid "Initial Release"
+msgid "😎 Guests stars:"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in:95
-msgid "Updated translations"
+msgid "Amazing supercool icon designed by @wpkelso!"
 msgstr ""
 
-#: data/inscriptions.desktop.in:6
-msgid "Inscriptions"
+#: data/inscriptions.metainfo.xml.in:96
+msgid "Amazing supercool icon funded by @t3rminus!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:97
+msgid "Initial Italian translation thanks to @albanobattistella!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:98
+msgid "Initial Swedish translation thanks to @yeager!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in:99
+msgid "You, the user, for trying this supercool app!"
 msgstr ""
 
 #: data/inscriptions.desktop.in:7
 msgid "Text translator"
 msgstr ""
 
-#: data/inscriptions.desktop.in:10
+#: data/inscriptions.desktop.in:13
 msgid ""
 "text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
 "localization;internationalization;"

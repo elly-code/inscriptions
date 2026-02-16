@@ -18,16 +18,16 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     //halign = Gtk.Align.START;
 
     var box = new Gtk.Box (VERTICAL,0) {
-      margin_top = 12,
-      margin_bottom = 12,
-      margin_start = 12,
-      margin_end = 12
+      margin_top = MARGIN_MENU_BIG,
+      margin_bottom = MARGIN_MENU_BIG,
+      margin_start = MARGIN_MENU_BIG,
+      margin_end = MARGIN_MENU_BIG
     };
 
     /***************** FORMALITY *****************/
     formalbox = new Gtk.Box (VERTICAL, 0) {
-      margin_top = 6,
-      margin_bottom = 12
+      margin_top = MARGIN_MENU_STANDARD,
+      margin_bottom = MARGIN_MENU_BIG
     };
 
     var formal_label = new Gtk.Label (_("Set how formal the translation should be")) {
@@ -61,7 +61,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     formal_level.adjustment.set_step_increment (1);
     formal_level.set_show_fill_level (false);
 
-    formal_level.set_value (Application.settings.get_enum ("formality"));
+    formal_level.set_value (Application.settings.get_enum (KEY_FORMALITY));
     formal_level.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
 
     formalbox.append (formal_level);
@@ -80,8 +80,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     /***************** CONNECTS AND BINDS *****************/
     context_entry.changed.connect (on_entry_changed);
 
-    Application.settings.bind (
-      "context", 
+    Application.settings.bind (KEY_CONTEXT, 
       context_entry, "text", 
       SettingsBindFlags.DEFAULT
     );
@@ -121,7 +120,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
    * Handler called on popover show, to adjust whether formality is supported
    */
   private void formalities_supported () {
-      var target = Application.settings.get_string ("target-language");
+      var target = Application.settings.get_string (KEY_TARGET_LANGUAGE);
 
       if (target == "system") {
         target = Application.backend.system_language;

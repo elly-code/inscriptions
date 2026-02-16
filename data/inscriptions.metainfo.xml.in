@@ -13,6 +13,7 @@
   <summary>Translate text elegantly</summary>
   <description>
     <p>A fast, pretty, and ready translation app using DeepL free and paid API</p>
+    <p>Libretranslate support is considered, but </p>
     <p>Some points of note:</p>
       <ul>
             <li>Nimble: Paste your DeepL api key (Whichever the plan), and here you go!</li>
@@ -48,8 +49,8 @@
     <url type="vcs-browser">https://github.com/elly_code/inscriptions</url>
 
   <branding>
-    <color type="primary" scheme_preference="light">#ff8c82</color>
-    <color type="primary" scheme_preference="dark">#7a0000</color>
+    <color type="primary" scheme_preference="light">#95a3ab</color>
+    <color type="primary" scheme_preference="dark">#0e141f</color>
   </branding>
 
   <custom>

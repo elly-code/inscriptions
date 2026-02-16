@@ -8,13 +8,13 @@
  */
 public class Inscriptions.SourcePane : Inscriptions.Pane {
 
-    public SourcePane () {
-        var model = new Inscriptions.DDModel ();
-        foreach (var language in Inscriptions.SourceLang ()) {
-            model.model_append (language);
-        }
-        base (model);
-    }
+  public SourcePane () {
+      var model = new Inscriptions.DDModel ();
+      foreach (var language in Inscriptions.SourceLang ()) {
+          model.model_append (language);
+      }
+      base (model);
+  }
 
   construct {
       stack.visible_child = main_view;
@@ -40,20 +40,24 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
 
 
       var clear = new Gtk.Button.from_icon_name ("edit-clear-all-symbolic") {
-          action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_CLEAR_TEXT,
-          tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>L"}, _("Clear text")),
-            margin_start = 3
+          action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_CLEAR_TEXT,
+          tooltip_markup = Granite.markup_accel_tooltip (
+            {"<Ctrl>L"}, 
+            _("Clear text")
+          ),
+          margin_start = MARGIN_MENU_HALF
       };
-      actionbar.pack_end (clear);
 
       var paste = new Gtk.Button.from_icon_name ("edit-paste-symbolic") {
           tooltip_text = _("Paste from clipboard"),
             margin_start = 3
       };
+
+      actionbar.pack_end (clear);
       actionbar.pack_end (paste);
 
       var open_button = new Gtk.Button.from_icon_name ("document-open-symbolic") {
-          action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_LOAD_TEXT,
+          action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_LOAD_TEXT,
           tooltip_markup = Granite.markup_accel_tooltip (
                   {"<Control>o"}, 
                   _("Load text from a file")
@@ -61,13 +65,11 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       };
       actionbar.pack_end (open_button);
 
-      /***************** CONNECTS *****************/
+      /***************** CONNECTS AND BINDS *****************/
 
       language = Application.settings.get_string ("source-language");
-      Application.settings.bind (
-        "source-language", 
-        this, 
-        "language", 
+      Application.settings.bind ("source-language", 
+        this, "language", 
         GLib.SettingsBindFlags.DEFAULT
       );
 

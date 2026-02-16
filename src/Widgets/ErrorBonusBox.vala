@@ -9,8 +9,8 @@
  */
 public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
-    private const string ISSUES = "https://github.com/teamcons/inscriptions/issues/";
-    private const string LINK = "https://www.deepl.com/your-account/keys";
+    const string ISSUES = "https://github.com/teamcons/inscriptions/issues/";
+    const string LINK = "https://www.deepl.com/your-account/keys";
     public uint status { get; construct; }
     public bool if_report { get; construct; }
 
@@ -21,9 +21,9 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
-        spacing = 12;
-        margin_top = 6;
-        margin_bottom = 6;
+        spacing = MARGIN_MENU_BIG;
+        margin_top = MARGIN_MENU_STANDARD;
+        margin_bottom = MARGIN_MENU_STANDARD;
 
         // In the event the API is the issue, ask user
         if (status == Soup.Status.FORBIDDEN || status == StatusCode.NO_KEY) {
