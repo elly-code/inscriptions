@@ -65,7 +65,7 @@
       <description>How many characters can be translated</description>
     </key>
     <key name="highlight" type="b">
-      <default>false</default>
+      <default>true</default>
       <summary>Whether to highlight both source and target</summary>
       <description>Highlights alternating colours on both source and target in the TextView</description>
     </key>
