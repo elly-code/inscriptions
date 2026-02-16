@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:12+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
 "PO-Revision-Date: 2025-12-03 23:11+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -130,13 +130,12 @@ msgid "elementary OS"
 msgstr "OS élémentaire"
 
 #: data/inscriptions.metainfo.xml.in:89
-#, fuzzy
 msgid "🚀 1.0.0 Initial release!"
-msgstr "Première publication"
+msgstr "🚀 1.0.0 Première publication"
 
 #: data/inscriptions.metainfo.xml.in:91
 msgid "It came to me in a dream"
-msgstr ""
+msgstr "Cela m'est venu dans un rêve"
 
 #: data/inscriptions.metainfo.xml.in:93
 msgid "😎 Guests stars:"

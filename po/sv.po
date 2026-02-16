@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:11+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
 "PO-Revision-Date: 2026-01-14 16:21+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: \n"
@@ -695,7 +695,7 @@ msgstr "Kinesiska (förenklad)"
 msgid "Chinese (Traditional)"
 msgstr "Kinesiska (traditionell)"
 
-#: src/Application.vala:106
+#: src/Application.vala:107
 msgid "Couldn't open file"
 msgstr "Kunde inte öppna filen"
 

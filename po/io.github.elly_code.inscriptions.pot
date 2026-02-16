@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:11+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -664,6 +664,6 @@ msgstr ""
 msgid "Chinese (Traditional)"
 msgstr ""
 
-#: src/Application.vala:106
+#: src/Application.vala:107
 msgid "Couldn't open file"
 msgstr ""

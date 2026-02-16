@@ -104,18 +104,18 @@ public class Inscriptions.Pane : Gtk.Box {
     public void on_selected_language () {
         selected = dropdown.get_selected_item () as Lang;
 		language_changed (selected.code);
-        print ("\nS selected %s:%s", selected.code, selected.name);
+        //print ("\nS selected %s:%s", selected.code, selected.name);
     }
 
     private void set_selected_language (string code) {
-        print ("got " + code + "\n");
+        //print ("got " + code + "\n");
         var position = model.model_where_code (code);
         dropdown.set_selected (position);
     }
 
     private string get_selected_language () {
         selected = dropdown.get_selected_item () as Lang;
-                print ("is selected " + selected.code + selected.name + "\n");
+        //print ("is selected " + selected.code + selected.name + "\n");
         return selected.code;
     }
 
