@@ -7,31 +7,42 @@
  * Small horizontal box to simulate return codes in the LogView.
  * It mostly just sends signals on the backend behalf for valid codes.
  */
-public class Inscriptions.SendCodeButton : Gtk.Box {
+public class Inscriptions.LogToolbar : Gtk.Box {
 
-  private int status_code = 200;
-
-  public SendCodeButton () {
-      Object (
-          orientation: Gtk.Orientation.HORIZONTAL,
-          spacing: 0
-      );
-  }
+  int status_code = 200;
 
   construct {
-    //add_css_class (Granite.STYLE_CLASS_LINKED);
+    orientation = Gtk.Orientation.HORIZONTAL;
+    spacing = 0;
 
-    var send_button_label = new Gtk.Label (_("Clear"));
+    /* ---------- SEND BUTTON ---------- */
+    var send_button_label = new Gtk.Label (_("Receive status code: "));
     var send_button_box = new Gtk.Box (HORIZONTAL, 0);
     send_button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
     send_button_box.append (send_button_label);
 
-    var send_button = new Gtk.Button.with_label (_("Receive status code: ")) {
+    var send_button = new Gtk.Button () {
+      child = send_button_box,
       tooltip_text = _("Simulate a fake status code answer for debugging purposes")
     };
     send_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
 
+    /* ---------- Status code selector ---------- */
+
+    //  string[] choices = {
+    //    "Manual",
+    //    "",
+    //    "",
+    //    "",
+    //    ""
+    //  };
+    //  var selector = new Gtk.DropDown.from_strings (choices);
+
+
+
+
+    /* ---------- Code entry ---------- */
     Granite.ValidatedEntry entry;
     Regex? regex = null;
     try {
@@ -46,16 +57,6 @@ public class Inscriptions.SendCodeButton : Gtk.Box {
       max_length = 3
     };
 
-    //  var popover = new Gtk.Popover () {
-    //    child = entry,
-    //    position = Gtk.PositionType.TOP
-    //  };
-
-    //  var send_menu = new Gtk.MenuButton () {
-    //    direction = Gtk.ArrowType.UP,
-    //    popover = popover
-    //  };
-
     append (send_button);
     append (entry);
 
@@ -66,6 +67,7 @@ public class Inscriptions.SendCodeButton : Gtk.Box {
       }
     });
 
+    /* ---------- CONNECTS AND BINDS ---------- */
     send_button.clicked.connect (() => {
       Application.backend.answer_received (status_code, _("Simulated status code"));
     });

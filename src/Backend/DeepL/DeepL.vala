@@ -11,25 +11,25 @@ public class Inscriptions.DeepL : Object {
 
   private const uint TIMEOUT = 3000;
 
-  private Soup.Session session;
+  Soup.Session session;
   internal Soup.Logger logger;
-  private Secrets secrets;
+  Secrets secrets;
 
-  private string source_lang;
-  private string target_lang;
-  private string api_key;
-  private string base_url;
+  string source_lang;
+  string target_lang;
+  string api_key;
+  string base_url;
   public string system_language;
-  private string context;
+  string context;
 
   public signal void answer_received (uint status, string? translated_text = null);
   public signal void language_detected (string? detected_language_code = null);
   public signal void usage_retrieved (uint status);
 
-  private const string URL_DEEPL_FREE = "https://api-free.deepl.com";
-  private const string URL_DEEPL_PRO = "https://api.deepl.com";
-  private const string REST_OF_THE_URL = "/v2/translate";
-  private const string URL_USAGE = "/v2/usage";
+  const string URL_DEEPL_FREE = "https://api-free.deepl.com";
+  const string URL_DEEPL_PRO = "https://api.deepl.com";
+  const string REST_OF_THE_URL = "/v2/translate";
+  const string URL_USAGE = "/v2/usage";
 
   public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
 
@@ -37,8 +37,8 @@ public class Inscriptions.DeepL : Object {
   public int max_usage = 0;
 
   // Private debounce to not constantly check usage on key change
-  private int interval = 1000; // ms
-  private uint debounce_timer_id = 0;
+  int interval = 1000; // ms
+  uint debounce_timer_id = 0;
 
   construct {
     session = new Soup.Session () {
@@ -54,7 +54,7 @@ public class Inscriptions.DeepL : Object {
 
     secrets = Secrets.get_default ();
 
-    system_language = detect_system ();
+    system_language = DeepLUtils.detect_system ();
 
     // Fallback
     this.current_usage = Application.settings.get_int ("current-usage");
@@ -115,7 +115,6 @@ public class Inscriptions.DeepL : Object {
   public void send_request (string text) {
 
     context = Application.settings.get_string ("context");
-
     var a = prep_json (text);
 
     on_key_changed ();
@@ -289,49 +288,4 @@ public class Inscriptions.DeepL : Object {
   }
 
 
-  // FUCKY: DeepL is a bit weird with some codes
-  // We have to hack at it for edge cases
-  public string detect_system () {
-    string system_language = Environment.get_variable ("LANG").ascii_up ();
-    var minicode = system_language.substring (0, 2).ascii_up (-1);
-
-    if (system_language == "C") {
-      return "EN-GB";
-    }
-
-    if (system_language.has_prefix ("PT_BR")) {
-      return "PT-BR";
-    }
-
-    if (system_language.has_prefix ("PT_PT")) {
-      return "PT-PT";
-    }
-
-    if (system_language.has_prefix ("ZH_CN")) {
-      return "ZH-HANS";
-    }
-
-    if (system_language.has_prefix ("ZH_TW")) {
-      return "ZH-HANT";
-    }
-
-    if (system_language.has_prefix ("EN_GB")) {
-      return "EN-GB";
-    }
-
-    if (system_language.has_prefix ("EN_US")) {
-      return "EN-US";
-    }
-
-    if ((system_language.has_prefix ("ES_")) && (system_language.substring (0, 5) != "ES_ES")) {
-      return "ES-419";
-    }
-
-    if (minicode == "NO") {
-      return "NB";
-    }
-
-    print ("\nBackend: Detected system language: " + minicode);
-    return minicode;
-  }
 }

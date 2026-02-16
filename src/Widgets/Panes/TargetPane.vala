@@ -12,8 +12,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
 
-    private const float DEBOUNCE_IN_S = ((float)TranslationView.DEBOUNCE_INTERVAL) / 1000;
-
     public TargetPane () {
         var model = new Inscriptions.DDModel ();
         foreach (var language in Inscriptions.TargetLang ()) {
@@ -27,10 +25,12 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         //textview.editable = false;
 
         /* -------- PLACEHOLDER -------- */
-        var placeholder_box = new Gtk.Box (VERTICAL, 12) {
+        var placeholder_box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
             hexpand = vexpand = true,
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.CENTER,
+            margin_start = MARGIN_MENU_HALF,
+            margin_end = MARGIN_MENU_HALF
         };
         
         var placeholder = new Gtk.Label (_("Ready to translate")) {
@@ -78,19 +78,19 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             tooltip_text = _("Copy to clipboard"),
             margin_start = 3
         };
-        actionbar.pack_end (copy);
 
         var save_as_button = new Gtk.Button.from_icon_name ("document-save-as-symbolic") {
-            action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_SAVE_TEXT,
+            action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SAVE_TEXT,
             tooltip_markup = Granite.markup_accel_tooltip (
                     {"<Control><Shift>s"}, 
                     _("Save the translation in a text file")
             )
         };
 
+        actionbar.pack_end (copy);
         actionbar.pack_end (save_as_button);
 
-        /***************** CONNECTS *****************/
+        /***************** CONNECTS AND BINDS *****************/
 
         Application.settings.bind ("auto-translate", 
             auto_switcher, "active", 
@@ -101,11 +101,9 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             GLib.SettingsBindFlags.DEFAULT);
 
         language = Application.settings.get_string ("target-language");
-        Application.settings.bind (
-          "target-language", 
-          this, 
-          "language", 
-          GLib.SettingsBindFlags.DEFAULT
+        Application.settings.bind ("target-language", 
+            this, "language", 
+            GLib.SettingsBindFlags.DEFAULT
         );
 
         Application.settings.changed["auto-translate"].connect (on_auto_translate_changed);
@@ -161,7 +159,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     }
 
     public void action_save_text () {
-
         var all_files_filter = new Gtk.FileFilter () {
         name = _("All files"),
         };
@@ -186,7 +183,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             modal = true
         };
 
-        
         save_dialog.save.begin (Application.main_window, null, (obj, res) => {
             try {
                 var file = save_dialog.save.end (res);

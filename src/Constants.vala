@@ -3,10 +3,21 @@
  * SPDX-FileCopyrightText:  2025 Stella & Charlie (teamcons.carrd.co)
  */
 
-
 namespace Inscriptions {
 
-    public const string CSS_COLORED_HEADER = "primary-background";
+	// Alkrjnlgjrt
+	public const string RDNN = "io.github.elly_code.inscriptions";  
+	public const string DONATE_LINK = "https://ko-fi.com/teamcons";
+	public const string LINK = "https://www.deepl.com/your-account/keys";
+    public const int DEBOUNCE_INTERVAL = 1250; // ms
+
+    // Careful when using this to wrap to .2f decimals
+    const float DEBOUNCE_IN_S = ((float)DEBOUNCE_INTERVAL) / 1000;
+
+	// Styling
+    public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
+    public const string STYLE_CLASS_ROTATED = "rotated";
+	public const string STYLE_CLASS_CONSOLE = "console";
 
 	public const int SPACING_TOOLBAR_HEADER = 5;
 	public const int SPACING_TOOLBAR_MINI = 3;
@@ -16,6 +27,27 @@ namespace Inscriptions {
 	public const int MARGIN_MENU_BIG = 12;
 	public const int MARGIN_MENU_BIGGER = 24;
 
+	// Autocomplete, save me!
+	// Windows
+	public const string KEY_WINDOW_HEIGHT = "window-height";
+	public const string KEY_WINDOW_WIDTH = "window-width";
+	public const string KEY_WINDOW_MAXIMIZED = "window-maximized";
+
+	// UI
+	public const string KEY_VERTICAL_LAYOUT = "vertical-layout";
+	public const string KEY_AUTO_TRANSLATE = "auto-translate";
+	public const string KEY_HIGHLIGHT = "highlight";
+
+	// Backend
+	public const string KEY_SOURCE_LANGUAGE = "source-language";
+	public const string KEY_TARGET_LANGUAGE = "target-language";
+	public const string KEY_CONTEXT = "context";
+	public const string KEY_FORMALITY = "formality";
+	public const string KEY_CURRENT_USAGE = "current-usage";
+	public const string KEY_MAX_USAGE = "max-usage";
+}
+
+namespace Inscriptions {
 	// https://developers.deepl.com/docs/getting-started/supported-languages
 	// TODO: In the far future people might declare their own in a backend file
 	public Lang[] SourceLang () {

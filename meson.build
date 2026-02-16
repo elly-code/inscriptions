@@ -5,15 +5,25 @@ project(
   version: '1.0.0'
 )
 
+#================================
 # Include Gnome and the translations module
 gnome = import('gnome')
 i18n = import('i18n')
 
 # Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+windows_build = build_machine.system() == 'windows'
+
+vala_flags = []
+# Windows needs icons, special arguments, and skip libportal
+if windows_build
+    vala_flags += ['--define', 'WINDOWS']
+endif
+
+add_project_arguments(vala_flags, language: 'vala')
 
 
-## Set de config data
+#================================
 config_data = configuration_data()
 config_data.set('version', meson.project_version())
 config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
@@ -31,8 +41,8 @@ gresource = gnome.compile_resources(
   c_name: 'as'
 )
 
-# List the dependencies we need
-# need for libcurl
+#================================
+# dependencies
 deps = [
   dependency ('granite-7'),
   dependency ('gtk4'),
@@ -41,43 +51,16 @@ deps = [
   dependency ('libsecret-1')
 ]
 
-# Create a new executable, list the files we want to compile, and install
-executable(
-  meson.project_name (),
-  config_file,
-  gresource,
-  'src' / 'Constants.vala',
-  'src' / 'Enums' / 'Formality.vala',
-  'src' / 'Enums' / 'StatusCode.vala',
-  'src' / 'Enums' / 'HighlightColor.vala',
-  'src' / 'Objects' / 'Lang.vala',
-  'src' / 'Objects' / 'DDModel.vala',
+# We need to compile an icon into the exe to avoid "missing icon" icon at every turn
+if windows_build
+  deps += dependency('gio-windows-2.0')
+  ico_src = import('windows').compile_resources('windows/icons/ico.rc')
 
-  'src' / 'Services' / 'Secrets.vala',
-  'src' / 'Backend' / 'DeepL.vala',
+else
+  deps += dependency('gio-unix-2.0')
+endif
 
-  'src' / 'Widgets' / 'OrientationBox.vala',
-  'src' / 'Widgets' / 'ApiEntry.vala',
-  'src' / 'Widgets' / 'ApiLevel.vala',
-  'src' / 'Widgets' / 'SettingsPopover.vala',
-  'src' / 'Widgets' / 'OptionsPopover.vala',
-  'src' / 'Widgets' / 'Pane.vala',
-  'src' / 'Widgets' / 'SourcePane.vala',
-  'src' / 'Widgets' / 'TargetPane.vala',
-  'src' / 'Widgets' / 'RetryButton.vala',
-  'src' / 'Widgets' / 'SendCodeButton.vala',
-  'src' / 'Widgets' / 'ErrorBonusBox.vala',
-  'src' / 'Widgets' / 'TextView.vala',
-
-  'src' / 'Views' / 'TranslationView.vala',
-  'src' / 'Views' / 'ErrorView.vala',
-  'src' / 'Views' / 'LogView.vala',
-  'src' / 'Windows' / 'MainWindow.vala',
-  'src' / 'Application.vala',
-  dependencies: deps,
-  install: true
-)
-
+subdir ('src')
 subdir('data')
 subdir('po')
 

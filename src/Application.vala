@@ -11,7 +11,6 @@ public class Inscriptions.Application : Gtk.Application {
 
     public const string ACTION_PREFIX = "app.";
     public const string ACTION_QUIT = "action_quit";
-
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
@@ -20,7 +19,7 @@ public class Inscriptions.Application : Gtk.Application {
 
     public Application () {
         Object (
-            application_id: "io.github.elly_code.inscriptions",
+            application_id: RDNN,
             flags: ApplicationFlags.HANDLES_OPEN
         );
     }
@@ -33,7 +32,7 @@ public class Inscriptions.Application : Gtk.Application {
     }
 
     static construct {
-        settings = new GLib.Settings ("io.github.elly_code.inscriptions");
+        settings = new GLib.Settings (RDNN);
 
         // Backend takes care of the async for us. We give it the text
         // And it will emit a signal whenever finished, which we can connect to
@@ -45,29 +44,19 @@ public class Inscriptions.Application : Gtk.Application {
         Gtk.init ();
         Granite.init ();
 
-        // App
         add_action_entries (ACTION_ENTRIES, this);
         set_accels_for_action ("app.action_quit", {"<Control>q"});
 
-        // Window
-        set_accels_for_action ("window.menu", {"<Control>m"});
-        set_accels_for_action ("window.switch-languages", {"<Control>i"});
-        set_accels_for_action ("window.toggle-messages", {"<Control><Shift>m"});
-
-        // Translation view
-        set_accels_for_action ("window.toggle-orientation", {"<Control><Shift>o"});
-        set_accels_for_action ("window.toggle-highlight", {"<Control>h"});
-        set_accels_for_action ("window.translate", {"<Control>return", "<Control>t"});
-        set_accels_for_action ("window.clear_text", {"<Control>l"});
-
-        // Source & target
-        set_accels_for_action ("window.load_text", {"<Control>o"});
-        set_accels_for_action ("window.save_text", {"<Control>s", "<Control><Shift>s"});
-
+        // Styling
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
 
-        // Also follow dark if system is dark lIke mY sOul.
+        // Force Slate on other DE, as else there is a risk whatever theme is running it breaks the app
+        unowned string desktop_environment = Environment.get_variable ("XDG_CURRENT_DESKTOP");
+        if (desktop_environment != "Pantheon") {
+            gtk_settings.gtk_theme_name = "io.elementary.stylesheet.slate";
+        }
+
         gtk_settings.gtk_application_prefer_dark_theme = (
 	            granite_settings.prefers_color_scheme == DARK
             );
@@ -94,9 +83,10 @@ public class Inscriptions.Application : Gtk.Application {
             return;
         }
 
-        main_window = new MainWindow (this);
+        main_window = new MainWindow ();
         main_window.show ();
         main_window.present ();
+        add_window (main_window);
     }
 
     protected override void open (File[] files, string hint) {

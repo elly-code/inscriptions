@@ -33,11 +33,6 @@ public class Inscriptions.Pane : Gtk.Box {
         set { set_selected_language (value);}
     }
 
-    public bool show_ui {
-        get { return actionbar.revealed;}
-        set { dropdown_revealer.reveal_child = actionbar.revealed = value;}
-    }
-
     public signal void language_changed (string code = "");
 
     public Pane (DDModel model) {
@@ -82,21 +77,13 @@ public class Inscriptions.Pane : Gtk.Box {
         actionbar = new Gtk.ActionBar () {
             hexpand = true,
             vexpand = false,
-            valign = Gtk.Align.END,
-            height_request = 32,
-            revealed = true
+            valign = Gtk.Align.END
         };
         actionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-
-        /*          count = new Gtk.Label ("") {
-            sensitive = false
-        };
-        actionbar.pack_start (count);  */
 
         var handle = new Gtk.WindowHandle () {
             child = actionbar
         };
-
 
 
         /* ---------------- STACK ---------------- */
@@ -137,18 +124,11 @@ public class Inscriptions.Pane : Gtk.Box {
         return selected.name;
     }
 
-/*      private void on_buffer_changed () {
-        var len = textview.buffer.text.length.to_string ();
-        count.label = len;
-        ///TRANSLATORS: %s is replaced by a number
-        count.tooltip_text = _("Counted %s characters").printf (len);
-    }  */
-
     public void clear () {
         this.textview.buffer.text = "";
     }
 
-    public void message (string text, bool? undo = false) {
+    public void message (string text) {
         toast.title = text;
         toast.send_notification ();
     }
