@@ -64,7 +64,6 @@ body:
       description: The version of the software you are using
       options:
         - Latest release (I have run all updates)
-        - Latest release (I have run all updates)
         - Compiled from git
         - Older release (I have not run all updates)
     validations:
