@@ -6,3 +6,4 @@
 build/*
 .flatpak-builder/*
 .potrans
+repo

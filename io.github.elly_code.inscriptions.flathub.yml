@@ -31,5 +31,10 @@ modules:
   - name: inscriptions
     buildsystem: meson
     sources:
-      - type: dir
-        path: .
+      - type: git
+        url: https://github.com/elly-code/inscriptions.git
+        tag: 1.0.0
+        commit: 1ef2be1e1f13143d1e4351f0537434dee86e09b2
+        x-checker-data:
+          type: git
+          tag-pattern: '^([\d.]+)$'
