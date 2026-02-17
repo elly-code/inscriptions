@@ -41,22 +41,17 @@
   <developer id="io.github.elly_code">
     <name>Stella and Charlie!</name>
   </developer>
-    <url type="homepage">https://github.com/elly_code/inscriptions</url>
-    <url type="bugtracker">https://github.com/elly_code/inscriptions/issues</url>
-    <url type="help">https://github.com/elly_code/inscriptions/issues</url>
-    <url type="translate">https://github.com/elly_code/inscriptions/blob/main/po/README.md</url>
+    <url type="homepage">https://github.com/elly-code/inscriptions</url>
+    <url type="bugtracker">https://github.com/elly-code/inscriptions/issues</url>
+    <url type="help">https://github.com/elly-code/inscriptions/issues</url>
+    <url type="translate">https://github.com/elly-code/inscriptions/blob/main/po/README.md</url>
     <url type="donation">https://ko-fi.com/teamcons/tip</url>
-    <url type="vcs-browser">https://github.com/elly_code/inscriptions</url>
+    <url type="vcs-browser">https://github.com/elly-code/inscriptions</url>
 
   <branding>
     <color type="primary" scheme_preference="light">#95a3ab</color>
     <color type="primary" scheme_preference="dark">#0e141f</color>
   </branding>
-
-  <custom>
-    <value key="x-appcenter-suggested-price">5</value>
-    <value key="x-appcenter-stripe">pk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</value>
-  </custom>
 
   <keywords>
         <keyword>Translation</keyword>
