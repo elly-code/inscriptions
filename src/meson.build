@@ -6,12 +6,14 @@ sources = files (
   'Enums' / 'Formality.vala',
   'Enums' / 'StatusCode.vala',
   'Enums' / 'HighlightColor.vala',
+  'Enums' / 'Backends.vala',
 
   'Objects' / 'Lang.vala',
   'Objects' / 'DDModel.vala',
 
   'Services' / 'Secrets.vala',
 
+  'Backend' / 'BackendTemplate.vala',
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 

@@ -44,10 +44,10 @@ public const SUPPORTED_TARGET
   */
 
 // Translation service that use translate
-public abstract class MrWorldWide.DeepL : Object {
+public abstract class Inscriptions.BackendTemplate : Object {
 
-  private string source_lang;
-  private string target_lang;
+  private string source_lang {get; set;}
+  private string target_lang {get; set;}
   private string api_key;
   private string base_url;
   public string system_language;
@@ -56,7 +56,7 @@ public abstract class MrWorldWide.DeepL : Object {
  /**
   * Connect to this signal to receive translated text
   */
-  public signal void answer_received (string translated_text = "");
+  public signal void answer_received (uint status_code, string translated_text = "");
 
  /**
   * Connect to this signal to know when language is detected
@@ -67,7 +67,6 @@ public abstract class MrWorldWide.DeepL : Object {
   * Connect to this signal to get usage
   */
   public signal void usage_retrieved (int current_usage, int max_usage);
-
   public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
   public int current_usage = 0;
   public int max_usage = 0;
@@ -88,5 +87,9 @@ public abstract class MrWorldWide.DeepL : Object {
   */
   public abstract void check_usage ();
 
-
+ /**
+  * Call this 
+  */
+  public abstract Lang[] supported_source_languages ();
+  public abstract Lang[] supported_target_languages ();
 }

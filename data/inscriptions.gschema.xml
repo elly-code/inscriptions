@@ -7,6 +7,11 @@
     <value value='3' nick="prefer-less"/>
     <value value='4' nick="less"/>
   </enum>
+  <enum id="io.github.elly_code.inscriptions.backend">
+    <value value='0' nick="dummy"/>
+    <value value='1' nick="deepl"/>
+    <value value='2' nick="libretranslate"/>
+  </enum>
 
   <schema path="/io/github/elly_code/inscriptions/" id="io.github.elly_code.inscriptions">
     <key name="window-height" type="i">
@@ -68,6 +73,110 @@
       <default>true</default>
       <summary>Whether to highlight both source and target</summary>
       <description>Highlights alternating colours on both source and target in the TextView</description>
+    </key>
+    <key enum="io.github.elly_code.inscriptions.backend" name="backend">
+      <default>'deepl'</default>
+      <summary>Level of formality</summary>
+      <description>For supported languages, how format the output should be</description>
+    </key>
+  </schema>
+
+  <schema path="/io/github/elly_code/inscriptions/dummy" id="io.github.elly_code.inscriptions.dummy">
+    <key name="source-language" type="s">
+      <default>"idk"</default>
+      <summary>Language code to translate from</summary>
+      <description>Represents a language code. "idk" is to autodetect, and "system" for the system language.</description>
+    </key>
+    <key name="target-language" type="s">
+      <default>"system"</default>
+      <summary>Language code to translate to</summary>
+      <description>Represents a language code. "system" for the system language.</description>
+    </key>
+    <key name="context" type="s">
+      <default>""</default>
+      <summary>context for translations</summary>
+      <description>Passed as context parameter to the DeepL API</description>
+    </key>
+    <key enum="io.github.elly_code.inscriptions.formality" name="formality">
+      <default>'default'</default>
+      <summary>Level of formality</summary>
+      <description>For supported languages, how format the output should be</description>
+    </key>
+    <key name="current-usage" type="i">
+      <default>0</default>
+      <summary>Current API usage</summary>
+      <description>How many characters have been translated</description>
+    </key>
+    <key name="max-usage" type="i">
+      <default>0</default>
+      <summary>Max API usage</summary>
+      <description>How many characters can be translated</description>
+    </key>
+  </schema>
+
+  <schema path="/io/github/elly_code/inscriptions/deepl" id="io.github.elly_code.inscriptions.deepl">
+    <key name="source-language" type="s">
+      <default>"idk"</default>
+      <summary>Language code to translate from</summary>
+      <description>Represents a language code. "idk" is to autodetect, and "system" for the system language.</description>
+    </key>
+    <key name="target-language" type="s">
+      <default>"system"</default>
+      <summary>Language code to translate to</summary>
+      <description>Represents a language code. "system" for the system language.</description>
+    </key>
+    <key name="context" type="s">
+      <default>""</default>
+      <summary>context for translations</summary>
+      <description>Passed as context parameter to the DeepL API</description>
+    </key>
+    <key enum="io.github.elly_code.inscriptions.formality" name="formality">
+      <default>'default'</default>
+      <summary>Level of formality</summary>
+      <description>For supported languages, how format the output should be</description>
+    </key>
+    <key name="current-usage" type="i">
+      <default>0</default>
+      <summary>Current API usage</summary>
+      <description>How many characters have been translated</description>
+    </key>
+    <key name="max-usage" type="i">
+      <default>0</default>
+      <summary>Max API usage</summary>
+      <description>How many characters can be translated</description>
+    </key>
+  </schema>
+
+  <schema path="/io/github/elly_code/inscriptions/libretranslate" id="io.github.elly_code.inscriptions.libretranslate">
+    <key name="source-language" type="s">
+      <default>"idk"</default>
+      <summary>Language code to translate from</summary>
+      <description>Represents a language code. "idk" is to autodetect, and "system" for the system language.</description>
+    </key>
+    <key name="target-language" type="s">
+      <default>"system"</default>
+      <summary>Language code to translate to</summary>
+      <description>Represents a language code. "system" for the system language.</description>
+    </key>
+    <key name="context" type="s">
+      <default>""</default>
+      <summary>context for translations</summary>
+      <description>Passed as context parameter to the DeepL API</description>
+    </key>
+    <key enum="io.github.elly_code.inscriptions.formality" name="formality">
+      <default>'default'</default>
+      <summary>Level of formality</summary>
+      <description>For supported languages, how format the output should be</description>
+    </key>
+    <key name="current-usage" type="i">
+      <default>0</default>
+      <summary>Current API usage</summary>
+      <description>How many characters have been translated</description>
+    </key>
+    <key name="max-usage" type="i">
+      <default>0</default>
+      <summary>Max API usage</summary>
+      <description>How many characters can be translated</description>
     </key>
   </schema>
 </schemalist>
