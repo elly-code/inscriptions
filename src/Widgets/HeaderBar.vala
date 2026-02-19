@@ -71,6 +71,9 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         title_dropdown = new Gtk.DropDown.from_strings (BackendType.STRING_ALL);
         title_dropdown.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
+        title_dropdown.add_css_class (Granite.STYLE_CLASS_FLAT);
+        title_dropdown.halign = Gtk.Align.CENTER;
+        title_dropdown.show_arrow = false;
 
         title_switcher = new Gtk.StackSwitcher () {
             stack = stack_window_view
@@ -181,8 +184,12 @@ public class Inscriptions.HeaderBar : Granite.Bin {
             SettingsBindFlags.INVERT_BOOLEAN
         );
 
-        Application.settings.bind (KEY_BACKEND,
-            title_dropdown, "selected", GLib.SettingsBindFlags.DEFAULT);
+        title_dropdown.selected = Application.settings.get_enum (KEY_BACKEND);
+        title_dropdown.notify["selected"].connect (on_dropdown_selected);
+    }
+
+    private void on_dropdown_selected () {
+        Application.settings.set_enum (KEY_BACKEND, (int)title_dropdown.selected);
     }
 
     private void on_menu () {

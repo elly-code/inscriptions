@@ -12,6 +12,7 @@ sources = files (
   'Objects' / 'DDModel.vala',
 
   'Backend' / 'BackendTemplate.vala',
+  'Backend' / 'Dummy.vala',
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 

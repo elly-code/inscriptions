@@ -7,9 +7,9 @@
  * A convenient way to track all existing BackendType
  */
 public enum Inscriptions.BackendType {
-    DUMMY,
     DEEPL,
-    LIBRETRANSLATE;
+    LIBRETRANSLATE,
+    DUMMY;
 
     public string to_name () {
       switch (this) {
@@ -40,13 +40,13 @@ public enum Inscriptions.BackendType {
 
     public static BackendType from_int (int number) {
       switch (number) {
-        case 0: return DUMMY;
-        case 1: return DEEPL;
-        case 2: return LIBRETRANSLATE;
+        case 0: return DEEPL;
+        case 1: return LIBRETRANSLATE;
+        case 3: return DUMMY;
         default: return DEEPL;
       }
     }
 
     public const BackendType[] ALL = {DUMMY, DEEPL, LIBRETRANSLATE};
-    public const string[] STRING_ALL = {N_("Dummy"), N_("DeepL"), N_("LibreTranslate")};
+    public const string[] STRING_ALL = {N_("DeepL"), N_("LibreTranslate"), N_("Dummy")};
 }
