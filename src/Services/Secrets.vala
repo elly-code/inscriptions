@@ -41,7 +41,7 @@ public class Inscriptions.Secrets : Object {
 
     private void switch_backend_attribute () {
         var number = Application.settings.get_enum (KEY_BACKEND);
-        var new_backend = Backends.from_int (number);
+        var new_backend = BackendType.from_int (number);
         attributes["label"] = new_backend.to_secrets_label ();
     }
 

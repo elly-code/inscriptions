@@ -29,7 +29,7 @@ The object has two signals:
  
   If you want to write your own backend, everything would pretty much work if you
    do a drop in replacement with send_request (text) and the two signals to retrieve
-   i may open up a bit more the possibilities to do other backends in the future
+   i may open up a bit more the possibilities to do other BackendType in the future
 
 
   public void send_request (text);
@@ -44,16 +44,13 @@ public const SUPPORTED_TARGET
   */
 
 // Translation service that use translate
-public abstract class Inscriptions.BackendTemplate : Object {
+public interface Inscriptions.BackendTemplate : Object {
 
-  private string source_lang {get; set;}
-  private string target_lang {get; set;}
-  private string api_key;
-  private string base_url;
-  public string system_language;
-  private string context;
+  public abstract string source_lang {get; set;}
+  public abstract string target_lang {get; set;}
+  public abstract uint status_code {get; set;}
 
- /**
+  /**
   * Connect to this signal to receive translated text
   */
   public signal void answer_received (uint status_code, string translated_text = "");
@@ -64,17 +61,16 @@ public abstract class Inscriptions.BackendTemplate : Object {
   public signal void language_detected (string? detected_language_code = null);
 
  /**
+  * Call this 
+  */
+  public abstract void check_usage ();
+
+ /**
   * Connect to this signal to get usage
   */
-  public signal void usage_retrieved (int current_usage, int max_usage);
-  public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
-  public int current_usage = 0;
-  public int max_usage = 0;
-
-  /**
-  * Anything to prepare should go here
-  */
-  public abstract void init ();
+  public signal void usage_retrieved (uint status_code, int current_usage, int max_usage);
+  public abstract int current_usage {get; set; default = 0;}
+  public abstract int max_usage {get; set; default = 0;}
 
  /**
   * Call this method to send asynchronously a request.
@@ -85,11 +81,6 @@ public abstract class Inscriptions.BackendTemplate : Object {
  /**
   * Call this 
   */
-  public abstract void check_usage ();
-
- /**
-  * Call this 
-  */
-  public abstract Lang[] supported_source_languages ();
-  public abstract Lang[] supported_target_languages ();
+  public abstract Lang[] supported_source_languages {get; internal set;}
+  public abstract Lang[] supported_target_languages  {get; internal set;}
 }

@@ -4,9 +4,9 @@
  */
 
 /**
- * A convenient way to track all existing backends
+ * A convenient way to track all existing BackendType
  */
-public enum Inscriptions.Backends {
+public enum Inscriptions.BackendType {
     DUMMY,
     DEEPL,
     LIBRETRANSLATE;
@@ -38,7 +38,7 @@ public enum Inscriptions.Backends {
       }
     }
 
-    public static Backends from_int (int number) {
+    public static BackendType from_int (int number) {
       switch (number) {
         case 0: return DUMMY;
         case 1: return DEEPL;
@@ -47,5 +47,5 @@ public enum Inscriptions.Backends {
       }
     }
 
-    public const Backends[] ALL = {DUMMY, DEEPL, LIBRETRANSLATE};
+    public const BackendType[] ALL = {DUMMY, DEEPL, LIBRETRANSLATE};
 }

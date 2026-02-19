@@ -7,7 +7,7 @@
  * The backend, responsible for requests and answers.
  * This needs to be standardized into a template, and broken up in several files.
  */
-public class Inscriptions.DeepL : Object {
+public class Inscriptions.DeepL : Object, BackendTemplate {
 
   private const uint TIMEOUT = 3000;
 
@@ -15,16 +15,20 @@ public class Inscriptions.DeepL : Object {
   internal Soup.Logger logger;
   Secrets secrets;
 
-  string source_lang;
-  string target_lang;
+  public uint status_code { get; set; }
+
+  public int current_usage { get; set; }
+  public int max_usage { get; set; }
+
+  public Lang[] supported_source_languages { get; set; }
+  public Lang[] supported_target_languages { get; set; }
+
+  string source_lang { get; set; }
+  string target_lang { get; set; }
   string api_key;
   string base_url;
   public string system_language;
   string context;
-
-  public signal void answer_received (uint status, string? translated_text = null);
-  public signal void language_detected (string? detected_language_code = null);
-  public signal void usage_retrieved (uint status);
 
   const string URL_DEEPL_FREE = "https://api-free.deepl.com";
   const string URL_DEEPL_PRO = "https://api.deepl.com";
@@ -33,8 +37,6 @@ public class Inscriptions.DeepL : Object {
 
   public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
 
-  public int current_usage = 0;
-  public int max_usage = 0;
 
   // Private debounce to not constantly check usage on key change
   int interval = 1000; // ms
@@ -51,6 +53,9 @@ public class Inscriptions.DeepL : Object {
     logger.set_printer ((_1, _2, dir, text) => {
       stderr.printf ("%c %s\n", dir, text);
     });
+
+    supported_source_languages = DeepLUtils.supported_source_languages ();
+    supported_target_languages = DeepLUtils.supported_target_languages ();
 
     secrets = Secrets.get_default ();
 
@@ -272,7 +277,7 @@ public class Inscriptions.DeepL : Object {
         Application.settings.set_int ("max-usage", max_usage);
 
         var msg = session.get_async_result_message (res);
-        usage_retrieved (msg.status_code);
+        usage_retrieved (msg.status_code, current_usage, max_usage);
 
         string? error_message = null;
         
@@ -286,6 +291,7 @@ public class Inscriptions.DeepL : Object {
         stderr.printf ("Got: %s\n", e.message);
       }
   }
+
 
 
 }
