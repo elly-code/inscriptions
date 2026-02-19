@@ -48,4 +48,5 @@ public enum Inscriptions.BackendType {
     }
 
     public const BackendType[] ALL = {DUMMY, DEEPL, LIBRETRANSLATE};
+    public const string[] STRING_ALL = {N_("Dummy"), N_("DeepL"), N_("LibreTranslate")};
 }

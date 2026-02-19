@@ -14,6 +14,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     Gtk.HeaderBar headerbar;
     Gtk.Stack title_stack;
     Gtk.Label title_label;
+    Gtk.DropDown title_dropdown;
     Gtk.StackSwitcher title_switcher;
 
     Gtk.Revealer back_revealer;
@@ -68,6 +69,9 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         title_label = new Gtk.Label (_("Inscriptions"));
         title_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
 
+        title_dropdown = new Gtk.DropDown.from_strings (BackendType.STRING_ALL);
+        title_dropdown.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
+
         title_switcher = new Gtk.StackSwitcher () {
             stack = stack_window_view
         };
@@ -77,8 +81,9 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         };
 
         title_stack.add_child (title_label);
+        title_stack.add_child (title_dropdown);
         title_stack.add_child (title_switcher);
-        title_stack.visible_child = title_label;
+        title_stack.visible_child = title_dropdown;
 
         //TRANSLATORS: Do not translate the name itself. You can write it in your writing system if that is usually done for your language
         headerbar = new Gtk.HeaderBar () {
@@ -175,6 +180,9 @@ public class Inscriptions.HeaderBar : Granite.Bin {
             translate_revealer, "reveal_child", 
             SettingsBindFlags.INVERT_BOOLEAN
         );
+
+        Application.settings.bind (KEY_BACKEND,
+            title_dropdown, "selected", GLib.SettingsBindFlags.DEFAULT);
     }
 
     private void on_menu () {
@@ -193,7 +201,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
             title_stack.visible_child = title_switcher;
 
         } else {
-            title_stack.visible_child = title_label;
+            title_stack.visible_child = title_dropdown;
         }
     }
 }
