@@ -45,6 +45,10 @@ namespace Inscriptions {
 	public const string KEY_FORMALITY = "formality";
 	public const string KEY_CURRENT_USAGE = "current-usage";
 	public const string KEY_MAX_USAGE = "max-usage";
+
+	public const string KEY_BACKEND = "backend";
+
+	
 }
 
 namespace Inscriptions {

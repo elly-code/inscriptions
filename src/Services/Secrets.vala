@@ -34,15 +34,15 @@ public class Inscriptions.Secrets : Object {
                                         "label", Secret.SchemaAttributeType.STRING);
 
         attributes = new GLib.HashTable<string,string> (str_hash, str_equal);
-        attributes["label"] = "DeepL-Auth-Key";
 
-        //  try {
-        //      _cached = Secret.password_lookupv_sync (schema, attributes, null);
-        //      print ("retrieved password!");
-        //  } catch (Error e) {
-        //      warning (e.message);
-        //  }
+        switch_backend_attribute ();
+        Application.settings.changed [KEY_BACKEND].connect (switch_backend_attribute);
+    }
 
+    private void switch_backend_attribute () {
+        var number = Application.settings.get_enum (KEY_BACKEND);
+        var new_backend = BackendType.from_int (number);
+        attributes["label"] = new_backend.to_secrets_label ();
     }
 
     public void store_key (string new_key) {
@@ -50,7 +50,8 @@ public class Inscriptions.Secrets : Object {
         changed ();
 
         Secret.password_storev.begin (schema, attributes, Secret.COLLECTION_DEFAULT,
-                                        "DeepL-Auth-Key", new_key, null, (obj, async_res) => {
+                                        "API Key for translation backend",
+                                        new_key, null, (obj, async_res) => {
 
                                         try {
                                             bool res = Secret.password_store.end (async_res);

@@ -15,6 +15,7 @@ src/Widgets/Panes/TargetPane.vala
 src/Widgets/Buttons/RetryButton.vala
 src/Widgets/LogToolbar.vala
 src/Widgets/TextView.vala
+src/Enums/PossibleBackendType.vala
 src/Backend/DeepL/DeepL.vala
 src/Constants.vala
 src/Application.vala

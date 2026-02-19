@@ -6,7 +6,7 @@
 public class Inscriptions.Application : Gtk.Application {
 
     internal static Settings settings;
-    internal static DeepL backend;
+    internal static DeepL.Backend backend;
     internal static MainWindow main_window;
 
     public const string ACTION_PREFIX = "app.";
@@ -36,7 +36,7 @@ public class Inscriptions.Application : Gtk.Application {
 
         // Backend takes care of the async for us. We give it the text
         // And it will emit a signal whenever finished, which we can connect to
-        backend = new DeepL ();
+        backend = new DeepL.Backend ();
     }
 
     protected override void startup () {

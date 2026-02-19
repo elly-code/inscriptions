@@ -18,7 +18,7 @@ You can download and install Inscriptions from various sources:
 
 ## 🛣️ Roadmap
 
--Switch backends
+-Switch BackendType
 
 ## 💝 Donations
 

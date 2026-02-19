@@ -127,7 +127,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
       }
 
       // I know this could be a cool one liner, but the one liner is ugly and unreadable
-      if (target in DeepL.SUPPORTED_FORMALITY) {
+      if (target in DeepL.Backend.SUPPORTED_FORMALITY) {
         formalbox.sensitive = true;
         formalbox.tooltip_text = _("Set how formal the translation should be");
 
