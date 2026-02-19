@@ -3,7 +3,7 @@
  * SPDX-FileCopyrightText:  2025 Stella & Charlie (teamcons.carrd.co)
  */
 
-namespace Inscriptions.DeepLUtils {
+namespace Inscriptions.DeepL.Utils {
 
   // FUCKY: DeepL is a bit weird with some codes
   // We have to hack at it for edge cases
@@ -25,6 +25,22 @@ namespace Inscriptions.DeepLUtils {
 
     print ("\nBackend: Detected system language: " + minicode);
     return minicode;
+  }
+
+
+  public string unwrap_error_message (string text_json) {
+
+    var parser = new Json.Parser ();
+    try {
+          parser.load_from_data (text_json);
+    } catch (Error e) {
+        print ("\nCannot: " + e.message);
+        return text_json;
+    }
+
+    var root = parser.get_root ();
+    var objects = root.get_object ();
+    return objects.get_string_member_with_default ("message", _("Cannot retrieve error message text!"));
   }
 
 
