@@ -12,20 +12,29 @@ public class Inscriptions.DDModel : Object {
 	public GLib.ListStore model {get; set;}
 	public Gtk.SignalListItemFactory factory {get; set;}
 
-	public DDModel() {
+	public DDModel () {
 		model = new GLib.ListStore(typeof(Lang));
 		factory = new Gtk.SignalListItemFactory();
-		factory.setup.connect ((f,o) => {
-				Gtk.ListItem list_item =  (Gtk.ListItem)o;
-				var label=new Gtk.Label("");
-				list_item.set_child(label);
-			});
-		factory.bind.connect ((f,o) => {
-				Gtk.ListItem list_item =  (Gtk.ListItem)o;
-				var language = list_item.get_item () as Lang;
-				var label = list_item.get_child() as Gtk.Label;
-				label.set_text(language.name);
-			});
+
+		factory.setup.connect (on_factory_setup);
+		factory.bind.connect (on_factory_bind);
+	}
+
+	private void on_factory_setup (Gtk.SignalListItemFactory f, Object o) {
+		var list_item =  (Gtk.ListItem)o;
+		var item = new Inscriptions.LanguageItem (list_item.position, "");
+
+		list_item.child = item;
+		list_item.focusable = true;
+	}
+
+	private void on_factory_bind (Gtk.SignalListItemFactory f, Object o) {
+		var list_item = (Gtk.ListItem)o;
+		var item_language = list_item.get_item () as Lang;
+		var item = list_item.get_child() as Inscriptions.LanguageItem;
+
+		//print ("position: " + list_item.position.to_string ());
+		item.label = item_language.name;
 	}
 
 	public void model_append(Lang l) {

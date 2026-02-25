@@ -19,6 +19,7 @@ sources = files (
   'Widgets' / 'Panes' / 'SourcePane.vala',
   'Widgets' / 'Panes' / 'TargetPane.vala',
 
+  'Widgets' / 'LanguageItem.vala',
   'Widgets' / 'LogToolbar.vala',
   'Widgets' / 'ErrorBonusBox.vala',
   'Widgets' / 'TextView.vala',
