@@ -49,8 +49,8 @@
     <url type="vcs-browser">https://github.com/elly-code/inscriptions</url>
 
   <branding>
-    <color type="primary" scheme_preference="light">#95a3ab</color>
-    <color type="primary" scheme_preference="dark">#0e141f</color>
+    <color type="primary" scheme_preference="light">#3557082</color>
+    <color type="primary" scheme_preference="dark">#33434e</color>
   </branding>
 
   <keywords>
@@ -79,6 +79,16 @@
   </recommends>
 
   <releases>
+    <release version="1.0.1" date="2026-03-16" urgency="medium">
+      <description>
+        <p>Touchups and enhancements</p>
+        <ul>
+            <li>Minor design changes. Lets do refined shit.</li>
+            <li>Updated and extended screenshots</li>
+            <li>Some work into cleaner code</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.0" date="2026-02-16" urgency="medium">
       <description>
         <p>🚀 1.0.0 Initial release!</p>
