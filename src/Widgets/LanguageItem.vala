@@ -26,10 +26,15 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   }
 
   construct {
-    label_widget = new Gtk.Label (language_label);
     selected_emblem = new Gtk.Image.from_icon_name ("emblem-default-symbolic") {
-      visible = false
+      visible = false,
+      halign = Gtk.Align.START
     };
+
+    label_widget = new Gtk.Label (language_label) {
+            halign = Gtk.Align.CENTER
+    };
+
 
     append (selected_emblem);
     append (label_widget);
