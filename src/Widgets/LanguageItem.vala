@@ -19,8 +19,8 @@ public class Inscriptions.LanguageItem : Gtk.Box {
       language_label: language_label,
       language_code: language_code,
       orientation: Gtk.Orientation.HORIZONTAL,
-      spacing: Inscriptions.SPACING_TOOLBAR_MINI,
-      halign: Gtk.Align.CENTER,
+      spacing: 0,
+      halign: Gtk.Align.FILL,
       hexpand: true
     );
   }
@@ -32,12 +32,17 @@ public class Inscriptions.LanguageItem : Gtk.Box {
     };
 
     label_widget = new Gtk.Label (language_label) {
-            halign = Gtk.Align.CENTER
+      halign = Gtk.Align.CENTER,
+      hexpand = true,
+      xalign = 0.5f
     };
 
+    var overlay = new Gtk.Overlay () {
+      child = label_widget
+    };
+    overlay.add_overlay (selected_emblem);
 
-    append (selected_emblem);
-    append (label_widget);
+    append (overlay);
 
     bind_property ("language-label",
       label_widget, "label",
@@ -45,7 +50,6 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   }
 
   public void on_position_changed (string language_code_selected) {
-    print ("checking %s against %s".printf (language_code_selected, language_code));
 
     if (language_code_selected == language_code) {
       label_widget.add_css_class ("bold");

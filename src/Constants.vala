@@ -94,15 +94,15 @@ namespace Inscriptions {
 	public Lang[] TargetLang () {
 		return {
 			new Lang ("system",_("System language")),
-
 			new Lang ("AR",_("Arabic")),
 			new Lang ("BG",_("Bulgarian")),
 			new Lang ("CS",_("Czech")),
 			new Lang ("DA",_("Danish")),
 			new Lang ("DE",_("German")),
 			new Lang ("EL",_("Greek")),
-			new Lang ("EN",_("English (GB)")),
-			new Lang ("EN",_("English (US)")),
+			new Lang ("EN-GB",_("English (GB)")),
+			new Lang ("EN-US",_("English (US)")),
+			new Lang ("EO",_("Spanish (All)")),
 			new Lang ("ES",_("Spanish (All)")),
 			new Lang ("ES-419",_("Spanish (Latin American)")),
 			new Lang ("ET",_("Estonian")),
