@@ -130,7 +130,9 @@ public class Inscriptions.Pane : Gtk.Box {
     }
 
     public void clear () {
+        textview.buffer.begin_user_action ();
         this.textview.buffer.text = "";
+        textview.buffer.end_user_action ();
     }
 
     public void message (string text) {

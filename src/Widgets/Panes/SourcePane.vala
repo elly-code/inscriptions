@@ -134,7 +134,9 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
         var content = "";
         FileUtils.get_contents (file.get_path (), out content);
 
+        textview.buffer.begin_user_action ();
         this.text = content;
+        textview.buffer.end_user_action ();
 
       } catch (Error err) {
         warning ("Failed to select file to open: %s", err.message);
