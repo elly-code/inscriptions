@@ -28,7 +28,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       var options_button = new Gtk.MenuButton () {
           child = options_button_box,
           tooltip_text = _("Change options for the translation"),
-          margin_end = 6
+          margin_end = MARGIN_MENU_STANDARD
       };
       options_button.add_css_class (Granite.STYLE_CLASS_FLAT);
       options_button.add_css_class ("flat_menu_button");
@@ -39,22 +39,23 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       actionbar.pack_start (options_button);
 
 
-      var clear = new Gtk.Button.from_icon_name ("edit-clear-all-symbolic") {
+      var clear_button = new Gtk.Button.from_icon_name ("edit-clear-all-symbolic") {
           action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_CLEAR_TEXT,
           tooltip_markup = Granite.markup_accel_tooltip (
             {"<Ctrl>L"}, 
             _("Clear text")
           ),
-          margin_start = MARGIN_MENU_HALF
+          margin_start = MARGIN_MENU_HALF,
+          sensitive = (text != "")
       };
 
-      var paste = new Gtk.Button.from_icon_name ("edit-paste-symbolic") {
+      var paste_button = new Gtk.Button.from_icon_name ("edit-paste-symbolic") {
           tooltip_text = _("Paste from clipboard"),
-            margin_start = 3
+            margin_start = MARGIN_MENU_HALF
       };
 
-      actionbar.pack_end (clear);
-      actionbar.pack_end (paste);
+      actionbar.pack_end (clear_button);
+      actionbar.pack_end (paste_button);
 
       var open_button = new Gtk.Button.from_icon_name ("document-open-symbolic") {
           action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_LOAD_TEXT,
@@ -73,8 +74,12 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
         GLib.SettingsBindFlags.DEFAULT
       );
 
-      paste.clicked.connect (paste_from_clipboard);
+      paste_button.clicked.connect (paste_from_clipboard);
       language_changed.connect (on_language_changed);
+
+      textview.buffer.changed.connect (() => {
+        clear_button.sensitive = (text != "");
+      });
     }
 
   private void on_language_changed (string code) {
@@ -100,7 +105,6 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
   }
 
   public void action_load_text () {
-
     var all_files_filter = new Gtk.FileFilter () {
       name = _("All files"),
     };
