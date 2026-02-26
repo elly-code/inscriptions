@@ -46,7 +46,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
             _("Clear text")
           ),
           margin_start = MARGIN_MENU_HALF,
-          sensitive = (text != "")
+          sensitive = false
       };
 
       var paste_button = new Gtk.Button.from_icon_name ("edit-paste-symbolic") {
@@ -95,8 +95,8 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       try {
 
         var pasted_text = clipboard.read_text_async.end (res);
-        textview.buffer.text = pasted_text;
-        message (_("Pasted"));
+        replace_text (pasted_text);
+        message (_("Pasted"), true);
 
       } catch (Error e) {
         print ("Cannot access clipboard: " + e.message);
@@ -134,9 +134,8 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
         var content = "";
         FileUtils.get_contents (file.get_path (), out content);
 
-        textview.buffer.begin_user_action ();
-        this.text = content;
-        textview.buffer.end_user_action ();
+        replace_text (content);
+        message (_("Loaded from file"), true);
 
       } catch (Error err) {
         warning ("Failed to select file to open: %s", err.message);

@@ -104,6 +104,10 @@ public class Inscriptions.Pane : Gtk.Box {
 
         append (handle_dd);
         append (stack);
+
+        toast.default_action.connect (() => {
+            textview.buffer.undo ();
+        });
     }
 
     public void on_selected_language () {
@@ -129,14 +133,31 @@ public class Inscriptions.Pane : Gtk.Box {
         return selected.name;
     }
 
-    public void clear () {
+    // Respectful of Undo
+    public void replace_text (string new_text) {
+
+        Gtk.TextIter start, end;
+        textview.buffer.get_bounds (out start, out end);
+
         textview.buffer.begin_user_action ();
-        this.textview.buffer.text = "";
+        this.textview.buffer.delete (ref start, ref end);
+        this.textview.buffer.insert (ref start, new_text, new_text.length);
         textview.buffer.end_user_action ();
+
+        textview.grab_focus ();
     }
 
-    public void message (string text) {
+    public void clear () {
+        replace_text ("");
+    }
+
+    public void message (string text, bool? undo = false) {
         toast.title = text;
+
+        if (undo) {
+            toast.set_default_action (_("Undo"));
+        }
+
         toast.send_notification ();
     }
 }
