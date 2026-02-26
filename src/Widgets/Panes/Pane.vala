@@ -47,12 +47,13 @@ public class Inscriptions.Pane : Gtk.Box {
 
         /* ---------------- DROPDOWN ---------------- */
 		dropdown = new Gtk.DropDown (model.model, expression) {
-            factory = model.factory,
+            factory = model.factory_header,
+            list_factory = model.factory_list,
             enable_search = true,
-            search_match_mode= Gtk.StringFilterMatchMode.SUBSTRING
+            search_match_mode= Gtk.StringFilterMatchMode.SUBSTRING,
+            show_arrow = false
         };
 		dropdown.notify["selected-item"].connect(on_selected_language);
-
 
         /* ---------------- VIEW ---------------- */
         textview = new Inscriptions.TextView ();
@@ -85,7 +86,6 @@ public class Inscriptions.Pane : Gtk.Box {
             child = actionbar
         };
 
-
         /* ---------------- STACK ---------------- */
 
         main_view = new Gtk.Box (VERTICAL, 0);
@@ -97,7 +97,12 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         stack.add_child (main_view);
 
-        append (dropdown);
+
+        var handle_dd = new Gtk.WindowHandle () {
+            child = dropdown
+        };
+
+        append (handle_dd);
         append (stack);
     }
 

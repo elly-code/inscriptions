@@ -8,39 +8,47 @@
  */
 public class Inscriptions.LanguageItem : Gtk.Box {
 
-  public uint position {get; construct;}
-  public bool selected {get; set; default = false;}
-  public string label {get; set; default = "";}
+  public string language_label {get; set;}
+  public string language_code {get; set;}
 
   Gtk.Label label_widget;
   Gtk.Image selected_emblem;
 
-  public LanguageItem (uint position, string label) {
+  public LanguageItem (string language_label, string language_code) {
     Object (
-      position: position,
-      label: label,
+      language_label: language_label,
+      language_code: language_code,
       orientation: Gtk.Orientation.HORIZONTAL,
-      spacing: Inscriptions.SPACING_TOOLBAR_HEADER,
+      spacing: Inscriptions.SPACING_TOOLBAR_MINI,
       halign: Gtk.Align.CENTER,
       hexpand: true
     );
   }
 
   construct {
-    label_widget = new Gtk.Label (label);
+    label_widget = new Gtk.Label (language_label);
     selected_emblem = new Gtk.Image.from_icon_name ("emblem-default-symbolic") {
-      visible = selected
+      visible = false
     };
 
-    append (label_widget);
     append (selected_emblem);
+    append (label_widget);
 
-    bind_property ("label",
+    bind_property ("language-label",
       label_widget, "label",
-      GLib.BindingFlags.DEFAULT);
+      GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
+  }
 
-    bind_property ("selected",
-      selected_emblem, "visible",
-      GLib.BindingFlags.DEFAULT);
+  public void on_position_changed (string language_code_selected) {
+    print ("checking %s against %s".printf (language_code_selected, language_code));
+
+    if (language_code_selected == language_code) {
+      label_widget.add_css_class ("bold");
+      selected_emblem.visible = true;
+
+    } else {
+      label_widget.remove_css_class ("bold");
+      selected_emblem.visible = false;
+    }
   }
 }

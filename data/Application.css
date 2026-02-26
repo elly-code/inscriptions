@@ -52,3 +52,8 @@ Base from wpkelso: #33434eff
 .console {
  	background-color: #002B36;
 }
+
+/* Used for labels in the popover */
+.bold {
+ 	font-weight: bold;
+}
