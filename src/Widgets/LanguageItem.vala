@@ -30,6 +30,7 @@ public class Inscriptions.LanguageItem : Gtk.Box {
       visible = false,
       halign = Gtk.Align.START
     };
+    selected_emblem.add_css_class (Granite.STYLE_CLASS_FLAT);
 
     label_widget = new Gtk.Label (language_label) {
       halign = Gtk.Align.CENTER,
