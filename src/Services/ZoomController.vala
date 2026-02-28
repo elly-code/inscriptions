@@ -16,7 +16,7 @@ public class Inscriptions.ZoomController : Object {
     private static bool is_control_key_pressed = false;
     private weak Gtk.Widget widget;
 
-    const int ZOOM_MAX = 300;
+    const int ZOOM_MAX = 400;
     const int DEFAULT_ZOOM = 100;
     const int ZOOM_MIN = 20;
 
