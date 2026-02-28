@@ -51,12 +51,18 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       margin_start = MARGIN_MENU_BIG
     };
 
+    var api_level = new ApiLevel () {
+      margin_top = MARGIN_MENU_HALF,
+      margin_start = MARGIN_MENU_BIG,
+      margin_end = MARGIN_MENU_BIG
+    };
+
     box.append (new OrientationBox ());
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
     box.append (highlight_switch);
     box.append (edit_key_button);
-        box.append (new ApiLevel ());
+    box.append (api_level);
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (support_button);
 
