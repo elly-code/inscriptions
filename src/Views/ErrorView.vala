@@ -11,6 +11,8 @@ public class Inscriptions.ErrorView : Granite.Bin {
 
     const uint WAIT_BEFORE_MAIN = 1500; //In milliseconds
 
+    ErrorBonusBox bonusbox;
+
     public uint status { get; construct; }
     public string message { get; construct; }
 
@@ -50,7 +52,8 @@ public class Inscriptions.ErrorView : Granite.Bin {
         box.append (title);
 
         // WEIRD: We get errors about TRUE being out of range for a gboolean and the value defaulting if we leave a default 
-        box.append (new ErrorBonusBox (status, report_link));
+        bonusbox = new ErrorBonusBox (status, report_link);
+        box.append (bonusbox);
 
         var retry_button = new Inscriptions.RetryButton () {
             halign = Gtk.Align.END
@@ -81,7 +84,7 @@ public class Inscriptions.ErrorView : Granite.Bin {
             margin_top = 12
         };
 
-        if (status != StatusCode.NO_KEY) {
+        if (status != StatusCode.NO_KEY || status != StatusCode.EDIT_KEY) {
             box.append (expander);
         }
 
@@ -90,10 +93,10 @@ public class Inscriptions.ErrorView : Granite.Bin {
         };
 
         child = handle;
-
     }
 
     private void on_validated () {
+        bonusbox.usage_revealer.reveal_child = true;
         Timeout.add_once (WAIT_BEFORE_MAIN, () => {
             return_to_main ();
         });

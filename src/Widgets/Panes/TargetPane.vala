@@ -44,7 +44,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
 
         placeholder_box.append (placeholder);
-        placeholder_box.append (placeholder_switcher);
+        //placeholder_box.append (placeholder_switcher);
 
         placeholder_handle = new Gtk.WindowHandle () {
             child = placeholder_box
@@ -71,7 +71,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S)
         };
 
-        actionbar.pack_start (auto_switcher);
+        //actionbar.pack_start (auto_switcher);
 
         /* -------- TOOLBAR -------- */
         var copy = new Gtk.Button.from_icon_name ("edit-copy-symbolic") {

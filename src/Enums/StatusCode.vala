@@ -16,7 +16,8 @@ public enum Inscriptions.StatusCode {
     // Custom
     NO_KEY                  = 0,
     NO_INTERNET             = 1,
-    UNKNOWN                 = 2,
+    EDIT_KEY                = 2,
+    UNKNOWN                 = 3,
 
     // 200
     OK                      = Soup.Status.OK,
@@ -66,6 +67,13 @@ public enum Inscriptions.StatusCode {
                     explanation_text = _("Please verify you are connected to the internet, and that this app has permission to access it");
                 }
                 return;
+
+            case StatusCode.EDIT_KEY:
+                explanation_title   = _("Edit API Key");
+                explanation_text    = _("Yo");
+                icon_name           = "dialog-password";
+                return;
+
 
             case Soup.Status.OK:
                 explanation_title   = _("Everything works great :)");

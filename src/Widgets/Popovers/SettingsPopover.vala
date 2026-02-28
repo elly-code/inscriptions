@@ -19,48 +19,28 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       margin_bottom = MARGIN_MENU_STANDARD
     };
 
-    //TRANSLATORS: The two following texts are for a switch button that does not show up in the UI
-    //The functionality is disabled. You can safely ignore this for the time being
+    /* -------------------- SEPARATOR -------------------- */
+
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
       description = _("The translation will start %.2f seconds after typing has stopped".printf (DEBOUNCE_IN_S)),
       hexpand = true,
       margin_top = MARGIN_MENU_HALF
     };
 
-    /* -------------------- SEPARATOR -------------------- */
-    var cb = new Gtk.CenterBox () {
-      margin_end = MARGIN_MENU_BIG
-    };
-
-    var api_label = new Gtk.Label (_("DeepL API Key")) {
-      halign = Gtk.Align.START,
-      margin_start = MARGIN_MENU_BIG,
-      margin_top = MARGIN_MENU_HALF
-    };
-    api_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
-    cb.start_widget = api_label;
-
-    var hint = new Gtk.Button.from_icon_name ("help-contents") {
-          tooltip_text = _("You can get an API key here")
-    };
-    cb.end_widget = hint;
-
-    api_entry = new Inscriptions.ApiEntry () {
-      margin_start = MARGIN_MENU_BIG,
-      margin_end = MARGIN_MENU_BIG
-    };
-
-    var api_level = new Inscriptions.ApiLevel () {
-      margin_start = MARGIN_MENU_BIG,
-      margin_end = MARGIN_MENU_BIG,
+    var highlight_switch = new Granite.SwitchModelButton (_("Highlight source and target sentences")) {
+      description = _("Each line will be highlighted a different color to help compare both texts (Ctrl+H)"),
+      hexpand = true,
       margin_top = MARGIN_MENU_HALF
     };
 
-    usage_revealer = new Gtk.Revealer () {
-      transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN,
-      transition_duration = 500,
-      child = api_level
+    var edit_key_button = new Gtk.Button.with_label (_("Change API Key")) {
+      tooltip_text = _("Use a different API key of your choosing"),
+      hexpand = true,
+      margin_top = MARGIN_MENU_HALF,
+      halign = Gtk.Align.START
     };
+    edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);
+
 
     /* -------------------- SEPARATOR -------------------- */
 
@@ -72,36 +52,27 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     };
 
     box.append (new OrientationBox ());
-    //box.append (auto_switch);
     box.append (new Gtk.Separator (HORIZONTAL));
-    box.append (cb);
-    box.append (api_entry);
-    box.append (usage_revealer);
+    box.append (auto_switch);
+    box.append (highlight_switch);
+    box.append (edit_key_button);
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (support_button);
 
     child = box;
 
     /* -------------------- CONNECTS AND BINDS -------------------- */
-    hint.clicked.connect (open_webpage);
-    api_entry.api_entry.changed.connect (relevant_levelbar);
-    relevant_levelbar ();
 
-    Application.settings.bind ("auto-translate", 
+    Application.settings.bind (KEY_AUTO_TRANSLATE, 
       auto_switch, "active", 
       SettingsBindFlags.DEFAULT);
-  }
 
+    Application.settings.bind (KEY_HIGHLIGHT, 
+      highlight_switch, "active", 
+      SettingsBindFlags.DEFAULT);
 
-  private void relevant_levelbar () {
-    usage_revealer.reveal_child = (api_entry.api_entry.text != "");
-  }
-
-  private void open_webpage () {
-    try {
-      AppInfo.launch_default_for_uri (LINK, null);
-    } catch (Error e) {
-      warning ("%s\n", e.message);
-    }
+    edit_key_button.clicked.connect (() => {
+      Application.backend.answer_received (StatusCode.EDIT_KEY, _("Requested by user"));
+    });
   }
 }

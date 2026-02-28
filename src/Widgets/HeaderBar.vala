@@ -116,7 +116,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         toolbar.append (switchlang_button);
-        toolbar.append (toggle_highlight);
+        //toolbar.append (toggle_highlight);
 
         toolbar_revealer = new Gtk.Revealer () {
             child = toolbar,
