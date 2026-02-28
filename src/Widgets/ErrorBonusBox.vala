@@ -48,7 +48,7 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
             };
 
 
-            if (status == StatusCode.NO_KEY || status == StatusCode.EDIT_KEY) {
+            if (status == StatusCode.NO_KEY || status == StatusCode.FORBIDDEN) {
                 var explanation = new Gtk.Label (_("An API Key is like a password given by DeepL\nIt allows you to access services from applications such as this one\nIt looks like this: fr5617a-4875-4763-9119-564tjdvg89:fx")) {
                     wrap_mode = Pango.WrapMode.WORD_CHAR,
                     halign = Gtk.Align.START
@@ -60,7 +60,7 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
             append (api_entry);
             append (link);
-            append (usage_revealer);
+            //append (usage_revealer);
 
 
 

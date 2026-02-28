@@ -16,7 +16,7 @@ public class Inscriptions.ZoomController : Object {
     private static bool is_control_key_pressed = false;
     private weak Gtk.Widget widget;
 
-    const int ZOOM_MAX = 400;
+    const int ZOOM_MAX = 300;
     const int DEFAULT_ZOOM = 100;
     const int ZOOM_MIN = 20;
 
@@ -105,14 +105,14 @@ public class Inscriptions.ZoomController : Object {
     }
 
     public bool on_scroll (double dx, double dy) {
-        print ("Scroll + Ctrl!");
+        //print ("Scroll + Ctrl!");
 
         if (!is_control_key_pressed) {
             return Gdk.EVENT_PROPAGATE;
         }
 
         zoom_changed (ZoomType.from_delta (dy));
-        print ("Go! Zoooommmmm");
+        //print ("Go! Zoooommmmm");
 
         return Gdk.EVENT_PROPAGATE;
     }

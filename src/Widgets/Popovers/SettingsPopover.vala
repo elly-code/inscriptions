@@ -23,23 +23,13 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
       description = _("The translation will start %.2f seconds after typing has stopped".printf (DEBOUNCE_IN_S)),
-      hexpand = true,
-      margin_top = MARGIN_MENU_HALF
+      hexpand = true
     };
 
     var highlight_switch = new Granite.SwitchModelButton (_("Highlight source and target sentences")) {
       description = _("Each line will be highlighted a different color to help compare both texts (Ctrl+H)"),
-      hexpand = true,
-      margin_top = MARGIN_MENU_HALF
+      hexpand = true
     };
-
-    var edit_key_button = new Gtk.Button.with_label (_("Change API Key")) {
-      tooltip_text = _("Use a different API key of your choosing"),
-      hexpand = true,
-      margin_top = MARGIN_MENU_HALF,
-      halign = Gtk.Align.START
-    };
-    edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
 
     /* -------------------- SEPARATOR -------------------- */
@@ -61,7 +51,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
     box.append (highlight_switch);
-    box.append (edit_key_button);
+    //box.append (edit_key_button);
     box.append (api_level);
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (support_button);
@@ -77,9 +67,5 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     Application.settings.bind (KEY_HIGHLIGHT, 
       highlight_switch, "active", 
       SettingsBindFlags.DEFAULT);
-
-    edit_key_button.clicked.connect (() => {
-      Application.backend.answer_received (StatusCode.EDIT_KEY, _("Requested by user"));
-    });
   }
 }

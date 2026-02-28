@@ -33,13 +33,28 @@ public class Inscriptions.ApiLevel : Gtk.Box {
         loading = new Gtk.Spinner ();
         refresher.add_named (loading, "loading");
 
+        var minibox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, Inscriptions.SPACING_TOOLBAR_MINI) {
+            valign = Gtk.Align.CENTER
+        };
+
+        var edit_key_button = new Gtk.Button.from_icon_name ("dialog-password") {
+        tooltip_text = _("Use a different API key of your choosing"),
+        };
+        edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);
+        edit_key_button.clicked.connect (() => {
+            Application.backend.answer_received (StatusCode.EDIT_KEY, _("Requested by user"));
+        });
+
         var hint = new Gtk.Button.from_icon_name ("view-refresh") {
             tooltip_text = _("Update API usage")
         };
         refresher.add_named (hint, "hint");
         refresher.visible_child_name = "hint";
 
-        cb.end_widget = refresher;
+
+        minibox.append (edit_key_button);
+        minibox.append (refresher);
+        cb.end_widget = minibox;
 
         append (cb);
 
