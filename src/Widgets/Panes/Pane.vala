@@ -97,12 +97,7 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         stack.add_child (main_view);
 
-
-        var handle_dd = new Gtk.WindowHandle () {
-            child = dropdown
-        };
-
-        append (handle_dd);
+        append (dropdown);
         append (stack);
 
         toast.default_action.connect (() => {
