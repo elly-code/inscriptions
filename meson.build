@@ -12,9 +12,28 @@ i18n = import('i18n')
 
 # Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+vala_flags = []
+
+
+if get_option('development')
+  app_id =  app_id + 'io.github.elly_code.inscriptions.Devel'
+  name_prefix = '(Nightly) '
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  version_suffix = '-@0@'.format (vcs_tag)
+  
+  vala_flags += ['--define', 'DEVEL']
+
+else
+  app_id = 'io.github.elly_code.inscriptions'
+  name_prefix = ''
+  version_suffix = ''
+endif
+
+
+
 windows_build = build_machine.system() == 'windows'
 
-vala_flags = []
+
 # Windows needs icons, special arguments, and skip libportal
 if windows_build
     vala_flags += ['--define', 'WINDOWS']
