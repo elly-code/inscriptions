@@ -80,3 +80,9 @@ Base from wpkelso: #33434eff
 .s360 {font-size: 360%;}
 .s380 {font-size: 380%;}
 .s400 {font-size: 400%;}
+
+window.devel {
+	border-style: solid;
+	border-width: 3px;
+	border-color: red;
+}
