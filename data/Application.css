@@ -58,7 +58,6 @@ Base from wpkelso: #33434eff
  	font-weight: bold;
 }
 
-
 /* Font zooms */
 .s20 {font-size: 20%;}
 .s40 {font-size: 40%;}
@@ -81,8 +80,9 @@ Base from wpkelso: #33434eff
 .s380 {font-size: 380%;}
 .s400 {font-size: 400%;}
 
+/* Devel builds get these. Libadwaita has that too, but we do not use it. */
 window.devel {
 	border-style: solid;
 	border-width: 3px;
-	border-color: red;
+	border-color: @warning_color;
 }
