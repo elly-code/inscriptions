@@ -6,7 +6,12 @@
 namespace Inscriptions {
 
 	// Alkrjnlgjrt
-	public const string RDNN = "io.github.elly_code.inscriptions";  
+#if DEVEL
+	public const string RDNN = "io.github.elly_code.inscriptions.Devel";
+#else
+	public const string RDNN = "io.github.elly_code.inscriptions";
+#endif
+
 	public const string DONATE_LINK = "https://ko-fi.com/teamcons/tip";
 	public const string LINK = "https://www.deepl.com/your-account/keys";
     public const int DEBOUNCE_INTERVAL = 1250; // ms

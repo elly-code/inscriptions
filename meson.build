@@ -20,7 +20,6 @@ if get_option('development')
   name_prefix = '(Nightly) '
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
   version_suffix = '-@0@'.format (vcs_tag)
-  
   vala_flags += ['--define', 'DEVEL']
 
 else
