@@ -9,7 +9,7 @@
     <binary>io.github.elly_code.inscriptions</binary>
   </provides>
 
-  <name>Inscriptions</name>
+  <name>@APP_NAME@</name>
   <summary>Translate text elegantly</summary>
   <description>
     <p>A fast, pretty, and ready translation app using DeepL free and paid API</p>
