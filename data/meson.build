@@ -56,18 +56,6 @@ if not windows_build
         install_dir: get_option('datadir') / 'metainfo',
     )
 
-    gschema_conf = configuration_data()
-    gschema_conf.set('APP_ID', app_id)
-    gschema_file = configure_file(
-        input: 'inscriptions.gschema.xml.in',
-        output: '@0@.gschema.xml'.format(app_id),
-        configuration: gschema_conf,
-    )
-
-    install_data(
-        gschema_file,
-        install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
-    )
 
 
     # Test definitions
@@ -81,11 +69,24 @@ if not windows_build
     appstreamcli,
     args: ['validate', '--no-net', '--explain', appstream_file],
     )
+endif
+
+
+    gschema_conf = configuration_data()
+    gschema_conf.set('APP_ID', app_id)
+    gschema_file = configure_file(
+        input: 'inscriptions.gschema.xml.in',
+        output: '@0@.gschema.xml'.format(app_id),
+        configuration: gschema_conf,
+    )
+
+    install_data(
+        gschema_file,
+        install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
+    )
 
     compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
     test('Validate schema file',
     compile_schemas,
     args: ['--strict', '--dry-run', meson.current_source_dir()],
     )
-
-endif
