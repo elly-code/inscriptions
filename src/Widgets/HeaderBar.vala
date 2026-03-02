@@ -68,7 +68,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         title_label = new Gtk.Label (_("Inscriptions"));
 #if DEVEL
         // This appears besides the name only in development version
-        title_label = title_label + _(" (Devel)");
+        title_label.label += _(" (devel)");
 #endif
 
         title_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);

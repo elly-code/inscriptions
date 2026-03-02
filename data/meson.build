@@ -1,9 +1,4 @@
 
-install_data(
-    'inscriptions.gschema.xml',
-    install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
-    rename: meson.project_name() + '.gschema.xml'
-)
 
 # metainfo confuses windows, and icons are 
 if not windows_build
@@ -14,32 +9,83 @@ if not windows_build
     install_data(
         'icons' / 'hicolor' / i + '.png',
         install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i / 'apps',
-        rename: meson.project_name() + '.png'
+        rename: app_id + '.png'
     )
     install_data(
         'icons' / 'hicolor@2' / i + '@2.png',
         install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i + '@2' / 'apps',
-        rename: meson.project_name() + '.png'
+        rename: app_id + '.png'
     )
     endforeach
 
-
-
-    i18n.merge_file(
-        input: 'inscriptions.desktop.in',
-        output: meson.project_name() + '.desktop',
-        po_dir: meson.project_source_root() / 'po',
-        type: 'desktop',
-        install: true,
-        install_dir: get_option('datadir') / 'applications'
+    # Inject some variables into the desktop file before merging in the translations
+    desktop_conf = configuration_data()
+    desktop_conf.set('APP_NAME', app_name)
+    desktop_conf.set('APP_ID', app_id)
+    desktop_file_in = configure_file(
+    input: 'inscriptions.desktop.in.in',
+    output: '@0@.desktop.in'.format(app_id),
+    configuration: desktop_conf,
     )
 
-    i18n.merge_file(
-        input: 'inscriptions.metainfo.xml.in',
-        output: meson.project_name() + '.metainfo.xml',
+    desktop_file = i18n.merge_file(
+    input: desktop_file_in,
+    output: '@0@.desktop'.format(app_id),
+    po_dir: meson.project_source_root() / 'po',
+    type: 'desktop',
+    install: true,
+    install_dir: get_option('datadir') / 'applications',
+    )
+
+
+    # Inject some variables into the metainfo file before merging in the translations
+    appstream_conf = configuration_data()
+    appstream_conf.set('APP_ID', app_id)
+    appstream_conf.set('GETTEXT_PACKAGE', meson.project_name())
+    appstream_file_in = configure_file(
+        input: 'inscriptions.metainfo.xml.in.in',
+        output: '@0@.metainfo.xml.in'.format(app_id),
+        configuration: appstream_conf,
+    )
+
+    appstream_file = i18n.merge_file(
+        input: appstream_file_in,
+        output: '@0@.metainfo.xml'.format(app_id),
         po_dir: meson.project_source_root() / 'po',
         install: true,
-        install_dir: get_option('datadir') / 'metainfo'
+        install_dir: get_option('datadir') / 'metainfo',
+    )
+
+    gschema_conf = configuration_data()
+    gschema_conf.set('APP_ID', app_id)
+    gschema_file = configure_file(
+        input: 'inscriptions.gschema.xml.in',
+        output: '@0@.gschema.xml'.format(app_id),
+        configuration: gschema_conf,
+    )
+
+    install_data(
+        gschema_file,
+        install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
+    )
+
+
+    # Test definitions
+    desktop_utils = find_program('desktop-file-validate', required: false)
+    if desktop_utils.found()
+    test('Validate desktop file', desktop_utils, args: [desktop_file])
+    endif
+
+    appstreamcli = find_program('appstreamcli', required: false, disabler: true)
+    test('Validate appstream file',
+    appstreamcli,
+    args: ['validate', '--no-net', '--explain', appstream_file],
+    )
+
+    compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
+    test('Validate schema file',
+    compile_schemas,
+    args: ['--strict', '--dry-run', meson.current_source_dir()],
     )
 
 endif

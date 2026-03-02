@@ -2,8 +2,12 @@
 project(
   'io.github.elly_code.inscriptions',
   'vala', 'c',
-  version: '1.0.1'
+  version: '1.1.0'
 )
+
+app_name = 'Inscriptions'
+app_id = meson.project_name()
+app_version = meson.project_version()
 
 #================================
 # Include Gnome and the translations module
@@ -16,14 +20,13 @@ vala_flags = []
 
 
 if get_option('development')
-  app_id =  'io.github.elly_code.inscriptions.Devel'
-  name_prefix = '(Nightly) '
+  app_id +=  '.devel'
+  name_prefix = '(devel) '
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
   version_suffix = '-@0@'.format (vcs_tag)
   vala_flags += ['--define', 'DEVEL']
 
 else
-  app_id = 'io.github.elly_code.inscriptions'
   name_prefix = ''
   version_suffix = ''
 endif
@@ -46,6 +49,10 @@ config_data = configuration_data()
 config_data.set('version', meson.project_version())
 config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
 config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+config_data.set_quoted('APP_NAME', app_name)
+config_data.set_quoted('APP_ID', app_id)
+config_data.set_quoted('APP_VERSION', app_version)
+
 config_file = configure_file(
   input: 'src/Config.vala.in',
   output: '@BASENAME@',

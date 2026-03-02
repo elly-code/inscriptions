@@ -8,7 +8,7 @@
     <value value='4' nick="less"/>
   </enum>
 
-  <schema path="/io/github/elly_code/inscriptions/" id="io.github.elly_code.inscriptions">
+  <schema path="/io/github/elly_code/inscriptions/" id="@APP_ID@">
     <key name="window-height" type="i">
       <default>320</default>
       <summary>Most recent window height</summary>

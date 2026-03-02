@@ -7,7 +7,7 @@ namespace Inscriptions {
 
 	// Alkrjnlgjrt
 #if DEVEL
-	public const string RDNN = "io.github.elly_code.inscriptions.Devel";
+	public const string RDNN = "io.github.elly_code.inscriptions.devel";
 #else
 	public const string RDNN = "io.github.elly_code.inscriptions";
 #endif

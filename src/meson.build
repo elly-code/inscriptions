@@ -50,7 +50,7 @@ sources = files (
 
 # Create a new executable, list the files we want to compile, and install
 executable(
-    meson.project_name (),
+    app_id,
     config_file,
     gresource,
     sources,
