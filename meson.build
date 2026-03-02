@@ -14,8 +14,7 @@ app_version = meson.project_version()
 gnome = import('gnome')
 i18n = import('i18n')
 
-# Set our translation domain
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_id), language:'c')
+
 vala_flags = []
 
 
@@ -31,12 +30,11 @@ else
   version_suffix = ''
 endif
 
-
-
-windows_build = build_machine.system() == 'windows'
-
+# Set our translation domain
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_id), language:'c')
 
 # Windows needs icons, special arguments, and skip libportal
+windows_build = build_machine.system() == 'windows'
 if windows_build
     vala_flags += ['--define', 'WINDOWS']
 endif
