@@ -16,8 +16,6 @@ i18n = import('i18n')
 
 
 vala_flags = []
-
-
 if get_option('development')
   app_id +=  '.devel'
   name_prefix = '(devel) '
@@ -46,7 +44,7 @@ add_project_arguments(vala_flags, language: 'vala')
 config_data = configuration_data()
 config_data.set('version', meson.project_version())
 config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
-config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+config_data.set_quoted('GETTEXT_PACKAGE', app_id)
 config_data.set_quoted('APP_NAME', app_name)
 config_data.set_quoted('APP_ID', app_id)
 config_data.set_quoted('APP_VERSION', app_version)
