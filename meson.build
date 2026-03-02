@@ -16,7 +16,7 @@ vala_flags = []
 
 
 if get_option('development')
-  app_id =  app_id + 'io.github.elly_code.inscriptions.Devel'
+  app_id =  'io.github.elly_code.inscriptions.Devel'
   name_prefix = '(Nightly) '
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
   version_suffix = '-@0@'.format (vcs_tag)
