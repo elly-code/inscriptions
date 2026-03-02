@@ -15,7 +15,7 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 # Set our translation domain
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_id), language:'c')
 vala_flags = []
 
 
