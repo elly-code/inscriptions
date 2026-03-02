@@ -1,3 +1,6 @@
+#
+# This is danger
+#
 id: io.github.elly_code.inscriptions.devel
 # elementary SDK is not available on Flathub, so use the elementary BaseApp instead
 base: io.elementary.BaseApp
