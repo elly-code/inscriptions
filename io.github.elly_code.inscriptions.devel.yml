@@ -11,7 +11,7 @@ sdk: org.gnome.Sdk
 command: io.github.elly_code.inscriptions.devel
 
 tags: ['devel']
-desktop-file-name-prefix: '(devel)'
+desktop-file-name-suffix: ' (Developpment)'
 
 finish-args:
   - '--share=ipc'

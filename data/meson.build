@@ -1,22 +1,54 @@
 
 
+gschema_conf = configuration_data()
+gschema_conf.set('APP_ID', app_id)
+gschema_file = configure_file(
+    input: 'inscriptions.gschema.xml.in',
+    output: '@0@.gschema.xml'.format(app_id),
+    configuration: gschema_conf,
+)
+
+install_data(
+    gschema_file,
+    install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
+)
+
+compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
+test('Validate schema file',
+compile_schemas,
+args: ['--strict', '--dry-run', meson.current_source_dir()],
+)
+
 # metainfo confuses windows, and icons are 
 if not windows_build
 
-    icon_sizes = ['16', '32', '48', '64', '128']
+    # Install the standard icons in standard build
+    if not get_option('development')
 
-    foreach i : icon_sizes
-    install_data(
-        'icons' / 'hicolor' / i + '.png',
-        install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i / 'apps',
-        rename: app_id + '.png'
-    )
-    install_data(
-        'icons' / 'hicolor@2' / i + '@2.png',
-        install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i + '@2' / 'apps',
-        rename: app_id + '.png'
-    )
-    endforeach
+        icon_sizes = ['16', '32', '48', '64', '128']
+
+        foreach i : icon_sizes
+        install_data(
+            'icons' / 'hicolor' / i + '.png',
+            install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i / 'apps',
+            rename: app_id + '.png'
+        )
+        install_data(
+            'icons' / 'hicolor@2' / i + '@2.png',
+            install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i + '@2' / 'apps',
+            rename: app_id + '.png'
+        )
+        endforeach
+
+    # Install the dev icon in development builds
+    else
+        install_data(
+            'icons' / 'dev.svg',
+            install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps',
+            rename: app_id + '.svg'
+        )
+    endif
+    
 
     # Inject some variables into the desktop file before merging in the translations
     desktop_conf = configuration_data()
@@ -40,9 +72,8 @@ if not windows_build
 
     # Inject some variables into the metainfo file before merging in the translations
     appstream_conf = configuration_data()
-    appstream_conf.set('APP_NAME', app_name)
     appstream_conf.set('APP_ID', app_id)
-    appstream_conf.set('GETTEXT_PACKAGE', app_id)
+    appstream_conf.set('GETTEXT_PACKAGE', meson.project_name())
     appstream_file_in = configure_file(
         input: 'inscriptions.metainfo.xml.in.in',
         output: '@0@.metainfo.xml.in'.format(app_id),
@@ -57,8 +88,6 @@ if not windows_build
         install_dir: get_option('datadir') / 'metainfo',
     )
 
-
-
     # Test definitions
     desktop_utils = find_program('desktop-file-validate', required: false)
     if desktop_utils.found()
@@ -70,24 +99,6 @@ if not windows_build
     appstreamcli,
     args: ['validate', '--no-net', '--explain', appstream_file],
     )
+
+
 endif
-
-
-    gschema_conf = configuration_data()
-    gschema_conf.set('APP_ID', app_id)
-    gschema_file = configure_file(
-        input: 'inscriptions.gschema.xml.in',
-        output: '@0@.gschema.xml'.format(app_id),
-        configuration: gschema_conf,
-    )
-
-    install_data(
-        gschema_file,
-        install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
-    )
-
-    compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
-    test('Validate schema file',
-    compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()],
-    )
