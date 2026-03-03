@@ -18,7 +18,6 @@ i18n = import('i18n')
 vala_flags = []
 if get_option('development')
   app_id +=  '.devel'
-  app_name += ' (devel)'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
   app_version += '-@0@'.format (vcs_tag)
   vala_flags += ['--define', 'DEVEL']
