@@ -43,7 +43,7 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
     dropdown.notify["selected-item"].connect (on_selected_language);
   }
 
-  public void on_selected_language () {
+  private void on_selected_language () {
       var selected_lang = dropdown.get_selected_item () as Lang;
       language_changed (selected_lang.code);
   }

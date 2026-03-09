@@ -35,7 +35,7 @@ public class Inscriptions.LanguageSelectionBox : Gtk.Box {
     };
 
     //TRANSLATORS: This is for a button that switches source and target language
-    var switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat") {
+    var switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
       tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages"))
     };
     switchlang_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG;
