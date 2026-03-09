@@ -11,9 +11,6 @@ public class Inscriptions.Pane : Gtk.Box {
 
     public Inscriptions.DDModel model {get; construct;}
 
-    public Gtk.Revealer dropdown_revealer;
-    public Gtk.DropDown dropdown;
-    public Inscriptions.Lang selected;
     public Inscriptions.TextView textview;
     public Gtk.ScrolledWindow scrolledwindow;
     public Gtk.ActionBar actionbar;
@@ -28,32 +25,9 @@ public class Inscriptions.Pane : Gtk.Box {
         set { textview.buffer.text = value;}
     }
 
-    public string language {
-        owned get { return get_selected_language ();}
-        set { set_selected_language (value);}
-    }
-
-    public signal void language_changed (string code = "");
-
-    public Pane (DDModel model) {
-        Object (model: model);
-    }
-
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         spacing = 0;
-
-        var expression = new Gtk.PropertyExpression (typeof(Inscriptions.Lang), null, "both");
-
-        /* ---------------- DROPDOWN ---------------- */
-		dropdown = new Gtk.DropDown (model.model, expression) {
-            factory = model.factory_header,
-            list_factory = model.factory_list,
-            enable_search = true,
-            search_match_mode= Gtk.StringFilterMatchMode.SUBSTRING,
-            show_arrow = false
-        };
-		dropdown.notify["selected-item"].connect(on_selected_language);
 
         /* ---------------- VIEW ---------------- */
         textview = new Inscriptions.TextView ();
@@ -97,37 +71,12 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         stack.add_child (main_view);
 
-        append (dropdown);
         append (stack);
 
         toast.default_action.connect (() => {
             textview.buffer.undo ();
         });
     }
-
-    public void on_selected_language () {
-        selected = dropdown.get_selected_item () as Lang;
-		language_changed (selected.code);
-        //print ("\nS selected %s:%s", selected.code, selected.name);
-    }
-
-    private void set_selected_language (string code) {
-        //print ("got " + code + "\n");
-        var position = model.model_where_code (code);
-        dropdown.set_selected (position);
-    }
-
-    private string get_selected_language () {
-        selected = dropdown.get_selected_item () as Lang;
-        //print ("is selected " + selected.code + selected.name + "\n");
-        return selected.code;
-    }
-
-    public string language_localized_name () {
-        selected = dropdown.get_selected_item () as Lang;
-        return selected.name;
-    }
-
     // Respectful of Undo
     public void replace_text (string new_text) {
 

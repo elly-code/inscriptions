@@ -8,9 +8,10 @@
  */
 public class Inscriptions.TranslationView : Gtk.Box {
 
-    Gtk.Paned paned {get; set;}
+    Gtk.CenterBox paned {get; set;}
     public Inscriptions.SourcePane source_pane;
     public Inscriptions.TargetPane target_pane;
+    private Inscriptions.LanguageSelectionBox language_selection;
 
     // Add a debounce so we aren't requesting the API constantly
     public uint debounce_timer_id = 0;
@@ -37,7 +38,7 @@ public class Inscriptions.TranslationView : Gtk.Box {
     };
 
     construct {
-        orientation = HORIZONTAL;
+        orientation = VERTICAL;
         spacing = 0;
 
         actions = new SimpleActionGroup ();
@@ -58,26 +59,26 @@ public class Inscriptions.TranslationView : Gtk.Box {
 
         /* ---------------- UI ---------------- */
         source_pane = new Inscriptions.SourcePane ();
-        var selected_source_language = Application.settings.get_string ("source-language");
-
-        source_pane.language = selected_source_language;
-
         target_pane = new Inscriptions.TargetPane ();
-        var selected_target_language = Application.settings.get_string ("target-language");
-        target_pane.language = selected_target_language;
 
-        paned = new Gtk.Paned (HORIZONTAL) {
-            start_child = source_pane,
-            end_child = target_pane,
-            shrink_start_child = shrink_end_child = false
+        paned = new Gtk.CenterBox () {
+            vexpand = true
         };
+        paned.start_widget = source_pane;
+        paned.center_widget = new Gtk.Separator (VERTICAL);
+        paned.end_widget = target_pane;
 
+        //  paned.start_ (source_pane);
+        //  paned.append (source_pane);
+        //  paned.append (target_pane);
+
+        language_selection = new Inscriptions.LanguageSelectionBox ();
+        append (language_selection);
         append (paned);
 
 
 
-
-        /* ---------------- CONNECTS ---------------- */
+        /* ---------------- CONNECTS AND BINDS ---------------- */
         // Logic for toggling the panes/layout
         on_orientation_toggled ();
         Application.settings.changed["vertical-layout"].connect (on_orientation_toggled);
@@ -100,16 +101,16 @@ public class Inscriptions.TranslationView : Gtk.Box {
         if (if_connect) {
             // translate when text is entered or user changes any language or option
             source_pane.textview.buffer.changed.connect (on_text_to_translate);
-            source_pane.language_changed.connect (on_text_to_translate);
-            target_pane.language_changed.connect (on_text_to_translate);
+            language_selection.source_changed.connect (on_text_to_translate);
+            language_selection.target_changed.connect (on_text_to_translate);
             Application.settings.changed["context"].connect (on_text_to_translate);
             Application.settings.changed["formality"].connect (on_text_to_translate);
 
         } else {
             // no
             source_pane.textview.buffer.changed.disconnect (on_text_to_translate);
-            source_pane.language_changed.disconnect (on_text_to_translate);
-            target_pane.language_changed.disconnect (on_text_to_translate);
+            language_selection.source_changed.disconnect (on_text_to_translate);
+            language_selection.target_changed.disconnect (on_text_to_translate);
             Application.settings.changed["context"].disconnect (on_text_to_translate);
             Application.settings.changed["formality"].disconnect (on_text_to_translate);
         }
@@ -124,17 +125,17 @@ public class Inscriptions.TranslationView : Gtk.Box {
         connect_all (false);
 
         // Temp variables
-        var newtarget = source_pane.language;
+        var newtarget = language_selection.selected_source;
         var newtarget_text = source_pane.text;
 
-        var newsource = target_pane.language;
+        var newsource = language_selection.selected_target;
         var newsource_text = target_pane.text;
 
         // Letsgo
-        source_pane.language = newsource;
+        language_selection.selected_source = newsource;
         source_pane.text = newsource_text;
 
-        target_pane.language = newtarget;
+        language_selection.selected_target = newtarget;
         target_pane.text = newtarget_text;
 
         source_pane.textview.refresh ();
@@ -166,7 +167,7 @@ public class Inscriptions.TranslationView : Gtk.Box {
      * Filter not-requests, set or reset debounce_timer
      */
     public void on_text_to_translate () {
-        if (source_pane.language == target_pane.language) {
+        if (language_selection.selected_source == language_selection.selected_target) {
             source_pane.message (_("Target language is the same as source"));
             return;
         }

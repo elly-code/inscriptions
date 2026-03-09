@@ -8,17 +8,9 @@
  */
 public class Inscriptions.SourcePane : Inscriptions.Pane {
 
-  public SourcePane () {
-      var model = new Inscriptions.DDModel ();
-      foreach (var language in Inscriptions.SourceLang ()) {
-          model.model_append (language);
-      }
-      base (model);
-  }
-
   construct {
       stack.visible_child = main_view;
-      dropdown.tooltip_text = _("Set the language to translate from");
+      //
 
       var options_button_label = new Gtk.Label (_("Options"));
       var options_button_box = new Gtk.Box (HORIZONTAL, 0);
@@ -68,23 +60,11 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
 
       /***************** CONNECTS AND BINDS *****************/
 
-      language = Application.settings.get_string ("source-language");
-      Application.settings.bind ("source-language", 
-        this, "language", 
-        GLib.SettingsBindFlags.DEFAULT
-      );
-
       paste_button.clicked.connect (paste_from_clipboard);
-      language_changed.connect (on_language_changed);
-
       textview.buffer.changed.connect (() => {
         clear_button.sensitive = (text != "");
       });
     }
-
-  private void on_language_changed (string code) {
-    Application.settings.set_string ("source-language", code);
-  }
 
   private void paste_from_clipboard () {
     var clipboard = Gdk.Display.get_default ().get_clipboard ();
