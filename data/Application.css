@@ -59,26 +59,26 @@ Base from wpkelso: #33434eff
 }
 
 /* Font zooms */
-.s20 {font-size: 20%;}
-.s40 {font-size: 40%;}
-.s60 {font-size: 60%;}
-.s80 {font-size: 80%;}
-.s100 {font-size: 100%;}
-.s120 {font-size: 120%;}
-.s140 {font-size: 140%;}
-.s160 {font-size: 160%;}
-.s180 {font-size: 180%;}
-.s200 {font-size: 200%;}
-.s220 {font-size: 220%;}
-.s240 {font-size: 240%;}
-.s260 {font-size: 260%;}
-.s280 {font-size: 280%;}
-.s300 {font-size: 300%;}
-.s320 {font-size: 320%;}
-.s340 {font-size: 340%;}
-.s360 {font-size: 360%;}
-.s380 {font-size: 380%;}
-.s400 {font-size: 400%;}
+.s20 textview.view {font-size: 20%;}
+.s40 textview.view {font-size: 40%;}
+.s60 textview.view {font-size: 60%;}
+.s80 textview.view {font-size: 80%;}
+.s100 textview.view {font-size: 100%;}
+.s120 textview.view {font-size: 120%;}
+.s140 textview.view {font-size: 140%;}
+.s160 textview.view {font-size: 160%;}
+.s180 textview.view {font-size: 180%;}
+.s200 textview.view {font-size: 200%;}
+.s220 textview.view {font-size: 220%;}
+.s240 textview.view {font-size: 240%;}
+.s260 textview.view {font-size: 260%;}
+.s280 textview.view {font-size: 280%;}
+.s300 textview.view {font-size: 300%;}
+.s320 textview.view {font-size: 320%;}
+.s340 textview.view {font-size: 340%;}
+.s360 textview.view {font-size: 360%;}
+.s380 textview.view {font-size: 380%;}
+.s400 textview.view {font-size: 400%;}
 
 /* Devel builds get these. Libadwaita has that too, but we do not use it. */
 window.devel {

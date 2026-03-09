@@ -7,7 +7,7 @@
  * A base object that is then subclassed into a SourcePane and a TargetPane.
  * It takes a DDModel to fill the dropdown with languages
  */
-public class Inscriptions.TextView : Inscriptions.ZoomableTextView {
+public class Inscriptions.TextView : Gtk.TextView {
 
     static Gtk.Settings gtk_settings = Gtk.Settings.get_default ();
     HighlightColor[] all_colors = HighlightColor.all ();

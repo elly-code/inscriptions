@@ -11,6 +11,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     Inscriptions.HeaderBar headerbar;
     Gtk.Stack stack_window_view;
+    ZoomController zoom_controller;
 
     public Inscriptions.TranslationView translation_view;
     Inscriptions.ErrorView? errorview = null;
@@ -54,6 +55,24 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
         stack_window_view.visible_child = translation_view;
         set_focus (translation_view.source_pane.textview);
+
+
+
+
+        zoom_controller = new ZoomController ((Gtk.Widget)this);
+
+        var keypress_controller = new Gtk.EventControllerKey ();
+        var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+
+        ((Gtk.Widget)this).add_controller (keypress_controller);
+        ((Gtk.Widget)this).add_controller (scroll_controller);
+
+        // We need this for Ctr + Scroll. We delegate everything to zoomcontroller
+        keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
+        keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
+        scroll_controller.scroll.connect (zoom_controller.on_scroll);
 
 
 

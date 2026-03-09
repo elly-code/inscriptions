@@ -14,23 +14,24 @@
 public class Inscriptions.ZoomController : Object {
 
     private static bool is_control_key_pressed = false;
-    private weak Gtk.Widget widget;
+    public Gtk.Widget widget {get; construct;}
 
-    const int ZOOM_MAX = 300;
-    const int DEFAULT_ZOOM = 100;
-    const int ZOOM_MIN = 20;
+    const uint ZOOM_MAX = 400;
+    const uint DEFAULT_ZOOM = 100;
+    const uint ZOOM_MIN = 20;
 
+    public signal void changed ();
 
     // Avoid setting this unless it is to restore a specific value, do_set_zoom does not check input
-    private int _old_zoom = DEFAULT_ZOOM;
-    public int zoom {
+    private uint _old_zoom = DEFAULT_ZOOM;
+    public uint zoom {
         get {return _old_zoom;}
         set {do_set_zoom (value);}
     }
 
     public ZoomController (Gtk.Widget widget) {
-        this.widget = widget;
-        do_set_zoom (DEFAULT_ZOOM);
+        Object (widget: widget,
+                zoom: DEFAULT_ZOOM);
     }
 
     /**
@@ -79,13 +80,14 @@ public class Inscriptions.ZoomController : Object {
     /**
     * Switch zoom classes, then reflect in the UI and tell the application
     */
-    private void do_set_zoom (int new_zoom) {
+    private void do_set_zoom (uint new_zoom) {
         print ("Setting zoom: " + zoom.to_string ());
 
         // Switches the classes that control font size
-        widget.remove_css_class (ZoomLevel.from_int ( _old_zoom).to_css_class ());
+        widget.remove_css_class (ZoomLevel.from_uint ( _old_zoom).to_css_class ());
         _old_zoom = new_zoom;
-        widget.add_css_class (ZoomLevel.from_int ( new_zoom).to_css_class ());
+        widget.add_css_class (ZoomLevel.from_uint ( new_zoom).to_css_class ());
+        changed ();
     }
 
     public bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {

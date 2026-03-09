@@ -74,6 +74,9 @@ public class Inscriptions.TranslationView : Gtk.Box {
 
         append (paned);
 
+
+
+
         /* ---------------- CONNECTS ---------------- */
         // Logic for toggling the panes/layout
         on_orientation_toggled ();
@@ -86,8 +89,8 @@ public class Inscriptions.TranslationView : Gtk.Box {
             }
         });
 
-        source_pane.scrolledwindow.vadjustment.bind_property (
-            "value",
+        // Synchronize scroll and zoom for both panes 
+        source_pane.scrolledwindow.vadjustment.bind_property ("value",
             target_pane.scrolledwindow.vadjustment, "value",
             GLib.BindingFlags.SYNC_CREATE | GLib.BindingFlags.BIDIRECTIONAL
         );

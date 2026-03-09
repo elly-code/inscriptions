@@ -24,13 +24,18 @@ public enum Inscriptions.ZoomLevel {
     MEGAHUGE,
     ULTRAHUGE,
     MASSIVE,
+    PLANET,
+    SOLARSYSTEM,
+    GALAXY,
+    CLUSTER,
+    MEGACLUSTER,
     URPARENT;
 
     /*************************************************/
     /**
     * Returns an Int representation we can use to display and store the value
     */
-    public int to_int () {
+    public uint to_uint () {
         switch (this) {
             case ANTSIZED: return 20;
             case MUCHSMALLER: return 40;
@@ -46,7 +51,12 @@ public enum Inscriptions.ZoomLevel {
             case MEGAHUGE: return 240;
             case ULTRAHUGE: return 260;
             case MASSIVE: return 280;
-            case URPARENT: return 300;
+            case PLANET: return 300;
+            case SOLARSYSTEM: return 320;
+            case GALAXY: return 340;
+            case CLUSTER: return 360;
+            case MEGACLUSTER: return 380;
+            case URPARENT: return 400;
             default: return 100;
         }
     }
@@ -56,14 +66,14 @@ public enum Inscriptions.ZoomLevel {
     * CSS name is s + size. CSS classes cannot start name with number
     */
     public string to_css_class () {
-        return "s" + this.to_int ().to_string ();
+        return "s" + this.to_uint ().to_string ();
     }
 
     /*************************************************/
     /**
     * We cannot save Enums in JSON, so this recovers the enum from stored int
     */
-    public static ZoomLevel from_int (int wtf_is_this) {
+    public static ZoomLevel from_uint (uint wtf_is_this) {
         switch (wtf_is_this) {
             case 20: return ANTSIZED;
             case 40: return MUCHSMALLER;
@@ -79,7 +89,12 @@ public enum Inscriptions.ZoomLevel {
             case 240: return MEGAHUGE;
             case 260: return ULTRAHUGE;
             case 280: return MASSIVE;
-            case 300: return URPARENT;
+            case 300: return PLANET;
+            case 320: return SOLARSYSTEM;
+            case 340: return GALAXY;
+            case 360: return CLUSTER;
+            case 380: return MEGACLUSTER;
+            case 400: return URPARENT;
             default: return NORMAL;
         }
     }

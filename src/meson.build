@@ -37,8 +37,6 @@ sources = files (
   'Enums' / 'ZoomType.vala',
   'Enums' / 'ZoomLevel.vala',
   'Services' / 'ZoomController.vala',
-  'Widgets' / 'ZoomableTextView.vala',
-
 
   'Views' / 'TranslationView.vala',
   'Views' / 'ErrorView.vala',
