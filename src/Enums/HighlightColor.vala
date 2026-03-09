@@ -3,6 +3,9 @@
  * SPDX-FileCopyrightText:  2025 Stella & Charlie (teamcons.carrd.co)
  */
 
+// I like aligning the equals
+//vala-lint=skip-file
+ 
 /**
  * Used in the custom TextView, alternates background color between sentences.
  */

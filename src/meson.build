@@ -19,6 +19,7 @@ sources = files (
   'Widgets' / 'Panes' / 'SourcePane.vala',
   'Widgets' / 'Panes' / 'TargetPane.vala',
 
+  'Widgets' / 'LanguageItem.vala',
   'Widgets' / 'LogToolbar.vala',
   'Widgets' / 'ErrorBonusBox.vala',
   'Widgets' / 'TextView.vala',
@@ -33,6 +34,12 @@ sources = files (
   'Widgets' / 'PopoverWidgets' / 'ApiEntry.vala',
   'Widgets' / 'PopoverWidgets' / 'ApiLevel.vala',
 
+  'Enums' / 'ZoomType.vala',
+  'Enums' / 'ZoomLevel.vala',
+  'Services' / 'ZoomController.vala',
+  'Widgets' / 'ZoomableTextView.vala',
+
+
   'Views' / 'TranslationView.vala',
   'Views' / 'ErrorView.vala',
   'Views' / 'LogView.vala',
@@ -43,7 +50,7 @@ sources = files (
 
 # Create a new executable, list the files we want to compile, and install
 executable(
-    meson.project_name (),
+    app_id,
     config_file,
     gresource,
     sources,

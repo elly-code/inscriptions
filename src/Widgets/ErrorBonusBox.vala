@@ -14,6 +14,8 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
     public uint status { get; construct; }
     public bool if_report { get; construct; }
 
+    public Gtk.Revealer usage_revealer;
+
     public ErrorBonusBox (uint status, bool if_report) {
         Object (status: status,
                 if_report: if_report);
@@ -26,7 +28,9 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
         margin_bottom = MARGIN_MENU_STANDARD;
 
         // In the event the API is the issue, ask user
-        if (status == Soup.Status.FORBIDDEN || status == StatusCode.NO_KEY) {
+        StatusCode[] api_edit_list = {StatusCode.NO_KEY, StatusCode.FORBIDDEN, StatusCode.EDIT_KEY};
+
+        if (status in api_edit_list) {
             
             var api_entry = new Inscriptions.ApiEntry ();
 
@@ -35,7 +39,16 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
                 halign = Gtk.Align.START
             };
 
-            if (status == StatusCode.NO_KEY) {
+            var api_level = new Inscriptions.ApiLevel ();
+            usage_revealer = new Gtk.Revealer () {
+                transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN,
+                transition_duration = 500,
+                child = api_level,
+                reveal_child = (status != StatusCode.NO_KEY)
+            };
+
+
+            if (status == StatusCode.NO_KEY || status == StatusCode.FORBIDDEN) {
                 var explanation = new Gtk.Label (_("An API Key is like a password given by DeepL\nIt allows you to access services from applications such as this one\nIt looks like this: fr5617a-4875-4763-9119-564tjdvg89:fx")) {
                     wrap_mode = Pango.WrapMode.WORD_CHAR,
                     halign = Gtk.Align.START
@@ -47,6 +60,11 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
             append (api_entry);
             append (link);
+            //append (usage_revealer);
+
+
+
+
         };
 
 

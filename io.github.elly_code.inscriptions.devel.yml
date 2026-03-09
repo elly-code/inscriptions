@@ -1,0 +1,43 @@
+#
+# This is danger
+#
+id: io.github.elly_code.inscriptions.devel
+# elementary SDK is not available on Flathub, so use the elementary BaseApp instead
+base: io.elementary.BaseApp
+base-version: 'circe-25.08'
+runtime: org.gnome.Platform
+runtime-version: '49'
+sdk: org.gnome.Sdk
+command: io.github.elly_code.inscriptions.devel
+
+tags: ['devel']
+desktop-file-name-suffix: ' (Development)'
+
+finish-args:
+  - '--share=ipc'
+  - '--device=dri'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+  # Required for communication with DeepL API
+  - '--share=network'
+
+cleanup:
+  -  '/include'
+  -  '/lib/pkgconfig'
+  -  '/man'
+  -  '/share/doc'
+  -  '/share/gtk-doc'
+  -  '/share/man'
+  -  '/share/pkgconfig'
+  -  '/share/installed-tests'
+  -  '*.la'
+  -  '*.a'
+
+modules:
+  - name: inscriptions
+    buildsystem: meson
+    config-opts:
+      - -Ddevelopment=true
+    sources:
+      - type: dir
+        path: .

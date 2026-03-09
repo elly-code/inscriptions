@@ -2,6 +2,7 @@ src/Windows/MainWindow.vala
 src/Views/TranslationView.vala
 src/Widgets/HeaderBar.vala
 src/Views/ErrorView.vala
+src/Enums/StatusCode.vala
 src/Widgets/ErrorBonusBox.vala
 src/Views/LogView.vala
 src/Widgets/PopoverWidgets/ApiEntry.vala

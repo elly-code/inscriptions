@@ -65,7 +65,10 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>m"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
 
-        title_label = new Gtk.Label (_("Inscriptions"));
+        title_label = new Gtk.Label (APP_NAME);
+#if DEVEL
+        title_label.label += _(" (Devel)");
+#endif
         title_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
 
         title_switcher = new Gtk.StackSwitcher () {
@@ -116,7 +119,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         toolbar.append (switchlang_button);
-        toolbar.append (toggle_highlight);
+        //toolbar.append (toggle_highlight);
 
         toolbar_revealer = new Gtk.Revealer () {
             child = toolbar,

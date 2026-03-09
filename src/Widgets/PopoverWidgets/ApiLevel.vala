@@ -10,8 +10,8 @@
 public class Inscriptions.ApiLevel : Gtk.Box {
 
     Gtk.LevelBar api_usage;
-    Gtk.Spinner loading;
-    Gtk.Stack refresher;
+    Gtk.Spinner spinner;
+    Gtk.Button refresh_button;
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
@@ -28,18 +28,34 @@ public class Inscriptions.ApiLevel : Gtk.Box {
         api_usage_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
         cb.start_widget = api_usage_label;
 
-        refresher = new Gtk.Stack ();
+        spinner = new Gtk.Spinner () {
+            spinning = false,
+            visible = false
+        };
 
-        loading = new Gtk.Spinner ();
-        refresher.add_named (loading, "loading");
 
-        var hint = new Gtk.Button.from_icon_name ("view-refresh") {
+        refresh_button = new Gtk.Button.from_icon_name ("view-refresh") {
             tooltip_text = _("Update API usage")
         };
-        refresher.add_named (hint, "hint");
-        refresher.visible_child_name = "hint";
 
-        cb.end_widget = refresher;
+        var edit_key_button = new Gtk.Button.from_icon_name ("dialog-password") {
+        tooltip_text = _("Use a different API key of your choosing"),
+        };
+        edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);
+        edit_key_button.clicked.connect (() => {
+            Application.backend.answer_received (StatusCode.EDIT_KEY, _("Requested by user"));
+        });
+
+
+        var minibox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, Inscriptions.SPACING_TOOLBAR_MINI) {
+            valign = Gtk.Align.CENTER
+        };
+
+        minibox.append (edit_key_button);
+        minibox.append (spinner);
+        minibox.append (refresh_button);
+
+        cb.end_widget = minibox;
 
         append (cb);
 
@@ -48,10 +64,18 @@ public class Inscriptions.ApiLevel : Gtk.Box {
         api_usage.min_value = 0;
         append (api_usage);
 
+        spinner.bind_property ("spinning",
+         refresh_button, "visible",
+         GLib.BindingFlags.INVERT_BOOLEAN | GLib.BindingFlags.SYNC_CREATE);
+
+        spinner.bind_property ("spinning",
+         spinner, "visible",
+         GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
+
         Application.settings.bind ("current-usage", api_usage, "value", SettingsBindFlags.DEFAULT);
         Application.settings.bind ("max-usage", api_usage, "max-value", SettingsBindFlags.DEFAULT);
 
-        hint.clicked.connect (on_refresh);
+        refresh_button.clicked.connect (on_refresh);
         Application.backend.answer_received.connect (updated_usage);
         Application.backend.usage_retrieved.connect (updated_usage);
         updated_usage ();
@@ -81,15 +105,11 @@ public class Inscriptions.ApiLevel : Gtk.Box {
             Application.settings.get_int ("current-usage").to_string (),
             Application.settings.get_int ("max-usage").to_string ());
 
-        if (refresher.visible_child_name == "loading") {
-            refresher.visible_child_name = "hint";
-            loading.spinning = false;
-        }
+            spinner.spinning = false;
     }
 
     private void on_refresh () {
-        loading.spinning = true;
-        refresher.visible_child_name = "loading";
+        spinner.spinning = true;
         Application.backend.check_usage ();
     }
 }

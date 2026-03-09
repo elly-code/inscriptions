@@ -12,15 +12,16 @@ public class Inscriptions.Lang : Object {
     public string code {get; construct;}
     public string name {get; construct;}
     public string both {get; construct;}
+    public bool enabled {get; set; default = false;}
 
     public Lang (string code, string name) {        
-        Object( code: code,
+        Object (code: code,
                 name: name);
     }
 
     // "Both" serves to evaluate both name and code in a single expression
     construct {
-        both = name + "|" + code;
+        both = "%s|%s".printf(name, code);
     }
 
 	public bool efunc(Lang a, Lang b) {

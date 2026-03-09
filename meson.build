@@ -2,20 +2,33 @@
 project(
   'io.github.elly_code.inscriptions',
   'vala', 'c',
-  version: '1.0.0'
+  version: '1.1.0'
 )
+
+app_name = 'Inscriptions'
+app_id = meson.project_name()
+app_version = meson.project_version()
 
 #================================
 # Include Gnome and the translations module
 gnome = import('gnome')
 i18n = import('i18n')
 
-# Set our translation domain
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
-windows_build = build_machine.system() == 'windows'
 
 vala_flags = []
+if get_option('development')
+  app_id +=  '.devel'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  app_version += '-@0@'.format (vcs_tag)
+  vala_flags += ['--define', 'DEVEL']
+
+endif
+
+# Set our translation domain
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_id), language:'c')
+
 # Windows needs icons, special arguments, and skip libportal
+windows_build = build_machine.system() == 'windows'
 if windows_build
     vala_flags += ['--define', 'WINDOWS']
 endif
@@ -27,7 +40,11 @@ add_project_arguments(vala_flags, language: 'vala')
 config_data = configuration_data()
 config_data.set('version', meson.project_version())
 config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
-config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+config_data.set_quoted('GETTEXT_PACKAGE', app_id)
+config_data.set_quoted('APP_NAME', app_name)
+config_data.set_quoted('APP_ID', app_id)
+config_data.set_quoted('APP_VERSION', app_version)
+
 config_file = configure_file(
   input: 'src/Config.vala.in',
   output: '@BASENAME@',

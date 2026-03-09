@@ -3,15 +3,139 @@
  * SPDX-FileCopyrightText:  2025 Stella & Charlie (teamcons.carrd.co)
  */
 
+// I like aligning the equals
+//vala-lint=skip-file
+
 /**
  * libsoup.Status does not have all error codes, so we extend handling in ErrorView/ErrorBonuxBox with these custom ones.
  * Custom codes we can use safely for at least 0 to 10.
  * Specific return codes to DeepL, we use their Int representation.
  */
 public enum Inscriptions.StatusCode {
-    NO_KEY = 0,
-    NO_INTERNET = 1,
-    QUOTA = 456,
-    TOO_MANY_REQUESTS = 429,
-    SSL_HANDSHAKE_ERROR = 525;
+
+    // Custom
+    NO_KEY                  = 0,
+    NO_INTERNET             = 1,
+    EDIT_KEY                = 2,
+    UNKNOWN                 = 3,
+
+    // 200
+    OK                      = Soup.Status.OK,
+
+    // 400
+    BAD_REQUEST             = Soup.Status.BAD_REQUEST,
+    FORBIDDEN               = Soup.Status.FORBIDDEN,
+    REQUEST_TIMEOUT         = Soup.Status.REQUEST_TIMEOUT,
+    TOO_MANY_REQUESTS       = 429,
+    QUOTA                   = 456,
+
+    // 500
+    INTERNAL_SERVER_ERROR   = Soup.Status.INTERNAL_SERVER_ERROR,
+    GATEWAY_TIMEOUT         = Soup.Status.GATEWAY_TIMEOUT,
+    SSL_HANDSHAKE_ERROR     = 525
+    ;
+
+    /**
+    * Utility function to make use of the various error codes, and return comprehensive explanations.
+    * It is here better to take the status than let the backend tell us, so we conserve the code for unknown errors.
+    * Yes, some refers to Soup.Status making the declaration above redundant, but i feel it may be cleaner to keep them in case we need a more native approach.
+    */
+    public static void status_to_details (uint status,
+        out string explanation_title, out string explanation_text, out string icon_name, out bool report_link) {
+
+        // Set some defaults
+        icon_name = "dialog-error";
+        report_link = false;
+
+        switch (status) {
+            //Custom status codes feel super evil
+            //TRANSLATORS: The following texts show up respectively, as a title, and error message, when translating has gone wrong. This needs to be as little technical as possible
+            case StatusCode.NO_KEY:
+                explanation_title   = _("Hello, World!");
+                explanation_text    = _("You need a DeepL API key to translate text\nIt can be either DeepL Free or Pro");
+                icon_name           = "dialog-password";
+                return;
+
+            case StatusCode.NO_INTERNET:
+                explanation_title   = _("No Internet");
+                icon_name           = "network-offline-symbolic";
+
+                if (Environment.get_variable ("XDG_CURRENT_DESKTOP") == "Pantheon") {
+                    ///TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
+                    explanation_text = _("Please verify you are <a href='%s'>connected to the internet</a>, and that this app has <a href='%s'>permission to access it</a>").printf (Granite.SettingsUri.NETWORK, Granite.SettingsUri.PERMISSIONS);
+                } else {
+                    explanation_text = _("Please verify you are connected to the internet, and that this app has permission to access it");
+                }
+                return;
+
+            case StatusCode.EDIT_KEY:
+                explanation_title   = _("Edit API Key");
+                explanation_text    = _("Yo");
+                icon_name           = "dialog-password";
+                return;
+
+
+            case Soup.Status.OK:
+                explanation_title   = _("Everything works great :)");
+                explanation_text    = _("If you see this and are not me, then it means i forgor to disable this error");
+                icon_name           = "process-completed";
+                report_link         = true;
+                return;
+
+            case Soup.Status.BAD_REQUEST:
+                explanation_title   = _("Bad request");
+                explanation_text    = _("The app sent a wrong translation request to DeepL\nPlease report this to the app's developer with as much details as you can");
+                icon_name           = "dialog-warning";
+                return;
+
+            case Soup.Status.FORBIDDEN:
+                explanation_title   = _("Forbidden");
+                explanation_text    = _("Your API key is invalid. Make sure it is the correct one!");
+                icon_name           = "dialog-error";
+                return;
+
+            case StatusCode.TOO_MANY_REQUESTS:
+                explanation_title   = _("Too many requests");
+                explanation_text    = _("Please wait before retrying. This error should not be possible to happen for this app...");
+                icon_name           = "dialog-warning";
+                return;
+
+            case StatusCode.QUOTA:
+                explanation_title   = _("Your monthly quota has been exceeded");
+                explanation_text    = _("If you are a Pro API user, this corresponds to your Cost Control limit");
+                icon_name           = "dialog-warning";
+                return;
+
+            case Soup.Status.INTERNAL_SERVER_ERROR:
+                explanation_title   = _("Internal server error");
+                explanation_text    = _("Retry in a minute? If you see this several times, check online if there is a DeepL service interruption");
+                icon_name           = "dialog-information";
+                return;
+
+            case StatusCode.SSL_HANDSHAKE_ERROR:
+                explanation_title   = _("SSL Handshake error");
+                explanation_text    = _("This is an issue DeepL is aware of and this app can do nothing about...\nIf you have the know-show, going through a simple authenticated proxy may work");
+                icon_name           = "network-error";
+                return;
+
+            case Soup.Status.REQUEST_TIMEOUT:
+                explanation_title   = _("Request timeout");
+                explanation_text    = _("No answer has been received. Either DeepL or your connection are having issues");
+                icon_name           = "network-error";
+                return;
+
+            case Soup.Status.GATEWAY_TIMEOUT:
+                explanation_title   = _("Gateway timeout");
+                explanation_text    = _("No answer has been received. Either DeepL or your connection are having issues");
+                icon_name           = "network-error";
+                return;
+
+            default:
+                explanation_title   = _("Unknown error");
+                explanation_text    = _("Status code %s, please report this to this app's developer").printf(status.to_string ());
+                icon_name           = "dialog-question";
+                report_link         = true;
+                return;
+        }
+    }
 }

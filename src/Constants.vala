@@ -6,7 +6,12 @@
 namespace Inscriptions {
 
 	// Alkrjnlgjrt
-	public const string RDNN = "io.github.elly_code.inscriptions";  
+#if DEVEL
+	public const string RDNN = "io.github.elly_code.inscriptions.devel";
+#else
+	public const string RDNN = "io.github.elly_code.inscriptions";
+#endif
+
 	public const string DONATE_LINK = "https://ko-fi.com/teamcons/tip";
 	public const string LINK = "https://www.deepl.com/your-account/keys";
     public const int DEBOUNCE_INTERVAL = 1250; // ms
@@ -94,15 +99,15 @@ namespace Inscriptions {
 	public Lang[] TargetLang () {
 		return {
 			new Lang ("system",_("System language")),
-
 			new Lang ("AR",_("Arabic")),
 			new Lang ("BG",_("Bulgarian")),
 			new Lang ("CS",_("Czech")),
 			new Lang ("DA",_("Danish")),
 			new Lang ("DE",_("German")),
 			new Lang ("EL",_("Greek")),
-			new Lang ("EN",_("English (GB)")),
-			new Lang ("EN",_("English (US)")),
+			new Lang ("EN-GB",_("English (GB)")),
+			new Lang ("EN-US",_("English (US)")),
+			new Lang ("EO",_("Spanish (All)")),
 			new Lang ("ES",_("Spanish (All)")),
 			new Lang ("ES-419",_("Spanish (Latin American)")),
 			new Lang ("ET",_("Estonian")),

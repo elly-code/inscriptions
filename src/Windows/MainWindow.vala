@@ -25,6 +25,9 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
         maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
 
+#if DEVEL
+        add_css_class ("devel");
+#endif
 
         /* ---------------- HEADERBAR ---------------- */
 
