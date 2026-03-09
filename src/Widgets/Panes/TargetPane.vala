@@ -12,16 +12,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
 
-    public TargetPane () {
-        var model = new Inscriptions.DDModel ();
-        foreach (var language in Inscriptions.TargetLang ()) {
-            model.model_append (language);
-        }
-        base (model);
-    }
-
     construct {
-        dropdown.tooltip_text = _("Set the language to translate to");
         //textview.editable = false;
 
         /* -------- PLACEHOLDER -------- */
@@ -33,7 +24,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             margin_end = MARGIN_MENU_HALF
         };
         
-        var placeholder = new Gtk.Label (_("Ready to translate")) {
+        var placeholder = new Gtk.Label (_("Ready!")) {
             wrap = true
         };
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -100,15 +91,8 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             placeholder_switcher, "active", 
             GLib.SettingsBindFlags.DEFAULT);
 
-        language = Application.settings.get_string ("target-language");
-        Application.settings.bind ("target-language", 
-            this, "language", 
-            GLib.SettingsBindFlags.DEFAULT
-        );
-
         Application.settings.changed["auto-translate"].connect (on_auto_translate_changed);
         copy.clicked.connect (copy_to_clipboard);
-        language_changed.connect (on_language_changed);
         textview.buffer.changed.connect (on_buffer_changed);
     }
 
@@ -121,11 +105,6 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
             message (_("Automatic translation paused"));
         }
-    }
-
-    private void on_language_changed (string code) {
-        Application.settings.set_string ("target-language", code);
-        clear ();
     }
 
     private void copy_to_clipboard () {

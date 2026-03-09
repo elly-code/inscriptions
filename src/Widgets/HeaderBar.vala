@@ -105,10 +105,10 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         
 
         //TRANSLATORS: This is for a button that switches source and target language
-        switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat") {
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages"))
-        };
-        switchlang_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG;
+        //  switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat") {
+        //      tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages"))
+        //  };
+        //  switchlang_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG;
 
         var toggle_highlight = new Gtk.ToggleButton () {
             icon_name = "format-text-highlight",
@@ -118,7 +118,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         };
 
         var toolbar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        toolbar.append (switchlang_button);
+        //toolbar.append (switchlang_button);
         //toolbar.append (toggle_highlight);
 
         toolbar_revealer = new Gtk.Revealer () {
