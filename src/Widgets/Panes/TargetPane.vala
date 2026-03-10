@@ -56,6 +56,8 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         stack.add_child (spin_view);
 
+        actionbar.pack_start (new ToggleHighlight ());
+
 
         /* -------- TOOLBAR -------- */
         var auto_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {

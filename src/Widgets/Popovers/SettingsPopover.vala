@@ -12,7 +12,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
   Gtk.Revealer usage_revealer;
 
   construct {
-    width_request = 200;
+    width_request = 240;
 
     var box = new Gtk.Box (VERTICAL, 9) {
       margin_top = MARGIN_MENU_BIG,
@@ -50,7 +50,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (new OrientationBox ());
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
-    box.append (highlight_switch);
+    //box.append (highlight_switch);
     //box.append (edit_key_button);
     box.append (api_level);
     box.append (new Gtk.Separator (HORIZONTAL));

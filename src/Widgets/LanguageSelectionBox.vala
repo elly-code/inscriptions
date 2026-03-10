@@ -58,18 +58,11 @@ public class Inscriptions.LanguageSelectionBox : Gtk.Box {
 
     /* ---------------- CONNECTS AND BINDS ---------------- */
 
-    Application.settings.bind (KEY_SOURCE_LANGUAGE,
-      this, "selected_source",
-      GLib.SettingsBindFlags.DEFAULT
-    );
+    selected_source = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
+    selected_target = Application.settings.get_string (KEY_TARGET_LANGUAGE);
 
-    Application.settings.bind (KEY_TARGET_LANGUAGE,
-      this, "selected_target",
-      GLib.SettingsBindFlags.DEFAULT
-    );
-
-    dropdown_source.language_changed.connect ( (language_code) => {source_changed (language_code);});
-    dropdown_target.language_changed.connect ( (language_code) => {target_changed (language_code);});
+    dropdown_source.language_changed.connect (on_source_changed);
+    dropdown_target.language_changed.connect (on_target_changed);
   }
 
 
@@ -93,5 +86,15 @@ public class Inscriptions.LanguageSelectionBox : Gtk.Box {
       //print ("is selected " + selected.code + selected.name + "\n");
       return dropdown_target.selected;
     }
+  }
+
+  private void on_source_changed (string language_code) {
+    Application.settings.set_string (KEY_SOURCE_LANGUAGE, language_code);
+    source_changed (language_code);
+  }
+
+  private void on_target_changed (string language_code) {
+    Application.settings.set_string (KEY_TARGET_LANGUAGE, language_code);
+    target_changed (language_code);
   }
 }

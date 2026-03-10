@@ -16,11 +16,9 @@
     NONE;
 
     public static ZoomType from_delta (double delta) {
-
         if (delta == 0) {return NONE;}
 
-        if (delta > 0)
-        {
+        if (delta > 0) {
             return ZOOM_OUT;
 
         } else {

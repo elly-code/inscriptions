@@ -30,7 +30,6 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
 
       actionbar.pack_start (options_button);
 
-
       var clear_button = new Gtk.Button.from_icon_name ("edit-clear-all-symbolic") {
           action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_CLEAR_TEXT,
           tooltip_markup = Granite.markup_accel_tooltip (
@@ -57,6 +56,16 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
           )
       };
       actionbar.pack_end (open_button);
+
+
+
+
+
+
+
+
+
+
 
       /***************** CONNECTS AND BINDS *****************/
 

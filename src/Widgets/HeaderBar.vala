@@ -159,11 +159,11 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         };
         
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        toolbar_right.append (translate_revealer);
+        //toolbar_right.append (translate_revealer);
         toolbar_right.append (popover_button);
 
         headerbar.pack_end (toolbar_right);
-
+        headerbar.pack_end (new TranslateButton ());
 
         child = headerbar;
 
@@ -173,11 +173,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         Application.settings.bind (KEY_HIGHLIGHT,
             toggle_highlight, "active",
             GLib.SettingsBindFlags.DEFAULT);
-
-        Application.settings.bind (KEY_AUTO_TRANSLATE, 
-            translate_revealer, "reveal_child", 
-            SettingsBindFlags.INVERT_BOOLEAN
-        );
     }
 
     private void on_menu () {
