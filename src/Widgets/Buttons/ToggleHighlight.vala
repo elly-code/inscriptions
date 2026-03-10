@@ -6,17 +6,36 @@
 /**
  * Simple two-buttons horizontal box using in SettingsPopover to toggle view
  */
-public class Inscriptions.ToggleHighlight : Granite.ModeSwitch {
+public class Inscriptions.ToggleHighlight : Gtk.Button {
 
-    public ToggleHighlight () {
-        base.from_icon_name ("eye-not-looking-symbolic", "eye-open-negative-filled-symbolic");
+
+    bool _active;
+    public bool active {
+        get {
+            return _active;            
+        }
+        set {
+            if (value) {
+                icon_name = "eye-not-looking-symbolic";
+                tooltip_markup = Granite.markup_accel_tooltip (
+                    {"<Ctrl>H"},
+                    _("Hide highlighting")
+                );
+
+            } else {
+                icon_name = "eye-open-negative-filled-symbolic";
+                    tooltip_markup = Granite.markup_accel_tooltip (
+                    {"<Ctrl>H"},
+                    _("Show highlight for source and target sentences")
+                );
+
+            }
+            _active = value;
+        }
     }
 
     construct {
-        tooltip_markup = Granite.markup_accel_tooltip (
-            {"<Ctrl>H"},
-            _("Highlight source and target sentences")
-        );
+        clicked.connect (() => {active = !active;});
 
         Application.settings.bind (KEY_HIGHLIGHT,
             this, "active",
