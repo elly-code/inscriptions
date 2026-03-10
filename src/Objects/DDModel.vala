@@ -10,7 +10,7 @@
  */
 public class Inscriptions.DDModel : Object {
 
-	static string[] heatmap {get; set;}
+	static string[] heatmap;
 
 	public GLib.ListStore model {get; set;}
 	public Gtk.SignalListItemFactory factory_header {get; set;}
@@ -20,6 +20,8 @@ public class Inscriptions.DDModel : Object {
 	public signal void selection_changed (string language_code_selected);
 
 	public DDModel () {
+		//heatmap = Application.settings.get_strv (KEY_HEATMAP);
+
 		// The Langs will populate this thing
 		model = new GLib.ListStore(typeof(Lang));
 
@@ -49,7 +51,17 @@ public class Inscriptions.DDModel : Object {
 		var item = list_item.get_child () as Gtk.Label;
 		item.label = item_language.name;
 
+		// We save up a heatmap
+		heatmap = {item_language.code, heatmap[0], heatmap[1], heatmap[2], heatmap[3]};
+		//Application.settings.set_strv (KEY_HEATMAP, heatmap);
+
+		print ("\n");
+		foreach (var element in heatmap) {
+			print (element + "\n");
+		}
+
 		// Tell everyone language changed
+		// Items are connected to this and get their shit together out of it
 		selection_changed (item_language.code);
 		//print ("switched to: %s %s\n".printf (item_language.name, item_language.code));
 	}

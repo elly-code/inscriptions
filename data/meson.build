@@ -73,6 +73,7 @@ if not windows_build
     # Inject some variables into the metainfo file before merging in the translations
     appstream_conf = configuration_data()
     appstream_conf.set('APP_ID', app_id)
+    appstream_conf.set('APP_NAME', app_name)
     appstream_conf.set('GETTEXT_PACKAGE', meson.project_name())
     appstream_file_in = configure_file(
         input: 'inscriptions.metainfo.xml.in.in',

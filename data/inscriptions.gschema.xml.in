@@ -69,5 +69,10 @@
       <summary>Whether to highlight both source and target</summary>
       <description>Highlights alternating colours on both source and target in the TextView</description>
     </key>
+    <key name="language-heatmap" type="as">
+      <default>["", "", "", "", ""]</default>
+      <summary>Five last selected language code</summary>
+      <description>A list of recent selected language codes to make obvious in the UI</description>
+    </key>
   </schema>
 </schemalist>

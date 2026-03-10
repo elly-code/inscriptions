@@ -42,6 +42,7 @@ namespace Inscriptions {
 	public const string KEY_VERTICAL_LAYOUT = "vertical-layout";
 	public const string KEY_AUTO_TRANSLATE = "auto-translate";
 	public const string KEY_HIGHLIGHT = "highlight";
+	public const string KEY_HEATMAP = "language-heatmap";
 
 	// Backend
 	public const string KEY_SOURCE_LANGUAGE = "source-language";
