@@ -28,7 +28,7 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   construct {
     selected_emblem = new Gtk.Image.from_icon_name ("emblem-default-symbolic") {
       visible = false,
-      halign = Gtk.Align.START
+      halign = Gtk.Align.END
     };
     selected_emblem.add_css_class (Granite.STYLE_CLASS_FLAT);
 

@@ -19,8 +19,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
 
       var options_button = new Gtk.MenuButton () {
           child = options_button_box,
-          tooltip_text = _("Change options for the translation"),
-          margin_end = MARGIN_MENU_STANDARD
+          tooltip_text = _("Change options for the translation")
       };
       options_button.add_css_class (Granite.STYLE_CLASS_FLAT);
       options_button.add_css_class ("flat_menu_button");
@@ -57,18 +56,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       };
       actionbar.pack_end (open_button);
 
-
-
-
-
-
-
-
-
-
-
       /***************** CONNECTS AND BINDS *****************/
-
       paste_button.clicked.connect (paste_from_clipboard);
       textview.buffer.changed.connect (() => {
         clear_button.sensitive = (text != "");

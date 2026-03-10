@@ -19,7 +19,6 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
   public signal void language_changed (string code = "");
 
   public LanguageDropDown (Lang[] languages) {
-
     hexpand = true;
     model = new Inscriptions.DDModel ();
 

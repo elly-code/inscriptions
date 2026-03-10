@@ -55,7 +55,7 @@ public class Inscriptions.LogView : Gtk.Box {
         clear_button_label.mnemonic_widget = clear_button;
 
 
-        var request_button_label = new Gtk.Label (_("Check Usage"));
+        var request_button_label = new Gtk.Label (_("Usage"));
         var request_button_box = new Gtk.Box (HORIZONTAL, 0);
         request_button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
         request_button_box.append (request_button_label);

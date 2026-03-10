@@ -167,6 +167,10 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         child = headerbar;
 
+#if DEVEL
+        switcher_state (true);
+#endif
+
         /* -------------------- CONNECTS AND BINDS -------------------- */
         back_button.clicked.connect (() => {back_requested ();});
 

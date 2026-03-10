@@ -16,7 +16,7 @@ public class Inscriptions.LogToolbar : Gtk.Box {
     spacing = 0;
 
     /* ---------- SEND BUTTON ---------- */
-    var send_button_label = new Gtk.Label (_("Receive status code: "));
+    var send_button_label = new Gtk.Label (_("Get: "));
     var send_button_box = new Gtk.Box (HORIZONTAL, 0);
     send_button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
     send_button_box.append (send_button_label);

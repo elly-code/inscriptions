@@ -9,6 +9,9 @@
  * In human, this is to have a custom dropdown for language selection
  */
 public class Inscriptions.DDModel : Object {
+
+	static string[] heatmap {get; set;}
+
 	public GLib.ListStore model {get; set;}
 	public Gtk.SignalListItemFactory factory_header {get; set;}
 	public Gtk.SignalListItemFactory factory_list {get; set;}

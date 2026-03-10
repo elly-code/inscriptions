@@ -48,7 +48,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         translation_view = new Inscriptions.TranslationView ();
         insert_action_group ("translation-view", translation_view.actions);
 
-        stack_window_view.add_titled (translation_view, "translation", _("Translations"));
+        stack_window_view.add_titled (translation_view, "translation", _("Translate"));
         stack_window_view.add_titled (new LogView (), "messages", _("Messages"));
 
         child = stack_window_view;
