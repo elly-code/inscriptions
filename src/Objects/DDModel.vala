@@ -10,7 +10,7 @@
  */
 public class Inscriptions.DDModel : Object {
 
-	static string[] heatmap = {"", "", "", "", ""};
+	static string[] heatmap = Application.settings.get_strv (KEY_HEATMAP);
 
 	public GLib.ListStore model {get; set;}
 	public Gtk.SignalListItemFactory factory_header {get; set;}
@@ -58,8 +58,13 @@ public class Inscriptions.DDModel : Object {
 			if (recent_language_code != item_language.code) {
 				temp_heatmap += recent_language_code;
 			}
+
+			if (temp_heatmap.length == 5) {
+				break;
+			}
 		}
 		heatmap = temp_heatmap;
+		Application.settings.set_strv (KEY_HEATMAP, heatmap);
 
 		//Application.settings.set_strv (KEY_HEATMAP, heatmap);
 		print ("\n");

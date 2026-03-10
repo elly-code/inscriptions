@@ -52,7 +52,7 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   }
 
   public void on_position_changed (string language_code_selected) {
-    print ("ADJUST! ");
+    //print ("ADJUST! ");
 
     if (language_code_selected == language_code) {
       label_widget.add_css_class ("bold");
