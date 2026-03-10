@@ -28,7 +28,8 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   construct {
     selected_emblem = new Gtk.Image.from_icon_name ("emblem-default-symbolic") {
       visible = false,
-      halign = Gtk.Align.END
+      halign = Gtk.Align.END,
+      margin_end = 15
     };
     selected_emblem.add_css_class (Granite.STYLE_CLASS_FLAT);
 
@@ -51,6 +52,7 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   }
 
   public void on_position_changed (string language_code_selected) {
+    print ("ADJUST! ");
 
     if (language_code_selected == language_code) {
       label_widget.add_css_class ("bold");

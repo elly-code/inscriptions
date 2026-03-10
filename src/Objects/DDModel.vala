@@ -10,7 +10,7 @@
  */
 public class Inscriptions.DDModel : Object {
 
-	static string[] heatmap;
+	static string[] heatmap = {"", "", "", "", ""};
 
 	public GLib.ListStore model {get; set;}
 	public Gtk.SignalListItemFactory factory_header {get; set;}
@@ -51,13 +51,20 @@ public class Inscriptions.DDModel : Object {
 		var item = list_item.get_child () as Gtk.Label;
 		item.label = item_language.name;
 
-		// We save up a heatmap
-		heatmap = {item_language.code, heatmap[0], heatmap[1], heatmap[2], heatmap[3]};
-		//Application.settings.set_strv (KEY_HEATMAP, heatmap);
+		// We save up a heatmap. It is rebuilt from scratch to avoid redundant language codes
+		// We could check beforehand and gate this but it would affect lisibility
+		string[] temp_heatmap = {item_language.code};
+		foreach (var recent_language_code in heatmap) {
+			if (recent_language_code != item_language.code) {
+				temp_heatmap += recent_language_code;
+			}
+		}
+		heatmap = temp_heatmap;
 
+		//Application.settings.set_strv (KEY_HEATMAP, heatmap);
 		print ("\n");
 		foreach (var element in heatmap) {
-			print (element + "\n");
+			print (element + " ");
 		}
 
 		// Tell everyone language changed

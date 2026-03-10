@@ -44,7 +44,7 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
 
   private void on_selected_language () {
     var selected_lang = dropdown.get_selected_item () as Lang;
-    print ("\nSELECTED %s\n".printf (selected_lang.code));
+    //print ("\nSELECTED %s\n".printf (selected_lang.code));
     language_changed (selected_lang.code);
 
   }

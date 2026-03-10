@@ -74,7 +74,7 @@ public class Inscriptions.LanguageSelectionBox : Gtk.Box {
       dropdown_target.selected = code;
     }
 
-    print ("Set " + code + " Source?" + is_source.to_string () + "\n");
+    //print ("Set " + code + " Source?" + is_source.to_string () + "\n");
   }
 
   private string get_selected_language (bool is_source) {
