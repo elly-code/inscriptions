@@ -24,7 +24,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             margin_end = MARGIN_MENU_HALF
         };
         
-        var placeholder = new Gtk.Label (_("Ready!")) {
+        var placeholder = new Gtk.Label (_("Ready to translate")) {
             wrap = true
         };
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
