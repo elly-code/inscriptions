@@ -17,7 +17,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     Gtk.StackSwitcher title_switcher;
 
     Gtk.Revealer back_revealer;
-    Gtk.Button switchlang_button;
     Gtk.Revealer toolbar_revealer;
     Gtk.MenuButton popover_button;
 
@@ -83,7 +82,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         title_stack.add_child (title_switcher);
         title_stack.visible_child = title_label;
 
-        //TRANSLATORS: Do not translate the name itself. You can write it in your writing system if that is usually done for your language
         headerbar = new Gtk.HeaderBar () {
             title_widget = title_stack
         };
@@ -159,11 +157,11 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         };
         
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        //toolbar_right.append (translate_revealer);
+
+        toolbar_right.append (new TranslateButton ());
         toolbar_right.append (popover_button);
 
         headerbar.pack_end (toolbar_right);
-        headerbar.pack_end (new TranslateButton ());
 
         child = headerbar;
 

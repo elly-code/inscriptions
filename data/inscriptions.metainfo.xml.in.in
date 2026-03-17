@@ -79,13 +79,18 @@
   </recommends>
 
   <releases>
-    <release version="1.0.1" date="2026-03-16" urgency="medium">
+    <release version="1.1.0" date="2026-03-16" urgency="medium">
       <description>
         <p>Touchups and enhancements</p>
         <ul>
-            <li>Minor design changes. Lets do refined shit.</li>
+            <li>A cleaner, better thought out UI</li>
             <li>Updated and extended screenshots</li>
-            <li>Some work into cleaner code</li>
+            <li>Show/hide highlighting moved to target pane</li>
+            <li>Enable/Disable auto translation moved to gear menu</li>
+            <li>Display in the language list the currently selected one</li>
+            <li>Switch source and language moved between both languages</li>
+            <li>Static pane sizes - makes more sense</li>
+            <li>Synchronized text zoom for both source and target</li>
         </ul>
       </description>
     </release>

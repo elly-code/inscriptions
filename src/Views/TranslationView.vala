@@ -72,8 +72,8 @@ public class Inscriptions.TranslationView : Gtk.Box {
         //  paned.append (source_pane);
         //  paned.append (target_pane);
 
-        language_selection = new Inscriptions.LanguageSelectionBox ();
-        append (language_selection);
+        //language_selection = new Inscriptions.LanguageSelectionBox ();
+        //append (language_selection);
         append (paned);
 
 

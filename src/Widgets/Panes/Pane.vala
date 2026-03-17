@@ -10,6 +10,8 @@
 public class Inscriptions.Pane : Gtk.Box {
 
     public Inscriptions.DDModel model {get; construct;}
+    public Inscriptions.LanguageDropDown dropdown {get; construct;}
+    public Inscriptions.Lang[] languages {get; set;}
 
     public Inscriptions.TextView textview;
     public Gtk.ScrolledWindow scrolledwindow;
@@ -20,14 +22,26 @@ public class Inscriptions.Pane : Gtk.Box {
 
     private Granite.Toast toast;
 
+    public string selected_language {
+        owned get { return dropdown.selected;}
+        set { dropdown.selected = value;}
+    }
+
     public string text {
         owned get { return textview.buffer.text;}
         set { textview.buffer.text = value;}
     }
 
+    public Pane (Lang[] languages) {
+        this.languages = languages;
+    }
+
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         spacing = 0;
+
+        dropdown = new LanguageDropDown (languages);
+
 
         /* ---------------- VIEW ---------------- */
         textview = new Inscriptions.TextView ();
@@ -52,7 +66,8 @@ public class Inscriptions.Pane : Gtk.Box {
         actionbar = new Gtk.ActionBar () {
             hexpand = true,
             vexpand = false,
-            valign = Gtk.Align.END
+            valign = Gtk.Align.END,
+            height_request = 32
         };
         actionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
 
@@ -71,6 +86,7 @@ public class Inscriptions.Pane : Gtk.Box {
         };
         stack.add_child (main_view);
 
+        append (dropdown);
         append (stack);
 
         toast.default_action.connect (() => {
