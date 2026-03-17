@@ -13,7 +13,7 @@ public class Inscriptions.TranslateButton : Granite.Bin {
         var translate_button = new Gtk.Button () {
             label = _("Translate"),
             tooltip_markup = Granite.markup_accel_tooltip (
-                {"<Control>Return", "<Ctrl>T"}, 
+                {"<Control>Return", "<Ctrl>T"},
                 _("Start translating the entered text")
             )
         };

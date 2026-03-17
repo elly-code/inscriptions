@@ -11,17 +11,13 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.WindowHandle placeholder_handle;
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
-
-    public signal void target_changed (string code = "");
-
-    public TargetPane () {
-        base (Inscriptions.TargetLang ());
-    }
-
+    
     construct {
         //textview.editable = false;
         dropdown.tooltip_text = _("Set the language to translate to");
-
+        dropdown.add_languages (Inscriptions.TargetLang ());
+        dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
+        
         /* -------- PLACEHOLDER -------- */
         var placeholder_box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
             hexpand = vexpand = true,
@@ -91,9 +87,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         actionbar.pack_end (save_as_button);
 
         /***************** CONNECTS AND BINDS *****************/
-      dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
-      dropdown.language_changed.connect (on_target_changed);
-
+        dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
 
         Application.settings.bind ("auto-translate", 
             auto_switcher, "active", 
@@ -119,10 +113,10 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         }
     }
 
-    private void on_target_changed (string language_code) {
-        Application.settings.set_string (KEY_TARGET_LANGUAGE, language_code);
-        target_changed (language_code);
-    }
+    //  private void on_target_changed (string language_code) {
+    //      Application.settings.set_string (KEY_TARGET_LANGUAGE, language_code);
+    //      target_changed (language_code);
+    //  }
     private void copy_to_clipboard () {
         var clipboard = Gdk.Display.get_default ().get_clipboard ();
         clipboard.set_text (textview.buffer.text);

@@ -12,19 +12,15 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
   Gtk.DropDown dropdown;
 
   public string selected {
-        owned get { return get_selected_language ();}
-        set { set_selected_language (value);}
+    owned get { return get_selected_language ();}
+    set { set_selected_language (value);}
   }
 
   public signal void language_changed (string code = "");
 
-  public LanguageDropDown (Lang[] languages) {
+  construct {
     hexpand = true;
     model = new Inscriptions.DDModel ();
-
-    foreach (var language in languages) {
-      model.model_append (language);
-    }
 
     var expression = new Gtk.PropertyExpression (typeof (Inscriptions.Lang), null, "both");
     dropdown = new Gtk.DropDown (model.model, expression) {
@@ -57,5 +53,11 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
   private string get_selected_language () {
     var selected_lang = dropdown.get_selected_item () as Lang;
     return selected_lang.code;
+  }
+
+  public void add_languages (Lang[] languages) {
+    foreach (var language in languages) {
+      model.model_append (language);
+    }
   }
 }

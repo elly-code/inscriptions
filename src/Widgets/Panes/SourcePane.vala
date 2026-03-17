@@ -8,15 +8,12 @@
  */
 public class Inscriptions.SourcePane : Inscriptions.Pane {
 
-  public signal void source_changed (string code = "");
+    construct {
 
-  public SourcePane () {
-    base (Inscriptions.SourceLang ());
-  }
-
-  construct {
       stack.visible_child = main_view;
       dropdown.tooltip_text = _("Set the language to translate from");
+      dropdown.add_languages (Inscriptions.SourceLang ());
+      dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
 
       var options_button_label = new Gtk.Label (_("Options"));
       var options_button_box = new Gtk.Box (HORIZONTAL, 0);
@@ -64,8 +61,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       actionbar.pack_end (open_button);
 
       /***************** CONNECTS AND BINDS *****************/
-      dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
-      dropdown.language_changed.connect (on_source_changed);
+      dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_SOURCE_LANGUAGE, code);});
 
       paste_button.clicked.connect (paste_from_clipboard);
       textview.buffer.changed.connect (() => {
@@ -73,10 +69,10 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       });
     }
 
-  private void on_source_changed (string language_code) {
-    Application.settings.set_string (KEY_SOURCE_LANGUAGE, language_code);
-    source_changed (language_code);
-  }
+  //  private void on_source_changed (string language_code) {
+  //    Application.settings.set_string (KEY_SOURCE_LANGUAGE, language_code);
+  //    source_changed (language_code);
+  //  }
 
   private void paste_from_clipboard () {
     var clipboard = Gdk.Display.get_default ().get_clipboard ();

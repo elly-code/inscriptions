@@ -11,7 +11,6 @@ public class Inscriptions.TranslationView : Gtk.Box {
     Gtk.CenterBox paned {get; set;}
     public Inscriptions.SourcePane source_pane;
     public Inscriptions.TargetPane target_pane;
-    private Inscriptions.LanguageSelectionBox language_selection;
 
     // Add a debounce so we aren't requesting the API constantly
     public uint debounce_timer_id = 0;
@@ -65,7 +64,15 @@ public class Inscriptions.TranslationView : Gtk.Box {
             vexpand = true
         };
         paned.start_widget = source_pane;
-        paned.center_widget = new Gtk.Separator (VERTICAL);
+
+            //TRANSLATORS: This is for a button that switches source and target language
+            var switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages"))
+            };
+            switchlang_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG;
+
+
+        paned.center_widget = switchlang_button; //new Gtk.Separator (VERTICAL);
         paned.end_widget = target_pane;
 
         //  paned.start_ (source_pane);
@@ -79,6 +86,7 @@ public class Inscriptions.TranslationView : Gtk.Box {
 
 
         /* ---------------- CONNECTS AND BINDS ---------------- */
+
         // Logic for toggling the panes/layout
         on_orientation_toggled ();
         Application.settings.changed["vertical-layout"].connect (on_orientation_toggled);
@@ -101,16 +109,16 @@ public class Inscriptions.TranslationView : Gtk.Box {
         if (if_connect) {
             // translate when text is entered or user changes any language or option
             source_pane.textview.buffer.changed.connect (on_text_to_translate);
-            language_selection.source_changed.connect (on_text_to_translate);
-            language_selection.target_changed.connect (on_text_to_translate);
+            source_pane.language_changed.connect (on_text_to_translate);
+            target_pane.language_changed.connect (on_text_to_translate);
             Application.settings.changed["context"].connect (on_text_to_translate);
             Application.settings.changed["formality"].connect (on_text_to_translate);
 
         } else {
             // no
             source_pane.textview.buffer.changed.disconnect (on_text_to_translate);
-            language_selection.source_changed.disconnect (on_text_to_translate);
-            language_selection.target_changed.disconnect (on_text_to_translate);
+            source_pane.language_changed.disconnect (on_text_to_translate);
+            target_pane.language_changed.disconnect (on_text_to_translate);
             Application.settings.changed["context"].disconnect (on_text_to_translate);
             Application.settings.changed["formality"].disconnect (on_text_to_translate);
         }
@@ -125,17 +133,17 @@ public class Inscriptions.TranslationView : Gtk.Box {
         connect_all (false);
 
         // Temp variables
-        var newtarget = language_selection.selected_source;
+        var newtarget = source_pane.selected_language;
         var newtarget_text = source_pane.text;
 
-        var newsource = language_selection.selected_target;
+        var newsource = target_pane.selected_language;
         var newsource_text = target_pane.text;
 
         // Letsgo
-        language_selection.selected_source = newsource;
+        source_pane.selected_language = newsource;
         source_pane.text = newsource_text;
 
-        language_selection.selected_target = newtarget;
+        target_pane.selected_language = newtarget;
         target_pane.text = newtarget_text;
 
         source_pane.textview.refresh ();
@@ -167,7 +175,7 @@ public class Inscriptions.TranslationView : Gtk.Box {
      * Filter not-requests, set or reset debounce_timer
      */
     public void on_text_to_translate () {
-        if (language_selection.selected_source == language_selection.selected_target) {
+        if (source_pane.selected_language == target_pane.selected_language) {
             source_pane.message (_("Target language is the same as source"));
             return;
         }

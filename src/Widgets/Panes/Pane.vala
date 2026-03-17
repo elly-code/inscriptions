@@ -11,7 +11,6 @@ public class Inscriptions.Pane : Gtk.Box {
 
     public Inscriptions.DDModel model {get; construct;}
     public Inscriptions.LanguageDropDown dropdown {get; construct;}
-    public Inscriptions.Lang[] languages {get; set;}
 
     public Inscriptions.TextView textview;
     public Gtk.ScrolledWindow scrolledwindow;
@@ -32,16 +31,13 @@ public class Inscriptions.Pane : Gtk.Box {
         set { textview.buffer.text = value;}
     }
 
-    public Pane (Lang[] languages) {
-        this.languages = languages;
-    }
+    public signal void language_changed (string code = "");
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         spacing = 0;
 
-        dropdown = new LanguageDropDown (languages);
-
+        dropdown = new LanguageDropDown ();
 
         /* ---------------- VIEW ---------------- */
         textview = new Inscriptions.TextView ();
@@ -89,9 +85,12 @@ public class Inscriptions.Pane : Gtk.Box {
         append (dropdown);
         append (stack);
 
+        /***************** CONNECTS AND BINDS *****************/
         toast.default_action.connect (() => {
             textview.buffer.undo ();
         });
+
+        dropdown.language_changed.connect ((code) => {language_changed (code);});
     }
     // Respectful of Undo
     public void replace_text (string new_text) {

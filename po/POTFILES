@@ -12,7 +12,6 @@ src/Widgets/Buttons/OrientationBox.vala
 src/Widgets/Buttons/ToggleHighlight.vala
 src/Widgets/Popovers/SettingsPopover.vala
 src/Widgets/Popovers/OptionsPopover.vala
-src/Widgets/LanguageSelectionBox.vala
 src/Widgets/Panes/Pane.vala
 src/Widgets/Panes/SourcePane.vala
 src/Widgets/Panes/TargetPane.vala
