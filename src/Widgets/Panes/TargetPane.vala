@@ -16,7 +16,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         //textview.editable = false;
         dropdown.tooltip_text = _("Set the language to translate to");
         dropdown.add_languages (Inscriptions.TargetLang ());
-        dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
+        //dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
         
         /* -------- PLACEHOLDER -------- */
         var placeholder_box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
@@ -87,14 +87,10 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         actionbar.pack_end (save_as_button);
 
         /***************** CONNECTS AND BINDS *****************/
-        dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
+        //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
 
         Application.settings.bind ("auto-translate", 
             auto_switcher, "active", 
-            GLib.SettingsBindFlags.DEFAULT);
-
-        Application.settings.bind ("auto-translate", 
-            placeholder_switcher, "active", 
             GLib.SettingsBindFlags.DEFAULT);
 
         Application.settings.changed["auto-translate"].connect (on_auto_translate_changed);

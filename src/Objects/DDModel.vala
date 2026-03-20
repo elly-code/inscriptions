@@ -17,7 +17,8 @@ public class Inscriptions.DDModel : Object {
 	public Gtk.SignalListItemFactory factory_list {get; set;}
 
 	// Signal emitted by factory_header.bind when a language is selected, which factory_list.bind listens to
-	public signal void selection_changed (string language_code_selected);
+	public signal void language_changed (string language_code_selected);
+	public signal void update_greyout (string language_code_greyout);
 
 	public DDModel () {
 		//heatmap = Application.settings.get_strv (KEY_HEATMAP);
@@ -74,7 +75,7 @@ public class Inscriptions.DDModel : Object {
 
 		// Tell everyone language changed
 		// Items are connected to this and get their shit together out of it
-		selection_changed (item_language.code);
+		language_changed (item_language.code);
 		//print ("switched to: %s %s\n".printf (item_language.name, item_language.code));
 	}
 
@@ -86,6 +87,11 @@ public class Inscriptions.DDModel : Object {
 
 		list_item.child = list_item_child;
 		list_item.focusable = true;
+
+		list_item_child.bind_property ("sensitive", list_item,
+			"activatable",
+			GLib.BindingFlags.DEFAULT
+		);
 	}
 
 	private void on_factory_list_bind (Gtk.SignalListItemFactory f, Object o) {
@@ -95,9 +101,9 @@ public class Inscriptions.DDModel : Object {
 		var list_item_child = list_item.get_child() as Inscriptions.LanguageItem;
 		list_item_child.language_label = item_language.name;
 		list_item_child.language_code = item_language.code;
-
 		// Listen to language change, let every item sort its shit
-		selection_changed.connect (list_item_child.on_position_changed);
+		language_changed.connect (list_item_child.on_position_changed);
+		update_greyout.connect (list_item_child.on_greyout_changed);
 		//print ("binding: %s\n".printf (item_language.name));
 	}
 

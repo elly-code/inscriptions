@@ -14,6 +14,22 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   Gtk.Label label_widget;
   Gtk.Image selected_emblem;
 
+  public bool selected {
+    get {
+      return selected_emblem.visible;
+    }
+    set {
+      if (value) {
+        label_widget.add_css_class ("bold");
+
+      } else {
+        label_widget.remove_css_class ("bold");
+
+      }
+      selected_emblem.visible = value;
+    }
+  }
+
   public LanguageItem (string language_label, string language_code) {
     Object (
       language_label: language_label,
@@ -43,9 +59,10 @@ public class Inscriptions.LanguageItem : Gtk.Box {
       child = label_widget
     };
     overlay.add_overlay (selected_emblem);
-
     append (overlay);
 
+
+    /* ---------- CONNECTS AND BINDS ---------- */
     bind_property ("language-label",
       label_widget, "label",
       GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
@@ -53,14 +70,17 @@ public class Inscriptions.LanguageItem : Gtk.Box {
 
   public void on_position_changed (string language_code_selected) {
     //print ("ADJUST! ");
+    selected = language_code_selected == language_code;
+  }
 
-    if (language_code_selected == language_code) {
-      label_widget.add_css_class ("bold");
-      selected_emblem.visible = true;
+  public void on_greyout_changed (string language_code_greyout) {
+    //print ("ADJUST! ");
+
+    if (language_code_greyout == language_code) {
+      sensitive = false;
 
     } else {
-      label_widget.remove_css_class ("bold");
-      selected_emblem.visible = false;
+      sensitive = true;
     }
   }
 }

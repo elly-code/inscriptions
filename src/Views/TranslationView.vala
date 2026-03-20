@@ -98,18 +98,40 @@ public class Inscriptions.TranslationView : Gtk.Box {
         on_orientation_toggled ();
         Application.settings.changed["vertical-layout"].connect (on_orientation_toggled);
 
-        connect_all (true);
+
         Application.settings.changed["auto-translate"].connect (() => {
             if (Application.settings.get_boolean ("auto-translate")) {
                 on_text_to_translate ();
             }
         });
 
+        // Binds do not seem to work here so we go the manual route
+        source_pane.selected_language = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
+        source_pane.greyed_out_language = Application.settings.get_string (KEY_TARGET_LANGUAGE);
+
+        target_pane.selected_language = Application.settings.get_string (KEY_TARGET_LANGUAGE);
+        target_pane.greyed_out_language = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
+
+        source_pane.dropdown.language_changed.connect (on_source_language_changed);
+        target_pane.dropdown.language_changed.connect (on_target_language_changed);
+
+        connect_all (true);
+
         // Synchronize scroll and zoom for both panes 
         source_pane.scrolledwindow.vadjustment.bind_property ("value",
             target_pane.scrolledwindow.vadjustment, "value",
             GLib.BindingFlags.SYNC_CREATE | GLib.BindingFlags.BIDIRECTIONAL
         );
+    }
+
+    public void on_source_language_changed (string code) {
+        Application.settings.set_string (KEY_SOURCE_LANGUAGE, code);
+        target_pane.greyed_out_language = code;
+    }
+
+    public void on_target_language_changed (string code) {
+        Application.settings.set_string (KEY_TARGET_LANGUAGE, code);
+        source_pane.greyed_out_language = code;
     }
 
     private void connect_all (bool if_connect) {

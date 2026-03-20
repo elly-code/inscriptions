@@ -26,6 +26,12 @@ public class Inscriptions.Pane : Gtk.Box {
         set { dropdown.selected = value;}
     }
 
+    string _greyed_out = "";
+    public string greyed_out_language {
+        owned get { return _greyed_out;}
+        set { dropdown.update_greyout (value); _greyed_out = value;}
+    }
+
     public string text {
         owned get { return textview.buffer.text;}
         set { textview.buffer.text = value;}
