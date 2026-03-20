@@ -23,9 +23,9 @@ namespace Inscriptions {
 	public const int SPACING_TOOLBAR_MINI = 3;
 
 	public const int MARGIN_MENU_HALF = 3;
-	public const int MARGIN_MENU_STANDARD = 6;
-	public const int MARGIN_MENU_BIG = 12;
-	public const int MARGIN_MENU_BIGGER = 24;
+	public const int MARGIN_MENU_STANDARD = 5;
+	public const int MARGIN_MENU_BIG = 10;
+	public const int MARGIN_MENU_BIGGER = 25;
 
 	// Autocomplete, save me!
 	// Windows
