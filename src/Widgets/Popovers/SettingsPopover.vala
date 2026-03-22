@@ -47,6 +47,9 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
       margin_end = MARGIN_MENU_BIG
     };
 
+    var zoombox = new Inscriptions.ZoomBox ();
+
+    box.append (zoombox);
     box.append (new OrientationBox ());
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
@@ -67,6 +70,10 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
     Application.settings_ui.bind (KEY_HIGHLIGHT, 
       highlight_switch, "active", 
+      SettingsBindFlags.DEFAULT);
+
+    Application.settings_ui.bind (KEY_ZOOM, 
+      zoombox, "zoom", 
       SettingsBindFlags.DEFAULT);
   }
 }

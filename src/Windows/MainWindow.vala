@@ -61,6 +61,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
 
         zoom_controller = new ZoomController ((Gtk.Widget)this);
+        insert_action_group ("zoom-controller", zoom_controller.actions);
 
         var keypress_controller = new Gtk.EventControllerKey ();
         var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
@@ -70,14 +71,19 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         ((Gtk.Widget)this).add_controller (keypress_controller);
         ((Gtk.Widget)this).add_controller (scroll_controller);
 
+
+
+        /* -------------------- CONNECTS AND BINDS -------------------- */
+
         // We need this for Ctr + Scroll. We delegate everything to zoomcontroller
         keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
         keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
         scroll_controller.scroll.connect (zoom_controller.on_scroll);
 
+        Application.settings_ui.bind (KEY_ZOOM, 
+            zoom_controller, "zoom", 
+            GLib.SettingsBindFlags.DEFAULT);
 
-
-        /* -------------------- CONNECTS AND BINDS -------------------- */
         check_up_key.begin (null);
         Application.backend.answer_received.connect (on_answer_received);
         headerbar.back_requested.connect (() => {on_back_clicked ();});
@@ -165,6 +171,18 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     public void open (string content) {
         translation_view.source_pane.text = content;
+    }
+
+    public void action_zoom_in () {
+        zoom_controller.zoom_in ();
+    }
+
+    public void action_zoom_default () {
+        zoom_controller.zoom_default ();
+    }
+
+    public void action_zoom_out () {
+        zoom_controller.zoom_out ();
     }
 }
 

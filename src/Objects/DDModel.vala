@@ -68,7 +68,7 @@ public class Inscriptions.DDModel : Object {
 				temp_heatmap += recent_language_code;
 			}
 
-			if (temp_heatmap.length == 5) {
+			if (temp_heatmap.length == 6) {
 				break;
 			}
 		}

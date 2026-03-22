@@ -25,7 +25,8 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
           tooltip_text = _("Change options for the translation")
       };
       options_button.add_css_class (Granite.STYLE_CLASS_FLAT);
-      options_button.add_css_class ("flat_menu_button");
+      options_button.has_frame = false;
+      //options_button.add_css_class ("flat_menu_button");
       options_button_label.mnemonic_widget = options_button;
       options_button.popover = new Inscriptions.OptionsPopover () {halign = Gtk.Align.START};
       options_button.direction = Gtk.ArrowType.UP;

@@ -29,7 +29,7 @@
       <summary>if the layout is vertical</summary>
       <description>whether the panes are horizontal or vertical</description>
     </key>
-    <key name="zoom" type="i">
+    <key name="zoom" type="u">
       <default>100</default>
       <summary>How zoomed is the text</summary>
       <description>zoooooom</description>
@@ -45,7 +45,7 @@
       <description>Highlights alternating colours on both source and target in the TextView</description>
     </key>
     <key name="language-heatmap" type="as">
-      <default>["", "", "", "", "", "", ""]</default>
+      <default>["", "", "", "", "", ""]</default>
       <summary>Last selected language code</summary>
       <description>A list of recent selected language codes to make obvious in the UI</description>
     </key>

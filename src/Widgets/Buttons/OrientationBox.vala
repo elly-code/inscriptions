@@ -15,7 +15,6 @@ public class Inscriptions.OrientationBox : Gtk.Box {
         hexpand = true;
         margin_start = MARGIN_MENU_BIG;
         margin_end = MARGIN_MENU_BIG;
-        margin_bottom = MARGIN_MENU_HALF;
         add_css_class (Granite.STYLE_CLASS_LINKED);
 
         var box_horiz = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {

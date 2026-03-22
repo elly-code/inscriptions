@@ -86,3 +86,25 @@ window.devel {
 	border-width: 3px;
 	border-color: @warning_color;
 }
+
+/* Used by LanguageItem and tracked by DDModel so we can have a heatmap of recently used languages*/
+
+.accent-1 {
+    color: mix(@accent_color, @fg_color, 0.27);
+}
+
+.accent-2 {
+    color: mix(@accent_color, @fg_color, 0.22);
+}
+
+.accent-3 {
+    color: mix(@accent_color, @fg_color, 0.17);
+}
+
+.accent-4 {
+    color: mix(@accent_color, @fg_color, 0.12);
+}
+
+.accent-5 {
+    color: mix(@accent_color, @fg_color, 0.07);
+}

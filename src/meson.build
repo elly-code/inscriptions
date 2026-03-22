@@ -30,6 +30,7 @@ sources = files (
   'Widgets' / 'Buttons' / 'RetryButton.vala',
   'Widgets' / 'Buttons' / 'TranslateButton.vala',
   'Widgets' / 'Buttons' / 'ToggleHighlight.vala',
+  'Widgets' / 'Buttons' / 'ZoomBox.vala',
 
   'Widgets' / 'Popovers' / 'SettingsPopover.vala',
   'Widgets' / 'Popovers' / 'OptionsPopover.vala',

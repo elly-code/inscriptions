@@ -29,9 +29,33 @@ public class Inscriptions.ZoomController : Object {
         set {do_set_zoom (value);}
     }
 
+    public SimpleActionGroup actions { get; construct; }
+    public const string ACTION_PREFIX = "zoom-controller.";
+    public const string ACTION_ZOOM_IN = "zoom-in";
+    public const string ACTION_ZOOM_DEFAULT = "zoom-default";
+    public const string ACTION_ZOOM_OUT = "zoom-out";
+
+
+    public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
+    private const GLib.ActionEntry[] ACTION_ENTRIES = {
+        { ACTION_ZOOM_IN, zoom_in},
+        { ACTION_ZOOM_DEFAULT, zoom_default},
+        { ACTION_ZOOM_OUT, zoom_out}
+    };
+
     public ZoomController (Gtk.Widget widget) {
-        Object (widget: widget,
-                zoom: DEFAULT_ZOOM);
+        Object (widget: widget);
+    }
+
+    construct {
+        actions = new SimpleActionGroup ();
+        actions.add_action_entries (ACTION_ENTRIES, this);
+
+        // Translation view
+        unowned var app = ((Gtk.Application) GLib.Application.get_default ());
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_ZOOM_OUT, {"<Control>minus", "<Control>KP_Subtract"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_ZOOM_DEFAULT, {"<Control>equal", "<Control>0", "<Control>KP_0"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_ZOOM_IN, {"<Control>plus", "<Control>KP_Add"});
     }
 
     /**
@@ -87,6 +111,9 @@ public class Inscriptions.ZoomController : Object {
         widget.remove_css_class (ZoomLevel.from_uint ( _old_zoom).to_css_class ());
         _old_zoom = new_zoom;
         widget.add_css_class (ZoomLevel.from_uint ( new_zoom).to_css_class ());
+
+        //Application.settings_ui.set_uint (KEY_ZOOM, new_zoom);
+
         changed ();
     }
 
