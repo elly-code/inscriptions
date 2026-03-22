@@ -22,6 +22,12 @@ public class Inscriptions.TranslationView : Granite.Bin {
             center_widget.visible = (value == Gtk.Orientation.HORIZONTAL);
             switchlang_button_actionbar.visible = (value == Gtk.Orientation.VERTICAL);
             paned.orientation = value;
+
+            if (value == Gtk.Orientation.HORIZONTAL) {
+                target_pane.textview.left_margin = 0;
+            } else {
+                target_pane.textview.left_margin = MARGIN_MENU_BIG;
+            }
         }
     }
 
@@ -77,7 +83,6 @@ public class Inscriptions.TranslationView : Granite.Bin {
         source_pane.textview.right_margin = 0;
 
         target_pane = new Inscriptions.TargetPane ();
-        target_pane.textview.left_margin = 0;
 
         paned = new Gtk.CenterBox () {
             vexpand = true

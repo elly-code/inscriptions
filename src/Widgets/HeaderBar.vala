@@ -86,7 +86,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
             title_widget = title_stack
         };
         headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-        //headerbar.add_css_class (CSS_COLORED_HEADER);
+        //headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
 
 
         /* ---------------- PACK START ---------------- */

@@ -53,7 +53,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (new OrientationBox ());
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
-    //box.append (highlight_switch);
+    box.append (highlight_switch);
     //box.append (edit_key_button);
 
     box.append (api_level);

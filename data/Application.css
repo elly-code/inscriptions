@@ -30,14 +30,6 @@ Base from wpkelso: #33434eff
     -gtk-icon-transform: rotate(90deg);
 }
 
-/* Ruthless way to make the options button flat */
-.flat_menu_button .toggle {
-    outline: none;
-	border: none;
-    box-shadow: none;
-    background: none;
-}
-
 /* Pretty coloured titlebar */
 .primary-background {
 	background-color: #33434eff;

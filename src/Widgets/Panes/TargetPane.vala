@@ -58,7 +58,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
 
         stack.add_child (spin_view);
-
+        actionbar.pack_start (new TranslateButton ());
         actionbar.pack_start (new ToggleHighlight ());
 
 
