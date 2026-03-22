@@ -41,7 +41,8 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         var placeholder_translatebutton = new TranslateButton () {
             halign = Gtk.Align.CENTER,
             width_request = 96,
-            margin_top = MARGIN_MENU_STANDARD
+            height_request = 24,
+            margin_top = MARGIN_MENU_BIG
         };
 
         var switchwidget = new Inscriptions.SwitchWidget (placeholder_info, placeholder_translatebutton) {
