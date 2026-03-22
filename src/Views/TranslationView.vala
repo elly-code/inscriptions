@@ -6,11 +6,24 @@
 /**
  * Main view for translations. Mostly a Gtk.Paned with SourcePane and TargetPane with a couple binds for ease of control.
  */
-public class Inscriptions.TranslationView : Gtk.Box {
+public class Inscriptions.TranslationView : Granite.Bin {
 
-    Gtk.CenterBox paned {get; set;}
+    Gtk.Orientation orientation {
+        get {
+            return paned.orientation;
+        }
+        set {
+            center_widget.visible = (value == Gtk.Orientation.HORIZONTAL);
+            switchlang_button_actionbar.visible = (value == Gtk.Orientation.VERTICAL);
+            paned.orientation = value;
+        }
+    }
+
+    Gtk.CenterBox paned;
     public Inscriptions.SourcePane source_pane;
+    Gtk.Box center_widget;
     public Inscriptions.TargetPane target_pane;
+    Gtk.Button switchlang_button_actionbar;
 
     // Add a debounce so we aren't requesting the API constantly
     public uint debounce_timer_id = 0;
@@ -37,9 +50,6 @@ public class Inscriptions.TranslationView : Gtk.Box {
     };
 
     construct {
-        orientation = VERTICAL;
-        spacing = 0;
-
         actions = new SimpleActionGroup ();
         actions.add_action_entries (ACTION_ENTRIES, this);
 
@@ -58,7 +68,10 @@ public class Inscriptions.TranslationView : Gtk.Box {
 
         /* ---------------- UI ---------------- */
         source_pane = new Inscriptions.SourcePane ();
+        source_pane.textview.right_margin = 0;
+
         target_pane = new Inscriptions.TargetPane ();
+        target_pane.textview.left_margin = 0;
 
         paned = new Gtk.CenterBox () {
             vexpand = true
@@ -72,17 +85,43 @@ public class Inscriptions.TranslationView : Gtk.Box {
                 valign = Gtk.Align.START
             };
 
+            var middlebox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+                vexpand = true
+            };
+            middlebox.append (new Gtk.Separator (Gtk.Orientation.VERTICAL) {
+                halign = Gtk.Align.CENTER,
+                vexpand = true
+            });
 
-        paned.center_widget = switchlang_button; //new Gtk.Separator (VERTICAL);
+            var miniactionbar = new Gtk.ActionBar () {
+                valign = Gtk.Align.END,
+                height_request = 32
+            };
+            miniactionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
+            middlebox.append (miniactionbar);
+
+            var center_handle = new Gtk.WindowHandle () {
+                child = middlebox,
+                vexpand = true
+            };
+
+
+            center_widget = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+                vexpand = true
+            };
+            center_widget.append (switchlang_button);
+            center_widget.append (center_handle);
+
+        paned.center_widget = center_widget; //new Gtk.Separator (VERTICAL);
         paned.end_widget = target_pane;
 
 
-        append (paned);
+        child = paned;
 
 
 
             //TRANSLATORS: This is for a button that switches source and target language
-            var switchlang_button_actionbar = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
+            switchlang_button_actionbar = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
                 action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG,
                 tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages")),
                 valign = Gtk.Align.START
@@ -240,9 +279,9 @@ public class Inscriptions.TranslationView : Gtk.Box {
     // Could you please start coding in Rust to remind me of my sick grandma please?
     public void on_orientation_toggled () {
         if (Application.settings.get_boolean ("vertical-layout")) {
-            paned.orientation = Gtk.Orientation.VERTICAL;
+            orientation = Gtk.Orientation.VERTICAL;
         } else {
-            paned.orientation = Gtk.Orientation.HORIZONTAL;
+            orientation = Gtk.Orientation.HORIZONTAL;
         }
     }
 
