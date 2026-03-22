@@ -18,7 +18,7 @@
  */
 public class Inscriptions.DDModel : Object {
 
-	static string[] heatmap = Application.settings.get_strv (KEY_HEATMAP);
+	static string[] heatmap = Application.settings_ui.get_strv (KEY_HEATMAP);
 
 	public GLib.ListStore model {get; set;}
 	public Gtk.SignalListItemFactory factory_header {get; set;}
@@ -73,7 +73,7 @@ public class Inscriptions.DDModel : Object {
 			}
 		}
 		heatmap = temp_heatmap;
-		Application.settings.set_strv (KEY_HEATMAP, heatmap);
+		Application.settings_ui.set_strv (KEY_HEATMAP, heatmap);
 
 		//Application.settings.set_strv (KEY_HEATMAP, heatmap);
 		print ("\n");

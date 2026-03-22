@@ -72,8 +72,8 @@ public class Inscriptions.ApiLevel : Gtk.Box {
          spinner, "visible",
          GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 
-        Application.settings.bind ("current-usage", api_usage, "value", SettingsBindFlags.DEFAULT);
-        Application.settings.bind ("max-usage", api_usage, "max-value", SettingsBindFlags.DEFAULT);
+        Application.settings_translate.bind (KEY_CURRENT_USAGE, api_usage, "value", SettingsBindFlags.DEFAULT);
+        Application.settings_translate.bind (KEY_MAX_USAGE, api_usage, "max-value", SettingsBindFlags.DEFAULT);
 
         refresh_button.clicked.connect (on_refresh);
         Application.backend.answer_received.connect (updated_usage);
@@ -102,8 +102,8 @@ public class Inscriptions.ApiLevel : Gtk.Box {
 
         // Picking from settings as im not super sure what fires first between connect and binds
         this.tooltip_text = _("%s characters translated / %s maximum characters on your plan").printf (
-            Application.settings.get_int ("current-usage").to_string (),
-            Application.settings.get_int ("max-usage").to_string ());
+            Application.settings_translate.get_int (KEY_CURRENT_USAGE).to_string (),
+            Application.settings_translate.get_int (KEY_MAX_USAGE).to_string ());
 
             spinner.spinning = false;
     }

@@ -8,7 +8,7 @@
     <value value='4' nick="less"/>
   </enum>
 
-  <schema path="/io/github/elly_code/inscriptions/" id="@APP_ID@">
+  <schema path="/io/github/elly_code/inscriptions/ui/" id="@APP_ID@.ui">
     <key name="window-height" type="i">
       <default>320</default>
       <summary>Most recent window height</summary>
@@ -29,11 +29,29 @@
       <summary>if the layout is vertical</summary>
       <description>whether the panes are horizontal or vertical</description>
     </key>
+    <key name="zoom" type="i">
+      <default>100</default>
+      <summary>How zoomed is the text</summary>
+      <description>zoooooom</description>
+    </key>
     <key name="auto-translate" type="b">
       <default>true</default>
       <summary>Whether to automatically translate text</summary>
       <description>Represents whether the application should automatically translate text or not</description>
     </key>
+    <key name="highlight" type="b">
+      <default>true</default>
+      <summary>Whether to highlight both source and target</summary>
+      <description>Highlights alternating colours on both source and target in the TextView</description>
+    </key>
+    <key name="language-heatmap" type="as">
+      <default>["", "", "", "", "", "", ""]</default>
+      <summary>Last selected language code</summary>
+      <description>A list of recent selected language codes to make obvious in the UI</description>
+    </key>
+  </schema>
+
+  <schema path="/io/github/elly_code/inscriptions/translate/" id="@APP_ID@.translate">
     <key name="source-language" type="s">
       <default>"idk"</default>
       <summary>Language code to translate from</summary>
@@ -63,16 +81,6 @@
       <default>0</default>
       <summary>Max API usage</summary>
       <description>How many characters can be translated</description>
-    </key>
-    <key name="highlight" type="b">
-      <default>true</default>
-      <summary>Whether to highlight both source and target</summary>
-      <description>Highlights alternating colours on both source and target in the TextView</description>
-    </key>
-    <key name="language-heatmap" type="as">
-      <default>["", "", "", "", ""]</default>
-      <summary>Five last selected language code</summary>
-      <description>A list of recent selected language codes to make obvious in the UI</description>
     </key>
   </schema>
 </schemalist>

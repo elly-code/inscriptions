@@ -89,17 +89,17 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         /***************** CONNECTS AND BINDS *****************/
         //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
 
-        Application.settings.bind ("auto-translate", 
+        Application.settings_ui.bind (KEY_AUTO_TRANSLATE, 
             auto_switcher, "active", 
             GLib.SettingsBindFlags.DEFAULT);
 
-        Application.settings.changed["auto-translate"].connect (on_auto_translate_changed);
+        Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
         copy.clicked.connect (copy_to_clipboard);
         textview.buffer.changed.connect (on_buffer_changed);
     }
 
     private void on_auto_translate_changed () {        
-        if (Application.settings.get_boolean ("auto-translate")) {
+        if (Application.settings_ui.get_boolean (KEY_AUTO_TRANSLATE)) {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
             message (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S));
 

@@ -61,7 +61,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     formal_level.adjustment.set_step_increment (1);
     formal_level.set_show_fill_level (false);
 
-    formal_level.set_value (Application.settings.get_enum (KEY_FORMALITY));
+    formal_level.set_value (Application.settings_translate.get_enum (KEY_FORMALITY));
     formal_level.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
 
     formalbox.append (formal_level);
@@ -80,7 +80,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     /***************** CONNECTS AND BINDS *****************/
     context_entry.changed.connect (on_entry_changed);
 
-    Application.settings.bind (KEY_CONTEXT, 
+    Application.settings_translate.bind (KEY_CONTEXT, 
       context_entry, "text", 
       SettingsBindFlags.DEFAULT
     );
@@ -113,14 +113,14 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
    * Handler for formality change
    */
   private void on_formality_changed () {
-    Application.settings.set_enum ("formality", (int)formal_level.get_value ());
+    Application.settings_translate.set_enum (KEY_FORMALITY, (int)formal_level.get_value ());
   }
 
   /**
    * Handler called on popover show, to adjust whether formality is supported
    */
   private void formalities_supported () {
-      var target = Application.settings.get_string (KEY_TARGET_LANGUAGE);
+      var target = Application.settings_ui.get_string (KEY_TARGET_LANGUAGE);
 
       if (target == "system") {
         target = Application.backend.system_language;

@@ -61,11 +61,11 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
     /* -------------------- CONNECTS AND BINDS -------------------- */
 
-    Application.settings.bind (KEY_AUTO_TRANSLATE, 
+    Application.settings_ui.bind (KEY_AUTO_TRANSLATE, 
       auto_switch, "active", 
       SettingsBindFlags.DEFAULT);
 
-    Application.settings.bind (KEY_HIGHLIGHT, 
+    Application.settings_ui.bind (KEY_HIGHLIGHT, 
       highlight_switch, "active", 
       SettingsBindFlags.DEFAULT);
   }

@@ -37,7 +37,7 @@ public class Inscriptions.ToggleHighlight : Gtk.Button {
     construct {
         clicked.connect (() => {active = !active;});
 
-        Application.settings.bind (KEY_HIGHLIGHT,
+        Application.settings_ui.bind (KEY_HIGHLIGHT,
             this, "active",
             SettingsBindFlags.DEFAULT
         );

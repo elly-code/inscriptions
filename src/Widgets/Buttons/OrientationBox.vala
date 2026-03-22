@@ -49,12 +49,12 @@ public class Inscriptions.OrientationBox : Gtk.Box {
         };
 
         /***************** CONNECTS *****************/
-        Application.settings.bind (KEY_VERTICAL_LAYOUT,
+        Application.settings_ui.bind (KEY_VERTICAL_LAYOUT,
             toggle_horizontal, "active",
             SettingsBindFlags.INVERT_BOOLEAN
         );
 
-        Application.settings.bind (KEY_VERTICAL_LAYOUT,
+        Application.settings_ui.bind (KEY_VERTICAL_LAYOUT,
             toggle_vertical, "active",
             SettingsBindFlags.DEFAULT
         );

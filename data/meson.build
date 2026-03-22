@@ -14,9 +14,9 @@ install_data(
 )
 
 compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
-test('Validate schema file',
-compile_schemas,
-args: ['--strict', '--dry-run', meson.current_source_dir()],
+    test('Validate schema file',
+    compile_schemas,
+    args: ['--strict', '--dry-run', meson.current_source_dir()],
 )
 
 # metainfo confuses windows, and icons are 

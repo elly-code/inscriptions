@@ -19,12 +19,12 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     construct {
         Intl.setlocale ();
         title = _("Inscriptions");
-        icon_name = RDNN;
+        icon_name = APP_ID;
 
         // I know you can do this with binds, but it adds unnecessary read/writes everytime you do shit
-        default_height = Application.settings.get_int (KEY_WINDOW_HEIGHT);
-        default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
-        maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
+        default_height = Application.settings_ui.get_int (KEY_WINDOW_HEIGHT);
+        default_width = Application.settings_ui.get_int (KEY_WINDOW_WIDTH);
+        maximized = Application.settings_ui.get_boolean (KEY_WINDOW_MAXIMIZED);
 
 #if DEVEL
         title += _(" (Devel)");
@@ -157,9 +157,9 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     private bool on_close () {
         int height, width;
         get_default_size (out width, out height);
-        Application.settings.set_int ("window-height", height);
-        Application.settings.set_int ("window-width", width);
-        Application.settings.set_boolean ("window-maximized", maximized);
+        Application.settings_ui.set_int (KEY_WINDOW_HEIGHT, height);
+        Application.settings_ui.set_int (KEY_WINDOW_WIDTH, width);
+        Application.settings_ui.set_boolean (KEY_WINDOW_MAXIMIZED, maximized);
         return false;
     }
 

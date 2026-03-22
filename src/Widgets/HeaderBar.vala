@@ -172,7 +172,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         /* -------------------- CONNECTS AND BINDS -------------------- */
         back_button.clicked.connect (() => {back_requested ();});
 
-        Application.settings.bind (KEY_HIGHLIGHT,
+        Application.settings_ui.bind (KEY_HIGHLIGHT,
             toggle_highlight, "active",
             GLib.SettingsBindFlags.DEFAULT);
     }

@@ -27,7 +27,7 @@ public class Inscriptions.TranslateButton : Granite.Bin {
         };
         child = translate_revealer;
 
-        Application.settings.bind (KEY_AUTO_TRANSLATE,
+        Application.settings_ui.bind (KEY_AUTO_TRANSLATE,
             translate_revealer, "reveal_child",
             SettingsBindFlags.INVERT_BOOLEAN
         );

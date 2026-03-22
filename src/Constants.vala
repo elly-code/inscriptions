@@ -6,12 +6,6 @@
 namespace Inscriptions {
 
 	// Alkrjnlgjrt
-#if DEVEL
-	public const string RDNN = "io.github.elly_code.inscriptions.devel";
-#else
-	public const string RDNN = "io.github.elly_code.inscriptions";
-#endif
-
 	public const string DONATE_LINK = "https://ko-fi.com/teamcons/tip";
 	public const string LINK = "https://www.deepl.com/your-account/keys";
     public const int DEBOUNCE_INTERVAL = 1250; // ms
@@ -33,6 +27,9 @@ namespace Inscriptions {
 	public const int MARGIN_MENU_BIGGER = 24;
 
 	// Autocomplete, save me!
+	public const string SETTINGS_PATH_UI = APP_ID + ".ui";
+	public const string SETTINGS_PATH_TRANSLATE = APP_ID + ".translate";
+
 	// Windows
 	public const string KEY_WINDOW_HEIGHT = "window-height";
 	public const string KEY_WINDOW_WIDTH = "window-width";
