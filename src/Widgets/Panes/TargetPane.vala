@@ -33,7 +33,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
         
-        var placeholder_info = new Gtk.Label (_("Translation starts %.2fs after typing has stopped").printf (DEBOUNCE_IN_S)) {
+        var placeholder_info = new Gtk.Label (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
             wrap = true
         };
         placeholder_info.add_css_class (Granite.STYLE_CLASS_H4_LABEL);

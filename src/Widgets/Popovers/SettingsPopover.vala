@@ -54,9 +54,21 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
     box.append (highlight_switch);
-    //box.append (edit_key_button);
+    
+        var edit_key_button = new Gtk.Button () {
+          child = new Gtk.Label ((_("Set up translation provider"))) {halign = Gtk.Align.START},
+          tooltip_text = _("Use a different API key of your choosing"),
+          hexpand = true
+        };
+        edit_key_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
+        edit_key_button.clicked.connect (() => {
+            Application.backend.answer_received (StatusCode.NO_KEY, _("Requested by user"));
+        });
 
-    box.append (api_level);
+      box.append (edit_key_button);
+
+
+    //box.append (api_level);
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (support_button);
 
