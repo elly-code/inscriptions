@@ -120,7 +120,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
    * Handler called on popover show, to adjust whether formality is supported
    */
   private void formalities_supported () {
-      var target = Application.settings_ui.get_string (KEY_TARGET_LANGUAGE);
+      var target = Application.settings_translate.get_string (KEY_TARGET_LANGUAGE);
 
       if (target == "system") {
         target = Application.backend.system_language;

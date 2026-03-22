@@ -12,9 +12,9 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
   Gtk.Revealer usage_revealer;
 
   construct {
-    width_request = 240;
+    width_request = 280;
 
-    var box = new Gtk.Box (VERTICAL, 9) {
+    var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
       margin_top = MARGIN_MENU_BIG,
       margin_bottom = MARGIN_MENU_STANDARD
     };
