@@ -158,7 +158,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
 
-        toolbar_right.append (new TranslateButton ());
+        //toolbar_right.append (new TranslateButton ());
         toolbar_right.append (popover_button);
 
         headerbar.pack_end (toolbar_right);

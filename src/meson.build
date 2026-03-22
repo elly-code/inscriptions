@@ -25,6 +25,7 @@ sources = files (
   'Widgets' / 'TextView.vala',
   'Widgets' / 'HeaderBar.vala',
   'Widgets' / 'LanguageDropDown.vala',
+  'Widgets' / 'SwitchWidget.vala',
 
   'Widgets' / 'Buttons' / 'OrientationBox.vala',
   'Widgets' / 'Buttons' / 'RetryButton.vala',

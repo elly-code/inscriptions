@@ -12,14 +12,13 @@ public class Inscriptions.TranslateButton : Granite.Bin {
         //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
         var translate_button = new Gtk.Button () {
             label = _("Translate"),
+            action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE,
             tooltip_markup = Granite.markup_accel_tooltip (
                 {"<Control>Return", "<Ctrl>T"},
                 _("Start translating the entered text")
             )
         };
-
         translate_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
-        translate_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE;
 
         var translate_revealer = new Gtk.Revealer () {
             child = translate_button,

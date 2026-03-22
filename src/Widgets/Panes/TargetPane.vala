@@ -19,7 +19,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         //dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
         
         /* -------- PLACEHOLDER -------- */
-        var placeholder_box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
+        var placeholder_box = new Gtk.Box (VERTICAL, 0) {
             hexpand = vexpand = true,
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.CENTER,
@@ -32,13 +32,24 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var placeholder_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {
-            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S),
+        
+        var placeholder_info = new Gtk.Label (_("Translation starts %.2fs after typing has stopped").printf (DEBOUNCE_IN_S)) {
+            wrap = true
+        };
+        placeholder_info.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+
+        var placeholder_translatebutton = new TranslateButton () {
             halign = Gtk.Align.CENTER,
+            width_request = 96,
+            margin_top = MARGIN_MENU_STANDARD
+        };
+
+        var switchwidget = new Inscriptions.SwitchWidget (placeholder_info, placeholder_translatebutton) {
+            halign = Gtk.Align.CENTER
         };
 
         placeholder_box.append (placeholder);
-        //placeholder_box.append (placeholder_switcher);
+        placeholder_box.append (switchwidget);
 
         placeholder_handle = new Gtk.WindowHandle () {
             child = placeholder_box
@@ -59,15 +70,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         stack.add_child (spin_view);
         actionbar.pack_start (new TranslateButton ());
-        actionbar.pack_start (new ToggleHighlight ());
-
-
-        /* -------- TOOLBAR -------- */
-        var auto_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {
-            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S)
-        };
-
-        //actionbar.pack_start (auto_switcher);
+        //actionbar.pack_start (new ToggleHighlight ());
 
         /* -------- TOOLBAR -------- */
         var copy = new Gtk.Button.from_icon_name ("edit-copy-symbolic") {
@@ -90,7 +93,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
 
         Application.settings_ui.bind (KEY_AUTO_TRANSLATE, 
-            auto_switcher, "active", 
+            switchwidget, "first-widget-visible", 
             GLib.SettingsBindFlags.DEFAULT);
 
         Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
