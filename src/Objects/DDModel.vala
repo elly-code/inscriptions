@@ -7,6 +7,14 @@
 /**
  * DDModel, to manage lists of Lang objects (Languages), notably for the dropdown of Pane
  * In human, this is to have a custom dropdown for language selection
+ * 
+ * There is a ListStore, and two factories: factory_header to display the selected language, and factory_list for the widgets showing up in the list (LanguageItem)
+ *
+ * List widgets (LanguageItem) are not directly accessible, so we manipulate them via two signals they are connected to: language_changed and update_greyout
+ *
+ * language_changed advertize to the list widgets to show a little check icon if they are the one selected,
+ * 
+ * update_greyout advertizes to the list widgets whether they are supposed to be selectable/greyed_out
  */
 public class Inscriptions.DDModel : Object {
 
@@ -88,6 +96,7 @@ public class Inscriptions.DDModel : Object {
 		list_item.child = list_item_child;
 		list_item.focusable = true;
 
+		// Synchronize between the language item being dimmed, and its list entry being clickable
 		list_item_child.bind_property ("sensitive", list_item,
 			"activatable",
 			GLib.BindingFlags.DEFAULT

@@ -38,7 +38,7 @@ public class Inscriptions.ApiLevel : Gtk.Box {
             tooltip_text = _("Update API usage")
         };
 
-        var edit_key_button = new Gtk.Button.from_icon_name ("dialog-password") {
+        var edit_key_button = new Gtk.Button.from_icon_name ("document-edit") {
         tooltip_text = _("Use a different API key of your choosing"),
         };
         edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);

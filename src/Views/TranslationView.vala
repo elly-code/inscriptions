@@ -4,7 +4,13 @@
  */
 
 /**
- * Main view for translations. Mostly a Gtk.Paned with SourcePane and TargetPane with a couple binds for ease of control.
+ * Main view for translations.
+ * 
+ * It is built around a CenterBox, which wraps a @SourcePane, @TargetPane, and a smart divider between both
+ * 
+ * It includes its own orientation property and synchronizes both source and target
+ * 
+ * A debounce allows it to limit translation requests, and you can connect/disconnect all signals at once
  */
 public class Inscriptions.TranslationView : Granite.Bin {
 
@@ -92,7 +98,10 @@ public class Inscriptions.TranslationView : Granite.Bin {
                 halign = Gtk.Align.CENTER,
                 vexpand = true
             });
+            // Same class as textview view, so we can avoid a jarring background color
+            middlebox.add_css_class ("view");
 
+            // An empty actionbar that links both actionbars from both panes as if they were a singular one
             var miniactionbar = new Gtk.ActionBar () {
                 valign = Gtk.Align.END,
                 height_request = 32
