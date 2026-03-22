@@ -43,7 +43,7 @@ public class Inscriptions.ApiLevel : Gtk.Box {
         };
         edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);
         edit_key_button.clicked.connect (() => {
-            Application.backend.answer_received (StatusCode.EDIT_KEY, _("Requested by user"));
+            Application.backend.answer_received (StatusCode.NO_KEY, _("Requested by user"));
         });
 
 

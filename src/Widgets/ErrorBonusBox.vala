@@ -28,7 +28,7 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
         margin_bottom = MARGIN_MENU_STANDARD;
 
         // In the event the API is the issue, ask user
-        StatusCode[] api_edit_list = {StatusCode.NO_KEY, StatusCode.FORBIDDEN, StatusCode.EDIT_KEY};
+        StatusCode[] api_edit_list = {StatusCode.NO_KEY, StatusCode.FORBIDDEN};
 
         if (status in api_edit_list) {
             

@@ -84,7 +84,7 @@ public class Inscriptions.ErrorView : Granite.Bin {
             margin_top = 12
         };
 
-        if (status != StatusCode.NO_KEY || status != StatusCode.EDIT_KEY) {
+        if (status != StatusCode.NO_KEY) {
             box.append (expander);
         }
 
