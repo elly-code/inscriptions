@@ -62,7 +62,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (auto_switch);
     box.append (highlight_switch);
     
-        var edit_key_button = new Gtk.Button () {
+/*          var edit_key_button = new Gtk.Button () {
           child = new Gtk.Label ((_("Set up translation provider"))) {halign = Gtk.Align.START},
           tooltip_text = _("Use a different API key of your choosing"),
           hexpand = true
@@ -72,10 +72,10 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
             Application.backend.answer_received (StatusCode.NO_KEY, _("Requested by user"));
         });
 
-      box.append (edit_key_button);
+      box.append (edit_key_button);  */
 
 
-    //box.append (api_level);
+    box.append (api_level);
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (support_button);
 
