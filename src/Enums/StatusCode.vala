@@ -51,7 +51,7 @@ public enum Inscriptions.StatusCode {
             //TRANSLATORS: The following texts show up respectively, as a title, and error message, when translating has gone wrong. This needs to be as little technical as possible
             case StatusCode.NO_KEY:
                 explanation_title   = _("Hello, World!");
-                explanation_text    = _("You need a DeepL API key to translate text\nIt can be either DeepL Free or Pro");
+                explanation_text    = _("You need a DeepL API key to translate text");
                 icon_name           = "dialog-password";
                 return;
 
