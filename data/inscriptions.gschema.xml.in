@@ -8,6 +8,12 @@
     <value value='4' nick="less"/>
   </enum>
 
+  <enum id="@APP_ID@.backend">
+    <value value='0' nick="echo"/>
+    <value value='1' nick="deepl"/>
+    <value value='2' nick="libretranslate"/>
+  </enum>
+
   <schema path="/io/github/elly_code/inscriptions/ui/" id="@APP_ID@.ui">
     <key name="window-height" type="i">
       <default>320</default>
@@ -52,6 +58,11 @@
   </schema>
 
   <schema path="/io/github/elly_code/inscriptions/translate/" id="@APP_ID@.translate">
+    <key enum="@APP_ID@.backend" name="backend">
+      <default>'deepl'</default>
+      <summary>Language provider</summary>
+      <description>Set appropriate language provider</description>
+    </key>
     <key name="source-language" type="s">
       <default>"idk"</default>
       <summary>Language code to translate from</summary>

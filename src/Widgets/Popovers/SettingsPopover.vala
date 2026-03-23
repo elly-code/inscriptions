@@ -13,7 +13,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
   construct {
     width_request = 280;
-    halign = Gtk.Align.END;
+    halign = Gtk.Align.CENTER;
 
     var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
       margin_top = MARGIN_MENU_BIG,

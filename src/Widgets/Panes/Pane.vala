@@ -100,13 +100,11 @@ public class Inscriptions.Pane : Gtk.Box {
         dropdown.language_changed.connect ((code) => {language_changed (code);});
 
         stack.notify["visible-child"].connect (() => {
-            print ("Changed");
             view_changed (stack.visible_child == main_view);
         });
     }
     // Respectful of Undo
     public void replace_text (string new_text) {
-
         Gtk.TextIter start, end;
         textview.buffer.get_bounds (out start, out end);
 
