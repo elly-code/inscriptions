@@ -85,12 +85,14 @@
         <ul>
             <li>A cleaner, better thought out UI</li>
             <li>Updated and extended screenshots</li>
-            <li>Show/hide highlighting moved to target pane</li>
+            <li>Show/hide highlighting moved to gear menu</li>
             <li>Enable/Disable auto translation moved to gear menu</li>
-            <li>Display in the language list the currently selected one</li>
+            <li>Display in the language dropdown the currently selected one</li>
+            <li>Greyout in the language dropdown the relevant language</li>
             <li>Switch source and language moved between both languages</li>
-            <li>Static pane sizes - makes more sense</li>
-            <li>Synchronized text zoom for both source and target</li>
+            <li>Static pane sizes - makes more sense, less confusing</li>
+            <li>New: Synchronized text zoom for both source and target, persistent, with a setting in gear menu</li>
+            <li>Translation button moved within the view</li>
         </ul>
       </description>
     </release>

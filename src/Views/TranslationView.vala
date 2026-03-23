@@ -19,7 +19,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
             return paned.orientation;
         }
         set {
-            center_widget.visible = (value == Gtk.Orientation.HORIZONTAL);
+            pane_separator.visible = (value == Gtk.Orientation.HORIZONTAL);
             switchlang_button_actionbar.visible = (value == Gtk.Orientation.VERTICAL);
             paned.orientation = value;
 
@@ -33,7 +33,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
 
     Gtk.CenterBox paned;
     public Inscriptions.SourcePane source_pane;
-    Gtk.Box center_widget;
+    Inscriptions.PaneSeparator pane_separator;
     public Inscriptions.TargetPane target_pane;
     Gtk.Button switchlang_button_actionbar;
 
@@ -84,49 +84,13 @@ public class Inscriptions.TranslationView : Granite.Bin {
 
         target_pane = new Inscriptions.TargetPane ();
 
+        pane_separator = new Inscriptions.PaneSeparator ();
+
         paned = new Gtk.CenterBox () {
             vexpand = true
         };
         paned.start_widget = source_pane;
-
-            //TRANSLATORS: This is for a button that switches source and target language
-            var switchlang_button = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
-                action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG,
-                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages")),
-                valign = Gtk.Align.START
-            };
-
-            var middlebox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-                vexpand = true
-            };
-            middlebox.append (new Gtk.Separator (Gtk.Orientation.VERTICAL) {
-                halign = Gtk.Align.CENTER,
-                vexpand = true
-            });
-            // Same class as textview view, so we can avoid a jarring background color
-            middlebox.add_css_class ("view");
-
-            // An empty actionbar that links both actionbars from both panes as if they were a singular one
-            var miniactionbar = new Gtk.ActionBar () {
-                valign = Gtk.Align.END,
-                height_request = 32
-            };
-            miniactionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-            middlebox.append (miniactionbar);
-
-            var center_handle = new Gtk.WindowHandle () {
-                child = middlebox,
-                vexpand = true
-            };
-
-
-            center_widget = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-                vexpand = true
-            };
-            center_widget.append (switchlang_button);
-            center_widget.append (center_handle);
-
-        paned.center_widget = center_widget; //new Gtk.Separator (VERTICAL);
+        paned.center_widget = pane_separator;
         paned.end_widget = target_pane;
 
 
@@ -175,6 +139,10 @@ public class Inscriptions.TranslationView : Granite.Bin {
             target_pane.scrolledwindow.vadjustment, "value",
             GLib.BindingFlags.SYNC_CREATE | GLib.BindingFlags.BIDIRECTIONAL
         );
+
+        target_pane.view_changed.connect ((if_main_view) => {
+            pane_separator.visible_right = if_main_view;
+        });
     }
 
     public void on_source_language_changed (string code) {
@@ -310,6 +278,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
         source_pane.clear ();
         target_pane.clear ();
         target_pane.show_placeholder ();
+        pane_separator.visible_right = false;
         source_pane.message (_("Cleared"), true);
     }
 

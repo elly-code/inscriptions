@@ -38,6 +38,7 @@ public class Inscriptions.Pane : Gtk.Box {
     }
 
     public signal void language_changed (string code = "");
+    public signal void view_changed (bool if_main_view);
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
@@ -84,7 +85,7 @@ public class Inscriptions.Pane : Gtk.Box {
         main_view.append (handle);
 
         stack = new Gtk.Stack () {
-            transition_type = Gtk.StackTransitionType.CROSSFADE
+            transition_type = Gtk.StackTransitionType.NONE
         };
         stack.add_child (main_view);
 
@@ -97,6 +98,11 @@ public class Inscriptions.Pane : Gtk.Box {
         });
 
         dropdown.language_changed.connect ((code) => {language_changed (code);});
+
+        stack.notify["visible-child"].connect (() => {
+            print ("Changed");
+            view_changed (stack.visible_child == main_view);
+        });
     }
     // Respectful of Undo
     public void replace_text (string new_text) {

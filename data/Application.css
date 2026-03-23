@@ -30,7 +30,7 @@ Base from wpkelso: #33434eff
     -gtk-icon-transform: rotate(90deg);
 }
 
-/* Pretty coloured titlebar */
+/* Pretty coloured titlebar 
 .primary-background {
 	background-color: #33434eff;
 	color: #FFFFFF;
@@ -38,7 +38,12 @@ Base from wpkelso: #33434eff
 
 .primary-background .button {
 	background-color: @bg_color;
+}*/
+
+.primary-background {
+	border-bottom: 3px solid #33434eff;
 }
+
 
 /* Pretend the log textview is a console */
 .console {

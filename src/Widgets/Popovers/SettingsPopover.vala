@@ -8,11 +8,12 @@
  */
 public class Inscriptions.SettingsPopover : Gtk.Popover {
 
-  Inscriptions.ApiEntry api_entry;
-  Gtk.Revealer usage_revealer;
+  //Inscriptions.ApiEntry api_entry;
+  //Gtk.Revealer usage_revealer;
 
   construct {
     width_request = 280;
+    halign = Gtk.Align.END;
 
     var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
       margin_top = MARGIN_MENU_BIG,
@@ -22,19 +23,19 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     /* -------------------- SEPARATOR -------------------- */
 
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
-      description = _("The translation will start %.2f seconds after typing has stopped".printf (DEBOUNCE_IN_S)),
+      description = _("Translation will start %.2f seconds after typing".printf (DEBOUNCE_IN_S)),
       hexpand = true
     };
 
-    var highlight_switch = new Granite.SwitchModelButton (_("Highlight source and target sentences")) {
-      description = _("Each line will be highlighted a different color to help compare both texts (Ctrl+H)"),
+    var highlight_switch = new Granite.SwitchModelButton (_("Highlight source and target")) {
+      description = _("Each sentence will be highlighted to help compare both texts (Ctrl+H)"),
       hexpand = true
     };
 
 
     /* -------------------- SEPARATOR -------------------- */
 
-    var support_button = new Gtk.LinkButton.with_label (DONATE_LINK, _("Support us!")) {
+    var support_button = new Gtk.LinkButton.with_label (DONATE_LINK, _("Support us! <3")) {
       halign = Gtk.Align.START,
       hexpand = true,
       margin_bottom = MARGIN_MENU_STANDARD,

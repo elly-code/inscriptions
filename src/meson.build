@@ -18,6 +18,7 @@ sources = files (
   'Widgets' / 'Panes' / 'Pane.vala',
   'Widgets' / 'Panes' / 'SourcePane.vala',
   'Widgets' / 'Panes' / 'TargetPane.vala',
+  'Widgets' / 'Panes' / 'PaneSeparator.vala',
 
   'Widgets' / 'LanguageItem.vala',
   'Widgets' / 'LogToolbar.vala',

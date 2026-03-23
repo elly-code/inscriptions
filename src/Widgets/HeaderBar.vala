@@ -43,12 +43,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         set {
             toolbar_revealer.reveal_child = value;
             back_revealer.reveal_child = !value;
-
-            //  if (value) {
-            //      headerbar.remove_css_class (Granite.STYLE_CLASS_FLAT);
-            //  } else {
-            //      headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-            //  }
         }
     }
 
@@ -156,7 +150,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
             transition_type = Gtk.RevealerTransitionType.SWING_RIGHT
         };
         
-        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, MARGIN_MENU_STANDARD);
 
         //toolbar_right.append (new TranslateButton ());
         toolbar_right.append (popover_button);

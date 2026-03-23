@@ -16,6 +16,7 @@ src/Widgets/Popovers/OptionsPopover.vala
 src/Widgets/Panes/Pane.vala
 src/Widgets/Panes/SourcePane.vala
 src/Widgets/Panes/TargetPane.vala
+src/Widgets/Panes/PaneSeparator.vala
 src/Widgets/Buttons/RetryButton.vala
 src/Widgets/LogToolbar.vala
 src/Widgets/TextView.vala
