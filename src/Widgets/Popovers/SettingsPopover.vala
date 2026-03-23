@@ -15,6 +15,12 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     width_request = 280;
     halign = Gtk.Align.CENTER;
 
+    // Allow scrolling shenanigans from popover
+    add_binding_action (Gdk.Key.plus, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_IN, null);
+    add_binding_action (Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_DEFAULT, null);    
+    add_binding_action (48, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_DEFAULT, null);
+    add_binding_action(Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_OUT, null);
+
     var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
       margin_top = MARGIN_MENU_BIG,
       margin_bottom = MARGIN_MENU_STANDARD
@@ -35,7 +41,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
 
     /* -------------------- SEPARATOR -------------------- */
 
-    var support_button = new Gtk.LinkButton.with_label (DONATE_LINK, _("Support us! <3")) {
+    var support_button = new Gtk.LinkButton.with_label (DONATE_LINK, _("Support us!")) {
       halign = Gtk.Align.START,
       hexpand = true,
       margin_bottom = MARGIN_MENU_STANDARD,

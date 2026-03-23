@@ -11,7 +11,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     Inscriptions.HeaderBar headerbar;
     Gtk.Stack stack_window_view;
-    ZoomController zoom_controller;
+    public ZoomController zoom_controller;
 
     public Inscriptions.TranslationView translation_view;
     Inscriptions.ErrorView? errorview = null;

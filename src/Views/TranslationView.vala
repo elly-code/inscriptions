@@ -24,9 +24,11 @@ public class Inscriptions.TranslationView : Granite.Bin {
             paned.orientation = value;
 
             if (value == Gtk.Orientation.HORIZONTAL) {
+                source_pane.textview.right_margin = 0;
                 target_pane.textview.left_margin = 0;
             } else {
                 target_pane.textview.left_margin = MARGIN_MENU_BIG;
+                source_pane.textview.right_margin = MARGIN_MENU_BIG;
             }
         }
     }
@@ -80,11 +82,9 @@ public class Inscriptions.TranslationView : Granite.Bin {
 
         /* ---------------- UI ---------------- */
         source_pane = new Inscriptions.SourcePane ();
-        source_pane.textview.right_margin = 0;
-
+        pane_separator = new Inscriptions.PaneSeparator ();
         target_pane = new Inscriptions.TargetPane ();
 
-        pane_separator = new Inscriptions.PaneSeparator ();
 
         paned = new Gtk.CenterBox () {
             vexpand = true
