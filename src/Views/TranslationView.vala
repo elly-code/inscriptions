@@ -46,6 +46,8 @@ public class Inscriptions.TranslationView : Granite.Bin {
     public const string ACTION_PREFIX = "translation-view.";
     public const string ACTION_TOGGLE_ORIENTATION = "toggle-orientation";
     public const string ACTION_TOGGLE_HIGHLIGHT = "toggle-highlight";
+    public const string ACTION_TOGGLE_AUTO_TRANSLATE = "toggle-auto";
+
     public const string ACTION_SWITCH_LANG = "switch-languages";
     public const string ACTION_TRANSLATE = "translate";
     public const string ACTION_CLEAR_TEXT = "clear_text";
@@ -56,6 +58,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
         { ACTION_TOGGLE_ORIENTATION, toggle_orientation},
         { ACTION_TOGGLE_HIGHLIGHT, toggle_highlight},
+        { ACTION_TOGGLE_AUTO_TRANSLATE, toggle_auto},
         { ACTION_SWITCH_LANG, switch_languages},
         { ACTION_TRANSLATE, translate_now},
         { ACTION_CLEAR_TEXT, action_clear_text},
@@ -71,6 +74,8 @@ public class Inscriptions.TranslationView : Granite.Bin {
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_ORIENTATION, {"<Control><Shift>o"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_HIGHLIGHT, {"<Control>h"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_AUTO_TRANSLATE, {"<Control><Shift>Return", "<Control><Shift>t"});
+
         app.set_accels_for_action (ACTION_PREFIX + ACTION_SWITCH_LANG, {"<Control>i"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TRANSLATE, {"<Control>Return", "<Control>t"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_CLEAR_TEXT, {"<Control>l"});
@@ -269,8 +274,15 @@ public class Inscriptions.TranslationView : Granite.Bin {
 
     public void toggle_highlight () {
         Application.settings_ui.set_boolean (
-            "highlight",
+            KEY_HIGHLIGHT,
             ! Application.settings_ui.get_boolean (KEY_HIGHLIGHT)
+        );
+    }
+
+    public void toggle_auto () {
+        Application.settings_ui.set_boolean (
+            KEY_AUTO_TRANSLATE,
+            ! Application.settings_ui.get_boolean (KEY_AUTO_TRANSLATE)
         );
     }
 

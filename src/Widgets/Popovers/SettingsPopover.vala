@@ -29,7 +29,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     /* -------------------- SEPARATOR -------------------- */
 
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
-      description = _("Translation will start %.2f seconds after typing".printf (DEBOUNCE_IN_S)),
+      description = _("Translation will start %.2f seconds after typing (Ctrl+Shift+T or Ctrl+Shift+Enter)".printf (DEBOUNCE_IN_S)),
       hexpand = true
     };
 
