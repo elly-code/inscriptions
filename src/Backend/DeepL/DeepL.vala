@@ -31,7 +31,7 @@ public class Inscriptions.DeepL : Object {
   const string REST_OF_THE_URL = "/v2/translate";
   const string URL_USAGE = "/v2/usage";
 
-  public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
+  public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "ES-419", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
 
   public int current_usage = 0;
   public int max_usage = 0;
