@@ -15,15 +15,13 @@ public class Inscriptions.ApiLevel : Gtk.Box {
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
-        spacing = 9;
-        margin_bottom = 6;
+        spacing = MARGIN_MENU_BIG;
 
         /***************** LABEL AND BUTTON *****************/
         var cb = new Gtk.CenterBox ();
 
         var api_usage_label = new Gtk.Label (_("API Usage")) {
-            halign = Gtk.Align.START,
-            margin_top = 3
+            halign = Gtk.Align.START
         };
         api_usage_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
         cb.start_widget = api_usage_label;
