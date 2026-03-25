@@ -9,13 +9,14 @@
 public class Inscriptions.TranslateButton : Granite.Bin {
 
     construct {
-        var button_label = new Gtk.Label (_("Translate"));
-        var button_box = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF);
-        //button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
-        button_box.append (button_label);
+        // var button_label = new Gtk.Label (_("Translate"));
+        // var button_box = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF);
+        // button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
+        // button_box.append (button_label);
 
         var translate_button = new Gtk.Button () {
-            child = button_box,
+            //child = button_box,
+            label = _("Translate"),
             action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE,
             tooltip_markup = Granite.markup_accel_tooltip (
                 {"<Control>Return", "<Ctrl>T"},
