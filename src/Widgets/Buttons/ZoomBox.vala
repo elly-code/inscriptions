@@ -7,8 +7,7 @@
 
  /**
 * Horizontal box with a +, label, and -, representing zoom controls
-* Gives off zoom_changed signal to tell the user has clicked one of three
-* The signal transmits a Jorts.ZoomType Enum
+* Uses ZoomController actions
 */
 public class Inscriptions.ZoomBox : Gtk.Box {
 
@@ -32,8 +31,8 @@ public class Inscriptions.ZoomBox : Gtk.Box {
         orientation = Gtk.Orientation.HORIZONTAL;
         homogeneous = true;
         hexpand = true;
-        margin_start = 10;
-        margin_end = 10;
+        margin_start = MARGIN_MENU_BIG;
+        margin_end = MARGIN_MENU_BIG;
 
         ///TRANSLATORS: These are displayed on small linked buttons in a menu. User can click them to change zoom
         var zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic") {

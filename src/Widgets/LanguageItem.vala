@@ -37,12 +37,13 @@ public class Inscriptions.LanguageItem : Gtk.Box {
       orientation: Gtk.Orientation.HORIZONTAL,
       spacing: 0,
       halign: Gtk.Align.FILL,
-      hexpand: true
+      hexpand: true,
+      valign: Gtk.Align.CENTER
     );
   }
 
   construct {
-    selected_emblem = new Gtk.Image.from_icon_name ("emblem-default-symbolic") {
+    selected_emblem = new Gtk.Image.from_icon_name ("check-active") {
       visible = false,
       halign = Gtk.Align.END,
       margin_end = 15

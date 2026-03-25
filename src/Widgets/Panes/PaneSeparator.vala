@@ -32,9 +32,6 @@ public class Inscriptions.PaneSeparator : Gtk.Box {
                 valign = Gtk.Align.START
             };
 
-
-
-
             var left_side = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
                 vexpand = true
             };
@@ -50,9 +47,6 @@ public class Inscriptions.PaneSeparator : Gtk.Box {
                 visible = false
             };
             right_side.add_css_class ("view");
-
-
-
 
             // Same class as textview view, so we can avoid a jarring background color
             //

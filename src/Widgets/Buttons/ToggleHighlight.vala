@@ -8,11 +8,10 @@
  */
 public class Inscriptions.ToggleHighlight : Gtk.Button {
 
-
     bool _active;
     public bool active {
         get {
-            return _active;            
+            return _active;
         }
         set {
             if (value) {
