@@ -15,11 +15,19 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     width_request = 280;
     halign = Gtk.Align.CENTER;
 
-    // Allow scrolling shenanigans from popover
+    // Allow the various accels with the popover open
     add_binding_action (Gdk.Key.plus, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_IN, null);
     add_binding_action (Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_DEFAULT, null);    
     add_binding_action (48, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_DEFAULT, null);
     add_binding_action(Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_OUT, null);
+
+    add_binding_action (Gdk.Key.H, Gdk.ModifierType.CONTROL_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_HIGHLIGHT, null);
+    add_binding_action (Gdk.Key.O, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_ORIENTATION, null);
+    add_binding_action (Gdk.Key.Return, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_AUTO_TRANSLATE, null);
+    add_binding_action (Gdk.Key.T, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_AUTO_TRANSLATE, null);
+    add_binding_action (Gdk.Key.Return, Gdk.ModifierType.CONTROL_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE, null);
+    add_binding_action (Gdk.Key.T, Gdk.ModifierType.CONTROL_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE, null);
+
 
     var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
       margin_top = MARGIN_MENU_BIG,
@@ -29,7 +37,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     /* -------------------- SEPARATOR -------------------- */
 
     var auto_switch = new Granite.SwitchModelButton (_("Translate automatically")) {
-      description = _("Translation will start %.2f seconds after typing (Ctrl+Shift+T or Ctrl+Shift+Enter)".printf (DEBOUNCE_IN_S)),
+      description = _("Translation will start %.2f seconds after typing (Ctrl+Shift+Enter)".printf (DEBOUNCE_IN_S)),
       hexpand = true
     };
 
@@ -49,9 +57,8 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     };
 
     var api_level = new ApiLevel () {
-      margin_top = MARGIN_MENU_HALF,
-      margin_start = MARGIN_MENU_BIG,
-      margin_end = MARGIN_MENU_BIG
+      margin_start = MARGIN_MENU_BIG + MARGIN_MENU_STANDARD,
+      margin_end = MARGIN_MENU_BIG + MARGIN_MENU_STANDARD
     };
 
     var zoombox = new Inscriptions.ZoomBox ();

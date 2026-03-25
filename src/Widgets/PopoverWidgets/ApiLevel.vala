@@ -15,7 +15,9 @@ public class Inscriptions.ApiLevel : Gtk.Box {
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
-        spacing = MARGIN_MENU_BIG;
+        spacing = MARGIN_MENU_STANDARD;
+        margin_bottom = MARGIN_MENU_STANDARD;
+
 
         /***************** LABEL AND BUTTON *****************/
         var cb = new Gtk.CenterBox ();
