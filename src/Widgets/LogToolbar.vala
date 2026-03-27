@@ -18,7 +18,7 @@ public class Inscriptions.LogToolbar : Gtk.Box {
     /* ---------- SEND BUTTON ---------- */
     var send_button_label = new Gtk.Label (_("Get: "));
     var send_button_box = new Gtk.Box (HORIZONTAL, 0);
-    send_button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
+    send_button_box.append (new Gtk.Image.from_icon_name ("mail-send"));
     send_button_box.append (send_button_label);
 
     var send_button = new Gtk.Button () {

@@ -57,7 +57,7 @@ public class Inscriptions.LogView : Gtk.Box {
 
         var request_button_label = new Gtk.Label (_("Usage"));
         var request_button_box = new Gtk.Box (HORIZONTAL, 0);
-        request_button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
+        request_button_box.append (new Gtk.Image.from_icon_name ("mail-send"));
         request_button_box.append (request_button_label);
 
         var request_button = new Gtk.Button () {
