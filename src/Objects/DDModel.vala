@@ -60,7 +60,7 @@ public class Inscriptions.DDModel : Object {
 		var item = list_item.get_child () as Gtk.Label;
 		item.label = item_language.name;
 
-		// We save up a heatmap. It is rebuilt from scratch to avoid redundant language codes
+/*  		// We save up a heatmap. It is rebuilt from scratch to avoid redundant language codes
 		// We could check beforehand and gate this but it would affect lisibility
 		string[] temp_heatmap = {item_language.code};
 		foreach (var recent_language_code in heatmap) {
@@ -79,7 +79,7 @@ public class Inscriptions.DDModel : Object {
 		print ("\n");
 		foreach (var element in heatmap) {
 			print (element + " ");
-		}
+		}  */
 
 		// Tell everyone language changed
 		// Items are connected to this and get their shit together out of it
