@@ -97,20 +97,16 @@ public class Inscriptions.TranslationView : Granite.Bin {
         paned.start_widget = source_pane;
         paned.center_widget = pane_separator;
         paned.end_widget = target_pane;
-
-
         child = paned;
 
+        //TRANSLATORS: This is for a button that switches source and target language
+        switchlang_button_actionbar = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
+            action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG,
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages")),
+            valign = Gtk.Align.START
+        };
 
-
-            //TRANSLATORS: This is for a button that switches source and target language
-            switchlang_button_actionbar = new Gtk.Button.from_icon_name ("media-playlist-repeat-symbolic") {
-                action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SWITCH_LANG,
-                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>I"}, _("Switch languages")),
-                valign = Gtk.Align.START
-            };
-
-            source_pane.actionbar.set_center_widget (switchlang_button_actionbar);
+        source_pane.actionbar.set_center_widget (switchlang_button_actionbar);
 
 
 

@@ -62,7 +62,7 @@ public class Inscriptions.ZoomController : Object {
     * Handler. Wraps a zoom enum into the correct function-
     */
     public void zoom_changed (ZoomType zoomtype) {
-        print ("Zoom changed!");
+        //print ("Zoom changed!");
         switch (zoomtype) {
             case ZoomType.ZOOM_IN:              zoom_in (); return;          // vala-lint=double-spaces
             case ZoomType.DEFAULT_ZOOM:         zoom_default (); return;     // vala-lint=double-spaces
@@ -105,7 +105,7 @@ public class Inscriptions.ZoomController : Object {
     * Switch zoom classes, then reflect in the UI and tell the application
     */
     private void do_set_zoom (uint new_zoom) {
-        print ("Setting zoom: " + zoom.to_string ());
+        //print ("\nSetting zoom: " + new_zoom.to_string ());
 
         // Switches the classes that control font size
         widget.remove_css_class (ZoomLevel.from_uint ( _old_zoom).to_css_class ());

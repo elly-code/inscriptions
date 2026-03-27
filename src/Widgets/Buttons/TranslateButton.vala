@@ -4,7 +4,7 @@
  */
 
 /**
- * Simple two-buttons horizontal box using in SettingsPopover to toggle view
+ * Simple button in a revealer, shown depending on settings
  */
 public class Inscriptions.TranslateButton : Granite.Bin {
 

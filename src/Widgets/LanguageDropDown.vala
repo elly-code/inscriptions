@@ -56,7 +56,7 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
 
   private void on_update_greyout (string language_code) {
     //var selected_lang = dropdown.get_selected_item () as Lang;
-    print ("\nUPDATE GREYOUT %s\n".printf (language_code));
+    //print ("\nUPDATE GREYOUT %s\n".printf (language_code));
     //language_changed (selected_lang.code);
     model.update_greyout (language_code);
   }
