@@ -5,7 +5,9 @@
 
 public class Inscriptions.Application : Gtk.Application {
 
-    internal static Settings settings;
+    //internal static Settings settings;
+    internal static Settings settings_ui;
+    internal static Settings settings_translate;
     internal static DeepL backend;
     internal static MainWindow main_window;
 
@@ -19,7 +21,7 @@ public class Inscriptions.Application : Gtk.Application {
 
     public Application () {
         Object (
-            application_id: RDNN,
+            application_id: APP_ID,
             flags: ApplicationFlags.HANDLES_OPEN
         );
     }
@@ -32,7 +34,9 @@ public class Inscriptions.Application : Gtk.Application {
     }
 
     static construct {
-        settings = new GLib.Settings (RDNN);
+        //settings = new GLib.Settings (RDNN);
+        settings_ui = new Settings (SETTINGS_PATH_UI);
+        settings_translate = new Settings (SETTINGS_PATH_TRANSLATE);
 
         // Backend takes care of the async for us. We give it the text
         // And it will emit a signal whenever finished, which we can connect to

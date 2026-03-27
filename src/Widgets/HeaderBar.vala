@@ -17,7 +17,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     Gtk.StackSwitcher title_switcher;
 
     Gtk.Revealer back_revealer;
-    Gtk.Button switchlang_button;
     Gtk.Revealer toolbar_revealer;
     Gtk.MenuButton popover_button;
 
@@ -44,12 +43,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         set {
             toolbar_revealer.reveal_child = value;
             back_revealer.reveal_child = !value;
-
-            //  if (value) {
-            //      headerbar.remove_css_class (Granite.STYLE_CLASS_FLAT);
-            //  } else {
-            //      headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-            //  }
         }
     }
 
@@ -83,12 +76,11 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         title_stack.add_child (title_switcher);
         title_stack.visible_child = title_label;
 
-        //TRANSLATORS: Do not translate the name itself. You can write it in your writing system if that is usually done for your language
         headerbar = new Gtk.HeaderBar () {
             title_widget = title_stack
         };
         headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
-        //headerbar.add_css_class (CSS_COLORED_HEADER);
+        //headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
 
 
         /* ---------------- PACK START ---------------- */
@@ -158,12 +150,12 @@ public class Inscriptions.HeaderBar : Granite.Bin {
             transition_type = Gtk.RevealerTransitionType.SWING_RIGHT
         };
         
-        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-        //toolbar_right.append (translate_revealer);
+        var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, MARGIN_MENU_STANDARD);
+
+        //toolbar_right.append (new TranslateButton ());
         toolbar_right.append (popover_button);
 
         headerbar.pack_end (toolbar_right);
-        headerbar.pack_end (new TranslateButton ());
 
         child = headerbar;
 
@@ -174,7 +166,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         /* -------------------- CONNECTS AND BINDS -------------------- */
         back_button.clicked.connect (() => {back_requested ();});
 
-        Application.settings.bind (KEY_HIGHLIGHT,
+        Application.settings_ui.bind (KEY_HIGHLIGHT,
             toggle_highlight, "active",
             GLib.SettingsBindFlags.DEFAULT);
     }

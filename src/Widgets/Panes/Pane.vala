@@ -10,6 +10,7 @@
 public class Inscriptions.Pane : Gtk.Box {
 
     public Inscriptions.DDModel model {get; construct;}
+    public Inscriptions.LanguageDropDown dropdown {get; construct;}
 
     public Inscriptions.TextView textview;
     public Gtk.ScrolledWindow scrolledwindow;
@@ -20,14 +21,30 @@ public class Inscriptions.Pane : Gtk.Box {
 
     private Granite.Toast toast;
 
+    public string selected_language {
+        owned get { return dropdown.selected;}
+        set { dropdown.selected = value;}
+    }
+
+    string _greyed_out = "";
+    public string greyed_out_language {
+        owned get { return _greyed_out;}
+        set { dropdown.update_greyout (value); _greyed_out = value;}
+    }
+
     public string text {
         owned get { return textview.buffer.text;}
         set { textview.buffer.text = value;}
     }
 
+    public signal void language_changed (string code = "");
+    public signal void view_changed (bool if_main_view);
+
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         spacing = 0;
+
+        dropdown = new LanguageDropDown ();
 
         /* ---------------- VIEW ---------------- */
         textview = new Inscriptions.TextView ();
@@ -52,7 +69,8 @@ public class Inscriptions.Pane : Gtk.Box {
         actionbar = new Gtk.ActionBar () {
             hexpand = true,
             vexpand = false,
-            valign = Gtk.Align.END
+            valign = Gtk.Align.END,
+            height_request = 32
         };
         actionbar.add_css_class (Granite.STYLE_CLASS_FLAT);
 
@@ -67,19 +85,26 @@ public class Inscriptions.Pane : Gtk.Box {
         main_view.append (handle);
 
         stack = new Gtk.Stack () {
-            transition_type = Gtk.StackTransitionType.CROSSFADE
+            transition_type = Gtk.StackTransitionType.NONE
         };
         stack.add_child (main_view);
 
+        append (dropdown);
         append (stack);
 
+        /***************** CONNECTS AND BINDS *****************/
         toast.default_action.connect (() => {
             textview.buffer.undo ();
+        });
+
+        dropdown.language_changed.connect ((code) => {language_changed (code);});
+
+        stack.notify["visible-child"].connect (() => {
+            view_changed (stack.visible_child == main_view);
         });
     }
     // Respectful of Undo
     public void replace_text (string new_text) {
-
         Gtk.TextIter start, end;
         textview.buffer.get_bounds (out start, out end);
 

@@ -14,9 +14,9 @@ install_data(
 )
 
 compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
-test('Validate schema file',
-compile_schemas,
-args: ['--strict', '--dry-run', meson.current_source_dir()],
+    test('Validate schema file',
+    compile_schemas,
+    args: ['--strict', '--dry-run', meson.current_source_dir()],
 )
 
 # metainfo confuses windows, and icons are 
@@ -43,8 +43,20 @@ if not windows_build
     # Install the dev icon in development builds
     else
         install_data(
-            'icons' / 'dev.svg',
+            'icons' / 'dev64.svg',
             install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps',
+            rename: app_id + '.svg'
+        )
+
+        install_data(
+            'icons' / 'dev48.svg',
+            install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '48x48', 'apps'),
+            rename: app_id + '.svg'
+        )
+
+        install_data(
+            'icons' / 'dev64.svg',
+            install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '64x64', 'apps'),
             rename: app_id + '.svg'
         )
     endif
@@ -73,6 +85,7 @@ if not windows_build
     # Inject some variables into the metainfo file before merging in the translations
     appstream_conf = configuration_data()
     appstream_conf.set('APP_ID', app_id)
+    appstream_conf.set('APP_NAME', app_name)
     appstream_conf.set('GETTEXT_PACKAGE', meson.project_name())
     appstream_file_in = configure_file(
         input: 'inscriptions.metainfo.xml.in.in',

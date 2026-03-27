@@ -30,15 +30,7 @@ Base from wpkelso: #33434eff
     -gtk-icon-transform: rotate(90deg);
 }
 
-/* Ruthless way to make the options button flat */
-.flat_menu_button .toggle {
-    outline: none;
-	border: none;
-    box-shadow: none;
-    background: none;
-}
-
-/* Pretty coloured titlebar */
+/* Pretty coloured titlebar 
 .primary-background {
 	background-color: #33434eff;
 	color: #FFFFFF;
@@ -46,7 +38,12 @@ Base from wpkelso: #33434eff
 
 .primary-background .button {
 	background-color: @bg_color;
+}*/
+
+.primary-background {
+	border-bottom: 3px solid #33434eff;
 }
+
 
 /* Pretend the log textview is a console */
 .console {
@@ -85,4 +82,26 @@ window.devel {
 	border-style: solid;
 	border-width: 3px;
 	border-color: @warning_color;
+}
+
+/* Used by LanguageItem and tracked by DDModel so we can have a heatmap of recently used languages*/
+
+.accent-1 {
+    color: mix(@accent_color, @fg_color, 0.27);
+}
+
+.accent-2 {
+    color: mix(@accent_color, @fg_color, 0.22);
+}
+
+.accent-3 {
+    color: mix(@accent_color, @fg_color, 0.17);
+}
+
+.accent-4 {
+    color: mix(@accent_color, @fg_color, 0.12);
+}
+
+.accent-5 {
+    color: mix(@accent_color, @fg_color, 0.07);
 }

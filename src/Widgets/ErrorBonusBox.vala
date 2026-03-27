@@ -23,16 +23,16 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
-        spacing = MARGIN_MENU_BIG;
-        margin_top = MARGIN_MENU_STANDARD;
-        margin_bottom = MARGIN_MENU_STANDARD;
+        spacing = 0;
 
         // In the event the API is the issue, ask user
-        StatusCode[] api_edit_list = {StatusCode.NO_KEY, StatusCode.FORBIDDEN, StatusCode.EDIT_KEY};
+        StatusCode[] api_edit_list = {StatusCode.NO_KEY, StatusCode.FORBIDDEN};
 
         if (status in api_edit_list) {
-            
-            var api_entry = new Inscriptions.ApiEntry ();
+
+            var api_entry = new Inscriptions.ApiEntry () {
+                margin_bottom = MARGIN_MENU_BIG
+            };
 
             //TRANSLATORS: This is the text of a link to DeepL website, specifically account settings
             var link = new Gtk.LinkButton.with_label (LINK, _("You can get an API key here")) {
@@ -47,17 +47,28 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
                 reveal_child = (status != StatusCode.NO_KEY)
             };
 
+            var explanation = new Gtk.Label (_("An API Key is like a password that you can find on your DeepL account settings\nIt looks like this: <b>fr5617a-4875-4763-9119-564tjdvg89:fx</b>")) {
+                use_markup = true,
+                wrap_mode = Pango.WrapMode.WORD_CHAR,
+                halign = Gtk.Align.START,
+                margin_start = MARGIN_MENU_STANDARD,
+                margin_top = margin_bottom = MARGIN_MENU_HALF
+            };
 
-            if (status == StatusCode.NO_KEY || status == StatusCode.FORBIDDEN) {
-                var explanation = new Gtk.Label (_("An API Key is like a password given by DeepL\nIt allows you to access services from applications such as this one\nIt looks like this: fr5617a-4875-4763-9119-564tjdvg89:fx")) {
-                    wrap_mode = Pango.WrapMode.WORD_CHAR,
-                    halign = Gtk.Align.START
-                };
-                //explanation.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
-                //explanation.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
-                append (explanation);
-            }
+            var expander = new Gtk.Expander (_("What is an API Key?")) {
+                child = explanation,
+                margin_bottom = MARGIN_MENU_BIG
+            };
 
+            var instruction = new Gtk.Label (_("To be able to do translations, paste your API Key in the field below")) {
+                halign = Gtk.Align.START
+            };
+            instruction.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+
+
+            //explanation.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
+            append (expander);
+            append (instruction);
             append (api_entry);
             append (link);
             //append (usage_revealer);

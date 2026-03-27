@@ -15,15 +15,15 @@ public class Inscriptions.ApiLevel : Gtk.Box {
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
-        spacing = 9;
-        margin_bottom = 6;
+        spacing = MARGIN_MENU_STANDARD;
+        margin_bottom = MARGIN_MENU_STANDARD;
+
 
         /***************** LABEL AND BUTTON *****************/
         var cb = new Gtk.CenterBox ();
 
         var api_usage_label = new Gtk.Label (_("API Usage")) {
-            halign = Gtk.Align.START,
-            margin_top = 3
+            halign = Gtk.Align.START
         };
         api_usage_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
         cb.start_widget = api_usage_label;
@@ -38,12 +38,12 @@ public class Inscriptions.ApiLevel : Gtk.Box {
             tooltip_text = _("Update API usage")
         };
 
-        var edit_key_button = new Gtk.Button.from_icon_name ("dialog-password") {
+        var edit_key_button = new Gtk.Button.from_icon_name ("document-edit") {
         tooltip_text = _("Use a different API key of your choosing"),
         };
         edit_key_button.add_css_class (Granite.STYLE_CLASS_FLAT);
         edit_key_button.clicked.connect (() => {
-            Application.backend.answer_received (StatusCode.EDIT_KEY, _("Requested by user"));
+            Application.backend.answer_received (StatusCode.NO_KEY, _("Requested by user"));
         });
 
 
@@ -72,8 +72,8 @@ public class Inscriptions.ApiLevel : Gtk.Box {
          spinner, "visible",
          GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE);
 
-        Application.settings.bind ("current-usage", api_usage, "value", SettingsBindFlags.DEFAULT);
-        Application.settings.bind ("max-usage", api_usage, "max-value", SettingsBindFlags.DEFAULT);
+        Application.settings_translate.bind (KEY_CURRENT_USAGE, api_usage, "value", SettingsBindFlags.DEFAULT);
+        Application.settings_translate.bind (KEY_MAX_USAGE, api_usage, "max-value", SettingsBindFlags.DEFAULT);
 
         refresh_button.clicked.connect (on_refresh);
         Application.backend.answer_received.connect (updated_usage);
@@ -102,8 +102,8 @@ public class Inscriptions.ApiLevel : Gtk.Box {
 
         // Picking from settings as im not super sure what fires first between connect and binds
         this.tooltip_text = _("%s characters translated / %s maximum characters on your plan").printf (
-            Application.settings.get_int ("current-usage").to_string (),
-            Application.settings.get_int ("max-usage").to_string ());
+            Application.settings_translate.get_int (KEY_CURRENT_USAGE).to_string (),
+            Application.settings_translate.get_int (KEY_MAX_USAGE).to_string ());
 
             spinner.spinning = false;
     }

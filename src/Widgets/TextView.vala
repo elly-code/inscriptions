@@ -38,7 +38,7 @@ public class Inscriptions.TextView : Gtk.TextView {
             buffer.tag_table.add (color.to_tag_light ());
         }
 
-        Application.settings.bind (KEY_HIGHLIGHT, 
+        Application.settings_ui.bind (KEY_HIGHLIGHT, 
             this, "highlight", 
             GLib.SettingsBindFlags.DEFAULT);
     }

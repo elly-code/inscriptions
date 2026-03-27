@@ -11,7 +11,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     Inscriptions.HeaderBar headerbar;
     Gtk.Stack stack_window_view;
-    ZoomController zoom_controller;
+    public ZoomController zoom_controller;
 
     public Inscriptions.TranslationView translation_view;
     Inscriptions.ErrorView? errorview = null;
@@ -19,14 +19,15 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     construct {
         Intl.setlocale ();
         title = _("Inscriptions");
-        icon_name = RDNN;
+        icon_name = APP_ID;
 
         // I know you can do this with binds, but it adds unnecessary read/writes everytime you do shit
-        default_height = Application.settings.get_int (KEY_WINDOW_HEIGHT);
-        default_width = Application.settings.get_int (KEY_WINDOW_WIDTH);
-        maximized = Application.settings.get_boolean (KEY_WINDOW_MAXIMIZED);
+        default_height = Application.settings_ui.get_int (KEY_WINDOW_HEIGHT);
+        default_width = Application.settings_ui.get_int (KEY_WINDOW_WIDTH);
+        maximized = Application.settings_ui.get_boolean (KEY_WINDOW_MAXIMIZED);
 
 #if DEVEL
+        title += _(" (Devel)");
         add_css_class ("devel");
 #endif
 
@@ -60,6 +61,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
 
         zoom_controller = new ZoomController ((Gtk.Widget)this);
+        insert_action_group ("zoom-controller", zoom_controller.actions);
 
         var keypress_controller = new Gtk.EventControllerKey ();
         var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
@@ -69,14 +71,19 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         ((Gtk.Widget)this).add_controller (keypress_controller);
         ((Gtk.Widget)this).add_controller (scroll_controller);
 
+
+
+        /* -------------------- CONNECTS AND BINDS -------------------- */
+
         // We need this for Ctr + Scroll. We delegate everything to zoomcontroller
         keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
         keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
         scroll_controller.scroll.connect (zoom_controller.on_scroll);
 
+        Application.settings_ui.bind (KEY_ZOOM, 
+            zoom_controller, "zoom", 
+            GLib.SettingsBindFlags.DEFAULT);
 
-
-        /* -------------------- CONNECTS AND BINDS -------------------- */
         check_up_key.begin (null);
         Application.backend.answer_received.connect (on_answer_received);
         headerbar.back_requested.connect (() => {on_back_clicked ();});
@@ -156,14 +163,26 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     private bool on_close () {
         int height, width;
         get_default_size (out width, out height);
-        Application.settings.set_int ("window-height", height);
-        Application.settings.set_int ("window-width", width);
-        Application.settings.set_boolean ("window-maximized", maximized);
+        Application.settings_ui.set_int (KEY_WINDOW_HEIGHT, height);
+        Application.settings_ui.set_int (KEY_WINDOW_WIDTH, width);
+        Application.settings_ui.set_boolean (KEY_WINDOW_MAXIMIZED, maximized);
         return false;
     }
 
     public void open (string content) {
         translation_view.source_pane.text = content;
+    }
+
+    public void action_zoom_in () {
+        zoom_controller.zoom_in ();
+    }
+
+    public void action_zoom_default () {
+        zoom_controller.zoom_default ();
+    }
+
+    public void action_zoom_out () {
+        zoom_controller.zoom_out ();
     }
 }
 

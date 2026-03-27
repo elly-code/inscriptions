@@ -31,7 +31,7 @@ public class Inscriptions.DeepL : Object {
   const string REST_OF_THE_URL = "/v2/translate";
   const string URL_USAGE = "/v2/usage";
 
-  public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
+  public const string[] SUPPORTED_FORMALITY = {"DE", "FR", "IT", "ES", "ES-419", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
 
   public int current_usage = 0;
   public int max_usage = 0;
@@ -57,15 +57,15 @@ public class Inscriptions.DeepL : Object {
     system_language = DeepLUtils.detect_system ();
 
     // Fallback
-    this.current_usage = Application.settings.get_int ("current-usage");
-    this.max_usage = Application.settings.get_int ("max-usage");
+    this.current_usage = Application.settings_translate.get_int (KEY_CURRENT_USAGE);
+    this.max_usage = Application.settings_translate.get_int (KEY_MAX_USAGE);
 
     on_source_lang_changed ();
     on_target_lang_changed ();
 
     secrets.changed.connect (debounce_check);
-    Application.settings.changed["source-language"].connect (on_source_lang_changed);
-    Application.settings.changed["target-language"].connect (on_target_lang_changed);
+    Application.settings_translate.changed[KEY_SOURCE_LANGUAGE].connect (on_source_lang_changed);
+    Application.settings_translate.changed[KEY_TARGET_LANGUAGE].connect (on_target_lang_changed);
   }
 
   private void debounce_check () {
@@ -84,14 +84,14 @@ public class Inscriptions.DeepL : Object {
   }
 
   public void on_source_lang_changed () {
-    source_lang = Application.settings.get_string ("source-language");
+    source_lang = Application.settings_translate.get_string (KEY_SOURCE_LANGUAGE);
     if (source_lang == "system") {
       source_lang = system_language;
     }
   }
 
   public void on_target_lang_changed () {
-    target_lang = Application.settings.get_string ("target-language");
+    target_lang = Application.settings_translate.get_string (KEY_TARGET_LANGUAGE);
     if (target_lang == "system") {
       target_lang = system_language;
     }
@@ -114,7 +114,7 @@ public class Inscriptions.DeepL : Object {
 
   public void send_request (string text) {
 
-    context = Application.settings.get_string ("context");
+    context = Application.settings_translate.get_string (KEY_CONTEXT);
     var a = prep_json (text);
 
     on_key_changed ();
@@ -181,7 +181,7 @@ public class Inscriptions.DeepL : Object {
     }
 
     if (target_lang in SUPPORTED_FORMALITY) {
-      var formality = Formality.from_int (Application.settings.get_enum ("formality"));
+      var formality = Formality.from_int (Application.settings_translate.get_enum (KEY_FORMALITY));
       builder.set_member_name ("formality");
       builder.add_string_value (formality.to_string ());
     }
@@ -215,7 +215,7 @@ public class Inscriptions.DeepL : Object {
     var translation = array.get_object_element (0);
     var billed_characters = (int)translation.get_int_member_with_default ("billed_characters", 0);
     current_usage = current_usage + billed_characters;
-    Application.settings.set_int ("current-usage", current_usage);
+    Application.settings_translate.set_int (KEY_CURRENT_USAGE, current_usage);
 
     if (source_lang == "idk") {
           var detected_language_code = translation.get_string_member_with_default ("detected_source_language", (_("Cannot detect!")));
@@ -268,8 +268,8 @@ public class Inscriptions.DeepL : Object {
         this.current_usage = (int)objects.get_int_member ("character_count");
         this.max_usage = (int)objects.get_int_member ("character_limit");
 
-        Application.settings.set_int ("current-usage", current_usage);
-        Application.settings.set_int ("max-usage", max_usage);
+        Application.settings_translate.set_int (KEY_CURRENT_USAGE, current_usage);
+        Application.settings_translate.set_int (KEY_MAX_USAGE, max_usage);
 
         var msg = session.get_async_result_message (res);
         usage_retrieved (msg.status_code);

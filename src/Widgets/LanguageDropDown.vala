@@ -12,19 +12,23 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
   Gtk.DropDown dropdown;
 
   public string selected {
-        owned get { return get_selected_language ();}
-        set { set_selected_language (value);}
+    owned get { return get_selected_language ();}
+    set { set_selected_language (value);}
   }
 
-  public signal void language_changed (string code = "");
+  /**
+   * Emitted by the widget for others to update themselves
+   */
+  public signal void language_changed (string code = ""); // Listened to by others
 
-  public LanguageDropDown (Lang[] languages) {
+  /**
+   * Called by other elements for the DD to update what to grey out
+   */
+  public signal void update_greyout (string code = "");
+
+  construct {
     hexpand = true;
     model = new Inscriptions.DDModel ();
-
-    foreach (var language in languages) {
-      model.model_append (language);
-    }
 
     var expression = new Gtk.PropertyExpression (typeof (Inscriptions.Lang), null, "both");
     dropdown = new Gtk.DropDown (model.model, expression) {
@@ -39,23 +43,38 @@ public class Inscriptions.LanguageDropDown : Granite.Bin {
     child = dropdown;
 
     /* ---------------- CONNECTS AND BINDS ---------------- */
-    dropdown.notify["selected-item"].connect (on_selected_language);
+    model.language_changed.connect (on_language_changed);
+    update_greyout.connect (on_update_greyout);
   }
 
-  private void on_selected_language () {
-    var selected_lang = dropdown.get_selected_item () as Lang;
-    print ("\nSELECTED %s\n".printf (selected_lang.code));
-    language_changed (selected_lang.code);
+  private void on_language_changed (string language_code) {
+    //var selected_lang = dropdown.get_selected_item () as Lang; 
+    //print ("\nSELECTED %s\n".printf (selected_lang.code));
+    //language_changed (selected_lang.code);
+    language_changed (language_code);
+  }
 
+  private void on_update_greyout (string language_code) {
+    //var selected_lang = dropdown.get_selected_item () as Lang;
+    print ("\nUPDATE GREYOUT %s\n".printf (language_code));
+    //language_changed (selected_lang.code);
+    model.update_greyout (language_code);
   }
 
   private void set_selected_language (string code) {
     var position = model.model_where_code (code);
     dropdown.set_selected (position);
+    language_changed (code);
   }
 
   private string get_selected_language () {
     var selected_lang = dropdown.get_selected_item () as Lang;
     return selected_lang.code;
+  }
+
+  public void add_languages (Lang[] languages) {
+    foreach (var language in languages) {
+      model.model_append (language);
+    }
   }
 }

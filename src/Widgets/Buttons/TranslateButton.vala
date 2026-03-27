@@ -9,17 +9,21 @@
 public class Inscriptions.TranslateButton : Granite.Bin {
 
     construct {
-        //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
+        // var button_label = new Gtk.Label (_("Translate"));
+        // var button_box = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF);
+        // button_box.append (new Gtk.Image.from_icon_name ("mail-send-symbolic"));
+        // button_box.append (button_label);
+
         var translate_button = new Gtk.Button () {
+            //child = button_box,
             label = _("Translate"),
+            action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE,
             tooltip_markup = Granite.markup_accel_tooltip (
-                {"<Control>Return", "<Ctrl>T"}, 
+                {"<Control>Return", "<Ctrl>T"},
                 _("Start translating the entered text")
             )
         };
-
         translate_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
-        translate_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE;
 
         var translate_revealer = new Gtk.Revealer () {
             child = translate_button,
@@ -27,7 +31,7 @@ public class Inscriptions.TranslateButton : Granite.Bin {
         };
         child = translate_revealer;
 
-        Application.settings.bind (KEY_AUTO_TRANSLATE,
+        Application.settings_ui.bind (KEY_AUTO_TRANSLATE,
             translate_revealer, "reveal_child",
             SettingsBindFlags.INVERT_BOOLEAN
         );

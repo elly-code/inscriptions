@@ -11,12 +11,15 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.WindowHandle placeholder_handle;
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
-
+    
     construct {
         //textview.editable = false;
-
+        dropdown.tooltip_text = _("Set the language to translate to");
+        dropdown.add_languages (Inscriptions.TargetLang ());
+        //dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
+        
         /* -------- PLACEHOLDER -------- */
-        var placeholder_box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
+        var placeholder_box = new Gtk.Box (VERTICAL, 0) {
             hexpand = vexpand = true,
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.CENTER,
@@ -24,18 +27,30 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             margin_end = MARGIN_MENU_HALF
         };
         
-        var placeholder = new Gtk.Label (_("Ready!")) {
+        var placeholder = new Gtk.Label (_("Ready to translate")) {
             wrap = true
         };
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var placeholder_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {
-            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S),
+        
+        var placeholder_info = new Gtk.Label (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
+            wrap = true
+        };
+        placeholder_info.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+
+        var placeholder_translatebutton = new TranslateButton () {
             halign = Gtk.Align.CENTER,
+            width_request = 96,
+            height_request = 24,
+            margin_top = MARGIN_MENU_BIG
+        };
+
+        var switchwidget = new Inscriptions.SwitchWidget (placeholder_info, placeholder_translatebutton) {
+            halign = Gtk.Align.CENTER
         };
 
         placeholder_box.append (placeholder);
-        //placeholder_box.append (placeholder_switcher);
+        placeholder_box.append (switchwidget);
 
         placeholder_handle = new Gtk.WindowHandle () {
             child = placeholder_box
@@ -55,16 +70,8 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
 
         stack.add_child (spin_view);
-
-        actionbar.pack_start (new ToggleHighlight ());
-
-
-        /* -------- TOOLBAR -------- */
-        var auto_switcher = new Granite.ModeSwitch.from_icon_name ("input-mouse-symbolic", "tools-timer-symbolic") {
-            tooltip_text = _("Switch between click to translate // translate %.2fs after typing has stopped").printf (DEBOUNCE_IN_S)
-        };
-
-        //actionbar.pack_start (auto_switcher);
+        actionbar.pack_start (new TranslateButton ());
+        //actionbar.pack_start (new ToggleHighlight ());
 
         /* -------- TOOLBAR -------- */
         var copy = new Gtk.Button.from_icon_name ("edit-copy-symbolic") {
@@ -84,22 +91,19 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         actionbar.pack_end (save_as_button);
 
         /***************** CONNECTS AND BINDS *****************/
+        //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
 
-        Application.settings.bind ("auto-translate", 
-            auto_switcher, "active", 
+        Application.settings_ui.bind (KEY_AUTO_TRANSLATE, 
+            switchwidget, "first-widget-visible", 
             GLib.SettingsBindFlags.DEFAULT);
 
-        Application.settings.bind ("auto-translate", 
-            placeholder_switcher, "active", 
-            GLib.SettingsBindFlags.DEFAULT);
-
-        Application.settings.changed["auto-translate"].connect (on_auto_translate_changed);
+        Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
         copy.clicked.connect (copy_to_clipboard);
         textview.buffer.changed.connect (on_buffer_changed);
     }
 
     private void on_auto_translate_changed () {        
-        if (Application.settings.get_boolean ("auto-translate")) {
+        if (Application.settings_ui.get_boolean (KEY_AUTO_TRANSLATE)) {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
             message (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S));
 
@@ -109,6 +113,10 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         }
     }
 
+    //  private void on_target_changed (string language_code) {
+    //      Application.settings.set_string (KEY_TARGET_LANGUAGE, language_code);
+    //      target_changed (language_code);
+    //  }
     private void copy_to_clipboard () {
         var clipboard = Gdk.Display.get_default ().get_clipboard ();
         clipboard.set_text (textview.buffer.text);

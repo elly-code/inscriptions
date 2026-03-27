@@ -4,8 +4,8 @@
  */
 
 /**
- * Flexible view created then shown when backend communicates an error code.
- * Depending on the code it receives, explanations, options, and details are shown
+ * Flexible view created then shown when backend communicates an error code via @StatusCode
+ * Depending on the code it receives, explanations, options, and details are shown, with an additional ErrorBox
  */
 public class Inscriptions.ErrorView : Granite.Bin {
 
@@ -84,7 +84,7 @@ public class Inscriptions.ErrorView : Granite.Bin {
             margin_top = 12
         };
 
-        if (status != StatusCode.NO_KEY || status != StatusCode.EDIT_KEY) {
+        if (status != StatusCode.NO_KEY) {
             box.append (expander);
         }
 

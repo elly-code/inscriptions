@@ -18,19 +18,21 @@ sources = files (
   'Widgets' / 'Panes' / 'Pane.vala',
   'Widgets' / 'Panes' / 'SourcePane.vala',
   'Widgets' / 'Panes' / 'TargetPane.vala',
+  'Widgets' / 'Panes' / 'PaneSeparator.vala',
 
   'Widgets' / 'LanguageItem.vala',
   'Widgets' / 'LogToolbar.vala',
   'Widgets' / 'ErrorBonusBox.vala',
   'Widgets' / 'TextView.vala',
   'Widgets' / 'HeaderBar.vala',
-  'Widgets' / 'LanguageSelectionBox.vala',
   'Widgets' / 'LanguageDropDown.vala',
+  'Widgets' / 'SwitchWidget.vala',
 
   'Widgets' / 'Buttons' / 'OrientationBox.vala',
   'Widgets' / 'Buttons' / 'RetryButton.vala',
   'Widgets' / 'Buttons' / 'TranslateButton.vala',
   'Widgets' / 'Buttons' / 'ToggleHighlight.vala',
+  'Widgets' / 'Buttons' / 'ZoomBox.vala',
 
   'Widgets' / 'Popovers' / 'SettingsPopover.vala',
   'Widgets' / 'Popovers' / 'OptionsPopover.vala',

@@ -8,9 +8,12 @@
  */
 public class Inscriptions.SourcePane : Inscriptions.Pane {
 
-  construct {
+    construct {
+
       stack.visible_child = main_view;
-      //
+      dropdown.tooltip_text = _("Set the language to translate from");
+      dropdown.add_languages (Inscriptions.SourceLang ());
+      //dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
 
       var options_button_label = new Gtk.Label (_("Options"));
       var options_button_box = new Gtk.Box (HORIZONTAL, 0);
@@ -22,7 +25,8 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
           tooltip_text = _("Change options for the translation")
       };
       options_button.add_css_class (Granite.STYLE_CLASS_FLAT);
-      options_button.add_css_class ("flat_menu_button");
+      options_button.has_frame = false;
+      //options_button.add_css_class ("flat_menu_button");
       options_button_label.mnemonic_widget = options_button;
       options_button.popover = new Inscriptions.OptionsPopover () {halign = Gtk.Align.START};
       options_button.direction = Gtk.ArrowType.UP;
@@ -43,9 +47,10 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
           tooltip_text = _("Paste from clipboard"),
             margin_start = MARGIN_MENU_HALF
       };
-
+      //actionbar.pack_end (new TranslateButton () {margin_start = MARGIN_MENU_HALF});
       actionbar.pack_end (clear_button);
       actionbar.pack_end (paste_button);
+
 
       var open_button = new Gtk.Button.from_icon_name ("document-open-symbolic") {
           action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_LOAD_TEXT,
@@ -57,11 +62,18 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
       actionbar.pack_end (open_button);
 
       /***************** CONNECTS AND BINDS *****************/
+      //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_SOURCE_LANGUAGE, code);});
+
       paste_button.clicked.connect (paste_from_clipboard);
       textview.buffer.changed.connect (() => {
         clear_button.sensitive = (text != "");
       });
     }
+
+  //  private void on_source_changed (string language_code) {
+  //    Application.settings.set_string (KEY_SOURCE_LANGUAGE, language_code);
+  //    source_changed (language_code);
+  //  }
 
   private void paste_from_clipboard () {
     var clipboard = Gdk.Display.get_default ().get_clipboard ();

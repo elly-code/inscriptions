@@ -8,11 +8,10 @@
  */
 public class Inscriptions.ToggleHighlight : Gtk.Button {
 
-
     bool _active;
     public bool active {
         get {
-            return _active;            
+            return _active;
         }
         set {
             if (value) {
@@ -37,7 +36,7 @@ public class Inscriptions.ToggleHighlight : Gtk.Button {
     construct {
         clicked.connect (() => {active = !active;});
 
-        Application.settings.bind (KEY_HIGHLIGHT,
+        Application.settings_ui.bind (KEY_HIGHLIGHT,
             this, "active",
             SettingsBindFlags.DEFAULT
         );
