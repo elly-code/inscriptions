@@ -120,7 +120,11 @@ public class Inscriptions.DeepL : Object {
     on_key_changed ();
     var msg = new Soup.Message ("POST", base_url + REST_OF_THE_URL);
     msg.request_headers.append ("Content-Type", "application/json");
-    msg.request_headers.append ("User-Agent", "Inscriptions");
+#if WINDOWS
+    msg.request_headers.append ("User-Agent", "%s-%s (%s)".printf (APP_ID, APP_VERSION, "Windows"));
+#else
+    msg.request_headers.append ("User-Agent", "%s-%s (%s)".printf (APP_ID, APP_VERSION, "Linux"));
+#endif
     msg.request_headers.append ("Authorization", "DeepL-Auth-Key %s".printf (api_key));
     msg.set_request_body_from_bytes ("application/json", new Bytes (a.data));
 
