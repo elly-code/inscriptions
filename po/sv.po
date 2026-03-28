@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 12:43+0100\n"
+"POT-Creation-Date: 2026-03-28 15:02+0100\n"
 "PO-Revision-Date: 2026-01-14 16:21+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: \n"
@@ -26,10 +26,8 @@ msgstr "Inscriptions"
 msgid " (Devel)"
 msgstr ""
 
-#. TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
 #. child = button_box,
-#: src/Windows/MainWindow.vala:52 src/Widgets/HeaderBar.vala:139
-#: src/Widgets/Buttons/TranslateButton.vala:19
+#: src/Windows/MainWindow.vala:52 src/Widgets/Buttons/TranslateButton.vala:19
 msgid "Translate"
 msgstr "Översätt"
 
@@ -85,10 +83,6 @@ msgstr ""
 #: src/Widgets/HeaderBar.vala:128
 msgid "Settings"
 msgstr "Inställningar"
-
-#: src/Widgets/HeaderBar.vala:142 src/Widgets/Buttons/TranslateButton.vala:23
-msgid "Start translating the entered text"
-msgstr "Börja översätta den inmatade texten"
 
 #: src/Views/ErrorView.vala:82
 msgid "Details"
@@ -334,6 +328,10 @@ msgstr ""
 #, c-format
 msgid "%s characters translated / %s maximum characters on your plan"
 msgstr "%s översatta tecken / %s maximalt antal tecken i din plan"
+
+#: src/Widgets/Buttons/TranslateButton.vala:23
+msgid "Start translating the entered text"
+msgstr "Börja översätta den inmatade texten"
 
 #: src/Widgets/Buttons/OrientationBox.vala:24
 msgid "Horizontal"

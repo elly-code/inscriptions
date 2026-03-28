@@ -133,22 +133,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         var menu_popover = new Inscriptions.SettingsPopover ();
         popover_button.popover = menu_popover;
-
-        //TRANSLATORS: The two following texts are for a button. The functionality is diabled. You can safely ignore these.
-        var translate_button = new Gtk.Button () {
-            label = _("Translate"),
-            tooltip_markup = Granite.markup_accel_tooltip (
-                {"<Control>Return", "<Ctrl>T"}, 
-                _("Start translating the entered text")
-            )
-        };
-        translate_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
-        translate_button.action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE;
-
-        var translate_revealer = new Gtk.Revealer () {
-            child = translate_button,
-            transition_type = Gtk.RevealerTransitionType.SWING_RIGHT
-        };
         
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, MARGIN_MENU_STANDARD);
 

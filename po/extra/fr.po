@@ -1,85 +1,74 @@
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: fr\n"
+"Language-Team: none\n"
+"Last-Translator: Automatically generated\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2025-12-03 23:11+0100\n"
+"POT-Creation-Date: 2026-02-16 23:24+0100\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 23:24+0100\n"
-"PO-Revision-Date: 2025-12-03 23:11+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/inscriptions.metainfo.xml.in:12 data/inscriptions.desktop.in:6
+#: data/inscriptions.metainfo.xml.in:12
+#: data/inscriptions.desktop.in:6
 msgid "Inscriptions"
-msgstr "M. Worldwide"
+msgstr "Inscriptions"
 
-#: data/inscriptions.metainfo.xml.in:13 data/inscriptions.desktop.in:8
+#: data/inscriptions.metainfo.xml.in:13
+#: data/inscriptions.desktop.in:8
 msgid "Translate text elegantly"
 msgstr "Traduire un texte avec élégance"
 
 #: data/inscriptions.metainfo.xml.in:15
-#, fuzzy
 msgid "A fast, pretty, and ready translation app using DeepL free and paid API"
-msgstr ""
-"Une application de traduction simple, propre et efficace qui utilise l'API "
-"gratuite et payante de DeepL."
+msgstr "Une application de traduction rapide, élégante et prête à l'emploi qui utilise l'API gratuite et payante de DeepL"
 
 #: data/inscriptions.metainfo.xml.in:16
 msgid "Libretranslate support is considered, but"
-msgstr ""
+msgstr "La prise en charge de Libretranslate est envisagée, mais"
 
 #: data/inscriptions.metainfo.xml.in:17
 msgid "Some points of note:"
 msgstr "Quelques points :"
 
 #: data/inscriptions.metainfo.xml.in:19
-#, fuzzy
 msgid "Nimble: Paste your DeepL api key (Whichever the plan), and here you go!"
-msgstr "Nimble : Collez votre clé api, et c'est parti !"
+msgstr "Facile : Collez votre clé API DeepL (quel que soit votre forfait), et c'est parti !"
 
 #: data/inscriptions.metainfo.xml.in:20
 msgid "Thoughtful: Just what you need, out of your way and a click away"
-msgstr ""
+msgstr "Réfléchi : Juste ce qu'il vous faut, hors de votre chemin et à portée de clic."
 
 #: data/inscriptions.metainfo.xml.in:21
-msgid ""
-"Comprehensive: No scary angry dialogs - If something goes wrong, explain "
-"nicely"
-msgstr ""
+msgid "Comprehensive: No scary angry dialogs - If something goes wrong, explain nicely"
+msgstr "Complet : Pas de dialogues effrayants et fâchés - Si quelque chose ne va pas, expliquez-le gentiment."
 
 #: data/inscriptions.metainfo.xml.in:22
-msgid ""
-"Lean: Limiting resource usage and internet communications to the minimum"
-msgstr ""
+msgid "Lean: Limiting resource usage and internet communications to the minimum"
+msgstr "Lean : Limiter l'utilisation des ressources et les communications internet au minimum"
 
 #: data/inscriptions.metainfo.xml.in:23
 msgid "Supported languages: All those available via DeepL API!"
 msgstr "Langues prises en charge : Toutes celles disponibles via DeepL API !"
 
 #: data/inscriptions.metainfo.xml.in:25
-msgid ""
-"If you like this app please do not hesitate to donate to encourage its "
-"development!"
-msgstr ""
-"Si vous aimez cette application, n'hésitez pas à faire un don pour "
-"encourager son développement !"
+msgid "If you like this app please do not hesitate to donate to encourage its development!"
+msgstr "Si vous aimez cette application, n'hésitez pas à faire un don pour encourager son développement !"
 
 #: data/inscriptions.metainfo.xml.in:30
 msgid "Main window, showcasing a translation with the highlighting feature"
-msgstr ""
+msgstr "Fenêtre principale, présentant une traduction avec la fonction de surlignage"
 
 #: data/inscriptions.metainfo.xml.in:34
-msgid ""
-"Main window with dark theme, showcasing a translation with the highlighting "
-"feature"
-msgstr ""
+msgid "Main window with dark theme, showcasing a translation with the highlighting feature"
+msgstr "Fenêtre principale avec thème sombre, présentant une traduction avec la fonction de surlignage"
 
 #: data/inscriptions.metainfo.xml.in:42
 msgid "Stella and Charlie!"
-msgstr ""
+msgstr "Stella et Charlie !"
 
 #: data/inscriptions.metainfo.xml.in:62
 msgid "Translation"
@@ -139,39 +128,35 @@ msgstr "Cela m'est venu dans un rêve"
 
 #: data/inscriptions.metainfo.xml.in:93
 msgid "😎 Guests stars:"
-msgstr ""
+msgstr "😎 Guests stars :"
 
 #: data/inscriptions.metainfo.xml.in:95
 msgid "Amazing supercool icon designed by @wpkelso!"
-msgstr ""
+msgstr "Une icône super cool créée par @wpkelso !"
 
 #: data/inscriptions.metainfo.xml.in:96
 msgid "Amazing supercool icon funded by @t3rminus!"
-msgstr ""
+msgstr "Une icône super cool financée par @t3rminus !"
 
 #: data/inscriptions.metainfo.xml.in:97
 msgid "Initial Italian translation thanks to @albanobattistella!"
-msgstr ""
+msgstr "Première traduction italienne grâce à @albanobattistella !"
 
 #: data/inscriptions.metainfo.xml.in:98
 msgid "Initial Swedish translation thanks to @yeager!"
-msgstr ""
+msgstr "Première traduction en suédois grâce à @yeager !"
 
 #: data/inscriptions.metainfo.xml.in:99
 msgid "You, the user, for trying this supercool app!"
-msgstr ""
+msgstr "C'est vous, l'utilisateur, qui avez essayé cette application super cool !"
 
 #: data/inscriptions.desktop.in:7
 msgid "Text translator"
 msgstr "Traducteur de texte"
 
 #: data/inscriptions.desktop.in:13
-msgid ""
-"text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
-"localization;internationalization;"
-msgstr ""
-"texte ; traduire ; traduction ; traducteur ; deepl ; NMT ; lang ; localize ; "
-"l10n ; i18n ; localisation ; internationalisation ;"
+msgid "text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;localization;internationalization;"
+msgstr "texte ; traduire ; traduction ; traducteur ; deepl ; NMT ; lang ; localize ; l10n ; i18n ; localisation ; internationalisation ;"
 
 #~ msgid "inscriptions"
 #~ msgstr "inscriptions"
@@ -180,9 +165,7 @@ msgstr ""
 #~ msgstr "Le pouvoir de la langue au creux de la main !"
 
 #~ msgid "Out of your way: Remembers context, formality, languages"
-#~ msgstr ""
-#~ "Hors de votre chemin : Se souvient du contexte, de la formalité, des "
-#~ "langues"
+#~ msgstr "Hors de votre chemin : Se souvient du contexte, de la formalité, des langues"
 
 #~ msgid "Convenient: lets you check how much you have left"
 #~ msgstr "Pratique : vous pouvez vérifier combien il vous reste."

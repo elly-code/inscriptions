@@ -13,7 +13,6 @@
   <summary>Translate text elegantly</summary>
   <description>
     <p>A fast, pretty, and ready translation app using DeepL free and paid API</p>
-    <p>Libretranslate support is considered, but </p>
     <p>Some points of note:</p>
       <ul>
             <li>Nimble: Paste your DeepL api key (Whichever the plan), and here you go!</li>
@@ -23,6 +22,7 @@
             <li>Supported languages: All those available via DeepL API!</li>
       </ul>
     <p>If you like this app please do not hesitate to donate to encourage its development!</p>
+    <p>Libretranslate support is considered, but a heavy time and energy investment, so may or may not happen.</p>
   </description>
 
   <screenshots>
