@@ -84,6 +84,7 @@
         <p>A polished, cleaner and better thought out UI</p>
         <ul>
             <li>New: Synchronized text zoom for both source and target, persistent, with a setting in gear menu</li>
+            <li>API update to support all new languages supported by DeepL</li>
             <li>Show/hide highlighting moved to gear menu</li>
             <li>Enable/Disable auto translation moved to gear menu</li>
             <li>Display in the language dropdown the currently selected one</li>
