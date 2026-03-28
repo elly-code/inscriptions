@@ -100,8 +100,8 @@ msgid ""
 "Please verify you are <a href='%s'>connected to the internet</a>, and that "
 "this app has <a href='%s'>permission to access it</a>"
 msgstr ""
-"Überprüfen Sie bitte, ob Sie mit dem Internet verbunden sind und ob diese "
-"Anwendung die Erlaubnis hat, darauf zuzugreifen"
+"Überprüfen Sie bitte, ob Sie <a href='%s'>mit dem Internet verbunden sind</a> und ob diese "
+"<a href='%s'>Anwendung die Erlaubnis hat, darauf zuzugreifen</a>"
 
 #: src/Enums/StatusCode.vala:66
 msgid ""
@@ -424,7 +424,7 @@ msgstr "Die Formalitätskontrolle ist für diese Zielsprache nicht verfügbar."
 
 #: src/Widgets/Panes/Pane.vala:127
 msgid "Undo"
-msgstr "Rückgängig machen"
+msgstr "Rückgängig"
 
 #: src/Widgets/Panes/SourcePane.vala:15
 msgid "Set the language to translate from"
@@ -941,9 +941,8 @@ msgid "Slovenian"
 msgstr "Slowenisch"
 
 #: src/Constants.vala:158 src/Constants.vala:284
-#, fuzzy
 msgid "Spanish"
-msgstr "Dänisch"
+msgstr "Spanisch"
 
 #: src/Constants.vala:159 src/Constants.vala:286
 msgid "Sundanese"
@@ -1074,13 +1073,13 @@ msgstr "Datei konnte nicht geöffnet werden"
 #~ msgid "DeepL API Key"
 #~ msgstr "DeepL API-Schlüssel"
 
-#, fuzzy, c-format
+#, c-format
 #~ msgid ""
 #~ "Switch between click to translate // translate %.2fs after typing has "
 #~ "stopped"
 #~ msgstr ""
 #~ "Umschalten zwischen Klicken und Übersetzen // Übersetzen %.2fs nach "
-#~ "Beendigung des Tippens"
+#~ "Tippens"
 
 #~ msgid "Receive status code: "
 #~ msgstr "Statuscode %s Empfangen:"

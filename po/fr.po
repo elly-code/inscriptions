@@ -101,8 +101,8 @@ msgid ""
 "Please verify you are <a href='%s'>connected to the internet</a>, and that "
 "this app has <a href='%s'>permission to access it</a>"
 msgstr ""
-"Vérifiez que vous êtes bien connecté à Internet et que cette application a "
-"la permission d'y accéder"
+"Vérifiez que vous êtes bien <a href='%s'>connecté à Internet</a> et que cette application a "
+"<a href='%s'>la permission d'y accéder</a>"
 
 #: src/Enums/StatusCode.vala:66
 msgid ""
@@ -138,11 +138,11 @@ msgstr ""
 
 #: src/Enums/StatusCode.vala:84
 msgid "Forbidden"
-msgstr "Interdit"
+msgstr "Non autorisé"
 
 #: src/Enums/StatusCode.vala:85
 msgid "Your API key is invalid. Make sure it is the correct one!"
-msgstr "Votre clé API n'est pas valide. Assurez-vous qu'elle est correcte !"
+msgstr "Votre clé API est invalide. Assurez-vous qu'elle est correcte !"
 
 #: src/Enums/StatusCode.vala:90
 msgid "Too many requests"
@@ -527,7 +527,7 @@ msgstr "Succès !"
 
 #: src/Widgets/Buttons/RetryButton.vala:89
 msgid "403 Forbidden: Invalid API Key"
-msgstr "403 Forbidden : Invalid API Key (en anglais)"
+msgstr "403 Non autorisé : Clé API invalide"
 
 #: src/Widgets/Buttons/RetryButton.vala:93
 msgid "Invalid"
@@ -541,7 +541,7 @@ msgstr "Code d'état %s : Sans rapport avec l'authentification"
 #. ---------- SEND BUTTON ----------
 #: src/Widgets/LogToolbar.vala:19
 msgid "Get: "
-msgstr "Obtenir : "
+msgstr "Recevoir : "
 
 #: src/Widgets/LogToolbar.vala:26
 msgid "Simulate a fake status code answer for debugging purposes"
