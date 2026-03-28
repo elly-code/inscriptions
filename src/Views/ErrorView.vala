@@ -56,7 +56,8 @@ public class Inscriptions.ErrorView : Granite.Bin {
         box.append (bonusbox);
 
         var retry_button = new Inscriptions.RetryButton () {
-            halign = Gtk.Align.END
+            halign = Gtk.Align.END,
+            margin_top = MARGIN_MENU_BIG
         };
         retry_button.validated.connect (on_validated);
 
@@ -81,7 +82,7 @@ public class Inscriptions.ErrorView : Granite.Bin {
         var expander = new Gtk.Expander (_("Details")) {
             child = scroll_box,
             hexpand = true,
-            margin_top = 12
+            margin_top = MARGIN_MENU_BIG + MARGIN_MENU_STANDARD
         };
 
         if (status != StatusCode.NO_KEY) {

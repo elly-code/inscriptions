@@ -47,7 +47,7 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
                 reveal_child = (status != StatusCode.NO_KEY)
             };
 
-            var explanation = new Gtk.Label (_("An API Key is like a password that you can find on your DeepL account settings\nIt looks like this: <b>fr5617a-4875-4763-9119-564tjdvg89:fx</b>")) {
+            var explanation = new Gtk.Label (_("An API Key is like a password which allows you to use DeepL services\nYou can find it in your account settings on the DeepL website\nIt looks like this: <b>fr5617a-4875-4763-9119-564tjdvg89:fx</b>")) {
                 use_markup = true,
                 wrap_mode = Pango.WrapMode.WORD_CHAR,
                 halign = Gtk.Align.START,
@@ -57,7 +57,8 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
             var expander = new Gtk.Expander (_("What is an API Key?")) {
                 child = explanation,
-                margin_bottom = MARGIN_MENU_BIG
+                margin_top = MARGIN_MENU_BIG,
+                margin_bottom = MARGIN_MENU_STANDARD
             };
 
             var instruction = new Gtk.Label (_("To be able to do translations, paste your API Key in the field below")) {
@@ -67,10 +68,12 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
 
 
             //explanation.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
-            append (expander);
+
             append (instruction);
             append (api_entry);
             append (link);
+            append (expander);
+
             //append (usage_revealer);
 
 
