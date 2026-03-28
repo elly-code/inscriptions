@@ -81,20 +81,25 @@
   <releases>
     <release version="1.1.0" date="2026-03-16" urgency="medium">
       <description>
-        <p>Touchups and enhancements</p>
+        <p>A polished, cleaner and better thought out UI</p>
         <ul>
-            <li>A cleaner, better thought out UI</li>
-            <li>Updated and extended screenshots</li>
+            <li>New: Synchronized text zoom for both source and target, persistent, with a setting in gear menu</li>
             <li>Show/hide highlighting moved to gear menu</li>
             <li>Enable/Disable auto translation moved to gear menu</li>
             <li>Display in the language dropdown the currently selected one</li>
             <li>Greyout in the language dropdown the relevant language</li>
             <li>Switch source and language moved between both languages</li>
             <li>Static pane sizes - makes more sense, less confusing</li>
-            <li>New: Synchronized text zoom for both source and target, persistent, with a setting in gear menu</li>
             <li>Translation button moved within the view</li>
         </ul>
       </description>
+      <issues>
+        <issue>Fixed: Highlighting didnt refresh correctly upon switching between light and dark theme</issue>
+        <issue>Fixed: Options button had a broken fixup frame</issue>
+        <issue>Fixed: Paste and clear did not interact well with undo-redo</issue>
+        <issue>Fixed: On non-elementary desktops, Slate was forced upon ye. Now it should be respecting user accents</issue>
+        <issue>Fixed: Some highlight toggle and options menu icon were broken. Have to force the elementary icon theme to avoid display issues</issue>
+      </issues>
     </release>
     <release version="1.0.0" date="2026-02-16" urgency="medium">
       <description>

@@ -53,7 +53,7 @@ public class Inscriptions.TextView : Gtk.TextView {
             return;
         }
 
-        print ("\nSetting hightlights");
+        //print ("\nSetting hightlights");
         end_sentence = start_sentence;
         end_sentence.forward_sentence_end (); // Else the While will not run at all.
 

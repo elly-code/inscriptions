@@ -54,6 +54,7 @@ public class Inscriptions.Application : Gtk.Application {
         // Styling
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.gtk_icon_theme_name = "elementary";
 
         // Force Slate on other DE, as else there is a risk whatever theme is running it breaks the app
         //  unowned string desktop_environment = Environment.get_variable ("XDG_CURRENT_DESKTOP");
