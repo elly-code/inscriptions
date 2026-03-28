@@ -79,7 +79,7 @@
   </recommends>
 
   <releases>
-    <release version="1.1.0" date="2026-03-16" urgency="medium">
+    <release version="1.1.0" date="2026-03-28" urgency="medium">
       <description>
         <p>A polished, cleaner and better thought out UI</p>
         <ul>
