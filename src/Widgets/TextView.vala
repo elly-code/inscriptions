@@ -46,12 +46,14 @@ public class Inscriptions.TextView : Gtk.TextView {
     private void set_highlighting (bool is_set) {
         Gtk.TextIter start_sentence, end_sentence, end_buffer;
         buffer.get_bounds (out start_sentence, out end_buffer);
+        buffer.remove_all_tags (start_sentence, end_buffer);
 
         if (!is_set) {
-            buffer.remove_all_tags (start_sentence, end_buffer);
+            print ("\nHighlighting not set, nuking colours");
             return;
         }
 
+        print ("\nSetting hightlights");
         end_sentence = start_sentence;
         end_sentence.forward_sentence_end (); // Else the While will not run at all.
 
@@ -79,7 +81,7 @@ public class Inscriptions.TextView : Gtk.TextView {
 
             // Ensure we switch color
             if (iterate_colors == (all_colors.length - 1)) {
-                print ("\niter at %i".printf (iterate_colors));
+                //print ("\niter at %i".printf (iterate_colors));
                 iterate_colors = 0;
             } else {
                 iterate_colors++;
@@ -98,11 +100,13 @@ public class Inscriptions.TextView : Gtk.TextView {
      */
     private void set_unset_handlers (bool if_set) {
         if (if_set) {
+            //print ("\nSetting textview highlight handlers...");
             Application.backend.answer_received.connect_after (refresh);
             gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (refresh);
             return;
         }
-
+        
+        //print ("\nDisconnecting textview highlight handlers...");
         Application.backend.answer_received.disconnect (refresh);
         gtk_settings.notify["gtk-application-prefer-dark-theme"].disconnect (refresh);
     }
@@ -111,6 +115,7 @@ public class Inscriptions.TextView : Gtk.TextView {
      * Ensure current highlighting state is correct by redoing the whole shebang
      */
     public void refresh () {
+        //print ("\nRefreshing highlights...");
         set_highlighting (_priv_highlight);
     }
 }
