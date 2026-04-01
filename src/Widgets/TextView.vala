@@ -49,7 +49,7 @@ public class Inscriptions.TextView : Gtk.TextView {
         buffer.remove_all_tags (start_sentence, end_buffer);
 
         if (!is_set) {
-            print ("\nHighlighting not set, nuking colours");
+            //print ("\nHighlighting not set, nuking colours");
             return;
         }
 

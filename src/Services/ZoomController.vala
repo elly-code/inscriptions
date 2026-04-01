@@ -18,7 +18,7 @@ public class Inscriptions.ZoomController : Object {
 
     const uint ZOOM_MAX = 400;
     const uint DEFAULT_ZOOM = 100;
-    const uint ZOOM_MIN = 80;
+    const uint ZOOM_MIN = 60;
 
     public signal void changed ();
 

@@ -36,7 +36,7 @@
       <description>whether the panes are horizontal or vertical</description>
     </key>
     <key name="zoom" type="u">
-      <default>120</default>
+      <default>100</default>
       <summary>How zoomed is the text</summary>
       <description>zoooooom</description>
     </key>

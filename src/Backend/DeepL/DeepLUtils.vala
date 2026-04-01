@@ -23,7 +23,7 @@ namespace Inscriptions.DeepLUtils {
       return "ES-419";
     }
 
-    print ("\nBackend: Detected system language: " + minicode);
+    //print ("\nBackend: Detected system language: " + minicode);
     return minicode;
   }
 }

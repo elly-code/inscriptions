@@ -56,26 +56,26 @@ Base from wpkelso: #33434eff
 }
 
 /* Font zooms */
-.s20 textview.view {font-size: 20%;}
-.s40 textview.view {font-size: 40%;}
-.s60 textview.view {font-size: 60%;}
-.s80 textview.view {font-size: 80%;}
-.s100 textview.view {font-size: 100%;}
-.s120 textview.view {font-size: 120%;}
-.s140 textview.view {font-size: 140%;}
-.s160 textview.view {font-size: 160%;}
-.s180 textview.view {font-size: 180%;}
-.s200 textview.view {font-size: 200%;}
-.s220 textview.view {font-size: 220%;}
-.s240 textview.view {font-size: 240%;}
-.s260 textview.view {font-size: 260%;}
-.s280 textview.view {font-size: 280%;}
-.s300 textview.view {font-size: 300%;}
-.s320 textview.view {font-size: 320%;}
-.s340 textview.view {font-size: 340%;}
-.s360 textview.view {font-size: 360%;}
-.s380 textview.view {font-size: 380%;}
-.s400 textview.view {font-size: 400%;}
+.s20 textview.view {font-size: 40%;}
+.s40 textview.view {font-size: 60%;}
+.s60 textview.view {font-size: 80%;}
+.s80 textview.view {font-size: 100%;}
+.s100 textview.view {font-size: 120%;}
+.s120 textview.view {font-size: 140%;}
+.s140 textview.view {font-size: 160%;}
+.s160 textview.view {font-size: 180%;}
+.s180 textview.view {font-size: 200%;}
+.s200 textview.view {font-size: 220%;}
+.s220 textview.view {font-size: 240%;}
+.s240 textview.view {font-size: 260%;}
+.s260 textview.view {font-size: 280%;}
+.s280 textview.view {font-size: 300%;}
+.s300 textview.view {font-size: 320%;}
+.s320 textview.view {font-size: 340%;}
+.s340 textview.view {font-size: 360%;}
+.s360 textview.view {font-size: 380%;}
+.s380 textview.view {font-size: 400%;}
+.s400 textview.view {font-size: 420%;}
 
 /* Devel builds get these. Libadwaita has that too, but we do not use it. */
 window.devel {
@@ -85,8 +85,7 @@ window.devel {
 }
 
 /* Used by LanguageItem and tracked by DDModel so we can have a heatmap of recently used languages*/
-
-.accent-1 {
+/* .accent-1 {
     color: mix(@accent_color, @fg_color, 0.27);
 }
 
@@ -105,3 +104,4 @@ window.devel {
 .accent-5 {
     color: mix(@accent_color, @fg_color, 0.07);
 }
+ */
