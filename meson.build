@@ -1,12 +1,12 @@
 # project name and programming language
 project(
-  'io.github.elly_code.inscriptions',
+  'inscriptions',
   'vala', 'c',
   version: '1.1.0'
 )
 
 app_name = 'Inscriptions'
-app_id = meson.project_name()
+app_id = 'io.github.elly_code.' + meson.project_name()
 app_version = meson.project_version()
 
 #================================
