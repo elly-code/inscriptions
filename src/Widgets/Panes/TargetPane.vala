@@ -13,12 +13,33 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.WindowHandle spin_view;
     Gtk.Button mailto_button;
 
+
+    public SimpleActionGroup actions { get; construct; }
+    public const string ACTION_PREFIX = "targetpane.";
+    public const string ACTION_SAVETEXT = "save-text";
+    public const string ACTION_SENDASMAIL = "send-as-mail";
+
+    public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
+    private const GLib.ActionEntry[] ACTION_ENTRIES = {
+        {ACTION_SAVETEXT, action_save_text},
+        {ACTION_SENDASMAIL, on_mailto}
+    };
+
     construct {
+        actions = new SimpleActionGroup ();
+        actions.add_action_entries (ACTION_ENTRIES, this);
+
+        // Translation view
+        unowned var app = ((Gtk.Application) GLib.Application.get_default ());
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVETEXT, {"<Control><Shift>s"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_SENDASMAIL, {"<Control>m"});
+
+
         //textview.editable = false;
         dropdown.tooltip_text = _("Set the language to translate to");
         dropdown.add_languages (Inscriptions.TargetLang ());
         //dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
-        
+
         /* -------- PLACEHOLDER -------- */
         var placeholder_box = new Gtk.Box (VERTICAL, 0) {
             hexpand = vexpand = true,
@@ -80,22 +101,26 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
 
         var save_as_button = new Gtk.Button.from_icon_name ("document-save-as-symbolic") {
-            action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_SAVE_TEXT,
+            action_name = ACTION_PREFIX + ACTION_SAVETEXT,
             tooltip_markup = Granite.markup_accel_tooltip (
-                    {"<Control><Shift>s"}, 
+                    {"<Control><Shift>s"},
                     _("Save the translation in a text file")
             ),
             margin_start = 3
         };
 
         mailto_button = new Gtk.Button.from_icon_name ("mail-send-symbolic") {
-            tooltip_text = _("Send translation by email"),
+            action_name = ACTION_PREFIX + ACTION_SENDASMAIL,
+            tooltip_markup = Granite.markup_accel_tooltip (
+                    {"<Control>m"},
+                    _("Write an email with the translation")
+            ),
             margin_start = 3
         };
 
         actionbar.pack_end (copy);
         actionbar.pack_end (save_as_button);
-        
+
 #if DEVEL
         actionbar.pack_end (mailto_button);   //TODO: Wait out for the svg renderer bug to be solver
 #endif
@@ -106,7 +131,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         mailto_button.clicked.connect (on_mailto);
 
         Application.settings_ui.bind (KEY_AUTO_TRANSLATE,
-            switchwidget, "first-widget-visible", 
+            switchwidget, "first-widget-visible",
             GLib.SettingsBindFlags.DEFAULT);
 
         Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
@@ -198,6 +223,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
                 var file = save_dialog.save.end (res);
                     var content = this.text;
                     FileUtils.set_contents (file.get_path (), content);
+                    message (_("Saved"));
 
             } catch (Error err) {
                 warning ("Failed to save file: %s", err.message);

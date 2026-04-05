@@ -56,7 +56,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         actions.add_action_entries (ACTION_ENTRIES, this);
 
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>m"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>g"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
    
 #if DEVEL
@@ -127,7 +127,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         /* ---------------- PACK END ---------------- */
         popover_button = new Gtk.MenuButton () {
             icon_name = "open-menu",
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>M"}, _("Settings")),
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>G"}, _("Settings")),
         };
 
         popover_button.set_primary (true);

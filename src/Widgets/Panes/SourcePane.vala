@@ -10,7 +10,24 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
 
   Gtk.Button clear_button;
 
+
+  public SimpleActionGroup actions { get; construct; }
+  public const string ACTION_PREFIX = "sourcepane.";
+  public const string ACTION_LOADTEXT = "open-text";
+
+  public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
+  private const GLib.ActionEntry[] ACTION_ENTRIES = {
+      {ACTION_LOADTEXT, action_load_text}
+  };
+
   construct {
+    actions = new SimpleActionGroup ();
+    actions.add_action_entries (ACTION_ENTRIES, this);
+
+    // Translation view
+    unowned var app = ((Gtk.Application) GLib.Application.get_default ());
+    app.set_accels_for_action (ACTION_PREFIX + ACTION_LOADTEXT, {"<Control>o"});
+
     stack.visible_child = main_view;
     dropdown.tooltip_text = _("Set the language to translate from");
     dropdown.add_languages (Inscriptions.SourceLang ());
@@ -53,9 +70,9 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
     actionbar.pack_end (paste_button);
 
     var open_button = new Gtk.Button.from_icon_name ("document-open-symbolic") {
-        action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_LOAD_TEXT,
+        action_name = ACTION_PREFIX + ACTION_LOADTEXT,
         tooltip_markup = Granite.markup_accel_tooltip (
-                {"<Control>o"}, 
+                {"<Control>o"},
                 _("Load text from a file")
         )
     };

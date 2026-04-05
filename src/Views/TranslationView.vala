@@ -51,8 +51,6 @@ public class Inscriptions.TranslationView : Granite.Bin {
     public const string ACTION_SWITCH_LANG = "switch-languages";
     public const string ACTION_TRANSLATE = "translate";
     public const string ACTION_CLEAR_TEXT = "clear_text";
-    public const string ACTION_LOAD_TEXT = "load_text";
-    public const string ACTION_SAVE_TEXT = "save_text";
 
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
@@ -61,9 +59,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
         { ACTION_TOGGLE_AUTO_TRANSLATE, toggle_auto},
         { ACTION_SWITCH_LANG, switch_languages},
         { ACTION_TRANSLATE, translate_now},
-        { ACTION_CLEAR_TEXT, action_clear_text},
-        { ACTION_LOAD_TEXT, action_load_text},
-        { ACTION_SAVE_TEXT, action_save_text}
+        { ACTION_CLEAR_TEXT, action_clear_text}
     };
 
     construct {
@@ -79,10 +75,6 @@ public class Inscriptions.TranslationView : Granite.Bin {
         app.set_accels_for_action (ACTION_PREFIX + ACTION_SWITCH_LANG, {"<Control>i"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TRANSLATE, {"<Control>Return", "<Control>t"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_CLEAR_TEXT, {"<Control>l"});
-
-        // Source & target
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_LOAD_TEXT, {"<Control>o"});
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVE_TEXT, {"<Control>s", "<Control><Shift>s"});
 
 
         /* ---------------- UI ---------------- */
@@ -288,13 +280,5 @@ public class Inscriptions.TranslationView : Granite.Bin {
         target_pane.show_placeholder ();
         pane_separator.visible_right = false;
         source_pane.message (_("Cleared"), true);
-    }
-
-    public void action_load_text () {
-        source_pane.action_load_text ();
-    }
-
-    public void action_save_text () {
-        target_pane.action_save_text ();
     }
 }
