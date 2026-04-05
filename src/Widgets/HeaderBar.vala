@@ -19,6 +19,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     Gtk.Revealer back_revealer;
     Gtk.Revealer toolbar_revealer;
     Gtk.MenuButton popover_button;
+    public Inscriptions.SettingsPopover menu_popover;
 
     public SimpleActionGroup actions { get; construct; }
     public const string ACTION_PREFIX = "headerbar.";
@@ -132,7 +133,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         popover_button.set_primary (true);
         popover_button.set_direction (Gtk.ArrowType.NONE);
 
-        var menu_popover = new Inscriptions.SettingsPopover ();
+        menu_popover = new Inscriptions.SettingsPopover ();
         popover_button.popover = menu_popover;
         
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, MARGIN_MENU_STANDARD);

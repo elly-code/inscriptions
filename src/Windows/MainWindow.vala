@@ -80,6 +80,11 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
         scroll_controller.scroll.connect (zoom_controller.on_scroll);
 
+        // The menu popover just relays events to the window controller
+        headerbar.menu_popover.keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
+        headerbar.menu_popover.keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
+        headerbar.menu_popover.scroll_controller.scroll.connect (zoom_controller.on_scroll);
+
         Application.settings_ui.bind (KEY_ZOOM,
             zoom_controller, "zoom",
             GLib.SettingsBindFlags.DEFAULT);
