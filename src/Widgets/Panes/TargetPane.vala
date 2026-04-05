@@ -13,15 +13,16 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.WindowHandle spin_view;
     Gtk.Button mailto_button;
 
-
     public SimpleActionGroup actions { get; construct; }
     public const string ACTION_PREFIX = "targetpane.";
     public const string ACTION_SAVETEXT = "save-text";
+    public const string ACTION_COPY = "copy";
     public const string ACTION_SENDASMAIL = "send-as-mail";
 
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
     private const GLib.ActionEntry[] ACTION_ENTRIES = {
         {ACTION_SAVETEXT, action_save_text},
+        {ACTION_COPY, copy_to_clipboard},
         {ACTION_SENDASMAIL, on_mailto}
     };
 
@@ -32,8 +33,8 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         // Translation view
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());
         app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVETEXT, {"<Control><Shift>s"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_COPY, {"<Control><Shift>c"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_SENDASMAIL, {"<Control>m"});
-
 
         //textview.editable = false;
         dropdown.tooltip_text = _("Set the language to translate to");
@@ -96,7 +97,11 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         /* -------- TOOLBAR -------- */
         var copy = new Gtk.Button.from_icon_name ("edit-copy-symbolic") {
-            tooltip_text = _("Copy to clipboard"),
+            action_name = ACTION_PREFIX + ACTION_COPY,
+            tooltip_markup = Granite.markup_accel_tooltip (
+                    {"<Control><Shift>c"},
+                    _("Copy to clipboard")
+            ),
             margin_start = 3
         };
 
@@ -128,14 +133,13 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         /***************** CONNECTS AND BINDS *****************/
         //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
-        mailto_button.clicked.connect (on_mailto);
 
         Application.settings_ui.bind (KEY_AUTO_TRANSLATE,
             switchwidget, "first-widget-visible",
             GLib.SettingsBindFlags.DEFAULT);
 
         Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
-        copy.clicked.connect (copy_to_clipboard);
+
         textview.buffer.changed.connect (on_buffer_changed);
     }
 

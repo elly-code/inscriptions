@@ -14,10 +14,12 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
   public SimpleActionGroup actions { get; construct; }
   public const string ACTION_PREFIX = "sourcepane.";
   public const string ACTION_LOADTEXT = "open-text";
+  public const string ACTION_PASTE_OVERWRITE = "paste-overwrite";
 
   public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
   private const GLib.ActionEntry[] ACTION_ENTRIES = {
-      {ACTION_LOADTEXT, action_load_text}
+      {ACTION_LOADTEXT, action_load_text},
+      {ACTION_PASTE_OVERWRITE, paste_from_clipboard}
   };
 
   construct {
@@ -27,6 +29,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
     // Translation view
     unowned var app = ((Gtk.Application) GLib.Application.get_default ());
     app.set_accels_for_action (ACTION_PREFIX + ACTION_LOADTEXT, {"<Control>o"});
+    app.set_accels_for_action (ACTION_PREFIX + ACTION_PASTE_OVERWRITE, {"<Control><Shift>v"});
 
     stack.visible_child = main_view;
     dropdown.tooltip_text = _("Set the language to translate from");
@@ -62,8 +65,12 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
     };
 
     var paste_button = new Gtk.Button.from_icon_name ("edit-paste-symbolic") {
-        tooltip_text = _("Paste from clipboard"),
-          margin_start = MARGIN_MENU_HALF
+        action_name = ACTION_PREFIX + ACTION_PASTE_OVERWRITE,
+        tooltip_markup = Granite.markup_accel_tooltip (
+                {"<Control><Shift>v"},
+                _("Paste from clipboard")
+        ),
+        margin_start = MARGIN_MENU_HALF
     };
     //actionbar.pack_end (new TranslateButton () {margin_start = MARGIN_MENU_HALF});
     actionbar.pack_end (clear_button);
@@ -79,7 +86,6 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
     actionbar.pack_end (open_button);
 
     /***************** CONNECTS AND BINDS *****************/
-    paste_button.clicked.connect (paste_from_clipboard);
     textview.buffer.changed.connect (on_text_changed);
   }
 
