@@ -79,6 +79,16 @@
   </recommends>
 
   <releases>
+
+    <release version="1.1.1" date="2026-04-07" urgency="medium">
+      <description>
+        <p>Minor papercuts</p>
+        <ul>
+            <li>Languages in language dropdown should be localized now</li>
+            <li>The default zoom has been adjusted to match the system</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2026-03-28" urgency="medium">
       <description>
         <p>A polished, cleaner and better thought out UI</p>
@@ -93,14 +103,15 @@
             <li>Static pane sizes - makes more sense, less confusing</li>
             <li>Translation button moved within the view</li>
         </ul>
+        <p>The following minor papercuts have also been addressed:</p>
+        <ul>
+            <li>Highlighting didnt refresh correctly upon switching between light and dark theme</li>
+            <li>Options button had a broken fixup frame</li>
+            <li>Paste and clear did not interact well with undo-redo</li>
+            <li>On non-elementary desktops, Slate was forced upon ye. Now it should be respecting user accents</li>
+            <li>Some highlight toggle and options menu icon were broken. Have to force the elementary icon theme to avoid display issues</li>
+        </ul>
       </description>
-      <issues>
-        <issue>Fixed: Highlighting didnt refresh correctly upon switching between light and dark theme</issue>
-        <issue>Fixed: Options button had a broken fixup frame</issue>
-        <issue>Fixed: Paste and clear did not interact well with undo-redo</issue>
-        <issue>Fixed: On non-elementary desktops, Slate was forced upon ye. Now it should be respecting user accents</issue>
-        <issue>Fixed: Some highlight toggle and options menu icon were broken. Have to force the elementary icon theme to avoid display issues</issue>
-      </issues>
     </release>
     <release version="1.0.0" date="2026-02-16" urgency="medium">
       <description>
