@@ -80,7 +80,7 @@
 
   <releases>
 
-    <release version="1.1.1" date="2026-04-07" urgency="medium">
+    <release version="1.1.1" date="2026-04-05" urgency="medium">
       <description>
         <p>Minor papercuts</p>
         <ul>
