@@ -57,10 +57,11 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());
         app.set_accels_for_action (ACTION_PREFIX + ACTION_MENU, {"<Control>m"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
-
-        title_label = new Gtk.Label (APP_NAME);
+   
 #if DEVEL
-        title_label.label += _(" (Devel)");
+        title_label = new Gtk.Label (_("%s (Devel)").printf (APP_NAME));
+#else
+        title_label = new Gtk.Label (APP_NAME);
 #endif
         title_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
 
