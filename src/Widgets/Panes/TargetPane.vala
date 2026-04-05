@@ -11,6 +11,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.WindowHandle placeholder_handle;
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
+    Gtk.Button mailto_button;
     
     construct {
         //textview.editable = false;
@@ -84,22 +85,41 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             tooltip_markup = Granite.markup_accel_tooltip (
                     {"<Control><Shift>s"}, 
                     _("Save the translation in a text file")
-            )
+            ),
+            margin_start = 3
+        };
+
+        mailto_button = new Gtk.Button.from_icon_name ("mail-send-symbolic") {
+            tooltip_text = _("Send translation by email"),
+            margin_start = 3
         };
 
         actionbar.pack_end (copy);
         actionbar.pack_end (save_as_button);
+        //actionbar.pack_end (mailto_button);   //TODO: Wait out for the svg renderer bug to be solver
+
+
 
         /***************** CONNECTS AND BINDS *****************/
         //dropdown.language_changed.connect ((code) => {Application.settings.set_string (KEY_TARGET_LANGUAGE, code);});
+        mailto_button.clicked.connect (on_mailto);
 
-        Application.settings_ui.bind (KEY_AUTO_TRANSLATE, 
+        Application.settings_ui.bind (KEY_AUTO_TRANSLATE,
             switchwidget, "first-widget-visible", 
             GLib.SettingsBindFlags.DEFAULT);
 
         Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
         copy.clicked.connect (copy_to_clipboard);
         textview.buffer.changed.connect (on_buffer_changed);
+    }
+
+    private void on_mailto () {
+        var translation = textview.buffer.text;
+        var body = Uri.escape_string (translation, null, true);
+        var mailto_uri = "mailto:?body=%s".printf (body);
+        var launcher = new Gtk.UriLauncher (mailto_uri);
+        debug ("MAILTO: %s".printf (mailto_uri));
+        launcher.launch.begin (null, null);
     }
 
     private void on_auto_translate_changed () {        
