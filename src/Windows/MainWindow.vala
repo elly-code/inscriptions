@@ -80,7 +80,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
         scroll_controller.scroll.connect (zoom_controller.on_scroll);
 
-        Application.settings_ui.bind (KEY_ZOOM, 
+        Application.settings_ui.bind (KEY_ZOOM,
             zoom_controller, "zoom", 
             GLib.SettingsBindFlags.DEFAULT);
 
@@ -148,7 +148,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
         // ErrorView may need to do some fiddling. We reconnect when going back to main view via on_back_clicked
         Application.backend.answer_received.disconnect (on_answer_received);
-        
+
         errorview = new Inscriptions.ErrorView (status_code, answer);
         stack_window_view.add_titled (errorview, "error", _("Error"));
         stack_window_view.visible_child = errorview;

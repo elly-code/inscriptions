@@ -37,7 +37,7 @@ public class Inscriptions.SourcePane : Inscriptions.Pane {
     clear_button = new Gtk.Button.from_icon_name ("edit-clear-all-symbolic") {
         action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_CLEAR_TEXT,
         tooltip_markup = Granite.markup_accel_tooltip (
-          {"<Ctrl>L"}, 
+          {"<Ctrl>L"},
           _("Clear text")
         ),
         margin_start = MARGIN_MENU_HALF,
