@@ -33,7 +33,6 @@ public class Inscriptions.ApiLevel : Gtk.Box {
             visible = false
         };
 
-
         refresh_button = new Gtk.Button.from_icon_name ("view-refresh") {
             tooltip_text = _("Update API usage")
         };
@@ -101,9 +100,9 @@ public class Inscriptions.ApiLevel : Gtk.Box {
         }  */
 
         // Picking from settings as im not super sure what fires first between connect and binds
-        this.tooltip_text = _("%s characters translated / %s maximum characters on your plan").printf (
-            Application.settings_translate.get_int (KEY_CURRENT_USAGE).to_string (),
-            Application.settings_translate.get_int (KEY_MAX_USAGE).to_string ());
+        this.tooltip_text = _("%i characters translated / %i maximum characters on your plan").printf (
+            Application.settings_translate.get_int (KEY_CURRENT_USAGE),
+            Application.settings_translate.get_int (KEY_MAX_USAGE));
 
             spinner.spinning = false;
     }
