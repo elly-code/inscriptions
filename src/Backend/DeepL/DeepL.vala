@@ -279,7 +279,7 @@ public class Inscriptions.DeepL : Object {
         usage_retrieved (msg.status_code);
 
         string? error_message = null;
-        
+
         if (msg.status_code != Soup.Status.OK) {
           error_message = unwrap_error_message (answer);
         }

@@ -12,7 +12,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     Gtk.Spinner loading;
     Gtk.WindowHandle spin_view;
     Gtk.Button mailto_button;
-    
+
     construct {
         //textview.editable = false;
         dropdown.tooltip_text = _("Set the language to translate to");
@@ -27,13 +27,12 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             margin_start = MARGIN_MENU_HALF,
             margin_end = MARGIN_MENU_HALF
         };
-        
+
         var placeholder = new Gtk.Label (_("Ready to translate")) {
             wrap = true
         };
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        
         var placeholder_info = new Gtk.Label (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
             wrap = true
         };
@@ -96,8 +95,10 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         actionbar.pack_end (copy);
         actionbar.pack_end (save_as_button);
-        //actionbar.pack_end (mailto_button);   //TODO: Wait out for the svg renderer bug to be solver
-
+        
+#if DEVEL
+        actionbar.pack_end (mailto_button);   //TODO: Wait out for the svg renderer bug to be solver
+#endif
 
 
         /***************** CONNECTS AND BINDS *****************/

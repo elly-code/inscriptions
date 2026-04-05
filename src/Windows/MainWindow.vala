@@ -81,7 +81,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         scroll_controller.scroll.connect (zoom_controller.on_scroll);
 
         Application.settings_ui.bind (KEY_ZOOM,
-            zoom_controller, "zoom", 
+            zoom_controller, "zoom",
             GLib.SettingsBindFlags.DEFAULT);
 
         check_up_key.begin (null);

@@ -38,8 +38,8 @@ public class Inscriptions.TextView : Gtk.TextView {
             buffer.tag_table.add (color.to_tag_light ());
         }
 
-        Application.settings_ui.bind (KEY_HIGHLIGHT, 
-            this, "highlight", 
+        Application.settings_ui.bind (KEY_HIGHLIGHT,
+            this, "highlight",
             GLib.SettingsBindFlags.DEFAULT);
     }
 
@@ -71,7 +71,7 @@ public class Inscriptions.TextView : Gtk.TextView {
         while (start_sentence.get_offset () != end_sentence.get_offset ()) {
 
             // Apply color
-            tag = all_colors[iterate_colors];            
+            tag = all_colors[iterate_colors];
             buffer.apply_tag_by_name (tag.to_string () + suffix, start_sentence, end_sentence);
             //print ("\nTag: " + tag.to_string () + " for sentence: " + start_sentence.get_offset ().to_string () + "| End: " + end_sentence.get_offset ().to_string ());
 
