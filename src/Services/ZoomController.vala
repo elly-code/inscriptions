@@ -119,7 +119,7 @@ public class Inscriptions.ZoomController : Object {
 
     public bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         if (keyval == Gdk.Key.Control_L || keyval == Gdk.Key.Control_R) {
-            print ("Press!");
+            debug ("Press!");
             is_control_key_pressed = true;
         }
 
@@ -128,7 +128,7 @@ public class Inscriptions.ZoomController : Object {
 
     public void on_key_release_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         if (keyval == Gdk.Key.Control_L || keyval == Gdk.Key.Control_R) {
-            print ("Release!");
+            debug ("Release!");
             is_control_key_pressed = false;
         }
     }
