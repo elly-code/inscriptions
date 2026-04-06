@@ -107,7 +107,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
    * Handler for context entry clear button
    */
   private void on_clear_clicked () {
-    context_entry.buffer.delete_text (0, -1);
+    context_entry.delete_text (0, -1);
   }
 
   /**
