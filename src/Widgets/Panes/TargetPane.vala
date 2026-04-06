@@ -32,7 +32,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         // Translation view
         unowned var app = ((Gtk.Application) GLib.Application.get_default ());
-        app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVETEXT, {"<Control><Shift>s"});
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_SAVETEXT, {"<Control>s", "<Control><Shift>s"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_COPY, {"<Control><Shift>c"});
         app.set_accels_for_action (ACTION_PREFIX + ACTION_SENDASMAIL, {"<Control>m"});
 
@@ -108,7 +108,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         var save_as_button = new Gtk.Button.from_icon_name ("document-save-as-symbolic") {
             action_name = ACTION_PREFIX + ACTION_SAVETEXT,
             tooltip_markup = Granite.markup_accel_tooltip (
-                    {"<Control><Shift>s"},
+                    {"<Control>s", "<Control><Shift>s"},
                     _("Save the translation in a text file")
             ),
             margin_start = 3
