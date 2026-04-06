@@ -43,7 +43,7 @@ public class Inscriptions.LanguageItem : Gtk.Box {
   }
 
   construct {
-    selected_emblem = new Gtk.Image.from_icon_name ("check-active") {
+    selected_emblem = new Gtk.Image.from_icon_name ("emblem-default-symbolic") {
       visible = false,
       halign = Gtk.Align.END,
       margin_end = 15

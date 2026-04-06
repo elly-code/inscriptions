@@ -125,10 +125,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         actionbar.pack_end (copy);
         actionbar.pack_end (save_as_button);
-
-#if DEVEL
         actionbar.pack_end (mailto_button);   //TODO: Wait out for the svg renderer bug to be solver
-#endif
 
 
         /***************** CONNECTS AND BINDS *****************/
