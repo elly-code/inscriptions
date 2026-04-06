@@ -120,7 +120,7 @@ public class Inscriptions.Pane : Gtk.Box {
         replace_text ("");
     }
 
-    public void message (string text, bool? undo = false) {
+    public void message (string text, bool undo) {
         toast.title = text;
 
         if (undo) {

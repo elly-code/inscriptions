@@ -204,7 +204,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
         if (to_translate.chomp () == "" ) {
             target_pane.clear ();
             if (!Application.settings_ui.get_boolean (KEY_AUTO_TRANSLATE)) {
-                source_pane.message (_("Nothing to translate"));
+                source_pane.message (_("Nothing to translate"), false);
             }
             return;
         }
@@ -219,7 +219,7 @@ public class Inscriptions.TranslationView : Granite.Bin {
      */
     public void on_text_to_translate () {
         if (source_pane.selected_language == target_pane.selected_language) {
-            source_pane.message (_("Target language is the same as source"));
+            source_pane.message (_("Target language is the same as source"), false);
             return;
         }
 

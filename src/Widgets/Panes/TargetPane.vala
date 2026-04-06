@@ -147,16 +147,17 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         var launcher = new Gtk.UriLauncher (mailto_uri);
         debug ("MAILTO: %s".printf (mailto_uri));
         launcher.launch.begin (null, null);
+        message (_("Opening mail client"), false);
     }
 
     private void on_auto_translate_changed () {        
         if (Application.settings_ui.get_boolean (KEY_AUTO_TRANSLATE)) {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
-            message (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S));
+            message (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S), false);
 
         } else {
             // TRANSLATORS: This is for a small notification toast. Very little space is available
-            message (_("Automatic translation paused"));
+            message (_("Automatic translation paused"), false);
         }
     }
 
@@ -167,7 +168,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
     private void copy_to_clipboard () {
         var clipboard = Gdk.Display.get_default ().get_clipboard ();
         clipboard.set_text (textview.buffer.text);
-        message (_("Copied"));
+        message (_("Copied"), false);
     }
 
     public void show_placeholder () {
@@ -224,7 +225,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
                 var file = save_dialog.save.end (res);
                     var content = this.text;
                     FileUtils.set_contents (file.get_path (), content);
-                    message (_("Saved"));
+                    message (_("Saved"), false);
 
             } catch (Error err) {
                 warning ("Failed to save file: %s", err.message);
