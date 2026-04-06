@@ -387,7 +387,7 @@ msgstr "Kontext hier eingeben"
 #: src/Widgets/Popovers/OptionsPopover.vala:74
 #: src/Widgets/Panes/SourcePane.vala:61
 msgid "Clear text"
-msgstr "Leeren"
+msgstr "Text leeren"
 
 #: src/Widgets/Popovers/OptionsPopover.vala:136
 msgid "Formality control is not available for this target language"
@@ -399,7 +399,7 @@ msgstr "Rückgängig"
 
 #: src/Widgets/Panes/SourcePane.vala:35
 msgid "Set the language to translate from"
-msgstr "Legen Sie die Sprache fest, aus der übersetzt werden soll"
+msgstr "Die Sprache festlegen, aus der übersetzt werden soll"
 
 #. dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
 #: src/Widgets/Panes/SourcePane.vala:39
@@ -463,7 +463,7 @@ msgstr "In die Zwischenablage kopieren"
 
 #: src/Widgets/Panes/TargetPane.vala:112
 msgid "Save the translation in a text file"
-msgstr "Die Übersetzung in einer Textdatei speichern"
+msgstr "Übersetzung in einer Textdatei speichern"
 
 #: src/Widgets/Panes/TargetPane.vala:121
 msgid "Write an email with the translation"
@@ -506,7 +506,7 @@ msgstr "Überprüfen"
 
 #: src/Widgets/Buttons/RetryButton.vala:70
 msgid "200 OK: Success connecting to server"
-msgstr "200 OK: Erfolgreiche Verbindung mit DeepL"
+msgstr "200 OK: Erfolgreiche Verbindung mit dem Server"
 
 #: src/Widgets/Buttons/RetryButton.vala:74
 msgid "Success!"

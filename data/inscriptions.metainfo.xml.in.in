@@ -83,7 +83,7 @@
       <description>
         <p>More minor papercuts</p>
         <ul>
-            <li>Added a "write email with translation" feature</li>
+            <li>Added a "write email with translation" button. Please do not trust DeepL blindly!</li>
             <li>Updated translations</li>
         </ul>
       </description>
