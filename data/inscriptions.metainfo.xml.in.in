@@ -79,7 +79,15 @@
   </recommends>
 
   <releases>
-
+    <release version="1.1.2" date="2026-04-06" urgency="medium">
+      <description>
+        <p>More minor papercuts</p>
+        <ul>
+            <li>Added a "write email with translation" feature</li>
+            <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.1" date="2026-04-05" urgency="medium">
       <description>
         <p>Minor papercuts</p>

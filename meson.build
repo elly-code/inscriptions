@@ -2,7 +2,7 @@
 project(
   'inscriptions',
   'vala', 'c',
-  version: '1.1.1'
+  version: '1.1.2'
 )
 
 app_name = 'Inscriptions'

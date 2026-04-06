@@ -210,11 +210,15 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         filter_model.append (all_files_filter);
         filter_model.append (text_files_filter);
 
+        var filename = _("translation %s-%s.txt").printf (
+            Application.settings_translate.get_string (KEY_SOURCE_LANGUAGE),
+            Application.settings_translate.get_string (KEY_TARGET_LANGUAGE)
+        );
         var save_dialog = new Gtk.FileDialog () {
             //TRANSLATORS: The following text is for the dialog to save the translation
             title = _("Save translation to text file"),
             accept_label = _("Save"),
-            initial_name = _("translation.txt"),
+            initial_name = filename,
             default_filter = text_files_filter,
             filters = filter_model,
             modal = true

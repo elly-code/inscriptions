@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 13:39+0200\n"
+"POT-Creation-Date: 2026-04-06 15:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -454,11 +454,11 @@ msgstr "Charger du texte à partir d'un fichier"
 msgid "Pasted"
 msgstr "Collé"
 
-#: src/Widgets/Panes/SourcePane.vala:116 src/Widgets/Panes/TargetPane.vala:199
+#: src/Widgets/Panes/SourcePane.vala:116 src/Widgets/Panes/TargetPane.vala:200
 msgid "All files"
 msgstr "Tous les dossiers"
 
-#: src/Widgets/Panes/SourcePane.vala:121 src/Widgets/Panes/TargetPane.vala:204
+#: src/Widgets/Panes/SourcePane.vala:121 src/Widgets/Panes/TargetPane.vala:205
 msgid "Text files"
 msgstr "Fichiers texte"
 
@@ -485,7 +485,7 @@ msgid "Ready to translate"
 msgstr "Prêt à traduire"
 
 #. TRANSLATORS: This is for a small notification toast. Very little space is available
-#: src/Widgets/Panes/TargetPane.vala:58 src/Widgets/Panes/TargetPane.vala:155
+#: src/Widgets/Panes/TargetPane.vala:58 src/Widgets/Panes/TargetPane.vala:156
 #, c-format
 msgid "Translation %.2fs after typing"
 msgstr "Traduction %.2fs après la frappe"
@@ -502,29 +502,34 @@ msgstr "Enregistrer la traduction dans un fichier texte"
 msgid "Write an email with the translation"
 msgstr "Écrire un courriel avec la traduction"
 
+#: src/Widgets/Panes/TargetPane.vala:150
+msgid "Opening mail client"
+msgstr ""
+
 #. TRANSLATORS: This is for a small notification toast. Very little space is available
-#: src/Widgets/Panes/TargetPane.vala:159
+#: src/Widgets/Panes/TargetPane.vala:160
 msgid "Automatic translation paused"
 msgstr "Traduction automatique en pause"
 
-#: src/Widgets/Panes/TargetPane.vala:170
+#: src/Widgets/Panes/TargetPane.vala:171
 msgid "Copied"
 msgstr "Copié"
 
+#: src/Widgets/Panes/TargetPane.vala:213
+#, c-format
+msgid "translation %s-%s.txt"
+msgstr "traduction %s-%s.txt"
+
 #. TRANSLATORS: The following text is for the dialog to save the translation
-#: src/Widgets/Panes/TargetPane.vala:214
+#: src/Widgets/Panes/TargetPane.vala:219
 msgid "Save translation to text file"
 msgstr "Enregistrer la traduction dans un fichier texte"
 
-#: src/Widgets/Panes/TargetPane.vala:215
+#: src/Widgets/Panes/TargetPane.vala:220
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: src/Widgets/Panes/TargetPane.vala:216
-msgid "translation.txt"
-msgstr "traduction.txt"
-
-#: src/Widgets/Panes/TargetPane.vala:227
+#: src/Widgets/Panes/TargetPane.vala:232
 msgid "Saved"
 msgstr "Sauvegardé"
 
@@ -1156,4 +1161,4 @@ msgstr "Impossible d'ouvrir le fichier"
 #~ msgstr "Réessayer"
 
 #~ msgid "Add in some text to get a translation"
-#~ msgstr "Ajoutez du texte pour obtenir une traduction"
+#~ msgstr "Ajoutez du texte pour obtenir une traduc
