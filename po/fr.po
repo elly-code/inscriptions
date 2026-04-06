@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 15:02+0100\n"
+"POT-Creation-Date: 2026-04-06 13:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,20 +15,20 @@ msgstr ""
 msgid "Inscriptions"
 msgstr "Inscriptions"
 
-#: src/Windows/MainWindow.vala:30 src/Widgets/HeaderBar.vala:63
+#: src/Windows/MainWindow.vala:30
 msgid " (Devel)"
 msgstr " (Devel)"
 
 #. child = button_box,
-#: src/Windows/MainWindow.vala:52 src/Widgets/Buttons/TranslateButton.vala:19
+#: src/Windows/MainWindow.vala:54 src/Widgets/Buttons/TranslateButton.vala:19
 msgid "Translate"
 msgstr "Traduire"
 
-#: src/Windows/MainWindow.vala:53
+#: src/Windows/MainWindow.vala:55
 msgid "Messages"
 msgstr "Messages"
 
-#: src/Windows/MainWindow.vala:100
+#: src/Windows/MainWindow.vala:107
 msgid "No saved API Key"
 msgstr "Pas de Clé API"
 
@@ -36,42 +36,47 @@ msgstr "Pas de Clé API"
 #. * Convenience function to move to dedicated error view, disable and enable whatever is needed
 #.
 #. TRANSLATORS: This text shows up when the app fails to show technical details on an error
-#: src/Windows/MainWindow.vala:147 src/Views/ErrorView.vala:27
+#: src/Windows/MainWindow.vala:154 src/Views/ErrorView.vala:27
 msgid "No details available"
 msgstr "Pas de détails disponibles"
 
-#: src/Windows/MainWindow.vala:153 src/Widgets/Buttons/RetryButton.vala:109
+#: src/Windows/MainWindow.vala:160 src/Widgets/Buttons/RetryButton.vala:109
 msgid "Error"
 msgstr "Erreur"
 
-#: src/Views/TranslationView.vala:105 src/Widgets/Panes/PaneSeparator.vala:31
+#: src/Views/TranslationView.vala:97 src/Widgets/Panes/PaneSeparator.vala:31
 msgid "Switch languages"
 msgstr "Changer de langue"
 
-#: src/Views/TranslationView.vala:215
+#: src/Views/TranslationView.vala:207
 msgid "Nothing to translate"
 msgstr "Rien à traduire"
 
-#: src/Views/TranslationView.vala:230
+#: src/Views/TranslationView.vala:222
 msgid "Target language is the same as source"
 msgstr "Language cible est la même que la source"
 
-#: src/Views/TranslationView.vala:290
+#: src/Views/TranslationView.vala:282
 msgid "Cleared"
 msgstr "Effacé"
+
+#: src/Widgets/HeaderBar.vala:63
+#, c-format
+msgid "%s (Devel)"
+msgstr "%s (Devel)"
 
 #. headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
 #. ---------------- PACK START ----------------
 #. TRANSLATORS: Back button to go back to translating
-#: src/Widgets/HeaderBar.vala:88
+#: src/Widgets/HeaderBar.vala:90
 msgid "Back"
 msgstr "Retour"
 
-#: src/Widgets/HeaderBar.vala:109
+#: src/Widgets/HeaderBar.vala:111
 msgid "Highlight source and target sentences"
 msgstr "Mettre en évidence les phrases source et cible"
 
-#: src/Widgets/HeaderBar.vala:128
+#: src/Widgets/HeaderBar.vala:130
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -87,8 +92,7 @@ msgstr "Bonjour, monde !"
 
 #: src/Enums/StatusCode.vala:54
 msgid "You need a DeepL API key to translate text"
-msgstr ""
-"Vous avez besoin d'une clé API DeepL pour traduire du texte"
+msgstr "Vous avez besoin d'une clé API DeepL pour traduire du texte"
 
 #: src/Enums/StatusCode.vala:59
 msgid "No Internet"
@@ -101,8 +105,8 @@ msgid ""
 "Please verify you are <a href='%s'>connected to the internet</a>, and that "
 "this app has <a href='%s'>permission to access it</a>"
 msgstr ""
-"Vérifiez que vous êtes bien <a href='%s'>connecté à Internet</a> et que cette application a "
-"<a href='%s'>la permission d'y accéder</a>"
+"Vérifiez que vous êtes bien <a href='%s'>connecté à Internet</a> et que "
+"cette application a <a href='%s'>la permission d'y accéder</a>"
 
 #: src/Enums/StatusCode.vala:66
 msgid ""
@@ -276,7 +280,7 @@ msgid "Enter API key here"
 msgstr "Saisir la clé API ici"
 
 #: src/Widgets/PopoverWidgets/ApiEntry.vala:28
-#: src/Widgets/Panes/SourcePane.vala:48
+#: src/Widgets/Panes/SourcePane.vala:71
 msgid "Paste from clipboard"
 msgstr "Coller à partir du presse-papiers"
 
@@ -284,15 +288,15 @@ msgstr "Coller à partir du presse-papiers"
 msgid "API Usage"
 msgstr "Utilisation de l'API"
 
-#: src/Widgets/PopoverWidgets/ApiLevel.vala:38
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:37
 msgid "Update API usage"
 msgstr "Mise à jour de l'utilisation de l'API"
 
-#: src/Widgets/PopoverWidgets/ApiLevel.vala:42
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:41
 msgid "Use a different API key of your choosing"
 msgstr "Utilisez une autre clé API de votre choix"
 
-#: src/Widgets/PopoverWidgets/ApiLevel.vala:46
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:45
 msgid "Requested by user"
 msgstr "Demandé par l'utilisateur"
 
@@ -314,10 +318,10 @@ msgstr "Demandé par l'utilisateur"
 #. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
 #. }
 #. Picking from settings as im not super sure what fires first between connect and binds
-#: src/Widgets/PopoverWidgets/ApiLevel.vala:104
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:103
 #, c-format
-msgid "%s characters translated / %s maximum characters on your plan"
-msgstr "%s caractères traduits / %s caractères maximums sur votre plan"
+msgid "%i characters translated / %i maximum characters on your plan"
+msgstr "%i caractères traduits / %i caractères maximums sur votre plan"
 
 #: src/Widgets/Buttons/TranslateButton.vala:23
 msgid "Start translating the entered text"
@@ -367,26 +371,29 @@ msgstr "Niveau de zoom par défaut"
 msgid "Zoom in"
 msgstr "Zoom avant"
 
-#: src/Widgets/Popovers/SettingsPopover.vala:39
+#. -------------------- SEPARATOR --------------------
+#: src/Widgets/Popovers/SettingsPopover.vala:53
 msgid "Translate automatically"
 msgstr "Traduire automatiquement"
 
-#: src/Widgets/Popovers/SettingsPopover.vala:40
+#: src/Widgets/Popovers/SettingsPopover.vala:54
 #, c-format
 msgid "Translation will start %.2f seconds after typing (Ctrl+Shift+Enter)"
-msgstr "La traduction commencera %.2f seconde après la frappe (Ctrl+Shift+Entrée)"
+msgstr ""
+"La traduction commencera %.2f seconde après la frappe (Ctrl+Shift+Entrée)"
 
-#: src/Widgets/Popovers/SettingsPopover.vala:44
+#: src/Widgets/Popovers/SettingsPopover.vala:58
 msgid "Highlight source and target"
 msgstr "Mettre en évidence la source et la cible"
 
-#: src/Widgets/Popovers/SettingsPopover.vala:45
+#: src/Widgets/Popovers/SettingsPopover.vala:59
 msgid "Each sentence will be highlighted to help compare both texts (Ctrl+H)"
 msgstr ""
 "Chaque phrase est mise en évidence pour faciliter la comparaison des deux "
 "textes (Ctrl+H)."
 
-#: src/Widgets/Popovers/SettingsPopover.vala:52
+#. -------------------- SEPARATOR --------------------
+#: src/Widgets/Popovers/SettingsPopover.vala:66
 msgid "Support us!"
 msgstr "Nous soutenir !"
 
@@ -412,7 +419,7 @@ msgid "Enter context here"
 msgstr "Saisir le contexte ici"
 
 #: src/Widgets/Popovers/OptionsPopover.vala:74
-#: src/Widgets/Panes/SourcePane.vala:41
+#: src/Widgets/Panes/SourcePane.vala:61
 msgid "Clear text"
 msgstr "Texte en clair"
 
@@ -425,93 +432,101 @@ msgstr ""
 msgid "Undo"
 msgstr "Annuler"
 
-#: src/Widgets/Panes/SourcePane.vala:15
+#: src/Widgets/Panes/SourcePane.vala:35
 msgid "Set the language to translate from"
 msgstr ""
 "Définir la langue à partir de laquelle la traduction doit être effectuée"
 
 #. dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
-#: src/Widgets/Panes/SourcePane.vala:19
+#: src/Widgets/Panes/SourcePane.vala:39
 msgid "Options"
 msgstr "Options"
 
-#: src/Widgets/Panes/SourcePane.vala:26
+#: src/Widgets/Panes/SourcePane.vala:46
 msgid "Change options for the translation"
 msgstr "Modifier les options de traduction"
 
-#: src/Widgets/Panes/SourcePane.vala:59
+#: src/Widgets/Panes/SourcePane.vala:83
 msgid "Load text from a file"
 msgstr "Charger du texte à partir d'un fichier"
 
-#: src/Widgets/Panes/SourcePane.vala:83
+#: src/Widgets/Panes/SourcePane.vala:106
 msgid "Pasted"
 msgstr "Collé"
 
-#: src/Widgets/Panes/SourcePane.vala:93 src/Widgets/Panes/TargetPane.vala:152
+#: src/Widgets/Panes/SourcePane.vala:116 src/Widgets/Panes/TargetPane.vala:199
 msgid "All files"
 msgstr "Tous les dossiers"
 
-#: src/Widgets/Panes/SourcePane.vala:98 src/Widgets/Panes/TargetPane.vala:157
+#: src/Widgets/Panes/SourcePane.vala:121 src/Widgets/Panes/TargetPane.vala:204
 msgid "Text files"
 msgstr "Fichiers texte"
 
 #. TRANSLATORS: The following text is for the dialog to load a text file to translate
-#: src/Widgets/Panes/SourcePane.vala:108
+#: src/Widgets/Panes/SourcePane.vala:131
 msgid "Open text file to translate"
 msgstr "Ouvrir un fichier texte à traduire"
 
-#: src/Widgets/Panes/SourcePane.vala:109
+#: src/Widgets/Panes/SourcePane.vala:132
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/Widgets/Panes/SourcePane.vala:122
+#: src/Widgets/Panes/SourcePane.vala:145
 msgid "Loaded from file"
 msgstr "Chargé depuis le fichier"
 
 #. textview.editable = false;
-#: src/Widgets/Panes/TargetPane.vala:17
+#: src/Widgets/Panes/TargetPane.vala:40
 msgid "Set the language to translate to"
 msgstr "Définir la langue de traduction"
 
-#: src/Widgets/Panes/TargetPane.vala:30
+#: src/Widgets/Panes/TargetPane.vala:53
 msgid "Ready to translate"
 msgstr "Prêt à traduire"
 
 #. TRANSLATORS: This is for a small notification toast. Very little space is available
-#: src/Widgets/Panes/TargetPane.vala:36 src/Widgets/Panes/TargetPane.vala:108
+#: src/Widgets/Panes/TargetPane.vala:58 src/Widgets/Panes/TargetPane.vala:155
 #, c-format
 msgid "Translation %.2fs after typing"
 msgstr "Traduction %.2fs après la frappe"
 
-#: src/Widgets/Panes/TargetPane.vala:78
+#: src/Widgets/Panes/TargetPane.vala:103
 msgid "Copy to clipboard"
 msgstr "Copier dans le presse-papiers"
 
-#: src/Widgets/Panes/TargetPane.vala:86
+#: src/Widgets/Panes/TargetPane.vala:112
 msgid "Save the translation in a text file"
 msgstr "Enregistrer la traduction dans un fichier texte"
 
+#: src/Widgets/Panes/TargetPane.vala:121
+msgid "Write an email with the translation"
+msgstr "Écrire un courriel avec la traduction"
+
 #. TRANSLATORS: This is for a small notification toast. Very little space is available
-#: src/Widgets/Panes/TargetPane.vala:112
+#: src/Widgets/Panes/TargetPane.vala:159
 msgid "Automatic translation paused"
 msgstr "Traduction automatique en pause"
 
-#: src/Widgets/Panes/TargetPane.vala:123
+#: src/Widgets/Panes/TargetPane.vala:170
 msgid "Copied"
 msgstr "Copié"
 
 #. TRANSLATORS: The following text is for the dialog to save the translation
-#: src/Widgets/Panes/TargetPane.vala:167
+#: src/Widgets/Panes/TargetPane.vala:214
 msgid "Save translation to text file"
 msgstr "Enregistrer la traduction dans un fichier texte"
 
-#: src/Widgets/Panes/TargetPane.vala:168
+#: src/Widgets/Panes/TargetPane.vala:215
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: src/Widgets/Panes/TargetPane.vala:169
+#: src/Widgets/Panes/TargetPane.vala:216
 msgid "translation.txt"
 msgstr "traduction.txt"
+
+#: src/Widgets/Panes/TargetPane.vala:227
+msgid "Saved"
+msgstr "Sauvegardé"
 
 #: src/Widgets/Buttons/RetryButton.vala:39
 msgid "Verify"
@@ -568,497 +583,529 @@ msgid "Cannot retrieve error message text!"
 msgstr "Impossible de récupérer le message d'erreur !"
 
 #. TRANSLATORS: The following are all languages user can select as source or target for translation
-#: src/Constants.vala:65
+#: src/Constants.vala:67
 msgid "Detect automatically"
 msgstr "Détection automatique"
 
-#: src/Constants.vala:66 src/Constants.vala:186
+#: src/Constants.vala:68 src/Constants.vala:188
 msgid "System language"
 msgstr "Langue du système"
 
-#: src/Constants.vala:67 src/Constants.vala:187
+#: src/Constants.vala:69 src/Constants.vala:189
 msgid "Acehnese"
 msgstr "Acehnese"
 
-#: src/Constants.vala:68 src/Constants.vala:188
+#: src/Constants.vala:70 src/Constants.vala:190
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: src/Constants.vala:69 src/Constants.vala:189
+#: src/Constants.vala:71 src/Constants.vala:191
 msgid "Albanian"
 msgstr "Albanien"
 
-#: src/Constants.vala:70 src/Constants.vala:190
+#: src/Constants.vala:72 src/Constants.vala:192
 msgid "Arabic"
 msgstr "Arabe"
 
-#: src/Constants.vala:71 src/Constants.vala:191
+#: src/Constants.vala:73 src/Constants.vala:193
 msgid "Aragonese"
 msgstr "Aragonais"
 
-#: src/Constants.vala:72 src/Constants.vala:192
+#: src/Constants.vala:74 src/Constants.vala:194
 msgid "Armenian"
 msgstr "Arménien"
 
-#: src/Constants.vala:73 src/Constants.vala:193
+#: src/Constants.vala:75 src/Constants.vala:195
 msgid "Assamese"
 msgstr "Assamais"
 
-#: src/Constants.vala:74 src/Constants.vala:194
+#: src/Constants.vala:76 src/Constants.vala:196
 msgid "Aymara"
 msgstr "Aymara"
 
-#: src/Constants.vala:75 src/Constants.vala:195
+#: src/Constants.vala:77 src/Constants.vala:197
 msgid "Azerbaijani"
 msgstr "Azerbaïdjan"
 
-#: src/Constants.vala:76 src/Constants.vala:196
+#: src/Constants.vala:78 src/Constants.vala:198
 msgid "Bashkir"
 msgstr "Bashkir"
 
-#: src/Constants.vala:77 src/Constants.vala:197
+#: src/Constants.vala:79 src/Constants.vala:199
 msgid "Basque"
 msgstr "Basque"
 
-#: src/Constants.vala:78 src/Constants.vala:198
+#: src/Constants.vala:80 src/Constants.vala:200
 msgid "Belarusian"
 msgstr "Biélorusse"
 
-#: src/Constants.vala:79 src/Constants.vala:199
+#: src/Constants.vala:81 src/Constants.vala:201
 msgid "Bengali"
 msgstr "Bengali"
 
-#: src/Constants.vala:80 src/Constants.vala:200
+#: src/Constants.vala:82 src/Constants.vala:202
 msgid "Bhojpuri"
 msgstr "Bhojpuri"
 
-#: src/Constants.vala:81 src/Constants.vala:201
+#: src/Constants.vala:83 src/Constants.vala:203
 msgid "Bosnian"
 msgstr "Bosnien"
 
-#: src/Constants.vala:82 src/Constants.vala:202
+#: src/Constants.vala:84 src/Constants.vala:204
 msgid "Breton"
 msgstr "Breton"
 
-#: src/Constants.vala:83 src/Constants.vala:203
+#: src/Constants.vala:85 src/Constants.vala:205
 msgid "Bulgarian"
 msgstr "Bulgare"
 
-#: src/Constants.vala:84 src/Constants.vala:204
+#: src/Constants.vala:86 src/Constants.vala:206
 msgid "Burmese"
 msgstr "Birman"
 
-#: src/Constants.vala:85 src/Constants.vala:205
+#: src/Constants.vala:87 src/Constants.vala:207
 msgid "Cantonese"
 msgstr "Cantonais"
 
-#: src/Constants.vala:86 src/Constants.vala:206
+#: src/Constants.vala:88 src/Constants.vala:208
 msgid "Catalan"
 msgstr "Catalan"
 
-#: src/Constants.vala:87 src/Constants.vala:207
+#: src/Constants.vala:89 src/Constants.vala:209
 msgid "Cebuano"
 msgstr "Cebuano"
 
-#: src/Constants.vala:88 src/Constants.vala:210
-msgid "Chinese (Unspecified variant)"
+#: src/Constants.vala:90 src/Constants.vala:212
+#, c-format
+msgid "%s (Unspecified variant)"
 msgstr "Chinois (Non spécifié)"
 
-#: src/Constants.vala:89 src/Constants.vala:211
+#: src/Constants.vala:90 src/Constants.vala:210 src/Constants.vala:211
+#: src/Constants.vala:212
+msgid "Chinese"
+msgstr "Chinois"
+
+#: src/Constants.vala:91 src/Constants.vala:213
 msgid "Croatian"
 msgstr "Croate"
 
-#: src/Constants.vala:90 src/Constants.vala:212
+#: src/Constants.vala:92 src/Constants.vala:214
 msgid "Czech"
 msgstr "Tchèque"
 
-#: src/Constants.vala:91 src/Constants.vala:213
+#: src/Constants.vala:93 src/Constants.vala:215
 msgid "Danish"
 msgstr "Danois"
 
-#: src/Constants.vala:92 src/Constants.vala:214
+#: src/Constants.vala:94 src/Constants.vala:216
 msgid "Dari"
 msgstr "Dari"
 
-#: src/Constants.vala:93 src/Constants.vala:215
+#: src/Constants.vala:95 src/Constants.vala:217
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: src/Constants.vala:94 src/Constants.vala:216
-msgid "English (All variants)"
-msgstr "Anglais (toutes variantes)"
+#: src/Constants.vala:96 src/Constants.vala:218
+#, c-format
+msgid "%s (All variants)"
+msgstr "%s (toutes variantes)"
 
-#: src/Constants.vala:95 src/Constants.vala:219
+#: src/Constants.vala:96 src/Constants.vala:218 src/Constants.vala:219
+#: src/Constants.vala:220
+msgid "English"
+msgstr "Anglais"
+
+#: src/Constants.vala:97 src/Constants.vala:221
 msgid "Esperanto"
 msgstr "Espéranto"
 
-#: src/Constants.vala:96 src/Constants.vala:220
+#: src/Constants.vala:98 src/Constants.vala:222
 msgid "Estonian"
 msgstr "Estonien"
 
-#: src/Constants.vala:97 src/Constants.vala:221
+#: src/Constants.vala:99 src/Constants.vala:223
 msgid "Finnish"
 msgstr "Finlandais"
 
-#: src/Constants.vala:98 src/Constants.vala:222
+#: src/Constants.vala:100 src/Constants.vala:224
 msgid "French"
 msgstr "Français"
 
-#: src/Constants.vala:99 src/Constants.vala:223
+#: src/Constants.vala:101 src/Constants.vala:225
 msgid "Galician"
 msgstr "Galicien"
 
-#: src/Constants.vala:100 src/Constants.vala:224
+#: src/Constants.vala:102 src/Constants.vala:226
 msgid "Georgian"
 msgstr "Géorgien"
 
-#: src/Constants.vala:101 src/Constants.vala:225
+#: src/Constants.vala:103 src/Constants.vala:227
 msgid "German"
 msgstr "Allemand"
 
-#: src/Constants.vala:102 src/Constants.vala:226
+#: src/Constants.vala:104 src/Constants.vala:228
 msgid "Greek"
 msgstr "Grecque"
 
-#: src/Constants.vala:103 src/Constants.vala:227
+#: src/Constants.vala:105 src/Constants.vala:229
 msgid "Guarani"
 msgstr "Guarani"
 
-#: src/Constants.vala:104 src/Constants.vala:228
+#: src/Constants.vala:106 src/Constants.vala:230
 msgid "Gujarati"
 msgstr "Gujarati"
 
-#: src/Constants.vala:105 src/Constants.vala:229
+#: src/Constants.vala:107 src/Constants.vala:231
 msgid "Haitian Creole"
 msgstr "Créole haïtien"
 
-#: src/Constants.vala:106 src/Constants.vala:230
+#: src/Constants.vala:108 src/Constants.vala:232
 msgid "Hausa"
 msgstr "Hausa"
 
-#: src/Constants.vala:107 src/Constants.vala:231
+#: src/Constants.vala:109 src/Constants.vala:233
 msgid "Hebrew"
 msgstr "Hébreu"
 
-#: src/Constants.vala:108 src/Constants.vala:232
+#: src/Constants.vala:110 src/Constants.vala:234
 msgid "Hindi"
 msgstr "Hindi"
 
-#: src/Constants.vala:109 src/Constants.vala:233
+#: src/Constants.vala:111 src/Constants.vala:235
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: src/Constants.vala:110 src/Constants.vala:234
+#: src/Constants.vala:112 src/Constants.vala:236
 msgid "Icelandic"
 msgstr "islandais"
 
-#: src/Constants.vala:111 src/Constants.vala:235
+#: src/Constants.vala:113 src/Constants.vala:237
 msgid "Igbo"
 msgstr "Igbo"
 
-#: src/Constants.vala:112 src/Constants.vala:236
+#: src/Constants.vala:114 src/Constants.vala:238
 msgid "Indonesian"
 msgstr "Indonésien"
 
-#: src/Constants.vala:113 src/Constants.vala:237
+#: src/Constants.vala:115 src/Constants.vala:239
 msgid "Irish"
 msgstr "Irlandais"
 
-#: src/Constants.vala:114 src/Constants.vala:238
+#: src/Constants.vala:116 src/Constants.vala:240
 msgid "Italian"
 msgstr "Italien"
 
-#: src/Constants.vala:115 src/Constants.vala:239
+#: src/Constants.vala:117 src/Constants.vala:241
 msgid "Japanese"
 msgstr "Japonais"
 
-#: src/Constants.vala:116 src/Constants.vala:240
+#: src/Constants.vala:118 src/Constants.vala:242
 msgid "Javanese"
 msgstr "Javanais"
 
-#: src/Constants.vala:117 src/Constants.vala:241
+#: src/Constants.vala:119 src/Constants.vala:243
 msgid "Kapampangan"
 msgstr "Kapampangan"
 
-#: src/Constants.vala:118 src/Constants.vala:242
+#: src/Constants.vala:120 src/Constants.vala:244
 msgid "Kazakh"
 msgstr "Kazakh"
 
-#: src/Constants.vala:119 src/Constants.vala:243
+#: src/Constants.vala:121 src/Constants.vala:245
 msgid "Konkani"
 msgstr "Konkani"
 
-#: src/Constants.vala:120 src/Constants.vala:244
+#: src/Constants.vala:122 src/Constants.vala:246
 msgid "Korean"
 msgstr "Coréen"
 
-#: src/Constants.vala:121 src/Constants.vala:245
-msgid "Kurdish (Kurmanji)"
-msgstr "Kurde (Kurmanji)"
-
-#: src/Constants.vala:122 src/Constants.vala:246
-msgid "Kurdish (Sorani)"
-msgstr "Kurde (Sorani)"
-
 #: src/Constants.vala:123 src/Constants.vala:247
+#, c-format
+msgid "%s (Kurmanji)"
+msgstr "%s (Kurmanji)"
+
+#: src/Constants.vala:123 src/Constants.vala:124 src/Constants.vala:247
+#: src/Constants.vala:248
+msgid "Kurdish"
+msgstr "Kurde"
+
+#: src/Constants.vala:124 src/Constants.vala:248
+#, c-format
+msgid "%s (Sorani)"
+msgstr "%s (Sorani)"
+
+#: src/Constants.vala:125 src/Constants.vala:249
 msgid "Kyrgyz"
 msgstr "Kirghizistan"
 
-#: src/Constants.vala:124 src/Constants.vala:248
+#: src/Constants.vala:126 src/Constants.vala:250
 msgid "Latin"
 msgstr "Latin"
 
-#: src/Constants.vala:125 src/Constants.vala:249
+#: src/Constants.vala:127 src/Constants.vala:251
 msgid "Latvian"
 msgstr "Letton"
 
-#: src/Constants.vala:126 src/Constants.vala:250
+#: src/Constants.vala:128 src/Constants.vala:252
 msgid "Lingala"
 msgstr "Lingala"
 
-#: src/Constants.vala:127 src/Constants.vala:251
+#: src/Constants.vala:129 src/Constants.vala:253
 msgid "Lithuanian"
 msgstr "Lituanien"
 
-#: src/Constants.vala:128 src/Constants.vala:252
+#: src/Constants.vala:130 src/Constants.vala:254
 msgid "Lombard"
 msgstr "Lombard"
 
-#: src/Constants.vala:129 src/Constants.vala:253
+#: src/Constants.vala:131 src/Constants.vala:255
 msgid "Luxembourgish"
 msgstr "luxembourgeois"
 
-#: src/Constants.vala:130 src/Constants.vala:254
+#: src/Constants.vala:132 src/Constants.vala:256
 msgid "Macedonian"
 msgstr "Macédonien"
 
-#: src/Constants.vala:131 src/Constants.vala:255
+#: src/Constants.vala:133 src/Constants.vala:257
 msgid "Maithili"
 msgstr "Maithili"
 
-#: src/Constants.vala:132 src/Constants.vala:256
+#: src/Constants.vala:134 src/Constants.vala:258
 msgid "Malagasy"
 msgstr "Malgache"
 
-#: src/Constants.vala:133 src/Constants.vala:257
+#: src/Constants.vala:135 src/Constants.vala:259
 msgid "Malay"
 msgstr "Malais"
 
-#: src/Constants.vala:134 src/Constants.vala:258
+#: src/Constants.vala:136 src/Constants.vala:260
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: src/Constants.vala:135 src/Constants.vala:259
+#: src/Constants.vala:137 src/Constants.vala:261
 msgid "Maltese"
 msgstr "Maltais"
 
-#: src/Constants.vala:136 src/Constants.vala:260
+#: src/Constants.vala:138 src/Constants.vala:262
 msgid "Maori"
 msgstr "Maori"
 
-#: src/Constants.vala:137 src/Constants.vala:261
+#: src/Constants.vala:139 src/Constants.vala:263
 msgid "Marathi"
 msgstr "Marathi"
 
-#: src/Constants.vala:138 src/Constants.vala:262
+#: src/Constants.vala:140 src/Constants.vala:264
 msgid "Mongolian"
 msgstr "Mongol"
 
-#: src/Constants.vala:139 src/Constants.vala:263
+#: src/Constants.vala:141 src/Constants.vala:265
 msgid "Nepali"
 msgstr "Népalais"
 
-#: src/Constants.vala:140 src/Constants.vala:264
+#: src/Constants.vala:142 src/Constants.vala:266
 msgid "Norwegian Bokmål"
 msgstr "Norvégien Bokmål"
 
-#: src/Constants.vala:141 src/Constants.vala:265
+#: src/Constants.vala:143 src/Constants.vala:267
 msgid "Occitan"
 msgstr "Occitan"
 
-#: src/Constants.vala:142 src/Constants.vala:266
+#: src/Constants.vala:144 src/Constants.vala:268
 msgid "Oromo"
 msgstr "Oromo"
 
-#: src/Constants.vala:143 src/Constants.vala:267
+#: src/Constants.vala:145 src/Constants.vala:269
 msgid "Pangasinan"
 msgstr "Pangasinan"
 
-#: src/Constants.vala:144 src/Constants.vala:268
+#: src/Constants.vala:146 src/Constants.vala:270
 msgid "Pashto"
 msgstr "Pashto"
 
-#: src/Constants.vala:145 src/Constants.vala:269
+#: src/Constants.vala:147 src/Constants.vala:271
 msgid "Persian"
 msgstr "Persan"
 
-#: src/Constants.vala:146 src/Constants.vala:270
+#: src/Constants.vala:148 src/Constants.vala:272
 msgid "Polish"
 msgstr "Polonais"
 
-#: src/Constants.vala:147 src/Constants.vala:273
-msgid "Portuguese (Unspecified)"
-msgstr "Portugais (Non spécifié)"
+#: src/Constants.vala:149 src/Constants.vala:275
+#, c-format
+msgid "%s (Unspecified)"
+msgstr "%s (Non spécifié)"
 
-#: src/Constants.vala:148 src/Constants.vala:274
+#: src/Constants.vala:149 src/Constants.vala:273 src/Constants.vala:274
+#: src/Constants.vala:275
+msgid "Portuguese"
+msgstr "Portugais"
+
+#: src/Constants.vala:150 src/Constants.vala:276
 msgid "Punjabi"
 msgstr "Pendjabi"
 
-#: src/Constants.vala:149 src/Constants.vala:275
+#: src/Constants.vala:151 src/Constants.vala:277
 msgid "Quechua"
 msgstr "Quechua"
 
-#: src/Constants.vala:150 src/Constants.vala:276
+#: src/Constants.vala:152 src/Constants.vala:278
 msgid "Romanian"
 msgstr "Roumain"
 
-#: src/Constants.vala:151 src/Constants.vala:277
+#: src/Constants.vala:153 src/Constants.vala:279
 msgid "Russian"
 msgstr "Russie"
 
-#: src/Constants.vala:152 src/Constants.vala:278
+#: src/Constants.vala:154 src/Constants.vala:280
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: src/Constants.vala:153 src/Constants.vala:279
+#: src/Constants.vala:155 src/Constants.vala:281
 msgid "Serbian"
 msgstr "Serbe"
 
-#: src/Constants.vala:154 src/Constants.vala:280
+#: src/Constants.vala:156 src/Constants.vala:282
 msgid "Sesotho"
 msgstr "Sesotho"
 
-#: src/Constants.vala:155 src/Constants.vala:281
+#: src/Constants.vala:157 src/Constants.vala:283
 msgid "Sicilian"
 msgstr "Sicilien"
 
-#: src/Constants.vala:156 src/Constants.vala:282
+#: src/Constants.vala:158 src/Constants.vala:284
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: src/Constants.vala:157 src/Constants.vala:283
+#: src/Constants.vala:159 src/Constants.vala:285
 msgid "Slovenian"
 msgstr "Slovénien"
 
-#: src/Constants.vala:158 src/Constants.vala:284
+#: src/Constants.vala:160 src/Constants.vala:286 src/Constants.vala:287
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: src/Constants.vala:159 src/Constants.vala:286
+#: src/Constants.vala:161 src/Constants.vala:288
 msgid "Sundanese"
 msgstr "Sundanais"
 
-#: src/Constants.vala:160 src/Constants.vala:287
+#: src/Constants.vala:162 src/Constants.vala:289
 msgid "Swahili"
 msgstr "Swahili"
 
-#: src/Constants.vala:161 src/Constants.vala:288
+#: src/Constants.vala:163 src/Constants.vala:290
 msgid "Swedish"
 msgstr "Suédois"
 
-#: src/Constants.vala:162 src/Constants.vala:289
+#: src/Constants.vala:164 src/Constants.vala:291
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: src/Constants.vala:163 src/Constants.vala:290
+#: src/Constants.vala:165 src/Constants.vala:292
 msgid "Tajik"
 msgstr "Tadjik"
 
-#: src/Constants.vala:164 src/Constants.vala:291
+#: src/Constants.vala:166 src/Constants.vala:293
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: src/Constants.vala:165 src/Constants.vala:292
+#: src/Constants.vala:167 src/Constants.vala:294
 msgid "Tatar"
 msgstr "Tatar"
 
-#: src/Constants.vala:166 src/Constants.vala:293
+#: src/Constants.vala:168 src/Constants.vala:295
 msgid "Telugu"
 msgstr "Telugu"
 
-#: src/Constants.vala:167 src/Constants.vala:294
+#: src/Constants.vala:169 src/Constants.vala:296
 msgid "Thai"
 msgstr "Thaïlandais"
 
-#: src/Constants.vala:168 src/Constants.vala:295
+#: src/Constants.vala:170 src/Constants.vala:297
 msgid "Tsonga"
 msgstr "Tsonga"
 
-#: src/Constants.vala:169 src/Constants.vala:296
+#: src/Constants.vala:171 src/Constants.vala:298
 msgid "Tswana"
 msgstr "Tswana"
 
-#: src/Constants.vala:170 src/Constants.vala:297
+#: src/Constants.vala:172 src/Constants.vala:299
 msgid "Turkish"
 msgstr "Turc"
 
-#: src/Constants.vala:171 src/Constants.vala:298
+#: src/Constants.vala:173 src/Constants.vala:300
 msgid "Turkmen"
 msgstr "Turkmène"
 
-#: src/Constants.vala:172 src/Constants.vala:299
+#: src/Constants.vala:174 src/Constants.vala:301
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: src/Constants.vala:173 src/Constants.vala:300
+#: src/Constants.vala:175 src/Constants.vala:302
 msgid "Urdu"
 msgstr "Urdu"
 
-#: src/Constants.vala:174 src/Constants.vala:301
+#: src/Constants.vala:176 src/Constants.vala:303
 msgid "Uzbek"
 msgstr "Ouzbek"
 
-#: src/Constants.vala:175 src/Constants.vala:302
+#: src/Constants.vala:177 src/Constants.vala:304
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: src/Constants.vala:176 src/Constants.vala:303
+#: src/Constants.vala:178 src/Constants.vala:305
 msgid "Welsh"
 msgstr "Gallois"
 
-#: src/Constants.vala:177 src/Constants.vala:304
+#: src/Constants.vala:179 src/Constants.vala:306
 msgid "Wolof"
 msgstr "Wolof"
 
-#: src/Constants.vala:178 src/Constants.vala:305
+#: src/Constants.vala:180 src/Constants.vala:307
 msgid "Xhosa"
 msgstr "Xhosa"
 
-#: src/Constants.vala:179 src/Constants.vala:306
+#: src/Constants.vala:181 src/Constants.vala:308
 msgid "Yiddish"
 msgstr "Yiddish"
 
-#: src/Constants.vala:180 src/Constants.vala:307
+#: src/Constants.vala:182 src/Constants.vala:309
 msgid "Zulu"
 msgstr "Zoulou"
 
-#: src/Constants.vala:208
-msgid "Chinese (Simplified)"
-msgstr "Chinois (simplifié)"
+#: src/Constants.vala:210
+#, c-format
+msgid "%s (Simplified)"
+msgstr "%s (simplifié)"
 
-#: src/Constants.vala:209
-msgid "Chinese (Traditional)"
-msgstr "Chinois (traditionnel)"
+#: src/Constants.vala:211
+#, c-format
+msgid "%s (Traditional)"
+msgstr "%s (traditionnel)"
 
-#: src/Constants.vala:217
-msgid "English (American)"
-msgstr "Anglais (Américain)"
+#: src/Constants.vala:219
+#, c-format
+msgid "%s (American)"
+msgstr "%s (Américain)"
 
-#: src/Constants.vala:218
-msgid "English (British)"
-msgstr "Anglais (Britannique)"
+#: src/Constants.vala:220
+#, c-format
+msgid "%s (British)"
+msgstr "%s (Britannique)"
 
-#: src/Constants.vala:271
-msgid "Portuguese (Brazilian)"
-msgstr "Portugais (brésilien)"
+#: src/Constants.vala:273
+#, c-format
+msgid "%s (Brazilian)"
+msgstr "%s (brésilien)"
 
-#: src/Constants.vala:272
-msgid "Portuguese (European)"
-msgstr "Portugais (Européen)"
+#: src/Constants.vala:274
+#, c-format
+msgid "%s (European)"
+msgstr "%s (Européen)"
 
-#: src/Constants.vala:285
-msgid "Spanish (Latin American)"
-msgstr "Espagnol (Amérique latine)"
+#: src/Constants.vala:287
+#, c-format
+msgid "%s (Latin American)"
+msgstr "%s (Amérique latine)"
 
 #: src/Application.vala:112
 msgid "Couldn't open file"
@@ -1086,15 +1133,6 @@ msgstr "Impossible d'ouvrir le fichier"
 
 #~ msgid "Spanish (All)"
 #~ msgstr "Espagnol (tous)"
-
-#~ msgid "Portuguese (All)"
-#~ msgstr "Portugais (Tous)"
-
-#~ msgid "Chinese (All)"
-#~ msgstr "Chinois (Tous)"
-
-#~ msgid "English (US)"
-#~ msgstr "Anglais (US)"
 
 #~ msgid "Portuguese (Portugal)"
 #~ msgstr "Portugais (Portugual)"
