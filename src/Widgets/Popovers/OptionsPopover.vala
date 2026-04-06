@@ -69,9 +69,10 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     box.append (formalbox);
 
     /***************** CONTEXT *****************/
-    context_entry = new Gtk.Entry ();
-    context_entry.placeholder_text = _("Enter context here");
-    context_entry.secondary_icon_tooltip_text = _("Clear text");
+    context_entry = new Gtk.Entry () {
+      placeholder_text = _("Enter context here"),
+      secondary_icon_tooltip_text = _("Clear text")
+    };
     box.append (context_entry);
 
     child = box;
@@ -80,14 +81,14 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     /***************** CONNECTS AND BINDS *****************/
     context_entry.changed.connect (on_entry_changed);
 
-    Application.settings_translate.bind (KEY_CONTEXT, 
+    Application.settings_translate.bind (KEY_CONTEXT,
       context_entry, "text", 
       SettingsBindFlags.DEFAULT
     );
 
     context_entry.icon_release.connect (on_clear_clicked);
     formal_level.value_changed.connect (on_formality_changed);
-    this.show.connect (formalities_supported);
+    show.connect (formalities_supported);
   }
 
   /**
@@ -106,7 +107,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
    * Handler for context entry clear button
    */
   private void on_clear_clicked () {
-    context_entry.text = "";
+    context_entry.buffer.delete_text (0, -1);
   }
 
   /**
