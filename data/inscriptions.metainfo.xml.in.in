@@ -95,7 +95,7 @@
   </recommends>
 
   <releases>
-    <release version="1.1.2" date="2026-04-06" urgency="medium">
+    <release version="1.1.2" date="2026-04-08" urgency="medium">
       <description>
         <p>More minor papercuts</p>
         <ul>
