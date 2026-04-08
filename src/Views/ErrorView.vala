@@ -49,19 +49,16 @@ public class Inscriptions.ErrorView : Granite.Bin {
             halign = Gtk.Align.START,
             valign = Gtk.Align.CENTER,
         };
-        box.append (title);
+
 
         // WEIRD: We get errors about TRUE being out of range for a gboolean and the value defaulting if we leave a default 
         bonusbox = new ErrorBonusBox (status, report_link);
-        box.append (bonusbox);
 
         var retry_button = new Inscriptions.RetryButton () {
             halign = Gtk.Align.END,
             margin_top = MARGIN_MENU_BIG
         };
         retry_button.validated.connect (on_validated);
-
-        box.append (retry_button);
 
 
         var details_text = message + "\n\n";
@@ -85,9 +82,15 @@ public class Inscriptions.ErrorView : Granite.Bin {
             margin_top = MARGIN_MENU_BIG + MARGIN_MENU_STANDARD
         };
 
+
+        box.append (title);
+        box.append (bonusbox);
+
         if (status != StatusCode.NO_KEY) {
             box.append (expander);
         }
+
+        box.append (retry_button);
 
         var handle = new Gtk.WindowHandle () {
             child = box
