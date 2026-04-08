@@ -1,35 +1,38 @@
 id: io.github.elly_code.inscriptions
 # elementary SDK is not available on Flathub, so use the elementary BaseApp instead
 base: io.elementary.BaseApp
-base-version: 'circe-25.08'
+base-version: circe-25.08
 runtime: org.gnome.Platform
 runtime-version: '49'
 sdk: org.gnome.Sdk
 command: io.github.elly_code.inscriptions
 
 finish-args:
-  - '--share=ipc'
-  - '--device=dri'
-  - '--socket=fallback-x11'
-  - '--socket=wayland'
-  # Required for communication with DeepL API
-  - '--share=network'
+  - --share=ipc
+  - --device=dri
+  - --socket=fallback-x11
+  - --socket=wayland
+  # Required for communication with external API
+  - --share=network
 
-cleanup:
-  -  '/include'
-  -  '/lib/pkgconfig'
-  -  '/man'
-  -  '/share/doc'
-  -  '/share/gtk-doc'
-  -  '/share/man'
-  -  '/share/pkgconfig'
-  -  '/share/installed-tests'
-  -  '*.la'
-  -  '*.a'
+cleanup-commands:
+  - rm -rf /app/bin/sassc
+  - rm -rf /app/include
+  - rm -rf /app/lib/girepository-1.0
+  - rm -rf /app/lib/pkgconfig
+  - rm -rf /app/share/gir-1.0
+  - rm -rf /app/share/vala
+  - rm -rf /app/lib/libgee*
+  - rm -rf /app/lib/libsass*
 
 modules:
   - name: inscriptions
     buildsystem: meson
     sources:
-      - type: dir
-        path: .
+      - type: git
+        url: https://github.com/elly-code/inscriptions.git
+        tag: 1.1.2-2
+        commit: 43308c847e8523e1904819c47d24eeecc07f8541
+        x-checker-data:
+          type: git
+          tag-pattern: '^([\d.]+)$'
