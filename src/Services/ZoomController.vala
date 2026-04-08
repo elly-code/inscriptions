@@ -141,6 +141,6 @@ public class Inscriptions.ZoomController : Object {
         zoom_changed (ZoomType.from_delta (dy));
         //print ("Go! Zoooommmmm");
 
-        return Gdk.EVENT_PROPAGATE;
+        return Gdk.EVENT_STOP;
     }
 }

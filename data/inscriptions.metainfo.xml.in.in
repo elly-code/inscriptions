@@ -100,7 +100,8 @@
         <p>More minor papercuts</p>
         <ul>
             <li>Added a "write email with translation" button. Please do not trust DeepL blindly!</li>
-            <li>Added new screenshots</li>
+            <li>Added new screenshots. Only one in both modes felt basic</li>
+            <li>Bugfix: Ctrl+Scroll (zoom) and scrolling do not clash anymore</li>
             <li>Updated translations</li>
         </ul>
       </description>
