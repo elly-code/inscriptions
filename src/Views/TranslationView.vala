@@ -190,8 +190,6 @@ public class Inscriptions.TranslationView : Granite.Bin {
             newtarget = "system";
         } 
         target_pane.selected_language = newtarget;
-
-
         target_pane.text = newtarget_text;
 
         source_pane.textview.refresh ();
