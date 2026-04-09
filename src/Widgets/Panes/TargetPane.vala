@@ -41,7 +41,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         dropdown.add_languages (Inscriptions.TargetLang ());
         //dropdown.selected = Application.settings.get_string (KEY_TARGET_LANGUAGE);
 
-        /* -------- PLACEHOLDER -------- */
+        /* -------- Placeholder, first thing the user sees -------- */
         var placeholder_box = new Gtk.Box (VERTICAL, 0) {
             hexpand = vexpand = true,
             halign = Gtk.Align.CENTER,
@@ -55,6 +55,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
         placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
+        // "%.2f" is replaced with a number
         var placeholder_info = new Gtk.Label (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
             wrap = true
         };
@@ -80,7 +81,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         stack.add_child (placeholder_handle);
         show_placeholder ();
 
-        /* -------- SPINNER -------- */
+        /* -------- SPINNER VIEW -------- */
         loading = new Gtk.Spinner () {
             valign = Gtk.Align.CENTER,
             width_request = 64,
@@ -92,10 +93,28 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         };
 
         stack.add_child (spin_view);
-        actionbar.pack_start (new TranslateButton ());
-        //actionbar.pack_start (new ToggleHighlight ());
 
-        /* -------- TOOLBAR -------- */
+
+
+        /* -------- Widget bottom left switching between auto and a button -------- */
+
+        // "Auto" appears in a place very limited in space
+        var placeholder_translatebutton_dim = new Gtk.Label (_("Auto")) {
+            // "%.2f" is replaced with a number
+            tooltip_text = _("Translation will be done %.2fs after typing has stopped").printf (DEBOUNCE_IN_S),
+            halign = Gtk.Align.START,
+            wrap = true
+        };
+        placeholder_translatebutton_dim.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
+
+        var switch_toolbar = new Inscriptions.SwitchWidget (placeholder_translatebutton_dim, new TranslateButton ()) {
+            transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+        };
+
+        actionbar.pack_start (switch_toolbar);
+
+
+        /* -------- TOOLBAR BOTTOM RIGHT -------- */
         var copy = new Gtk.Button.from_icon_name ("edit-copy-symbolic") {
             action_name = ACTION_PREFIX + ACTION_COPY,
             tooltip_markup = Granite.markup_accel_tooltip (
@@ -135,6 +154,10 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             switchwidget, "first-widget-visible",
             GLib.SettingsBindFlags.DEFAULT);
 
+        Application.settings_ui.bind (KEY_AUTO_TRANSLATE,
+            switch_toolbar, "first-widget-visible",
+            GLib.SettingsBindFlags.DEFAULT);
+
         Application.settings_ui.changed[KEY_AUTO_TRANSLATE].connect (on_auto_translate_changed);
 
         textview.buffer.changed.connect (on_buffer_changed);
@@ -152,7 +175,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
     private void on_auto_translate_changed () {        
         if (Application.settings_ui.get_boolean (KEY_AUTO_TRANSLATE)) {
-            // TRANSLATORS: This is for a small notification toast. Very little space is available
+            // TRANSLATORS: This is for a small notification toast. Very little space is available. "%.2f" is replaced with a number
             message (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S), false);
 
         } else {

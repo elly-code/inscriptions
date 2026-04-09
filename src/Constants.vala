@@ -26,6 +26,10 @@ namespace Inscriptions {
 	public const int MARGIN_MENU_BIG = 10;
 	public const int MARGIN_MENU_BIGGER = 25;
 
+	// Backend lingo
+	public const string AUTO_DETECT_LANGUAGE = "idk";
+	public const string SYSTEM_LANGUAGE = "system";
+
 	// Used by LanguageItem for heatmaps in the LanguageDropDown
 	public const string ACCENT_1 = "accent-1";
 	public const string ACCENT_2 = "accent-2";
