@@ -12,8 +12,8 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     public signal void back_requested ();
 
     Gtk.HeaderBar headerbar;
-    Gtk.Stack title_stack;
     Gtk.Label title_label;
+    Inscriptions.SwitchWidget switchwidget;
     Gtk.StackSwitcher title_switcher;
 
     Gtk.Revealer back_revealer;
@@ -34,7 +34,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
     // Secret switch showing with ctrl+shift+M
     private bool show_switcher {
-        get {return title_stack.visible_child == title_switcher;}
+        get {return !switchwidget.first_widget_visible;}
         set {switcher_state (value);}
     }
 
@@ -69,17 +69,13 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         title_switcher = new Gtk.StackSwitcher () {
             stack = stack_window_view
         };
-        
-        title_stack = new Gtk.Stack () {
+
+        switchwidget= new Inscriptions.SwitchWidget (title_label, title_switcher) {
             transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN
         };
 
-        title_stack.add_child (title_label);
-        title_stack.add_child (title_switcher);
-        title_stack.visible_child = title_label;
-
         headerbar = new Gtk.HeaderBar () {
-            title_widget = title_stack
+            title_widget = switchwidget
         };
         headerbar.add_css_class (Granite.STYLE_CLASS_FLAT);
         //headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
@@ -135,7 +131,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         menu_popover = new Inscriptions.SettingsPopover ();
         popover_button.popover = menu_popover;
-        
+
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, MARGIN_MENU_STANDARD);
 
         //toolbar_right.append (new TranslateButton ());
@@ -169,11 +165,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     }
 
     private void switcher_state (bool if_show_switcher) {
-        if (if_show_switcher) {
-            title_stack.visible_child = title_switcher;
-
-        } else {
-            title_stack.visible_child = title_label;
-        }
+        switchwidget.first_widget_visible = !if_show_switcher;
     }
 }

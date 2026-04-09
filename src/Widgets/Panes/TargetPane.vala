@@ -99,7 +99,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         /* -------- Widget bottom left switching between auto and a button -------- */
 
         // "Auto" appears in a place very limited in space
-        var placeholder_translatebutton_dim = new Gtk.Label (_("Auto")) {
+        var placeholder_translatebutton_dim = new Gtk.Label ("") { //_("Auto")
             // "%.2f" is replaced with a number
             tooltip_text = _("Translation will be done %.2fs after typing has stopped").printf (DEBOUNCE_IN_S),
             halign = Gtk.Align.START,
@@ -108,7 +108,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         placeholder_translatebutton_dim.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
 
         var switch_toolbar = new Inscriptions.SwitchWidget (placeholder_translatebutton_dim, new TranslateButton ()) {
-            transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+            transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN //Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         };
 
         actionbar.pack_start (switch_toolbar);
