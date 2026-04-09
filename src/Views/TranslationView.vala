@@ -186,8 +186,8 @@ public class Inscriptions.TranslationView : Granite.Bin {
         source_pane.selected_language = newsource;
         source_pane.text = newsource_text;
 
-        if (newtarget == "idk") {
-            newtarget = "system";
+        if (newtarget == AUTO_DETECT_LANGUAGE) {
+            newtarget = SYSTEM_LANGUAGE;
         } 
         target_pane.selected_language = newtarget;
         target_pane.text = newtarget_text;

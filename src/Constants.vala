@@ -58,9 +58,7 @@ namespace Inscriptions {
 	public const string KEY_FORMALITY = "formality";
 	public const string KEY_CURRENT_USAGE = "current-usage";
 	public const string KEY_MAX_USAGE = "max-usage";
-}
 
-namespace Inscriptions {
 	public const string DOMAIN = "iso_639_3";
 
 	// https://developers.deepl.com/docs/getting-started/supported-languages
@@ -68,8 +66,8 @@ namespace Inscriptions {
 	public Lang[] SourceLang () {
 		return {
 			//TRANSLATORS: The following are all languages user can select as source or target for translation
-			new Lang ("idk",_("Detect automatically")),
-			new Lang ("system",_("System language")),
+			new Lang (AUTO_DETECT_LANGUAGE,_("Detect automatically")),
+			new Lang (SYSTEM_LANGUAGE,_("System language")),
 			new Lang ("ACE", dgettext (DOMAIN, "Acehnese")),
 			new Lang ("AF",dgettext (DOMAIN, "Afrikaans")),
 			new Lang ("SQ",dgettext (DOMAIN, "Albanian")),
@@ -189,7 +187,7 @@ namespace Inscriptions {
 
 	public Lang[] TargetLang () {
 		return {
-			new Lang ("system",_("System language")),
+			new Lang (SYSTEM_LANGUAGE,_("System language")),
 			new Lang ("ACE",dgettext (DOMAIN, "Acehnese")),
 			new Lang ("AF",dgettext (DOMAIN, "Afrikaans")),
 			new Lang ("SQ",dgettext (DOMAIN, "Albanian")),

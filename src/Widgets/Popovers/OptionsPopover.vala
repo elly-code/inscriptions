@@ -123,7 +123,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
   private void formalities_supported () {
       var target = Application.settings_translate.get_string (KEY_TARGET_LANGUAGE);
 
-      if (target == "system") {
+      if (target == SYSTEM_LANGUAGE) {
         target = Application.backend.system_language;
       }
 

@@ -85,14 +85,14 @@ public class Inscriptions.DeepL : Object {
 
   public void on_source_lang_changed () {
     source_lang = Application.settings_translate.get_string (KEY_SOURCE_LANGUAGE);
-    if (source_lang == "system") {
+    if (source_lang == SYSTEM_LANGUAGE) {
       source_lang = system_language;
     }
   }
 
   public void on_target_lang_changed () {
     target_lang = Application.settings_translate.get_string (KEY_TARGET_LANGUAGE);
-    if (target_lang == "system") {
+    if (target_lang == SYSTEM_LANGUAGE) {
       target_lang = system_language;
     }
   }
