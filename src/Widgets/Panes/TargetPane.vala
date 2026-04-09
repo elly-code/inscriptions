@@ -108,7 +108,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
         placeholder_translatebutton_dim.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
 
         var switch_toolbar = new Inscriptions.SwitchWidget (placeholder_translatebutton_dim, new TranslateButton ()) {
-            transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN //Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+            transition_type = Gtk.StackTransitionType.CROSSFADE //Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         };
 
         actionbar.pack_start (switch_toolbar);
