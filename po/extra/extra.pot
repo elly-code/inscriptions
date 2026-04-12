@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 23:24+0100\n"
+"POT-Creation-Date: 2026-04-13 00:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,154 +17,297 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/inscriptions.metainfo.xml.in:12 data/inscriptions.desktop.in:6
-msgid "Inscriptions"
+#: data/inscriptions.metainfo.xml.in.in:12 data/inscriptions.desktop.in.in:6
+msgid "@APP_NAME@"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:13 data/inscriptions.desktop.in:8
+#: data/inscriptions.metainfo.xml.in.in:13 data/inscriptions.desktop.in.in:8
 msgid "Translate text elegantly"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:15
+#: data/inscriptions.metainfo.xml.in.in:15
 msgid "A fast, pretty, and ready translation app using DeepL free and paid API"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:16
-msgid "Libretranslate support is considered, but"
-msgstr ""
-
-#: data/inscriptions.metainfo.xml.in:17
+#: data/inscriptions.metainfo.xml.in.in:16
 msgid "Some points of note:"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:19
+#: data/inscriptions.metainfo.xml.in.in:18
 msgid "Nimble: Paste your DeepL api key (Whichever the plan), and here you go!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:20
+#: data/inscriptions.metainfo.xml.in.in:19
 msgid "Thoughtful: Just what you need, out of your way and a click away"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:21
+#: data/inscriptions.metainfo.xml.in.in:20
 msgid ""
 "Comprehensive: No scary angry dialogs - If something goes wrong, explain "
 "nicely"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:22
+#: data/inscriptions.metainfo.xml.in.in:21
 msgid ""
 "Lean: Limiting resource usage and internet communications to the minimum"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:23
+#: data/inscriptions.metainfo.xml.in.in:22
 msgid "Supported languages: All those available via DeepL API!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:25
+#: data/inscriptions.metainfo.xml.in.in:24
 msgid ""
 "If you like this app please do not hesitate to donate to encourage its "
 "development!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:30
+#: data/inscriptions.metainfo.xml.in.in:25
+msgid ""
+"Libretranslate support is considered, but a heavy time and energy "
+"investment, so may or may not happen."
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:30
 msgid "Main window, showcasing a translation with the highlighting feature"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:34
+#: data/inscriptions.metainfo.xml.in.in:34
 msgid ""
 "Main window with dark theme, showcasing a translation with the highlighting "
 "feature"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:42
+#: data/inscriptions.metainfo.xml.in.in:38
+msgid ""
+"You can change view to be stacked vertically. Whichever is more convenient "
+"for you!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:42
+msgid ""
+"A comprehensive setup screen, aiding you to get started as best the "
+"developer can think of"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:46
+msgid ""
+"Comprehensive error screen, which neither goes into techno babble, nor hides "
+"it from you"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:50
+msgid ""
+"Unhandled errors to report? Curious what goes behind the screen? Or just "
+"want to feel cool? You can access logs via ctrl+alt+shift"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:58
 msgid "Stella and Charlie!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:62
+#: data/inscriptions.metainfo.xml.in.in:73
 msgid "Translation"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:63
+#: data/inscriptions.metainfo.xml.in.in:74
 msgid "Translate"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:64
+#: data/inscriptions.metainfo.xml.in.in:75
 msgid "NMT"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:65
+#: data/inscriptions.metainfo.xml.in.in:76
 msgid "DeepL"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:66
+#: data/inscriptions.metainfo.xml.in.in:77
 msgid "Localization"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:67
+#: data/inscriptions.metainfo.xml.in.in:78
 msgid "Internationalization"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:68
+#: data/inscriptions.metainfo.xml.in.in:79
 msgid "l10n"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:69
+#: data/inscriptions.metainfo.xml.in.in:80
 msgid "i18n"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:70
+#: data/inscriptions.metainfo.xml.in.in:81
 msgid "Localize"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:71
+#: data/inscriptions.metainfo.xml.in.in:82
 msgid "Languages"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:72
+#: data/inscriptions.metainfo.xml.in.in:83
 msgid "Pantheon"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:73
+#: data/inscriptions.metainfo.xml.in.in:84
 msgid "elementary OS"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:89
+#: data/inscriptions.metainfo.xml.in.in:100
+msgid "Even more minor papercuts"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:102
+#: data/inscriptions.metainfo.xml.in.in:111
+msgid ""
+"Added a \"write email with translation\" button. Please do not trust DeepL "
+"blindly!"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:103
+#: data/inscriptions.metainfo.xml.in.in:112
+msgid "Added new screenshots. Only one in both modes felt basic"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:109
+msgid "More minor papercuts"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:113
+msgid "Bugfix: Ctrl+Scroll (zoom) and scrolling do not clash anymore"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:114
+msgid "Updated translations"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:115
+msgid ""
+"Quickfix: elementary OS stylesheet and branding accent are forced to ensure"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:121
+msgid "Minor papercuts"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:123
+msgid "Languages in language dropdown should be localized now"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:124
+msgid "The default zoom has been adjusted to match the system"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:130
+msgid "A polished, cleaner and better thought out UI"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:132
+msgid ""
+"New: Synchronized text zoom for both source and target, persistent, with a "
+"setting in gear menu"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:133
+msgid "API update to support all new languages supported by DeepL"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:134
+msgid "Show/hide highlighting moved to gear menu"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:135
+msgid "Enable/Disable auto translation moved to gear menu"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:136
+msgid "Display in the language dropdown the currently selected one"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:137
+msgid "Greyout in the language dropdown the relevant language"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:138
+msgid "Switch source and language moved between both languages"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:139
+msgid "Static pane sizes - makes more sense, less confusing"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:140
+msgid "Translation button moved within the view"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:142
+msgid "The following minor papercuts have also been addressed:"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:144
+msgid ""
+"Highlighting didnt refresh correctly upon switching between light and dark "
+"theme"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:145
+msgid "Options button had a broken fixup frame"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:146
+msgid "Paste and clear did not interact well with undo-redo"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:147
+msgid ""
+"On non-elementary desktops, Slate was forced upon ye. Now it should be "
+"respecting user accents"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:148
+msgid ""
+"Some highlight toggle and options menu icon were broken. Have to force the "
+"elementary icon theme to avoid display issues"
+msgstr ""
+
+#: data/inscriptions.metainfo.xml.in.in:154
 msgid "🚀 1.0.0 Initial release!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:91
+#: data/inscriptions.metainfo.xml.in.in:156
 msgid "It came to me in a dream"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:93
+#: data/inscriptions.metainfo.xml.in.in:158
 msgid "😎 Guests stars:"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:95
+#: data/inscriptions.metainfo.xml.in.in:160
 msgid "Amazing supercool icon designed by @wpkelso!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:96
+#: data/inscriptions.metainfo.xml.in.in:161
 msgid "Amazing supercool icon funded by @t3rminus!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:97
+#: data/inscriptions.metainfo.xml.in.in:162
 msgid "Initial Italian translation thanks to @albanobattistella!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:98
+#: data/inscriptions.metainfo.xml.in.in:163
 msgid "Initial Swedish translation thanks to @yeager!"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in:99
+#: data/inscriptions.metainfo.xml.in.in:164
 msgid "You, the user, for trying this supercool app!"
 msgstr ""
 
-#: data/inscriptions.desktop.in:7
+#: data/inscriptions.desktop.in.in:7
 msgid "Text translator"
 msgstr ""
 
-#: data/inscriptions.desktop.in:13
+#: data/inscriptions.desktop.in.in:13
 msgid ""
 "text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
 "localization;internationalization;"
