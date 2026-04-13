@@ -4,7 +4,7 @@ gschema_conf = configuration_data()
 gschema_conf.set('APP_ID', app_id)
 gschema_file = configure_file(
     input: 'inscriptions.gschema.xml.in',
-    output: '@0@.gschema.xml'.format(app_id),
+    output: app_id + '.gschema.xml',
     configuration: gschema_conf,
 )
 
