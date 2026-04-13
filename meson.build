@@ -8,6 +8,7 @@ project(
 app_name = 'Inscriptions'
 app_id = 'io.github.elly_code.' + meson.project_name()
 app_version = meson.project_version()
+gettext_name = meson.project_name()
 
 #================================
 # Include Gnome and the translations module
@@ -25,7 +26,7 @@ if get_option('development')
 endif
 
 # Set our translation domain
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (gettext_name), language:'c')
 
 # Windows needs icons, special arguments, and skip libportal
 windows_build = build_machine.system() == 'windows'
@@ -40,7 +41,7 @@ add_project_arguments(vala_flags, language: 'vala')
 config_data = configuration_data()
 config_data.set('version', meson.project_version())
 config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
-config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+config_data.set_quoted('GETTEXT_PACKAGE', gettext_name)
 config_data.set_quoted('APP_NAME', app_name)
 config_data.set_quoted('APP_ID', app_id)
 config_data.set_quoted('APP_VERSION', app_version)

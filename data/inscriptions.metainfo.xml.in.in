@@ -6,7 +6,7 @@
   <metadata_license>CC-BY-4.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
    <provides>
-    <binary>io.github.elly_code.inscriptions</binary>
+    <binary>@APP_ID@</binary>
   </provides>
 
   <name>@APP_NAME@</name>
@@ -28,27 +28,27 @@
   <screenshots>
     <screenshot type="default" environment="pantheon">
       <caption>Main window, showcasing a translation with the highlighting feature</caption>
-      <image>https://raw.githubusercontent.com/elly-code/inscriptions/1.1.2-2/data/screenshots/window-light.png</image>
+      <image>https://raw.githubusercontent.com/elly-code/inscriptions/@APP_VERSION@/data/screenshots/window-light.png</image>
     </screenshot>
     <screenshot environment="pantheon:dark">
       <caption>Main window with dark theme, showcasing a translation with the highlighting feature</caption>
-      <image>https://raw.githubusercontent.com/elly-code/inscriptions/1.1.2-2/data/screenshots/window-dark.png</image>
+      <image>https://raw.githubusercontent.com/elly-code/inscriptions/@APP_VERSION@/data/screenshots/window-dark.png</image>
     </screenshot>
     <screenshot environment="pantheon">
       <caption>You can change view to be stacked vertically. Whichever is more convenient for you!</caption>
-      <image>https://raw.githubusercontent.com/elly-code/inscriptions/1.1.2-2/data/screenshots/vertical.png</image>
+      <image>https://raw.githubusercontent.com/elly-code/inscriptions/@APP_VERSION@/data/screenshots/vertical.png</image>
     </screenshot>
     <screenshot environment="pantheon">
       <caption>A comprehensive setup screen, aiding you to get started as best the developer can think of</caption>
-      <image>https://raw.githubusercontent.com/elly-code/inscriptions/1.1.2-2/data/screenshots/setup.png</image>
+      <image>https://raw.githubusercontent.com/elly-code/inscriptions/@APP_VERSION@/data/screenshots/setup.png</image>
     </screenshot>
     <screenshot environment="pantheon">
       <caption>Comprehensive error screen, which neither goes into techno babble, nor hides it from you</caption>
-      <image>https://raw.githubusercontent.com/elly-code/inscriptions/1.1.2-2/data/screenshots/error.png</image>
+      <image>https://raw.githubusercontent.com/elly-code/inscriptions/@APP_VERSION@/data/screenshots/error.png</image>
     </screenshot>
     <screenshot environment="pantheon">
       <caption>Unhandled errors to report? Curious what goes behind the screen? Or just want to feel cool? You can access logs via ctrl+alt+shift</caption>
-      <image>https://raw.githubusercontent.com/elly-code/inscriptions/1.1.2-2/data/screenshots/messages.png</image>
+      <image>https://raw.githubusercontent.com/elly-code/inscriptions/@APP_VERSION@/data/screenshots/messages.png</image>
     </screenshot>
   </screenshots>
 

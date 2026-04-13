@@ -86,7 +86,8 @@ if not windows_build
     appstream_conf = configuration_data()
     appstream_conf.set('APP_ID', app_id)
     appstream_conf.set('APP_NAME', app_name)
-    appstream_conf.set('GETTEXT_PACKAGE', meson.project_name())
+    appstream_conf.set('APP_VERSION', app_version)
+    appstream_conf.set('GETTEXT_PACKAGE', gettext_name)
     appstream_file_in = configure_file(
         input: 'inscriptions.metainfo.xml.in.in',
         output: app_id + '.metainfo.xml.in',
