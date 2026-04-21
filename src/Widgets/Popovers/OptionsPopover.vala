@@ -62,7 +62,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     formal_level.set_show_fill_level (false);
 
     formal_level.set_value (Application.settings_translate.get_enum (KEY_FORMALITY));
-    formal_level.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
+    formal_level.add_css_class (STYLE_CLASS_TEMPERATURE);
 
     formalbox.append (formal_level);
 
