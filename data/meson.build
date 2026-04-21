@@ -51,7 +51,7 @@ if not windows_build
     desktop_conf.set('APP_NAME', app_name)
     desktop_conf.set('APP_ID', app_id)
     desktop_file_in = configure_file(
-    input: 'inscriptions.desktop.in.in',
+    input: meson.project_name() + '.desktop.in.in',
     output: app_id + '.desktop.in',
     configuration: desktop_conf,
     )
