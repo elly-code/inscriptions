@@ -26,7 +26,7 @@ gschema_conf = configuration_data()
 gschema_conf.set('APP_ID', app_id)
 gschema_conf.set('APP_PATH', app_path)
 gschema_file = configure_file(
-    input: 'inscriptions.gschema.xml.in',
+    input: meson.project_name() + '.gschema.xml.in',
     output: app_id + '.gschema.xml',
     configuration: gschema_conf,
 )
@@ -36,19 +36,16 @@ install_data(
     install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
 )
 
-compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
-    test('Validate schema file',
-    compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()],
-)
 
 #================================
 # metainfo confuses windows, and icons are handled differently there
 if not windows_build
 
+    #================================
     # Handle the different icon variants
     subdir('icons')
 
+    #================================
     # Inject some variables into the desktop file before merging in the translations
     desktop_conf = configuration_data()
     desktop_conf.set('APP_NAME', app_name)
@@ -68,7 +65,7 @@ if not windows_build
     install_dir: get_option('datadir') / 'applications',
     )
 
-
+    #================================
     # Inject some variables into the metainfo file before merging in the translations
     appstream_conf = configuration_data()
     appstream_conf.set('APP_ID', app_id)
@@ -76,7 +73,7 @@ if not windows_build
     appstream_conf.set('APP_VERSION', app_version)
     appstream_conf.set('GETTEXT_PACKAGE', gettext_name)
     appstream_file_in = configure_file(
-        input: 'inscriptions.metainfo.xml.in.in',
+        input: meson.project_name() + '.metainfo.xml.in.in',
         output: app_id + '.metainfo.xml.in',
         configuration: appstream_conf,
     )
@@ -93,12 +90,17 @@ if not windows_build
 
     #================================
     # Test definitions
+    compile_schemas = find_program('glib-compile-schemas', required: false)
+    if compile_schemas.found()
+        test('Validate schema file', compile_schemas, args: ['--strict', '--dry-run', meson.current_source_dir()])
+    endif
+
     desktop_utils = find_program('desktop-file-validate', required: false)
     if desktop_utils.found()
         test('Validate desktop file', desktop_utils, args: [desktop_file])
     endif
 
-    appstreamcli = find_program('appstreamcli', required: false, disabler: true)
+    appstreamcli = find_program('appstreamcli', required: false)
     if appstreamcli.found()
         test('Validate appstream file', appstreamcli, args: ['validate', '--no-net', '--explain', appstream_file])
     endif
