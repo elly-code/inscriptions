@@ -21,7 +21,6 @@ vala_flags = []
 if get_option('development')
   app_id +=  '.devel'
   vala_flags += ['--define', 'DEVEL']
-
 endif
 
 # Set our translation domain
