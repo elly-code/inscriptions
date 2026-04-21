@@ -7,17 +7,20 @@
 
  /**
 * Horizontal box with a +, label, and -, representing zoom controls
-* Uses ZoomController actions
+*
+* Uses {@link Inscriptions.ZoomController} actions but 
+*
+* Important: Think of setting the zoom property when changing zoom
 */
 public class Inscriptions.ZoomBox : Granite.Box {
 
     public ZoomBox () {
         Object (
-            orientation = Gtk.Orientation.HORIZONTAL,
-            homogeneous = true,
-            hexpand = true,
-            margin_start = MARGIN_MENU_BIG,
-            margin_end = MARGIN_MENU_BIG,
+            orientation: Gtk.Orientation.HORIZONTAL,
+            homogeneous: true,
+            hexpand: true,
+            margin_start: MARGIN_MENU_BIG,
+            margin_end: MARGIN_MENU_BIG,
             child_spacing: Granite.Box.Spacing.LINKED
         );
     }
@@ -28,15 +31,13 @@ public class Inscriptions.ZoomBox : Granite.Box {
     public int zoom {
         get { return _zoom;}
         set {
-            _zoom = value;
             //TRANSLATORS: %d is replaced by a number. Ex: 100, to display 100%
             //It must stay as "%d" in the translation so the app can replace it with the current zoom level.
             var label = _("%d%%").printf (value);
             zoom_default_button.set_label (label);
+            _zoom = value;
         }
     }
-
-    public signal void zoom_changed (ZoomType zoomtype);
 
     construct {
         ///TRANSLATORS: These are displayed on small linked buttons in a menu. User can click them to change zoom
