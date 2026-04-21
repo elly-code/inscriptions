@@ -19,48 +19,10 @@ compile_schemas = find_program('glib-compile-schemas', required: false, disabler
     args: ['--strict', '--dry-run', meson.current_source_dir()],
 )
 
-# metainfo confuses windows, and icons are 
+# metainfo confuses windows, and icons are handled differently there
 if not windows_build
 
-    # Install the standard icons in standard build
-    if not get_option('development')
-
-        icon_sizes = ['16', '32', '48', '64', '128']
-
-        foreach i : icon_sizes
-            install_data(
-                'icons' / 'hicolor' / i + '.png',
-                install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i / 'apps',
-                rename: app_id + '.png'
-            )
-            install_data(
-                'icons' / 'hicolor@2' / i + '@2.png',
-                install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i + '@2' / 'apps',
-                rename: app_id + '.png'
-            )
-        endforeach
-
-    # Install the dev icon in development builds
-    else
-        install_data(
-            'icons' / 'dev64.svg',
-            install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps',
-            rename: app_id + '.svg'
-        )
-
-        install_data(
-            'icons' / 'dev48.svg',
-            install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '48x48', 'apps'),
-            rename: app_id + '.svg'
-        )
-
-        install_data(
-            'icons' / 'dev64.svg',
-            install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '64x64', 'apps'),
-            rename: app_id + '.svg'
-        )
-    endif
-    
+    subdir('icons')
 
     # Inject some variables into the desktop file before merging in the translations
     desktop_conf = configuration_data()
