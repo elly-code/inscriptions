@@ -14,7 +14,7 @@
     <value value='2' nick="libretranslate"/>
   </enum>
 
-  <schema path="/io/github/elly_code/inscriptions/ui/" id="@APP_ID@.ui">
+  <schema path="@APP_PATH@ui/" id="@APP_ID@.ui">
     <key name="window-height" type="i">
       <default>320</default>
       <summary>Most recent window height</summary>
@@ -57,7 +57,7 @@
     </key>
   </schema>
 
-  <schema path="/io/github/elly_code/inscriptions/translate/" id="@APP_ID@.translate">
+  <schema path="@APP_PATH@translate/" id="@APP_ID@.translate">
     <key enum="@APP_ID@.backend" name="backend">
       <default>'deepl'</default>
       <summary>Language provider</summary>

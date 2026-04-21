@@ -1,7 +1,30 @@
 
 
+
+
+#========================
+# GRESOURCE
+
+gresource_conf = configuration_data()
+gresource_conf.set('APP_PATH', app_path)
+gresource_file = configure_file(
+    input: meson.project_name() + '.gresource.xml.in',
+    output: app_id + '.gresource.xml',
+    configuration: gresource_conf,
+)
+
+gresource = gnome.compile_resources(
+    'gresource',
+    gresource_file,
+    source_dir: '.'
+)
+
+#========================
+# GSCHEMA
+
 gschema_conf = configuration_data()
 gschema_conf.set('APP_ID', app_id)
+gschema_conf.set('APP_PATH', app_path)
 gschema_file = configure_file(
     input: 'inscriptions.gschema.xml.in',
     output: app_id + '.gschema.xml',
@@ -19,9 +42,11 @@ compile_schemas = find_program('glib-compile-schemas', required: false, disabler
     args: ['--strict', '--dry-run', meson.current_source_dir()],
 )
 
+#================================
 # metainfo confuses windows, and icons are handled differently there
 if not windows_build
 
+    # Handle the different icon variants
     subdir('icons')
 
     # Inject some variables into the desktop file before merging in the translations
@@ -65,17 +90,17 @@ if not windows_build
         install_dir: get_option('datadir') / 'metainfo',
     )
 
+
+    #================================
     # Test definitions
     desktop_utils = find_program('desktop-file-validate', required: false)
     if desktop_utils.found()
-    test('Validate desktop file', desktop_utils, args: [desktop_file])
+        test('Validate desktop file', desktop_utils, args: [desktop_file])
     endif
 
     appstreamcli = find_program('appstreamcli', required: false, disabler: true)
-    test('Validate appstream file',
-    appstreamcli,
-    args: ['validate', '--no-net', '--explain', appstream_file],
-    )
-
+    if appstreamcli.found()
+        test('Validate appstream file', appstreamcli, args: ['validate', '--no-net', '--explain', appstream_file])
+    endif
 
 endif

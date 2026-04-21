@@ -1,4 +1,43 @@
 
+
+#================================
+config_data = configuration_data()
+config_data.set('version', meson.project_version())
+config_data.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
+config_data.set_quoted('GETTEXT_PACKAGE', gettext_name)
+config_data.set_quoted('APP_NAME', app_name)
+config_data.set_quoted('APP_ID', app_id)
+config_data.set_quoted('APP_PATH', app_path)
+config_data.set_quoted('APP_VERSION', app_version)
+
+config_file = configure_file(
+  input: 'Config.vala.in',
+  output: '@BASENAME@',
+  configuration: config_data
+)
+
+
+
+#================================
+# dependencies
+deps = [
+  dependency ('granite-7', version: '>=7.7.0'),
+  dependency ('gtk4'),
+  dependency ('libsoup-3.0'),
+  dependency ('json-glib-1.0'),
+  dependency ('libsecret-1')
+]
+
+# We need to compile an icon into the exe to avoid "missing icon" icon at every turn
+if windows_build
+  deps += dependency('gio-windows-2.0')
+  ico_src = import('windows').compile_resources('windows/icons/ico.rc')
+
+else
+  deps += dependency('gio-unix-2.0')
+endif
+
+#================================
 # Letsgo
 sources = files (
   'Constants.vala',
@@ -53,7 +92,9 @@ sources = files (
   'Application.vala',
 )
 
+#================================
 # Create a new executable, list the files we want to compile, and install
+# win_subsystem does not seem to cause issues in non-win builds
 executable(
     app_id,
     config_file,
