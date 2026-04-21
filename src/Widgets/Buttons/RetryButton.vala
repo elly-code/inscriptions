@@ -39,7 +39,7 @@ construct {
     retry_button = new Gtk.Button.with_label (_("Verify")) {
       width_request = 128
     };
-    retry_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
+    retry_button.add_css_class (Granite.CssClass.SUGGESTED);
 
     append (spin_revealer);
     append (result_revealer);
@@ -69,7 +69,7 @@ construct {
         var result_box = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {
           tooltip_text = _("200 OK: Success connecting to server")
         };
-        result_box.add_css_class (Granite.STYLE_CLASS_SUCCESS);
+        result_box.add_css_class (Granite.CssClass.SUCCESS);
         result_box.append (new Gtk.Image.from_icon_name ("process-completed-symbolic"));
         result_box.append (new Gtk.Label (_("Success!")));
 
@@ -88,7 +88,7 @@ construct {
         var result_box = new Gtk.Box (HORIZONTAL, 3) {
           tooltip_text = _("403 Forbidden: Invalid API Key")
         };
-        result_box.add_css_class (Granite.STYLE_CLASS_ERROR);
+        result_box.add_css_class (Granite.CssClass.ERROR);
         result_box.append (new Gtk.Image.from_icon_name ("dialog-error-symbolic"));
         result_box.append (new Gtk.Label (_("Invalid")));
 
@@ -104,7 +104,7 @@ construct {
         var result_box = new Gtk.Box (HORIZONTAL, 3) {
           tooltip_text = _("Status code %s: Unrelated to authentication").printf (status_code.to_string ())
         };
-        result_box.add_css_class (Granite.STYLE_CLASS_WARNING);
+        result_box.add_css_class (Granite.CssClass.WARNING);
         result_box.append (new Gtk.Image.from_icon_name ("dialog-warning-symbolic"));
         result_box.append (new Gtk.Label (_("Error")));
 

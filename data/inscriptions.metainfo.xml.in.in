@@ -9,7 +9,7 @@
     <binary>@APP_ID@</binary>
   </provides>
 
-  <name>@APP_NAME@</name>
+  <name>Inscriptions</name>
   <summary>Translate text elegantly</summary>
   <description>
     <p>A fast, pretty, and ready translation app using DeepL free and paid API</p>

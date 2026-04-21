@@ -17,6 +17,6 @@ public class Inscriptions.TranslateButton : Gtk.Button {
             _("Start translating the entered text")
         );
 
-        add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
+        add_css_class (Granite.CssClass.SUGGESTED);
     }
 }

@@ -6,17 +6,21 @@
 /**
  * Simple two-buttons horizontal box using in SettingsPopover to toggle view
  */
-public class Inscriptions.OrientationBox : Gtk.Box {
+public class Inscriptions.OrientationBox : Granite.Box {
+
+    public OrientationBox () {
+        Object (
+            orientation: Gtk.Orientation.HORIZONTAL,
+            spacing: 0,
+            homogeneous: true,
+            hexpand: true,
+            margin_start: MARGIN_MENU_BIG,
+            margin_end: MARGIN_MENU_BIG,
+            child_spacing: Granite.Box.Spacing.LINKED
+        );
+    }
 
     construct {
-        orientation = Gtk.Orientation.HORIZONTAL;
-        spacing = 0;
-        homogeneous = true;
-        hexpand = true;
-        margin_start = MARGIN_MENU_BIG;
-        margin_end = MARGIN_MENU_BIG;
-        add_css_class (Granite.STYLE_CLASS_LINKED);
-
         var box_horiz = new Gtk.Box (HORIZONTAL, MARGIN_MENU_HALF) {
             halign = Gtk.Align.CENTER
         };

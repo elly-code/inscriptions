@@ -61,12 +61,10 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
                 margin_bottom = MARGIN_MENU_STANDARD
             };
 
-            var instruction = new Gtk.Label (_("To be able to do translations, paste your API Key in the field below")) {
-                halign = Gtk.Align.START
+            var instruction = new Granite.HeaderLabel (_("To be able to do translations, paste your API Key in the field below")) {
+                halign = Gtk.Align.START,
+                size = Granite.HeaderLabel.Size.H4
             };
-            instruction.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
-
-
             //explanation.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
 
             append (instruction);

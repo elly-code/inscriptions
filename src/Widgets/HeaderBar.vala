@@ -64,7 +64,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 #else
         title_label = new Gtk.Label (APP_NAME);
 #endif
-        title_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
+        title_label.add_css_class (STYLE_CLASS_TITLE_LABEL);
 
         title_switcher = new Gtk.StackSwitcher () {
             stack = stack_window_view
@@ -83,8 +83,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         /* ---------------- PACK START ---------------- */
         //TRANSLATORS: Back button to go back to translating
-        var back_button = new Gtk.Button.with_label (_("Back"));
-        back_button.add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
+        var back_button = new Granite.BackButton (_("Back"));
 
         back_revealer = new Gtk.Revealer () {
             child = back_button,

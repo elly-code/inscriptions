@@ -30,10 +30,10 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
       margin_bottom = MARGIN_MENU_BIG
     };
 
-    var formal_label = new Gtk.Label (_("Set how formal the translation should be")) {
-      halign = Gtk.Align.START
+    var formal_label = new Granite.HeaderLabel (_("Set how formal the translation should be")) {
+      halign = Gtk.Align.START,
+      size = Granite.HeaderLabel.Size.H4
     };
-    formal_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
     //formalbox.append (formal_label);
 
     var center = new Gtk.CenterBox () {
@@ -82,7 +82,7 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     context_entry.changed.connect (on_entry_changed);
 
     Application.settings_translate.bind (KEY_CONTEXT,
-      context_entry, "text", 
+      context_entry, "text",
       SettingsBindFlags.DEFAULT
     );
 

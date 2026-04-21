@@ -50,16 +50,14 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             margin_end = MARGIN_MENU_HALF
         };
 
-        var placeholder = new Gtk.Label (_("Ready to translate")) {
-            wrap = true
+        var placeholder = new Granite.HeaderLabel (_("Ready to translate")) {
+            size = Granite.HeaderLabel.Size.H2
         };
-        placeholder.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
         // "%.2f" is replaced with a number
-        var placeholder_info = new Gtk.Label (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
-            wrap = true
+        var placeholder_info = new Granite.HeaderLabel (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
+            size = Granite.HeaderLabel.Size.H4
         };
-        placeholder_info.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var placeholder_translatebutton = new TranslateButton () {
             halign = Gtk.Align.CENTER,
@@ -105,7 +103,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
             halign = Gtk.Align.START,
             wrap = true
         };
-        placeholder_translatebutton_dim.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
+        placeholder_translatebutton_dim.add_css_class (Granite.CssClass.DIM);
 
         var switch_toolbar = new Inscriptions.SwitchWidget (placeholder_translatebutton_dim, new TranslateButton ()) {
             transition_type = Gtk.StackTransitionType.CROSSFADE //Gtk.StackTransitionType.SLIDE_LEFT_RIGHT

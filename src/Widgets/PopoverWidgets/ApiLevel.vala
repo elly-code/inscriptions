@@ -22,10 +22,10 @@ public class Inscriptions.ApiLevel : Gtk.Box {
         /***************** LABEL AND BUTTON *****************/
         var cb = new Gtk.CenterBox ();
 
-        var api_usage_label = new Gtk.Label (_("API Usage")) {
-            halign = Gtk.Align.START
+        var api_usage_label = new Granite.HeaderLabel (_("API Usage")) {
+            halign = Gtk.Align.START,
+            size = Granite.HeaderLabel.Size.H4
         };
-        api_usage_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
         cb.start_widget = api_usage_label;
 
         spinner = new Gtk.Spinner () {

@@ -17,6 +17,7 @@ namespace Inscriptions {
     public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
     public const string STYLE_CLASS_ROTATED = "rotated";
 	public const string STYLE_CLASS_CONSOLE = "console";
+	public const string STYLE_CLASS_TITLE_LABEL = "label-title";
 
 	// Consistent spacing
 	public const int SPACING_TOOLBAR_HEADER = 5;
