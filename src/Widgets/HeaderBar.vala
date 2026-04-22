@@ -59,11 +59,11 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
    
 #if DEVEL
-        var title_label = new Granite.HeaderLabel (_("%s (Devel)").printf (APP_NAME)) {
+        var title_label = new Granite.HeaderLabel (_("Inscriptions (Devel)")) {
             size = Granite.HeaderLabel.Size.H4
         };
 #else
-        var title_label = new Granite.HeaderLabel (APP_NAME) {
+        var title_label = new Granite.HeaderLabel (_("Inscriptions")) {
             size = Granite.HeaderLabel.Size.H4
         };
 #endif
