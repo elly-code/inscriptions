@@ -52,8 +52,7 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         var placeholder = new Granite.HeaderLabel (_("Ready to translate")) {
             size = Granite.HeaderLabel.Size.H2,
-            halign = Gtk.Align.CENTER,
-            ellipsize = Pango.EllipsizeMode.END
+            halign = Gtk.Align.CENTER
         };
         placeholder.add_css_class (Granite.CssClass.DIM);
 

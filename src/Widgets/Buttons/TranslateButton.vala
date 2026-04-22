@@ -11,7 +11,8 @@ public class Inscriptions.TranslateButton : Gtk.Button {
     construct {
         label = _("Translate");
         action_name = TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE;
- 
+        valign = Gtk.Align.CENTER;
+
         tooltip_markup = Granite.markup_accel_tooltip (
             {"<Control>Return", "<Ctrl>T"},
             _("Start translating the entered text")
