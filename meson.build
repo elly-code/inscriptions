@@ -36,6 +36,14 @@ add_project_arguments(vala_flags, language: 'vala')
 
 
 #================================
+
+config_data = configuration_data()
+config_data.set('APP_NAME', app_name)
+config_data.set('APP_ID', app_id)
+config_data.set('APP_PATH', app_path)
+config_data.set('APP_VERSION', app_version)
+config_data.set('GETTEXT_PACKAGE', gettext_name)
+
 subdir('po')
 subdir('data')
 subdir ('src')
