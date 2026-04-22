@@ -12,7 +12,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
     public signal void back_requested ();
 
     Gtk.HeaderBar headerbar;
-    Gtk.Label title_label;
     Inscriptions.SwitchWidget switchwidget;
     Gtk.StackSwitcher title_switcher;
 
@@ -60,11 +59,14 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         app.set_accels_for_action (ACTION_PREFIX + ACTION_TOGGLE_MESSAGES, {"<Control><Shift>m"});
    
 #if DEVEL
-        title_label = new Gtk.Label (_("%s (Devel)").printf (APP_NAME));
+        var title_label = new Granite.HeaderLabel (_("%s (Devel)").printf (APP_NAME)) {
+            size = Granite.HeaderLabel.Size.H4
+        };
 #else
-        title_label = new Gtk.Label (APP_NAME);
+        var title_label = new Granite.HeaderLabel (APP_NAME) {
+            size = Granite.HeaderLabel.Size.H4
+        };
 #endif
-        title_label.add_css_class (STYLE_CLASS_TITLE_LABEL);
 
         title_switcher = new Gtk.StackSwitcher () {
             stack = stack_window_view

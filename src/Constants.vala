@@ -17,7 +17,6 @@ namespace Inscriptions {
     public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
     public const string STYLE_CLASS_ROTATED = "rotated";
 	public const string STYLE_CLASS_CONSOLE = "console";
-	public const string STYLE_CLASS_TITLE_LABEL = "label-title";
 	public const string STYLE_CLASS_TEMPERATURE = "temperature";
 
 	// Consistent spacing

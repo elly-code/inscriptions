@@ -83,9 +83,6 @@ window.devel {
 	border-color: @warning_color;
 }
 
-.label-title {
-    font-weight: bold;
-}
 
 /* Used by LanguageItem and tracked by DDModel so we can have a heatmap of recently used languages*/
 /* .accent-1 {
