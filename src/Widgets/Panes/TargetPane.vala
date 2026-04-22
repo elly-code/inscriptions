@@ -52,9 +52,15 @@ public class Inscriptions.TargetPane : Inscriptions.Pane {
 
         var placeholder = new Granite.HeaderLabel (_("Ready to translate")) {
             size = Granite.HeaderLabel.Size.H2,
-            halign = Gtk.Align.CENTER
+            halign = Gtk.Align.CENTER,
+            ellipsize = Pango.EllipsizeMode.END
         };
         placeholder.add_css_class (Granite.CssClass.DIM);
+
+        // https://github.com/elementary/granite/issues/977
+        var a = (Gtk.Label)placeholder.get_last_child ();
+        a.xalign = 0.5f;
+
 
         // "%.2f" is replaced with a number
         var placeholder_info = new Granite.HeaderLabel (_("Translation %.2fs after typing").printf (DEBOUNCE_IN_S)) {
