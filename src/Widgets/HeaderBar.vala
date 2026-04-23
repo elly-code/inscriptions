@@ -134,7 +134,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         popover_button.popover = menu_popover;
 
         var toolbar_right = new Gtk.Box (Gtk.Orientation.HORIZONTAL, MARGIN_MENU_STANDARD);
-
         //toolbar_right.append (new TranslateButton ());
         toolbar_right.append (popover_button);
 
@@ -143,6 +142,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         child = headerbar;
 
 #if DEVEL
+        menu_popover.autohide = false;
         switcher_state (true);
 #endif
 

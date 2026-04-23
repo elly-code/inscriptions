@@ -1,15 +1,13 @@
-# project name and programming language
 project(
   'inscriptions',
   'vala', 'c',
   version: '1.1.3'
 )
 
-app_name = 'Inscriptions'
-app_id = 'io.github.elly_code.' + meson.project_name()
-app_path = '/io/github/elly_code/' + meson.project_name() + '/'
+app_name = meson.project_name()
+app_id = 'io.github.elly_code.' + app_name
+app_path = '/io/github/elly_code/' + app_name
 app_version = meson.project_version()
-gettext_name = meson.project_name()
 
 #================================
 # Include Gnome and the translations module
@@ -23,8 +21,6 @@ if get_option('development')
   vala_flags += ['--define', 'DEVEL']
 endif
 
-# Set our translation domain
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (gettext_name), language:'c')
 
 # Windows needs icons, special arguments, and skip libportal
 windows_build = build_machine.system() == 'windows'
@@ -32,17 +28,20 @@ if windows_build
     vala_flags += ['--define', 'WINDOWS']
 endif
 
+# Set our translation domain
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_name), language:'c')
 add_project_arguments(vala_flags, language: 'vala')
 
 
 #================================
 
+# config_data is reused accross all project to propagate variables we set once
 config_data = configuration_data()
+config_data.set('LOCALEDIR', get_option('prefix') / get_option('localedir'))
 config_data.set('APP_NAME', app_name)
 config_data.set('APP_ID', app_id)
 config_data.set('APP_PATH', app_path)
 config_data.set('APP_VERSION', app_version)
-config_data.set('GETTEXT_PACKAGE', gettext_name)
 
 subdir('po')
 subdir('data')

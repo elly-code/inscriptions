@@ -27,7 +27,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         maximized = Application.settings_ui.get_boolean (KEY_WINDOW_MAXIMIZED);
 
 #if DEVEL
-        title += _(" (Devel)");
+        title = _("Inscriptions (Devel)");
         add_css_class ("devel");
 #endif
 

@@ -1,37 +1,30 @@
 
 
 #================================
+# Config.vala allows us to set variables in Meson, for the Vala app to use later
 
-config_data_quoted = configuration_data()
-config_data_quoted.set_quoted('LOCALEDIR', get_option('prefix') / get_option('localedir'))
-config_data_quoted.set_quoted('GETTEXT_PACKAGE', gettext_name)
-config_data_quoted.set_quoted('APP_ID', app_id)
-config_data_quoted.set_quoted('APP_PATH', app_path)
 config_file = configure_file(
     input: 'Config.vala.in',
     output: '@BASENAME@',
-    configuration: config_data_quoted
+    configuration: config_data
 )
 
 
 #================================
 # dependencies
+
+# json to package/unpackage API requests
+# libsoup to send/received from API
+# libsecret to handle API keys securely
+
 deps = [
-  dependency ('granite-7', version: '>=7.7.0'),
   dependency ('gtk4'),
-  dependency ('libsoup-3.0'),
+  dependency ('granite-7', version: '>=7.7.0'),
   dependency ('json-glib-1.0'),
+  dependency ('libsoup-3.0'),
   dependency ('libsecret-1')
 ]
 
-# We need to compile an icon into the exe to avoid "missing icon" icon at every turn
-if windows_build
-  deps += dependency('gio-windows-2.0')
-  ico_src = import('windows').compile_resources('windows/icons/ico.rc')
-
-else
-  deps += dependency('gio-unix-2.0')
-endif
 
 #================================
 # Letsgo
@@ -87,6 +80,22 @@ sources = files (
   'Windows' / 'MainWindow.vala',
   'Application.vala',
 )
+
+#================================
+# Windows specific stuff
+# theres a gio-windows and a gio-unix. We need to add depending on case 
+# We need to compile an icon and add to the sources to avoid "missing icon" icon at every turn
+# So AFAIK ico.rc just point to an ico file in the same folder it is, so this is like gresource
+
+if windows_build
+  deps += dependency('gio-windows-2.0')
+  ico_src = import('windows').compile_resources('../windows/icons/ico.rc')
+  sources += ico_src
+
+else
+  deps += dependency('gio-unix-2.0')
+
+endif
 
 #================================
 # Create a new executable, list the files we want to compile, and install
