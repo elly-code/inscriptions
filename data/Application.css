@@ -83,6 +83,10 @@ window.devel {
 	border-color: @warning_color;
 }
 
+/* New header has a margin but i dont like it */
+.title-4 {
+    margin-left: 0px;
+}
 
 /* Used by LanguageItem and tracked by DDModel so we can have a heatmap of recently used languages*/
 /* .accent-1 {
