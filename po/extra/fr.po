@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 00:20+0200\n"
+"POT-Creation-Date: 2026-04-23 20:09+0200\n"
 "PO-Revision-Date: 2025-12-03 23:11+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/inscriptions.metainfo.xml.in.in:12 data/inscriptions.desktop.in.in:6
-msgid "@APP_NAME@"
-msgstr ""
+#: data/inscriptions.metainfo.xml.in.in:12
+msgid "Inscriptions"
+msgstr "Inscriptions"
 
 #: data/inscriptions.metainfo.xml.in.in:13 data/inscriptions.desktop.in.in:8
 msgid "Translate text elegantly"
@@ -314,6 +314,10 @@ msgid "You, the user, for trying this supercool app!"
 msgstr ""
 "C'est vous, l'utilisateur, qui avez essayé cette application super cool !"
 
+#: data/inscriptions.desktop.in.in:6
+msgid "@APP_NAME@"
+msgstr ""
+
 #: data/inscriptions.desktop.in.in:7
 msgid "Text translator"
 msgstr "Traducteur de texte"
@@ -325,9 +329,6 @@ msgid ""
 msgstr ""
 "texte ; traduire ; traduction ; traducteur ; deepl ; NMT ; lang ; localize ; "
 "l10n ; i18n ; localisation ; internationalisation ;"
-
-#~ msgid "Inscriptions"
-#~ msgstr "Inscriptions"
 
 #~ msgid "Libretranslate support is considered, but"
 #~ msgstr "La prise en charge de Libretranslate est envisagée, mais"

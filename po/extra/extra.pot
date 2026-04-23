@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 00:20+0200\n"
+"POT-Creation-Date: 2026-04-23 20:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/inscriptions.metainfo.xml.in.in:12 data/inscriptions.desktop.in.in:6
-msgid "@APP_NAME@"
+#: data/inscriptions.metainfo.xml.in.in:12
+msgid "Inscriptions"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in.in:13 data/inscriptions.desktop.in.in:8
@@ -301,6 +301,10 @@ msgstr ""
 
 #: data/inscriptions.metainfo.xml.in.in:164
 msgid "You, the user, for trying this supercool app!"
+msgstr ""
+
+#: data/inscriptions.desktop.in.in:6
+msgid "@APP_NAME@"
 msgstr ""
 
 #: data/inscriptions.desktop.in.in:7
