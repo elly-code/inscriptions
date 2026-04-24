@@ -21,11 +21,14 @@ if get_option('development')
   vala_flags += ['--define', 'DEVEL']
 endif
 
-
 # Windows needs icons, special arguments, and skip libportal
-windows_build = build_machine.system() == 'windows'
+windows_build = get_option('windows_build')
+if build_machine.system() == 'windows'
+  windows_build = true
+endif
+
 if windows_build
-    vala_flags += ['--define', 'WINDOWS']
+  vala_flags += ['--define', 'WINDOWS']
 endif
 
 # Set our translation domain
