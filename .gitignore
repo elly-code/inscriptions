@@ -2,9 +2,12 @@
 .*
 !.gitignore
 .editorconfig
+~*
 *~
 build
 builddir
 .flatpak-builder
 .potrans
 repo
+.vscode
+deploy
