@@ -1,9 +1,10 @@
 
 .*
 !.gitignore
-!.editorconfig
+.editorconfig
 *~
-build/*
-.flatpak-builder/*
+build
+builddir
+.flatpak-builder
 .potrans
 repo
