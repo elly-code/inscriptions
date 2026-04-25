@@ -1,7 +1,8 @@
 project(
   'inscriptions',
   'vala', 'c',
-  version: '1.1.3'
+  version: '1.1.3',
+  license: 'GPL-3.0-or-later'
 )
 
 app_name = meson.project_name()
@@ -13,10 +14,10 @@ app_version = meson.project_version()
 # Include Gnome and the translations module
 gnome = import('gnome')
 i18n = import('i18n')
-
-
 vala_flags = []
-if get_option('development')
+
+development_build = get_option('development')
+if development_build
   app_id +=  '.devel'
   vala_flags += ['--define', 'DEVEL']
 endif
@@ -33,7 +34,6 @@ endif
 
 # Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_name), language:'c')
-add_project_arguments(vala_flags, language: 'vala')
 
 
 #================================

@@ -2,7 +2,7 @@
 # Install the standard icons in standard build
 # TODO: Dev icons should be handled same as variant
 # if variant is default, and we have dev, then use dev
-if not get_option('development')
+if not development_build
 
     icon_sizes = ['16', '32', '48', '64', '128']
 
