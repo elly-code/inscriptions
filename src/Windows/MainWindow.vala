@@ -42,7 +42,10 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         var actions = new SimpleActionGroup ();
         actions.add_action_entries (ACTION_ENTRIES, this);
         insert_action_group ("win", actions);
-        application.set_accels_for_action (ACTION_PREFIX + ACTION_MAIN_VIEW, {"<alt>Left"});
+
+        unowned var app = ((Gtk.Application) GLib.Application.get_default ());
+        app.set_accels_for_action (ACTION_PREFIX + ACTION_MAIN_VIEW, {"<alt>Left"});
+
 
         /* ---------------- HEADERBAR ---------------- */
 
