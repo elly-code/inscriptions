@@ -2,7 +2,7 @@
 Version=1.5
 Type=Application
 
-Name=@APP_NAME@
+Name=Inscriptions
 GenericName=Text translator
 Comment=Translate text elegantly
 Icon=@APP_ID@
