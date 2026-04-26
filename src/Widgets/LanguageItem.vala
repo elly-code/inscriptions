@@ -47,7 +47,7 @@ public class Inscriptions.LanguageItem : Gtk.Box {
       visible = false,
       halign = Gtk.Align.END,
       valign = Gtk.Align.CENTER,
-      margin_end = 10
+      margin_end = MARGIN_MENU_BIG
     };
     selected_emblem.add_css_class (Granite.STYLE_CLASS_FLAT);
 
