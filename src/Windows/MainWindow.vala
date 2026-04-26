@@ -16,6 +16,14 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     public Inscriptions.TranslationView translation_view;
     Inscriptions.ErrorView? errorview = null;
 
+    public const string ACTION_PREFIX = "win.";
+    public const string ACTION_MAIN_VIEW = "main_view";
+    public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
+
+    private const GLib.ActionEntry[] ACTION_ENTRIES = {
+        { ACTION_MAIN_VIEW, on_back_clicked}
+    };
+
     construct {
         Intl.setlocale ();
         title = _("Inscriptions");
@@ -30,6 +38,11 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         title = _("Inscriptions (Devel)");
         add_css_class ("devel");
 #endif
+
+        var actions = new SimpleActionGroup ();
+        actions.add_action_entries (ACTION_ENTRIES, this);
+        insert_action_group ("win", actions);
+        application.set_accels_for_action (ACTION_PREFIX + ACTION_MAIN_VIEW, {"<alt>Left"});
 
         /* ---------------- HEADERBAR ---------------- */
 
@@ -93,7 +106,6 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
         check_up_key.begin (null);
         Application.backend.answer_received.connect (on_answer_received);
-        headerbar.back_requested.connect (() => {on_back_clicked ();});
         close_request.connect (on_close);
     }
 
@@ -135,7 +147,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     /**
      * Handler for the back button. Re-set everything we need, and we may want to translate
      */
-    private void on_back_clicked (bool? retry = false) {
+    public void on_back_clicked () {
         print ("\nBack to main view");
         Application.backend.answer_received.connect (on_answer_received);
         stack_window_view.visible_child = translation_view;
@@ -143,9 +155,10 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         errorview = null;
         headerbar.on_main_view = true;
 
-        if (retry) {
-            translation_view.on_text_to_translate ();
-        }
+        //if (retry) {
+        //    translation_view.on_text_to_translate ();
+        //}
+
     }
 
     /**

@@ -9,7 +9,6 @@
 public class Inscriptions.HeaderBar : Granite.Bin {
 
     public Gtk.Stack stack_window_view {get; construct;}
-    public signal void back_requested ();
 
     Gtk.HeaderBar headerbar;
     Inscriptions.SwitchWidget switchwidget;
@@ -85,7 +84,9 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
         /* ---------------- PACK START ---------------- */
         //TRANSLATORS: Back button to go back to translating
-        var back_button = new Granite.BackButton (_("Back"));
+        var back_button = new Granite.BackButton (_("Back")) {
+            action_name = MainWindow.ACTION_PREFIX + MainWindow.ACTION_MAIN_VIEW
+        };
 
         back_revealer = new Gtk.Revealer () {
             child = back_button,
@@ -147,8 +148,6 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 #endif
 
         /* -------------------- CONNECTS AND BINDS -------------------- */
-        back_button.clicked.connect (() => {back_requested ();});
-
         Application.settings_ui.bind (KEY_HIGHLIGHT,
             toggle_highlight, "active",
             GLib.SettingsBindFlags.DEFAULT);
