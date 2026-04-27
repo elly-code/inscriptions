@@ -6,61 +6,61 @@
 namespace Inscriptions {
 
 	// Alkrjnlgjrt
-	public const string DONATE_LINK = "https://ko-fi.com/teamcons/tip";
-	public const string LINK = "https://www.deepl.com/your-account/keys";
-    public const int DEBOUNCE_INTERVAL = 1250; // ms
+	const string DONATE_LINK = "https://ko-fi.com/teamcons/tip";
+	const string LINK = "https://www.deepl.com/your-account/keys";
+    const int DEBOUNCE_INTERVAL = 1250; // ms
 
     // Careful when using this to wrap to .2f decimals
     const float DEBOUNCE_IN_S = ((float)DEBOUNCE_INTERVAL) / 1000;
 
 	// Styling
-    public const string STYLE_CLASS_COLORED_HEADER = "primary-background";
-    public const string STYLE_CLASS_ROTATED = "rotated";
-	public const string STYLE_CLASS_CONSOLE = "console";
-	public const string STYLE_CLASS_TEMPERATURE = "temperature";
+    const string STYLE_CLASS_COLORED_HEADER = "primary-background";
+    const string STYLE_CLASS_ROTATED = "rotated";
+	const string STYLE_CLASS_CONSOLE = "console";
+	const string STYLE_CLASS_TEMPERATURE = "temperature";
 
 	// Consistent spacing
-	public const int SPACING_TOOLBAR_HEADER = 5;
-	public const int SPACING_TOOLBAR_MINI = 3;
-	public const int MARGIN_MENU_HALF = 3;
-	public const int MARGIN_MENU_STANDARD = 5;
-	public const int MARGIN_MENU_BIG = 10;
-	public const int MARGIN_MENU_BIGGER = 25;
+	const int SPACING_TOOLBAR_HEADER = 5;
+	const int SPACING_TOOLBAR_MINI = 3;
+	const int MARGIN_MENU_HALF = 3;
+	const int MARGIN_MENU_STANDARD = 5;
+	const int MARGIN_MENU_BIG = 10;
+	const int MARGIN_MENU_BIGGER = 25;
 
 	// Backend lingo
 	public const string AUTO_DETECT_LANGUAGE = "idk";
 	public const string SYSTEM_LANGUAGE = "system";
 
 	// Used by LanguageItem for heatmaps in the LanguageDropDown
-	public const string ACCENT_1 = "accent-1";
-	public const string ACCENT_2 = "accent-2";
-	public const string ACCENT_3 = "accent-3";
-	public const string ACCENT_4 = "accent-4";
-	public const string ACCENT_5 = "accent-5";
+	const string ACCENT_1 = "accent-1";
+	const string ACCENT_2 = "accent-2";
+	const string ACCENT_3 = "accent-3";
+	const string ACCENT_4 = "accent-4";
+	const string ACCENT_5 = "accent-5";
 
 	// Autocomplete, save me!
-	public const string SETTINGS_PATH_UI = APP_ID + ".ui";
-	public const string SETTINGS_PATH_TRANSLATE = APP_ID + ".translate";
+	const string SETTINGS_PATH_UI = APP_ID + ".ui";
+	const string SETTINGS_PATH_TRANSLATE = APP_ID + ".translate";
 
 	// UI
-	public const string KEY_WINDOW_HEIGHT = "window-height";
-	public const string KEY_WINDOW_WIDTH = "window-width";
-	public const string KEY_WINDOW_MAXIMIZED = "window-maximized";
-	public const string KEY_VERTICAL_LAYOUT = "vertical-layout";
-	public const string KEY_AUTO_TRANSLATE = "auto-translate";
-	public const string KEY_HIGHLIGHT = "highlight";
-	public const string KEY_HEATMAP = "language-heatmap";
-	public const string KEY_ZOOM = "zoom";
+	const string KEY_WINDOW_HEIGHT = "window-height";
+	const string KEY_WINDOW_WIDTH = "window-width";
+	const string KEY_WINDOW_MAXIMIZED = "window-maximized";
+	const string KEY_VERTICAL_LAYOUT = "vertical-layout";
+	const string KEY_AUTO_TRANSLATE = "auto-translate";
+	const string KEY_HIGHLIGHT = "highlight";
+	const string KEY_HEATMAP = "language-heatmap";
+	const string KEY_ZOOM = "zoom";
 
 	// Translate
-	public const string KEY_SOURCE_LANGUAGE = "source-language";
-	public const string KEY_TARGET_LANGUAGE = "target-language";
-	public const string KEY_CONTEXT = "context";
-	public const string KEY_FORMALITY = "formality";
-	public const string KEY_CURRENT_USAGE = "current-usage";
-	public const string KEY_MAX_USAGE = "max-usage";
+	const string KEY_SOURCE_LANGUAGE = "source-language";
+	const string KEY_TARGET_LANGUAGE = "target-language";
+	const string KEY_CONTEXT = "context";
+	const string KEY_FORMALITY = "formality";
+	const string KEY_CURRENT_USAGE = "current-usage";
+	const string KEY_MAX_USAGE = "max-usage";
 
-	public const string DOMAIN = "iso_639_3";
+	const string DOMAIN = "iso_639_3";
 
 	// https://developers.deepl.com/docs/getting-started/supported-languages
 	// TODO: In the far future people might declare their own in a backend file
