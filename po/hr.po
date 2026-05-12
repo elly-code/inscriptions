@@ -1,0 +1,1116 @@
+# Croatian translation for inscriptions.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the inscriptions package.
+# Milo Ivir <mail@milotype.de>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: inscriptions\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 20:08+0200\n"
+"PO-Revision-Date: 2026-05-12 14:15+0200\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: src/Windows/MainWindow.vala:21 src/Widgets/HeaderBar.vala:66
+msgid "Inscriptions"
+msgstr ""
+
+#: src/Windows/MainWindow.vala:30 src/Widgets/HeaderBar.vala:62
+msgid "Inscriptions (Devel)"
+msgstr ""
+
+#: src/Windows/MainWindow.vala:54 src/Widgets/Buttons/TranslateButton.vala:12
+msgid "Translate"
+msgstr "Prevedi"
+
+#: src/Windows/MainWindow.vala:55
+msgid "Messages"
+msgstr "Poruke"
+
+#: src/Windows/MainWindow.vala:107
+msgid "No saved API Key"
+msgstr "Nema spremljenog API ključa"
+
+#. *
+#. * Convenience function to move to dedicated error view, disable and enable whatever is needed
+#.
+#. TRANSLATORS: This text shows up when the app fails to show technical details on an error
+#: src/Windows/MainWindow.vala:154 src/Views/ErrorView.vala:27
+msgid "No details available"
+msgstr "Nema detalja"
+
+#: src/Windows/MainWindow.vala:160 src/Widgets/Buttons/RetryButton.vala:109
+msgid "Error"
+msgstr "Greška"
+
+#: src/Views/TranslationView.vala:97 src/Widgets/Panes/PaneSeparator.vala:31
+msgid "Switch languages"
+msgstr "Zamijeni jezike"
+
+#: src/Views/TranslationView.vala:210
+msgid "Nothing to translate"
+msgstr "Nema se što prevesti"
+
+#: src/Views/TranslationView.vala:225
+msgid "Target language is the same as source"
+msgstr "Ciljani jezik je isti kao izvorni"
+
+#: src/Views/TranslationView.vala:285
+msgid "Cleared"
+msgstr "Izbrisano"
+
+#. headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
+#. ---------------- PACK START ----------------
+#. TRANSLATORS: Back button to go back to translating
+#: src/Widgets/HeaderBar.vala:88
+msgid "Back"
+msgstr "Natrag"
+
+#: src/Widgets/HeaderBar.vala:108
+msgid "Highlight source and target sentences"
+msgstr "Istakni izvorne i ciljne rečenice"
+
+#: src/Widgets/HeaderBar.vala:127
+msgid "Settings"
+msgstr "Postavke"
+
+#: src/Views/ErrorView.vala:79
+msgid "Details"
+msgstr "Detalji"
+
+#. Custom status codes feel super evil
+#. TRANSLATORS: The following texts show up respectively, as a title, and error message, when translating has gone wrong. This needs to be as little technical as possible
+#: src/Enums/StatusCode.vala:53
+msgid "Hello, World!"
+msgstr "Zdravo svijete!"
+
+#: src/Enums/StatusCode.vala:54
+msgid "You need a DeepL API key to translate text"
+msgstr "Za prevođenje teksta trebaš DeepL API ključ"
+
+#: src/Enums/StatusCode.vala:59
+msgid "No Internet"
+msgstr "Nema interneta"
+
+#. /TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
+#: src/Enums/StatusCode.vala:64
+#, c-format
+msgid ""
+"Please verify you are <a href='%s'>connected to the internet</a>, and that "
+"this app has <a href='%s'>permission to access it</a>"
+msgstr ""
+"Provjeri <a href='%s'>vezu s internetom</a> i ima li ova aplikacija <a "
+"href='%s'>prava za pristup</a>"
+
+#: src/Enums/StatusCode.vala:66
+msgid ""
+"Please verify you are connected to the internet, and that this app has "
+"permission to access it"
+msgstr "Provjeri vezu s internetom i ima li ova aplikacija prava za pristup"
+
+#: src/Enums/StatusCode.vala:71
+msgid "Everything works great :)"
+msgstr "Sve radi odlično :)"
+
+#: src/Enums/StatusCode.vala:72
+msgid ""
+"If you see this and are not me, then it means i forgor to disable this error"
+msgstr ""
+"Ako ovo vidiš, a nisi ja, to onda znači da sam zaboravio deaktivirati ovu "
+"grešku"
+
+#: src/Enums/StatusCode.vala:78
+msgid "Bad request"
+msgstr "Loš zahtjev"
+
+#: src/Enums/StatusCode.vala:79
+msgid ""
+"The app sent a wrong translation request to DeepL\n"
+"Please report this to the app's developer with as much details as you can"
+msgstr ""
+"Aplikacija je poslala pogrešan prijevod DeepL-u\n"
+"Prijavi ovo programeru aplikacije sa što više detalja"
+
+#: src/Enums/StatusCode.vala:84
+msgid "Forbidden"
+msgstr "Zabranjeno"
+
+#: src/Enums/StatusCode.vala:85
+msgid "Your API key is invalid. Make sure it is the correct one!"
+msgstr "Tvoj API ključ nije ispravan. Provjeri da imaš ispravan ključ!"
+
+#: src/Enums/StatusCode.vala:90
+msgid "Too many requests"
+msgstr "Previše zahtjeva"
+
+#: src/Enums/StatusCode.vala:91
+msgid ""
+"Please wait before retrying. This error should not be possible to happen for "
+"this app..."
+msgstr ""
+"Pričekaj prije ponovog pokušaja. Ova se greška ne bi smjela moći desiti za "
+"ovu aplikaciju.."
+
+#: src/Enums/StatusCode.vala:96
+msgid "Your monthly quota has been exceeded"
+msgstr "Tvoja mjesečna kvota je premašena"
+
+#: src/Enums/StatusCode.vala:97
+msgid "If you are a Pro API user, this corresponds to your Cost Control limit"
+msgstr ""
+"Kao Pro API korisnik, to odgovara ovo odgovara tvom limitu kontrole troškova"
+
+#: src/Enums/StatusCode.vala:102
+msgid "Internal server error"
+msgstr "Interna greška servera"
+
+#: src/Enums/StatusCode.vala:103
+msgid ""
+"Retry in a minute? If you see this several times, check online if there is a "
+"DeepL service interruption"
+msgstr ""
+"Ponovo pokušati za koju minutu? Ako ovo vidiš više puta, provjeri online "
+"postoji li smetnja s DeepL uslugom"
+
+#: src/Enums/StatusCode.vala:108
+msgid "SSL Handshake error"
+msgstr "SSL Handshake greška"
+
+#: src/Enums/StatusCode.vala:109
+msgid ""
+"This is an issue DeepL is aware of and this app can do nothing about...\n"
+"If you have the know-show, going through a simple authenticated proxy may "
+"work"
+msgstr ""
+"Ovo je problem za koji je DeepL svjestan i ova aplikacija ne može ništa "
+"učiniti …\n"
+"Ako imaš iskustva, korištenje jednostavnog autentificiranog proxyja može "
+"funkcionirati"
+
+#: src/Enums/StatusCode.vala:114
+msgid "Request timeout"
+msgstr "Istek vremena zahtjeva"
+
+#: src/Enums/StatusCode.vala:115 src/Enums/StatusCode.vala:121
+msgid ""
+"No answer has been received. Either DeepL or your connection are having "
+"issues"
+msgstr "Nije dobiven odgovor. DeepL ili tvoja veza imaju problema"
+
+#: src/Enums/StatusCode.vala:120
+msgid "Gateway timeout"
+msgstr "Vrijeme čekanja pristupnika je isteklo"
+
+#: src/Enums/StatusCode.vala:126
+msgid "Unknown error"
+msgstr "Nepoznata greška"
+
+#: src/Enums/StatusCode.vala:127
+#, c-format
+msgid "Status code %s, please report this to this app's developer"
+msgstr "Kod statusa %s. Prijavi ovo programeru ove aplikacije"
+
+#. TRANSLATORS: This is the text of a link to DeepL website, specifically account settings
+#: src/Widgets/ErrorBonusBox.vala:38
+msgid "You can get an API key here"
+msgstr "API ključ možeš dobiti ovdje"
+
+#: src/Widgets/ErrorBonusBox.vala:50
+msgid ""
+"An API Key is like a password which allows you to use DeepL services\n"
+"You can find it in your account settings on the DeepL website\n"
+"It looks like this: <b>fr5617a-4875-4763-9119-564tjdvg89:fx</b>"
+msgstr ""
+"API ključ je poput lozinke koja omogućuje korištenje DeepL usluga\n"
+"Možeš ga pronaći u postavkama svog računa na DeepL web-stranici\n"
+"Izgleda slično ovome: <b>fr5617a-4875-4763-9119-564tjdvg89:fx</b>"
+
+#: src/Widgets/ErrorBonusBox.vala:58
+msgid "What is an API Key?"
+msgstr "Što je API ključ?"
+
+#: src/Widgets/ErrorBonusBox.vala:64
+msgid "To be able to do translations, paste your API Key in the field below"
+msgstr "Za mogućnost prevođenja, zalijepi svoj API ključ u polje ispod"
+
+#: src/Widgets/ErrorBonusBox.vala:84
+msgid "Report issue to the developer"
+msgstr "Prijavi problem programeru"
+
+#: src/Views/LogView.vala:12
+msgid ""
+"Requests and server responses will show up here\n"
+"\n"
+msgstr ""
+"Zahtjevi i odgovori servera pojavit će se ovdje\n"
+"\n"
+
+#: src/Views/LogView.vala:44
+msgid "Clear"
+msgstr "Izbriši"
+
+#: src/Views/LogView.vala:51
+msgid "Clear all messages"
+msgstr "Izbriši sve poruke"
+
+#: src/Views/LogView.vala:58
+msgid "Usage"
+msgstr "Korištenje"
+
+#: src/Views/LogView.vala:65
+msgid "Send a request"
+msgstr "Pošalji jedan zahtjev"
+
+#: src/Widgets/PopoverWidgets/ApiEntry.vala:21
+msgid "Enter API key here"
+msgstr "Unesi API ključ ovdje"
+
+#: src/Widgets/PopoverWidgets/ApiEntry.vala:28
+#: src/Widgets/Panes/SourcePane.vala:71
+msgid "Paste from clipboard"
+msgstr "Umetni iz međuspremnika"
+
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:25
+msgid "API Usage"
+msgstr "Korištenje API-ja"
+
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:37
+msgid "Update API usage"
+msgstr "Aktualiziraj korištenje API-ja"
+
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:41
+msgid "Use a different API key of your choosing"
+msgstr "Koristi jedan drugi API ključ po tvom izboru"
+
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:45
+msgid "Requested by user"
+msgstr "Podnositelj zahtjeva"
+
+#.
+#. // Depending on fill, usage
+#. if (api_usage.value > api_usage.max_value) {
+#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
+#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
+#. api_usage.add_css_class (Granite.STYLE_CLASS_ERROR);
+#.
+#. } else if (api_usage.value > (api_usage.max_value / 2)) {
+#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
+#. api_usage.add_css_class (Granite.STYLE_CLASS_WARNING);
+#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
+#.
+#. } else {
+#. api_usage.add_css_class (Granite.STYLE_CLASS_SUCCESS);
+#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
+#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
+#. }
+#. Picking from settings as im not super sure what fires first between connect and binds
+#: src/Widgets/PopoverWidgets/ApiLevel.vala:103
+#, c-format
+msgid "%i characters translated / %i maximum characters on your plan"
+msgstr "%i znakova prevedeno / maksimalan broj znakova u tvojoj tarifi: %i"
+
+#: src/Widgets/Buttons/TranslateButton.vala:18
+msgid "Start translating the entered text"
+msgstr "Počni prevoditi uneseni tekst"
+
+#: src/Widgets/Buttons/OrientationBox.vala:28
+msgid "Horizontal"
+msgstr "Vodoravno"
+
+#: src/Widgets/Buttons/OrientationBox.vala:34
+msgid "Switch the view to horizontally aligned panes"
+msgstr "Prebaci na vodoravni prikaz ploča (jedna pored druge)"
+
+#. TRANSLATORS: This refers to the view: Either the panels are stacked vertically, or lined horizontally
+#: src/Widgets/Buttons/OrientationBox.vala:43
+msgid "Vertical"
+msgstr "Okomito"
+
+#: src/Widgets/Buttons/OrientationBox.vala:50
+msgid "Switch the view to vertically stacked panes"
+msgstr "Prebaci na okomiti prikaz ploča (jedna iznad druge)"
+
+#: src/Widgets/Buttons/ToggleHighlight.vala:21
+msgid "Hide highlighting"
+msgstr "Sakrij isticanja"
+
+#: src/Widgets/Buttons/ToggleHighlight.vala:28
+msgid "Show highlight for source and target sentences"
+msgstr "Prikaži istaknute rečenice za izvore i ciljne rečenice"
+
+#. TRANSLATORS: %d is replaced by a number. Ex: 100, to display 100%
+#. It must stay as "%d" in the translation so the app can replace it with the current zoom level.
+#: src/Widgets/Buttons/ZoomBox.vala:36
+#, c-format
+msgid "%d%%"
+msgstr "%d %%"
+
+#: src/Widgets/Buttons/ZoomBox.vala:48
+msgid "Zoom out"
+msgstr "Smanji prikaz"
+
+#: src/Widgets/Buttons/ZoomBox.vala:56
+msgid "Default zoom level"
+msgstr "Standardna razina zumiranja"
+
+#: src/Widgets/Buttons/ZoomBox.vala:64
+msgid "Zoom in"
+msgstr "Uvećaj prikaz"
+
+#. -------------------- SEPARATOR --------------------
+#: src/Widgets/Popovers/SettingsPopover.vala:53
+msgid "Translate automatically"
+msgstr "Prevedi automatski"
+
+#: src/Widgets/Popovers/SettingsPopover.vala:54
+#, c-format
+msgid "Translation will start %.2f seconds after typing (Ctrl+Shift+Enter)"
+msgstr "Prijevod će započeti %.2f s nakon upisivanja (Ctrl+Shift+Enter)"
+
+#: src/Widgets/Popovers/SettingsPopover.vala:58
+msgid "Highlight source and target"
+msgstr "Istaknuti izvor i cilj"
+
+#: src/Widgets/Popovers/SettingsPopover.vala:59
+msgid "Each sentence will be highlighted to help compare both texts (Ctrl+H)"
+msgstr ""
+"Svaka rečenica će se istaknuti kako bi se lakše usporedila oba teksta "
+"(Ctrl+H)"
+
+#. -------------------- SEPARATOR --------------------
+#: src/Widgets/Popovers/SettingsPopover.vala:66
+msgid "Support us!"
+msgstr "Podrži nas!"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:33
+#: src/Widgets/Popovers/OptionsPopover.vala:133
+msgid "Set how formal the translation should be"
+msgstr "Postavi razinu formalnosti za prijevod"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:42
+msgid "Formal"
+msgstr "Formalno"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:43
+msgid "Default"
+msgstr "Standardno"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:44
+msgid "Informal"
+msgstr "Neformalno"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:73
+msgid "Enter context here"
+msgstr "Unesi kontekst ovdje"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:74
+#: src/Widgets/Panes/SourcePane.vala:61
+msgid "Clear text"
+msgstr "Izbriši tekst"
+
+#: src/Widgets/Popovers/OptionsPopover.vala:137
+msgid "Formality control is not available for this target language"
+msgstr "Kontrola formalnosti nije dostupna za ovaj ciljni jezik"
+
+#: src/Widgets/Panes/Pane.vala:127
+msgid "Undo"
+msgstr "Poništi"
+
+#: src/Widgets/Panes/SourcePane.vala:35
+msgid "Set the language to translate from"
+msgstr "Postavi jezik iz kojeg se prevodi"
+
+#. dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
+#: src/Widgets/Panes/SourcePane.vala:39
+msgid "Options"
+msgstr "Opcije"
+
+#: src/Widgets/Panes/SourcePane.vala:46
+msgid "Change options for the translation"
+msgstr "Promijeni opcije za prijevod"
+
+#: src/Widgets/Panes/SourcePane.vala:83
+msgid "Load text from a file"
+msgstr "Učitaj tekst iz datoteke"
+
+#: src/Widgets/Panes/SourcePane.vala:106
+msgid "Pasted"
+msgstr "Zalijepljeno"
+
+#: src/Widgets/Panes/SourcePane.vala:116 src/Widgets/Panes/TargetPane.vala:228
+msgid "All files"
+msgstr "Sve datoteke"
+
+#: src/Widgets/Panes/SourcePane.vala:121 src/Widgets/Panes/TargetPane.vala:233
+msgid "Text files"
+msgstr "Tekstualne datoteke"
+
+#. TRANSLATORS: The following text is for the dialog to load a text file to translate
+#: src/Widgets/Panes/SourcePane.vala:131
+msgid "Open text file to translate"
+msgstr "Otvori tekstualnu datoteku za prijevod"
+
+#: src/Widgets/Panes/SourcePane.vala:132
+msgid "Open"
+msgstr "Otvori"
+
+#: src/Widgets/Panes/SourcePane.vala:145
+msgid "Loaded from file"
+msgstr "Učitaj iz datoteke"
+
+#. textview.editable = false;
+#: src/Widgets/Panes/TargetPane.vala:40
+msgid "Set the language to translate to"
+msgstr "Postavi jezik u koji se prevodi"
+
+#: src/Widgets/Panes/TargetPane.vala:53
+msgid "Ready to translate"
+msgstr "Spremno za prijevod"
+
+#. "%.2f" is replaced with a number
+#. TRANSLATORS: This is for a small notification toast. Very little space is available. "%.2f" is replaced with a number
+#: src/Widgets/Panes/TargetPane.vala:65 src/Widgets/Panes/TargetPane.vala:184
+#, c-format
+msgid "Translation %.2fs after typing"
+msgstr "Prijevod %.2f s nakon tipkanja"
+
+#. -------- Widget bottom left switching between auto and a button --------
+#. "Auto" appears in a place very limited in space
+#. _("Auto")
+#. "%.2f" is replaced with a number
+#: src/Widgets/Panes/TargetPane.vala:109
+#, c-format
+msgid "Translation will be done %.2fs after typing has stopped"
+msgstr "Prijevod će biti gotov %.2f s nakon prekida tipkanja"
+
+#: src/Widgets/Panes/TargetPane.vala:127
+msgid "Copy to clipboard"
+msgstr "Kopiraj u međuspremnik"
+
+#: src/Widgets/Panes/TargetPane.vala:136
+msgid "Save the translation in a text file"
+msgstr "Spremi prijevod u tekstualnu datoteku"
+
+#: src/Widgets/Panes/TargetPane.vala:145
+msgid "Write an email with the translation"
+msgstr "Napiši e-mail s prijevodom"
+
+#: src/Widgets/Panes/TargetPane.vala:178
+msgid "Opening mail client"
+msgstr "Otvaranje mail klijenta"
+
+#. TRANSLATORS: This is for a small notification toast. Very little space is available
+#: src/Widgets/Panes/TargetPane.vala:188
+msgid "Automatic translation paused"
+msgstr "Automatski prijevod zaustavljen"
+
+#: src/Widgets/Panes/TargetPane.vala:199
+msgid "Copied"
+msgstr "Kopirano"
+
+#: src/Widgets/Panes/TargetPane.vala:241
+#, c-format
+msgid "translation %s-%s.txt"
+msgstr "prijevod %s-%s.txt"
+
+#. TRANSLATORS: The following text is for the dialog to save the translation
+#: src/Widgets/Panes/TargetPane.vala:247
+msgid "Save translation to text file"
+msgstr "Spremi prijevod u tekstualnu datoteku"
+
+#: src/Widgets/Panes/TargetPane.vala:248
+msgid "Save"
+msgstr "Spremi"
+
+#: src/Widgets/Panes/TargetPane.vala:260
+msgid "Saved"
+msgstr "Spremljeno"
+
+#: src/Widgets/Buttons/RetryButton.vala:39
+msgid "Verify"
+msgstr "Potvrdi"
+
+#: src/Widgets/Buttons/RetryButton.vala:70
+msgid "200 OK: Success connecting to server"
+msgstr "200 OK: Uspješno povezivanje na server"
+
+#: src/Widgets/Buttons/RetryButton.vala:74
+msgid "Success!"
+msgstr "Uspjeh!"
+
+#: src/Widgets/Buttons/RetryButton.vala:89
+msgid "403 Forbidden: Invalid API Key"
+msgstr "403 zabranjeno: API ključ je neispravan"
+
+#: src/Widgets/Buttons/RetryButton.vala:93
+msgid "Invalid"
+msgstr "Nevaljano"
+
+#: src/Widgets/Buttons/RetryButton.vala:105
+#, c-format
+msgid "Status code %s: Unrelated to authentication"
+msgstr "Kod stausa %s: Nije povezan s autentifikacijom"
+
+#. ---------- SEND BUTTON ----------
+#: src/Widgets/LogToolbar.vala:19
+msgid "Get: "
+msgstr "Get: "
+
+#: src/Widgets/LogToolbar.vala:26
+msgid "Simulate a fake status code answer for debugging purposes"
+msgstr "Simuliraj lažni odgovor statusnog koda za potrebe otklanjanja grešaka"
+
+#: src/Widgets/LogToolbar.vala:72
+msgid "Simulated status code"
+msgstr "Simulirani kod statusni"
+
+#: src/Backend/DeepL/DeepL.vala:104
+msgid "Missing API Key"
+msgstr "Nedostaje API ključ"
+
+#: src/Backend/DeepL/DeepL.vala:225
+msgid "Cannot detect!"
+msgstr "Ne može se otkriti!"
+
+#: src/Backend/DeepL/DeepL.vala:230
+msgid "Cannot retrieve translated text!"
+msgstr "Nije moguće dohvatiti prevedeni tekst!"
+
+#: src/Backend/DeepL/DeepL.vala:248
+msgid "Cannot retrieve error message text!"
+msgstr "Nije moguće dohvatiti tekst poruke greške!"
+
+#. TRANSLATORS: The following are all languages user can select as source or target for translation
+#: src/Constants.vala:70
+msgid "Detect automatically"
+msgstr "Otkrij automatski"
+
+#: src/Constants.vala:71 src/Constants.vala:191
+msgid "System language"
+msgstr "Jezik sustava"
+
+#: src/Constants.vala:72 src/Constants.vala:192
+msgid "Acehnese"
+msgstr "Acehnese"
+
+#: src/Constants.vala:73 src/Constants.vala:193
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: src/Constants.vala:74 src/Constants.vala:194
+msgid "Albanian"
+msgstr "Albanski"
+
+#: src/Constants.vala:75 src/Constants.vala:195
+msgid "Arabic"
+msgstr "Arapsko"
+
+#: src/Constants.vala:76 src/Constants.vala:196
+msgid "Aragonese"
+msgstr "Aragonski"
+
+#: src/Constants.vala:77 src/Constants.vala:197
+msgid "Armenian"
+msgstr "Armenijski"
+
+#: src/Constants.vala:78 src/Constants.vala:198
+msgid "Assamese"
+msgstr "Asamski"
+
+#: src/Constants.vala:79 src/Constants.vala:199
+msgid "Aymara"
+msgstr "Ajmarski"
+
+#: src/Constants.vala:80 src/Constants.vala:200
+msgid "Azerbaijani"
+msgstr "Azerbajdžanski"
+
+#: src/Constants.vala:81 src/Constants.vala:201
+msgid "Bashkir"
+msgstr "Baškirski"
+
+#: src/Constants.vala:82 src/Constants.vala:202
+msgid "Basque"
+msgstr "Baskijski"
+
+#: src/Constants.vala:83 src/Constants.vala:203
+msgid "Belarusian"
+msgstr "Bjeloruski"
+
+#: src/Constants.vala:84 src/Constants.vala:204
+msgid "Bengali"
+msgstr "Bengalski"
+
+#: src/Constants.vala:85 src/Constants.vala:205
+msgid "Bhojpuri"
+msgstr "Bhojpuri"
+
+#: src/Constants.vala:86 src/Constants.vala:206
+msgid "Bosnian"
+msgstr "Bošnjački"
+
+#: src/Constants.vala:87 src/Constants.vala:207
+msgid "Breton"
+msgstr "Bretonski"
+
+#: src/Constants.vala:88 src/Constants.vala:208
+msgid "Bulgarian"
+msgstr "Bugarski"
+
+#: src/Constants.vala:89 src/Constants.vala:209
+msgid "Burmese"
+msgstr "Burmanski"
+
+#: src/Constants.vala:90 src/Constants.vala:210
+msgid "Cantonese"
+msgstr "Kantonska"
+
+#: src/Constants.vala:91 src/Constants.vala:211
+msgid "Catalan"
+msgstr "Katalonski"
+
+#: src/Constants.vala:92 src/Constants.vala:212
+msgid "Cebuano"
+msgstr "Cebuano"
+
+#: src/Constants.vala:93 src/Constants.vala:215
+#, c-format
+msgid "%s (Unspecified variant)"
+msgstr "%s (Neodređena varijanta)"
+
+#: src/Constants.vala:93 src/Constants.vala:213 src/Constants.vala:214
+#: src/Constants.vala:215
+msgid "Chinese"
+msgstr "Kineski"
+
+#: src/Constants.vala:94 src/Constants.vala:216
+msgid "Croatian"
+msgstr "Hrvatski"
+
+#: src/Constants.vala:95 src/Constants.vala:217
+msgid "Czech"
+msgstr "Češki"
+
+#: src/Constants.vala:96 src/Constants.vala:218
+msgid "Danish"
+msgstr "Danski"
+
+#: src/Constants.vala:97 src/Constants.vala:219
+msgid "Dari"
+msgstr "Dari"
+
+#: src/Constants.vala:98 src/Constants.vala:220
+msgid "Dutch"
+msgstr "Nizozemski"
+
+#: src/Constants.vala:99 src/Constants.vala:221
+#, c-format
+msgid "%s (All variants)"
+msgstr "%s (Sve varijante)"
+
+#: src/Constants.vala:99 src/Constants.vala:221 src/Constants.vala:222
+#: src/Constants.vala:223
+msgid "English"
+msgstr "Engleski"
+
+#: src/Constants.vala:100 src/Constants.vala:224
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: src/Constants.vala:101 src/Constants.vala:225
+msgid "Estonian"
+msgstr "Estonski"
+
+#: src/Constants.vala:102 src/Constants.vala:226
+msgid "Finnish"
+msgstr "Finski"
+
+#: src/Constants.vala:103 src/Constants.vala:227
+msgid "French"
+msgstr "Francuski"
+
+#: src/Constants.vala:104 src/Constants.vala:228
+msgid "Galician"
+msgstr "Galičanski"
+
+#: src/Constants.vala:105 src/Constants.vala:229
+msgid "Georgian"
+msgstr "Gruzijski"
+
+#: src/Constants.vala:106 src/Constants.vala:230
+msgid "German"
+msgstr "Njemački"
+
+#: src/Constants.vala:107 src/Constants.vala:231
+msgid "Greek"
+msgstr "Grčki"
+
+#: src/Constants.vala:108 src/Constants.vala:232
+msgid "Guarani"
+msgstr "Gvarani"
+
+#: src/Constants.vala:109 src/Constants.vala:233
+msgid "Gujarati"
+msgstr "Gudžaratsko"
+
+#: src/Constants.vala:110 src/Constants.vala:234
+msgid "Haitian Creole"
+msgstr "Haitjanski kreolski"
+
+#: src/Constants.vala:111 src/Constants.vala:235
+msgid "Hausa"
+msgstr "Hauski"
+
+#: src/Constants.vala:112 src/Constants.vala:236
+msgid "Hebrew"
+msgstr "Hebrejski"
+
+#: src/Constants.vala:113 src/Constants.vala:237
+msgid "Hindi"
+msgstr "Hindi"
+
+#: src/Constants.vala:114 src/Constants.vala:238
+msgid "Hungarian"
+msgstr "Mađarski"
+
+#: src/Constants.vala:115 src/Constants.vala:239
+msgid "Icelandic"
+msgstr "Islandski"
+
+#: src/Constants.vala:116 src/Constants.vala:240
+msgid "Igbo"
+msgstr "Igboški"
+
+#: src/Constants.vala:117 src/Constants.vala:241
+msgid "Indonesian"
+msgstr "Indonezijski"
+
+#: src/Constants.vala:118 src/Constants.vala:242
+msgid "Irish"
+msgstr "Irski"
+
+#: src/Constants.vala:119 src/Constants.vala:243
+msgid "Italian"
+msgstr "Talijanski"
+
+#: src/Constants.vala:120 src/Constants.vala:244
+msgid "Japanese"
+msgstr "Japanski"
+
+#: src/Constants.vala:121 src/Constants.vala:245
+msgid "Javanese"
+msgstr "Javansko"
+
+#: src/Constants.vala:122 src/Constants.vala:246
+msgid "Kapampangan"
+msgstr "Kapampangan"
+
+#: src/Constants.vala:123 src/Constants.vala:247
+msgid "Kazakh"
+msgstr "Kazaški"
+
+#: src/Constants.vala:124 src/Constants.vala:248
+msgid "Konkani"
+msgstr "Konkani"
+
+#: src/Constants.vala:125 src/Constants.vala:249
+msgid "Korean"
+msgstr "Korejski"
+
+#: src/Constants.vala:126 src/Constants.vala:250
+#, c-format
+msgid "%s (Kurmanji)"
+msgstr "%s (Kurmanji)"
+
+#: src/Constants.vala:126 src/Constants.vala:127 src/Constants.vala:250
+#: src/Constants.vala:251
+msgid "Kurdish"
+msgstr "Kurdski"
+
+#: src/Constants.vala:127 src/Constants.vala:251
+#, c-format
+msgid "%s (Sorani)"
+msgstr "%s (Sorani)"
+
+#: src/Constants.vala:128 src/Constants.vala:252
+msgid "Kyrgyz"
+msgstr "Kirgiški"
+
+#: src/Constants.vala:129 src/Constants.vala:253
+msgid "Latin"
+msgstr "Latinica"
+
+#: src/Constants.vala:130 src/Constants.vala:254
+msgid "Latvian"
+msgstr "Latvijski"
+
+#: src/Constants.vala:131 src/Constants.vala:255
+msgid "Lingala"
+msgstr "Lingala"
+
+#: src/Constants.vala:132 src/Constants.vala:256
+msgid "Lithuanian"
+msgstr "Litvanski"
+
+#: src/Constants.vala:133 src/Constants.vala:257
+msgid "Lombard"
+msgstr "Lombardski"
+
+#: src/Constants.vala:134 src/Constants.vala:258
+msgid "Luxembourgish"
+msgstr "Luksemburški"
+
+#: src/Constants.vala:135 src/Constants.vala:259
+msgid "Macedonian"
+msgstr "Makedonski"
+
+#: src/Constants.vala:136 src/Constants.vala:260
+msgid "Maithili"
+msgstr "Maithilski"
+
+#: src/Constants.vala:137 src/Constants.vala:261
+msgid "Malagasy"
+msgstr "Malagaški"
+
+#: src/Constants.vala:138 src/Constants.vala:262
+msgid "Malay"
+msgstr "Malajski"
+
+#: src/Constants.vala:139 src/Constants.vala:263
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: src/Constants.vala:140 src/Constants.vala:264
+msgid "Maltese"
+msgstr "Malteški"
+
+#: src/Constants.vala:141 src/Constants.vala:265
+msgid "Maori"
+msgstr "Maorski"
+
+#: src/Constants.vala:142 src/Constants.vala:266
+msgid "Marathi"
+msgstr "Marathi"
+
+#: src/Constants.vala:143 src/Constants.vala:267
+msgid "Mongolian"
+msgstr "Mongolski"
+
+#: src/Constants.vala:144 src/Constants.vala:268
+msgid "Nepali"
+msgstr "Nepalski"
+
+#: src/Constants.vala:145 src/Constants.vala:269
+msgid "Norwegian Bokmål"
+msgstr "Norveški bokmål"
+
+#: src/Constants.vala:146 src/Constants.vala:270
+msgid "Occitan"
+msgstr "Okcitanski"
+
+#: src/Constants.vala:147 src/Constants.vala:271
+msgid "Oromo"
+msgstr "Oromo"
+
+#: src/Constants.vala:148 src/Constants.vala:272
+msgid "Pangasinan"
+msgstr "Pangasinanski"
+
+#: src/Constants.vala:149 src/Constants.vala:273
+msgid "Pashto"
+msgstr "Paštunski"
+
+#: src/Constants.vala:150 src/Constants.vala:274
+msgid "Persian"
+msgstr "Perzijski"
+
+#: src/Constants.vala:151 src/Constants.vala:275
+msgid "Polish"
+msgstr "Poljski"
+
+#: src/Constants.vala:152 src/Constants.vala:278
+#, c-format
+msgid "%s (Unspecified)"
+msgstr "%s (Neodređeno)"
+
+#: src/Constants.vala:152 src/Constants.vala:276 src/Constants.vala:277
+#: src/Constants.vala:278
+msgid "Portuguese"
+msgstr "Portugalski"
+
+#: src/Constants.vala:153 src/Constants.vala:279
+msgid "Punjabi"
+msgstr "Pandžapski"
+
+#: src/Constants.vala:154 src/Constants.vala:280
+msgid "Quechua"
+msgstr "Kečuanski"
+
+#: src/Constants.vala:155 src/Constants.vala:281
+msgid "Romanian"
+msgstr "Rumunjski"
+
+#: src/Constants.vala:156 src/Constants.vala:282
+msgid "Russian"
+msgstr "Ruski"
+
+#: src/Constants.vala:157 src/Constants.vala:283
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+#: src/Constants.vala:158 src/Constants.vala:284
+msgid "Serbian"
+msgstr "Srpski"
+
+#: src/Constants.vala:159 src/Constants.vala:285
+msgid "Sesotho"
+msgstr "Sesotho"
+
+#: src/Constants.vala:160 src/Constants.vala:286
+msgid "Sicilian"
+msgstr "Sicilijanski"
+
+#: src/Constants.vala:161 src/Constants.vala:287
+msgid "Slovak"
+msgstr "Slovački"
+
+#: src/Constants.vala:162 src/Constants.vala:288
+msgid "Slovenian"
+msgstr "Slovenski"
+
+#: src/Constants.vala:163 src/Constants.vala:289 src/Constants.vala:290
+msgid "Spanish"
+msgstr "Španjolski"
+
+#: src/Constants.vala:164 src/Constants.vala:291
+msgid "Sundanese"
+msgstr "Sudanski"
+
+#: src/Constants.vala:165 src/Constants.vala:292
+msgid "Swahili"
+msgstr "Svahili"
+
+#: src/Constants.vala:166 src/Constants.vala:293
+msgid "Swedish"
+msgstr "Švedski"
+
+#: src/Constants.vala:167 src/Constants.vala:294
+msgid "Tagalog"
+msgstr "Tagaloški"
+
+#: src/Constants.vala:168 src/Constants.vala:295
+msgid "Tajik"
+msgstr "Tadžički"
+
+#: src/Constants.vala:169 src/Constants.vala:296
+msgid "Tamil"
+msgstr "Tamilski"
+
+#: src/Constants.vala:170 src/Constants.vala:297
+msgid "Tatar"
+msgstr "Tatarski"
+
+#: src/Constants.vala:171 src/Constants.vala:298
+msgid "Telugu"
+msgstr "Teluški"
+
+#: src/Constants.vala:172 src/Constants.vala:299
+msgid "Thai"
+msgstr "Tajlandski"
+
+#: src/Constants.vala:173 src/Constants.vala:300
+msgid "Tsonga"
+msgstr "Tsonga"
+
+#: src/Constants.vala:174 src/Constants.vala:301
+msgid "Tswana"
+msgstr "Tswana"
+
+#: src/Constants.vala:175 src/Constants.vala:302
+msgid "Turkish"
+msgstr "Turski"
+
+#: src/Constants.vala:176 src/Constants.vala:303
+msgid "Turkmen"
+msgstr "Turkmenski"
+
+#: src/Constants.vala:177 src/Constants.vala:304
+msgid "Ukrainian"
+msgstr "Ukrajinski"
+
+#: src/Constants.vala:178 src/Constants.vala:305
+msgid "Urdu"
+msgstr "Urdu"
+
+#: src/Constants.vala:179 src/Constants.vala:306
+msgid "Uzbek"
+msgstr "Uzbečki"
+
+#: src/Constants.vala:180 src/Constants.vala:307
+msgid "Vietnamese"
+msgstr "Vijetnamski"
+
+#: src/Constants.vala:181 src/Constants.vala:308
+msgid "Welsh"
+msgstr "Velški"
+
+#: src/Constants.vala:182 src/Constants.vala:309
+msgid "Wolof"
+msgstr "Wolof"
+
+#: src/Constants.vala:183 src/Constants.vala:310
+msgid "Xhosa"
+msgstr "Xhosa"
+
+#: src/Constants.vala:184 src/Constants.vala:311
+msgid "Yiddish"
+msgstr "Jidiš"
+
+#: src/Constants.vala:185 src/Constants.vala:312
+msgid "Zulu"
+msgstr "Zulu"
+
+#: src/Constants.vala:213
+#, c-format
+msgid "%s (Simplified)"
+msgstr "%s (pojednostavljeni)"
+
+#: src/Constants.vala:214
+#, c-format
+msgid "%s (Traditional)"
+msgstr "%s (tradicionalni)"
+
+#: src/Constants.vala:222
+#, c-format
+msgid "%s (American)"
+msgstr "%s (američki)"
+
+#: src/Constants.vala:223
+#, c-format
+msgid "%s (British)"
+msgstr "%s (britanski)"
+
+#: src/Constants.vala:276
+#, c-format
+msgid "%s (Brazilian)"
+msgstr "%s (brazilski)"
+
+#: src/Constants.vala:277
+#, c-format
+msgid "%s (European)"
+msgstr "%s (europski)"
+
+#: src/Constants.vala:290
+#, c-format
+msgid "%s (Latin American)"
+msgstr "%s (latinoamerički)"
+
+#: src/Application.vala:112
+msgid "Couldn't open file"
+msgstr "Neuspjelo otvaranje datoteke"
