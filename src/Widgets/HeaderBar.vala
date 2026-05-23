@@ -143,7 +143,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         child = headerbar;
 
 #if DEVEL
-        menu_popover.autohide = false;
+        //menu_popover.autohide = false;
         switcher_state (true);
 #endif
 

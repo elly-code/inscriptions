@@ -82,7 +82,7 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     box.append (new Gtk.Separator (HORIZONTAL));
     box.append (auto_switch);
     box.append (highlight_switch);
-    
+
 /*          var edit_key_button = new Gtk.Button () {
           child = new Gtk.Label ((_("Set up translation provider"))) {halign = Gtk.Align.START},
           tooltip_text = _("Use a different API key of your choosing"),
