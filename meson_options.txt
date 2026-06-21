@@ -1,2 +1,7 @@
+option('profile',
+    type : 'combo',
+    choices : ['linux', 'windows'],
+    value : 'linux',
+    description : 'What we build for. Switched on automatically on windows machines, usually'
+)
 option('development', type: 'boolean', value: false, description: 'If this is a development build')
-option('windows_build', type: 'boolean', value: false, description: 'If this is a windows build. Switched on automatically on windows machines')

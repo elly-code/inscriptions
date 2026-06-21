@@ -1,8 +1,9 @@
 project(
   'inscriptions',
-  'vala', 'c',
-  version: '1.1.3',
-  license: 'GPL-3.0-or-later'
+  ['c', 'vala'],
+  version: '1.1.3',                 # Versioning: first should follow Gtk version, second and third depending how proud you are of the update
+  license: 'GPL-3.0-or-later',
+  meson_version: '>= 0.59.0'      # update_desktop_database arg in gnome.post_install
 )
 
 app_name = meson.project_name()
@@ -10,31 +11,53 @@ app_id = 'io.github.elly_code.' + app_name
 app_path = '/io/github/elly_code/' + app_name
 app_version = meson.project_version()
 
-#================================
-# Include Gnome and the translations module
+development = get_option('development')
+if development
+  app_id +=  '.devel'
+  add_project_arguments('--define=DEVEL', language: 'vala')
+
+endif
+
 gnome = import('gnome')
 i18n = import('i18n')
-vala_flags = []
-
-development_build = get_option('development')
-if development_build
-  app_id +=  '.devel'
-  vala_flags += ['--define', 'DEVEL']
-endif
-
-# Windows needs icons, special arguments, and skip libportal
-windows_build = get_option('windows_build')
-if build_machine.system() == 'windows'
-  windows_build = true
-endif
-
-if windows_build
-  vala_flags += ['--define', 'WINDOWS']
-endif
-
-# Set our translation domain
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_name), language:'c')
 
+
+#================================
+# OS and Ports related
+
+linux = get_option('profile') == 'linux'
+windows = get_option('profile') == 'windows'
+
+
+# Here is to autodetect and adjust
+# Remember however that people may do cross compiling, so do not assume by default it is for linux
+# So avoid else conditions adding linux stuff
+build_machine_system = build_machine.system()
+if build_machine_system == 'windows'
+    windows = true
+
+endif
+
+# Here is to adjust the project accordingly to stuff
+# Porting efforts: add your OS here
+
+if windows
+    add_project_arguments('--define=WINDOWS', language: 'vala')
+
+elif linux
+    add_project_arguments('--define=LINUX', language: 'vala')
+
+endif
+
+
+#================================
+# Play nice with clang
+
+# https://gitlab.gnome.org/GNOME/vala/-/issues/1413#note_1707480
+if meson.get_compiler ('c').get_id () == 'clang'
+    add_project_arguments('-Wno-incompatible-function-pointer-types', language: 'c')
+endif
 
 #================================
 

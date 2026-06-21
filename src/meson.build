@@ -18,8 +18,8 @@ config_file = configure_file(
 # libsecret to handle API keys securely
 
 deps = [
-  dependency ('gtk4'),
-  dependency ('granite-7', version: '>=7.7.0'),
+  dependency('gtk4', version: '>=4.14'),          # 
+  dependency ('granite-7', version: '>=7.7.0'),   # Due to using new custom widgets
   dependency ('json-glib-1.0'),
   dependency ('libsoup-3.0'),
   dependency ('libsecret-1')
@@ -87,7 +87,7 @@ sources = files (
 # We need to compile an icon and add to the sources to avoid "missing icon" icon at every turn
 # So AFAIK ico.rc just point to an ico file in the same folder it is, so this is like gresource
 
-if windows_build
+if windows
   deps += dependency('gio-windows-2.0')
   ico_src = import('windows').compile_resources('../windows/icons/ico.rc')
   sources += ico_src
@@ -106,7 +106,6 @@ executable(
     gresource,
     sources,
     dependencies: deps,
-    vala_args: vala_flags,
     win_subsystem: 'windows',
     install: true
 )

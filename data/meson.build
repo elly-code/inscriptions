@@ -1,5 +1,6 @@
-
-
+#
+#   METADATA
+#
 
 
 #========================
@@ -36,58 +37,64 @@ if compile_schemas.found()
     test('Validate schema file', compile_schemas, args: ['--strict', '--dry-run', meson.current_source_dir()])
 endif
 
+#========================
+# metainfo confuses windows, icons are handled differently there, 
+# So we finish early
+
+if windows
+    subdir_done()
+endif
+
+
 #================================
-# metainfo confuses windows, and icons are handled differently there
-if not windows_build
+# Handle the different icon variants
 
-    #================================
-    # Handle the different icon variants
-    subdir('icons')
+subdir('icons')
 
-    #================================
-    # Inject some variables into the desktop file before merging in the translations
 
-    desktop_file_in = configure_file(
-        input: meson.project_name() + '.desktop.in.in',
-        output: app_id + '.desktop.in',
-        configuration: config_data,
-    )
 
-    desktop_file = i18n.merge_file(
-        input: desktop_file_in,
-        output: app_id + '.desktop',
-        po_dir: meson.project_source_root() / 'po' / 'extra',
-        type: 'desktop',
-        install: true,
-        install_dir: get_option('datadir') / 'applications',
-    )
+#================================
+# Inject some variables into the desktop file before merging in the translations
 
-    desktop_utils = find_program('desktop-file-validate', required: false)
-    if desktop_utils.found()
-        test('Validate desktop file', desktop_utils, args: [desktop_file])
-    endif
+desktop_file_in = configure_file(
+    input: meson.project_name() + '.desktop.in.in',
+    output: app_id + '.desktop.in',
+    configuration: config_data,
+)
 
-    #================================
-    # Inject some variables into the metainfo file before merging in the translations
+desktop_file = i18n.merge_file(
+    input: desktop_file_in,
+    output: app_id + '.desktop',
+    po_dir: meson.project_source_root() / 'po' / 'extra',
+    type: 'desktop',
+    install: true,
+    install_dir: get_option('datadir') / 'applications',
+)
 
-    appstream_file_in = configure_file(
-        input: meson.project_name() + '.metainfo.xml.in.in',
-        output: app_id + '.metainfo.xml.in',
-        configuration: config_data,
-    )
+desktop_utils = find_program('desktop-file-validate', required: false)
+if desktop_utils.found()
+    test('Validate desktop file', desktop_utils, args: [desktop_file])
+endif
 
-    appstream_file = i18n.merge_file(
-        input: appstream_file_in,
-        output: app_id + '.metainfo.xml',
-        po_dir: meson.project_source_root() / 'po' / 'extra',
-        type: 'xml',
-        install: true,
-        install_dir: get_option('datadir') / 'metainfo',
-    )
+#================================
+# Inject some variables into the metainfo file before merging in the translations
 
-    appstreamcli = find_program('appstreamcli', required: false)
-    if appstreamcli.found()
-        test('Validate appstream file', appstreamcli, args: ['validate', '--no-net', '--explain', appstream_file])
-    endif
+appstream_file_in = configure_file(
+    input: meson.project_name() + '.metainfo.xml.in.in',
+    output: app_id + '.metainfo.xml.in',
+    configuration: config_data,
+)
 
+appstream_file = i18n.merge_file(
+    input: appstream_file_in,
+    output: app_id + '.metainfo.xml',
+    po_dir: meson.project_source_root() / 'po' / 'extra',
+    type: 'xml',
+    install: true,
+    install_dir: get_option('datadir') / 'metainfo',
+)
+
+appstreamcli = find_program('appstreamcli', required: false)
+if appstreamcli.found()
+    test('Validate appstream file', appstreamcli, args: ['validate', '--no-net', '--explain', appstream_file])
 endif
