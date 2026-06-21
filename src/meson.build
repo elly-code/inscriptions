@@ -35,13 +35,17 @@ sources = files (
   'Enums' / 'StatusCode.vala',
   'Enums' / 'HighlightColor.vala',
 #  'Enums' / 'HeatmapLevel.vala',
+  'Enums' / 'ProviderType.vala',
 
+  'Objects' / 'Structs.vala',
   'Objects' / 'Lang.vala',
   'Objects' / 'DDModel.vala',
 
   'Services' / 'Secrets.vala',
   'Services' / 'ZoomController.vala',
 
+  'Backend' / 'Backend.vala',
+  'Backend' / 'Provider.vala',
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 
