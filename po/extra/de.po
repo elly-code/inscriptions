@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 20:09+0200\n"
+"POT-Creation-Date: 2026-06-21 17:39+0200\n"
 "PO-Revision-Date: 2025-12-03 23:11+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -12,13 +12,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/inscriptions.metainfo.xml.in.in:12
+#: data/inscriptions.desktop.in.in:6 data/inscriptions.metainfo.xml.in.in:12
 msgid "Inscriptions"
 msgstr "Inscriptions"
 
-#: data/inscriptions.metainfo.xml.in.in:13 data/inscriptions.desktop.in.in:8
+#: data/inscriptions.desktop.in.in:7
+msgid "Text translator"
+msgstr "Text-Übersetzer"
+
+#: data/inscriptions.desktop.in.in:8 data/inscriptions.metainfo.xml.in.in:13
 msgid "Translate text elegantly"
 msgstr "Elegantes Übersetzen von Text"
+
+#: data/inscriptions.desktop.in.in:13
+msgid ""
+"text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
+"localization;internationalization;"
+msgstr ""
+"text;übersetzen;Übersetzung;Übersetzer;deepl;NMT;lang;lokalisieren;l10n;i18n;"
+"Lokalisierung;Internationalisierung;"
 
 #: data/inscriptions.metainfo.xml.in.in:15
 msgid "A fast, pretty, and ready translation app using DeepL free and paid API"
@@ -311,22 +323,6 @@ msgstr "Erste schwedische Übersetzung dank @yeager!"
 #: data/inscriptions.metainfo.xml.in.in:164
 msgid "You, the user, for trying this supercool app!"
 msgstr "Sie, der Benutzer, für das Ausprobieren dieser supercoolen App!"
-
-#: data/inscriptions.desktop.in.in:6
-msgid "@APP_NAME@"
-msgstr ""
-
-#: data/inscriptions.desktop.in.in:7
-msgid "Text translator"
-msgstr "Text-Übersetzer"
-
-#: data/inscriptions.desktop.in.in:13
-msgid ""
-"text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
-"localization;internationalization;"
-msgstr ""
-"text;übersetzen;Übersetzung;Übersetzer;deepl;NMT;lang;lokalisieren;l10n;i18n;"
-"Lokalisierung;Internationalisierung;"
 
 #~ msgid "Libretranslate support is considered, but"
 #~ msgstr "Die Unterstützung von Libretranslate wird in Betracht gezogen, aber"

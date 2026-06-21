@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 20:09+0200\n"
+"POT-Creation-Date: 2026-06-21 17:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/inscriptions.metainfo.xml.in.in:12
+#: data/inscriptions.desktop.in.in:6 data/inscriptions.metainfo.xml.in.in:12
 msgid "Inscriptions"
 msgstr ""
 
-#: data/inscriptions.metainfo.xml.in.in:13 data/inscriptions.desktop.in.in:8
+#: data/inscriptions.desktop.in.in:7
+msgid "Text translator"
+msgstr ""
+
+#: data/inscriptions.desktop.in.in:8 data/inscriptions.metainfo.xml.in.in:13
 msgid "Translate text elegantly"
+msgstr ""
+
+#: data/inscriptions.desktop.in.in:13
+msgid ""
+"text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
+"localization;internationalization;"
 msgstr ""
 
 #: data/inscriptions.metainfo.xml.in.in:15
@@ -301,18 +311,4 @@ msgstr ""
 
 #: data/inscriptions.metainfo.xml.in.in:164
 msgid "You, the user, for trying this supercool app!"
-msgstr ""
-
-#: data/inscriptions.desktop.in.in:6
-msgid "@APP_NAME@"
-msgstr ""
-
-#: data/inscriptions.desktop.in.in:7
-msgid "Text translator"
-msgstr ""
-
-#: data/inscriptions.desktop.in.in:13
-msgid ""
-"text;translate;translation;translator;deepl;NMT;lang;localize;l10n;i18n;"
-"localization;internationalization;"
 msgstr ""
