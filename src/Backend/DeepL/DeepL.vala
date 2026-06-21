@@ -63,7 +63,7 @@ public class Inscriptions.DeepL : Object {
     on_source_lang_changed ();
     on_target_lang_changed ();
 
-    secrets.changed.connect (debounce_check);
+    //secrets.changed.connect (debounce_check);
     Application.settings_translate.changed[KEY_SOURCE_LANGUAGE].connect (on_source_lang_changed);
     Application.settings_translate.changed[KEY_TARGET_LANGUAGE].connect (on_target_lang_changed);
   }
@@ -98,7 +98,7 @@ public class Inscriptions.DeepL : Object {
   }
 
   public void on_key_changed () {
-    api_key = secrets.cached_key;
+    api_key = "";
 
     if (api_key.chomp () == "") {
       answer_received (StatusCode.NO_KEY, _("Missing API Key"));

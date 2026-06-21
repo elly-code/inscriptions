@@ -15,8 +15,6 @@ public interface Provider : Object {
   // Whether
   public abstract const bool SUPPORTS_CONTEXT = false;
 
-
-
   public abstract Soup.Message prepare_message (Inscriptions.TranslationRequest request, string api_key);
 
 

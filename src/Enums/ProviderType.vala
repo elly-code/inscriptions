@@ -50,6 +50,6 @@ public enum Inscriptions.ProviderType {
       }
     }
 
-    public const ProviderType[] ALL = {DUMMY, DEEPL, LIBRETRANSLATE};
+    public const ProviderType[] ALL = {DEEPL, LIBRETRANSLATE, DUMMY};
     public const string[] STRING_ALL = {N_("DeepL"), N_("LibreTranslate"), N_("Dummy")};
 }

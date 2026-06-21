@@ -11,6 +11,9 @@ public class Inscriptions.Backend : Object {
     private const uint TIMEOUT = 3000; //ms
     private bool busy = false; //
 
+    // Only access through get_default ()
+    private Backend () {}
+
     Soup.Session session;
     Secrets secrets;
 
