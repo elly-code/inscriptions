@@ -26,7 +26,7 @@ public enum Inscriptions.StatusCode {
     FORBIDDEN               = Soup.Status.FORBIDDEN,
     REQUEST_TIMEOUT         = Soup.Status.REQUEST_TIMEOUT,
     TOO_MANY_REQUESTS       = 429,
-    QUOTA                   = 456,
+    QUOTA_REACHED           = 456,
 
     // 500
     INTERNAL_SERVER_ERROR   = Soup.Status.INTERNAL_SERVER_ERROR,
@@ -92,7 +92,7 @@ public enum Inscriptions.StatusCode {
                 icon_name           = "dialog-warning";
                 return;
 
-            case StatusCode.QUOTA:
+            case StatusCode.QUOTA_REACHED:
                 explanation_title   = _("Your monthly quota has been exceeded");
                 explanation_text    = _("If you are a Pro API user, this corresponds to your Cost Control limit");
                 icon_name           = "dialog-warning";
