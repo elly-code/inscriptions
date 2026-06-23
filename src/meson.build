@@ -46,6 +46,8 @@ sources = files (
 
   'Backend' / 'Backend.vala',
   'Backend' / 'Provider.vala',
+  'Backend' / 'Providers' / 'DeepL.vala',
+    'Backend' / 'Providers' / 'Dummy.vala',
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 

@@ -12,8 +12,8 @@ public struct Inscriptions.TranslationRequest {
     string source_language_code;
     string target_language_code;
     string text_to_translate;
-    string? context;
     Inscriptions.Formality? formality_level;
+    string? context;
 }
 
 /**
