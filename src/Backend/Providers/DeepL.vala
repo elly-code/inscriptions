@@ -31,41 +31,73 @@ public class Inscriptions.Providers.DeepL : Object, Provider {
     return {"DE", "FR", "IT", "ES", "ES-419", "NL", "PL", "PT-BR", "PT-PT", "JA", "RU"};
   }
 
+  private string get_correct_url (string api_key) {
+
+    if (api_key.has_suffix (":fx")) {
+      return URL_DEEPL_FREE;
+    }
+    
+    return URL_DEEPL_PRO;
+  }
+
+
+  internal Bytes wrap_request_into_json (Inscriptions.TranslationRequest request) {
+
+    var builder = new Json.Builder ();
+    builder.begin_object ();
+    builder.set_member_name ("text");
+    builder.begin_array ();
+    builder.add_string_value (request.text_to_translate);
+    builder.end_array ();
+
+    if (request.source_language_code != "idk") {
+      builder.set_member_name ("source_lang");
+      builder.add_string_value (request.source_language_code);
+    }
+
+    builder.set_member_name ("target_lang");
+    builder.add_string_value (request.target_language_code);
+
+    if (request.context != "") {
+      builder.set_member_name ("context");
+      builder.add_string_value (request.context);
+    }
+
+    if (request.target_language_code in get_supported_formality ()) {
+      builder.set_member_name ("formality");
+      builder.add_string_value (request.formality_level.to_string ());
+    }
+
+    builder.set_member_name ("show_billed_characters");
+    builder.add_boolean_value (true);
+
+    builder.end_object ();
+
+    Json.Generator generator = new Json.Generator ();
+    generator.set_root (builder.get_root ());
+    string str = generator.to_data (null);
+
+    return new Bytes (str.data);
+  }
 
   public Soup.Message prepare_translation_request (string api_key, Inscriptions.TranslationRequest request) {
 
-    string base_url;
-    if (api_key.has_suffix (":fx")) {
-      base_url = URL_DEEPL_FREE;
-
-    } else {
-      base_url = URL_DEEPL_PRO;
-    }
-
+    var base_url = get_correct_url (api_key);
     var soup_message= new Soup.Message ("POST", base_url + REST_OF_THE_URL);
     soup_message.request_headers.append ("Content-Type", "application/json");
-    soup_message.request_headers.append ("User-Agent", Provider.USER_AGENT);
+    soup_message.request_headers.append ("User-Agent", USER_AGENT);
     soup_message.request_headers.append ("Authorization", "%s %s".printf (get_auth_header (), api_key));
-
-    var body = DeepLUtils.wrap_request_into_json (request, get_supported_formality ());
-    soup_message.set_request_body_from_bytes ("application/json", body);   
+    soup_message.set_request_body_from_bytes ("application/json", wrap_request_into_json (request));   
 
     return soup_message;
   }
 
   public Soup.Message prepare_check_usage (string api_key) {
 
-    string base_url;
-    if (api_key.has_suffix (":fx")) {
-      base_url = URL_DEEPL_FREE;
-
-    } else {
-      base_url = URL_DEEPL_PRO;
-    }
-
+    var base_url = get_correct_url (api_key);
     var soup_message= new Soup.Message ("GET", base_url + URL_USAGE);
     soup_message.request_headers.append ("Content-Type", "application/json");
-    soup_message.request_headers.append ("User-Agent", Provider.USER_AGENT);
+    soup_message.request_headers.append ("User-Agent", USER_AGENT);
     soup_message.request_headers.append ("Authorization", "%s %s".printf (get_auth_header (), api_key));
 
     return soup_message;

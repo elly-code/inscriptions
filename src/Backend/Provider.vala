@@ -10,11 +10,6 @@
 public interface Inscriptions.Provider : Object {
 
   internal const string PROVIDER_SETTINGS_PREFIX = "";
-#if WINDOWS
-  internal const string USER_AGENT = APP_ID + "-" + APP_VERSION + " (Windows)";
-#else
-  internal const string USER_AGENT = APP_ID + "-" + APP_VERSION + " (Linux)";
-#endif
 
   [Flags]
   public enum Features {

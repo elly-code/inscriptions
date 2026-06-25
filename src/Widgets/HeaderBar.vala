@@ -67,11 +67,25 @@ public class Inscriptions.HeaderBar : Granite.Bin {
         };
 #endif
 
+        var provider_popover = new ProviderPopover ();
+
+        var provider_menu = new Gtk.MenuButton () {
+            label = "",
+            has_frame = false,
+            popover = provider_popover
+        };
+
+        provider_popover.bind_property ("selected-name",
+            provider_menu, "label",
+            GLib.BindingFlags.DEFAULT | SYNC_CREATE);
+
+
+
         title_switcher = new Gtk.StackSwitcher () {
             stack = stack_window_view
         };
 
-        switchwidget= new Inscriptions.SwitchWidget (title_label, title_switcher) {
+        switchwidget= new Inscriptions.SwitchWidget (provider_menu, title_switcher) {
             transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN
         };
 
@@ -144,7 +158,7 @@ public class Inscriptions.HeaderBar : Granite.Bin {
 
 #if DEVEL
         //menu_popover.autohide = false;
-        switcher_state (true);
+        //switcher_state (true);
 #endif
 
         /* -------------------- CONNECTS AND BINDS -------------------- */

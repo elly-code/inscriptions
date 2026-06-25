@@ -72,6 +72,7 @@ sources = files (
 
   'Widgets' / 'Popovers' / 'SettingsPopover.vala',
   'Widgets' / 'Popovers' / 'OptionsPopover.vala',
+  'Widgets' / 'Popovers' / 'ProviderPopover.vala',
 
   'Widgets' / 'PopoverWidgets' / 'ApiEntry.vala',
   'Widgets' / 'PopoverWidgets' / 'ApiLevel.vala',

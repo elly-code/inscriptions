@@ -21,6 +21,7 @@ src/Widgets/Panes/Pane.vala
 src/Widgets/Panes/SourcePane.vala
 src/Widgets/Panes/TargetPane.vala
 src/Widgets/Popovers/OptionsPopover.vala
+src/Widgets/Popovers/ProviderPopover.vala
 src/Widgets/Popovers/SettingsPopover.vala
 src/Widgets/PopoverWidgets/ApiEntry.vala
 src/Widgets/PopoverWidgets/ApiLevel.vala

@@ -62,6 +62,14 @@ namespace Inscriptions {
 
 	const string DOMAIN = "iso_639_3";
 
+#if WINDOWS
+  const string USER_AGENT = APP_ID + "-" + APP_VERSION + " (Windows)";
+#else
+  const string USER_AGENT = APP_ID + "-" + APP_VERSION + " (Linux)";
+#endif
+
+
+
 	// https://developers.deepl.com/docs/getting-started/supported-languages
 	// TODO: In the far future people might declare their own in a backend file
 	public Lang[] SourceLang () {
