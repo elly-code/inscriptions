@@ -17,7 +17,7 @@ public interface Inscriptions.Provider : Object {
 #endif
 
   [Flags]
-  public enum ExtraFeatures {
+  public enum Features {
       NONE,
       CHECK_USAGE,
       SET_FORMALITY,
@@ -35,8 +35,9 @@ public interface Inscriptions.Provider : Object {
    * SET_FORMALITY and SET_CONTEXT: {@link Inscriptions.TranslationRequest} contains both. Simply ignore it/null it if unsupported.
    */
   public abstract string get_name ();
-  public abstract ExtraFeatures get_supported_features ();
-  public virtual string[]? get_supported_formality () {return {};}
+  public abstract string get_auth_header ();
+  public abstract Features get_supported_features ();
+  public virtual string[] get_supported_formality () {return {};}
 
   /**
    * Managing their internal settings is up to the provider

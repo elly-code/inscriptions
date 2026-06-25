@@ -14,6 +14,15 @@ public enum Inscriptions.ProviderType {
     LIBRETRANSLATE,
     DUMMY;
 
+    public Provider to_provider () {
+      switch (this) {
+        case DUMMY:           return new Providers.Dummy ();
+        case DEEPL:           return new Providers.Dummy ();
+        case LIBRETRANSLATE:  return new Providers.Dummy ();
+        default:              return new Providers.Dummy ();
+      }
+    }
+
     public string to_name () {
       switch (this) {
         case DUMMY:           return _("Dummy");

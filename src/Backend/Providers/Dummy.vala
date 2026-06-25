@@ -48,11 +48,15 @@ public class Inscriptions.Providers.Dummy : Object, Provider {
     return "Echo";
   }
 
-  public Inscriptions.Provider.ExtraFeatures get_supported_features () {
+  public string get_auth_header () {
+    return "Echo";
+  }
+
+  public Inscriptions.Provider.Features get_supported_features () {
     return CHECK_USAGE | SET_CONTEXT | SET_FORMALITY;
   }
 
-  public string[]? get_supported_formality () {
+  public string[] get_supported_formality () {
     return {"same"};
   }
 
