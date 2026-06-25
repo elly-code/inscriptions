@@ -116,7 +116,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
      * Load the API key asyncally, and complain if there is none
      */
     private async bool check_up_key () {
-        string key = yield Secrets.get_default ().load_secret ();
+        string key = ""; //yield Secrets.get_default ().load_secret ();
 
         if (key.chomp () == "") {
             on_error (Inscriptions.StatusCode.NO_KEY, _("No saved API Key"));

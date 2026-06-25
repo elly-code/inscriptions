@@ -4,6 +4,7 @@ src/Application.vala
 src/Backend/DeepL/DeepL.vala
 src/Constants.vala
 src/Enums/StatusCode.vala
+src/Enums/ProviderType.vala
 src/Views/ErrorView.vala
 src/Views/LogView.vala
 src/Views/TranslationView.vala
@@ -20,6 +21,7 @@ src/Widgets/Panes/Pane.vala
 src/Widgets/Panes/SourcePane.vala
 src/Widgets/Panes/TargetPane.vala
 src/Widgets/Popovers/OptionsPopover.vala
+src/Widgets/Popovers/ProviderPopover.vala
 src/Widgets/Popovers/SettingsPopover.vala
 src/Widgets/PopoverWidgets/ApiEntry.vala
 src/Widgets/PopoverWidgets/ApiLevel.vala

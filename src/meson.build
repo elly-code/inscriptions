@@ -35,13 +35,19 @@ sources = files (
   'Enums' / 'StatusCode.vala',
   'Enums' / 'HighlightColor.vala',
 #  'Enums' / 'HeatmapLevel.vala',
+  'Enums' / 'ProviderType.vala',
 
+  'Objects' / 'Structs.vala',
   'Objects' / 'Lang.vala',
   'Objects' / 'DDModel.vala',
 
   'Services' / 'Secrets.vala',
   'Services' / 'ZoomController.vala',
 
+  'Backend' / 'Backend.vala',
+  'Backend' / 'Provider.vala',
+  'Backend' / 'Providers' / 'DeepL.vala',
+    'Backend' / 'Providers' / 'Dummy.vala',
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
 
@@ -66,6 +72,7 @@ sources = files (
 
   'Widgets' / 'Popovers' / 'SettingsPopover.vala',
   'Widgets' / 'Popovers' / 'OptionsPopover.vala',
+  'Widgets' / 'Popovers' / 'ProviderPopover.vala',
 
   'Widgets' / 'PopoverWidgets' / 'ApiEntry.vala',
   'Widgets' / 'PopoverWidgets' / 'ApiLevel.vala',

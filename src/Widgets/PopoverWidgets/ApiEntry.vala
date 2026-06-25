@@ -39,21 +39,20 @@ public class Inscriptions.ApiEntry : Gtk.Box {
   }
 
   private async void fill_key () {
-      api_entry.text = yield secrets.load_secret ();
+      api_entry.text = ""; //yield secrets.load_secret ();
 
       // Connects only once we set up, to avoid the app doing a request on start up
-      secrets.changed.connect (on_key_changed);
       api_entry.changed.connect (on_entry_changed);
   }
 
   private void on_key_changed () {
     api_entry.changed.disconnect (on_entry_changed);
-    api_entry.text = secrets.cached_key;
+    api_entry.text = "";
     api_entry.changed.connect (on_entry_changed);
   }
 
   private void on_entry_changed () {
-    secrets.store_key (api_entry.text);
+    return; //"secrets.store_key (api_entry.text);"
   }
 
   private void paste_from_clipboard () {
