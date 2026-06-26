@@ -85,10 +85,13 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE
         };
+        var gesturezoom_controller = new Gtk.GestureZoom ();
+
+
 
         ((Gtk.Widget)this).add_controller (keypress_controller);
         ((Gtk.Widget)this).add_controller (scroll_controller);
-
+        ((Gtk.Widget)this).add_controller (gesturezoom_controller);
 
 
         /* -------------------- CONNECTS AND BINDS -------------------- */
@@ -102,6 +105,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         headerbar.menu_popover.keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
         headerbar.menu_popover.keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
         headerbar.menu_popover.scroll_controller.scroll.connect (zoom_controller.on_scroll);
+        gesturezoom_controller.scale_changed.connect (zoom_controller.on_pinch);
 
         Application.settings_ui.bind (KEY_ZOOM,
             zoom_controller, "zoom",
