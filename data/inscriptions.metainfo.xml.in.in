@@ -95,10 +95,11 @@
   </recommends>
 
   <releases>
-    <release version="1.2.0" date="2026-04-08" urgency="medium">
+    <release version="1.1.4" date="2026-07-08" urgency="medium">
       <description>
-        <p>Even more minor papercuts</p>
+        <p>Last release before some major changes</p>
         <ul>
+            <li>Fix error view showing up when you revert auto and system language and translate</li>
             <li>Added Croatian translation thanks to @Milotype!</li>
             <li>Added new screenshots. Only one in both modes felt basic</li>
         </ul>
