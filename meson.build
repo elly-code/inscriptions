@@ -1,7 +1,7 @@
 project(
   'inscriptions',
   ['c', 'vala'],
-  version: '1.1.3',                 # Versioning: first should follow Gtk version, second and third depending how proud you are of the update
+  version: '1.1.4',                 # Versioning: first should follow Gtk version, second and third depending how proud you are of the update
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.59.0'      # update_desktop_database arg in gnome.post_install
 )
