@@ -59,11 +59,13 @@ public class Inscriptions.HeaderBar : Granite.Bin {
    
 #if DEVEL
         var title_label = new Granite.HeaderLabel (_("Inscriptions (Devel)")) {
-            size = Granite.HeaderLabel.Size.H4
+            size = Granite.HeaderLabel.Size.H4,
+            halign = Gtk.Align.CENTER
         };
 #else
         var title_label = new Granite.HeaderLabel (_("Inscriptions")) {
-            size = Granite.HeaderLabel.Size.H4
+            size = Granite.HeaderLabel.Size.H4,
+            halign = Gtk.Align.CENTER
         };
 #endif
 
