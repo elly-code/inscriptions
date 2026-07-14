@@ -2,7 +2,7 @@ project(
   'inscriptions',
   ['c', 'vala'],
   license: 'GPL-3.0-or-later',
-  version: '1.1.4',                 # Versioning: first should follow Gtk version, second and third depending how proud you are of the update
+  version: '1.1.3',                 # Versioning: first should follow Gtk version, second and third depending how proud you are of the update
   meson_version: '>= 1.1'           # Use meson.options instead of meson_options.txt
 )
 
