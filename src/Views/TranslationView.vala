@@ -175,21 +175,20 @@ public class Inscriptions.TranslationView : Granite.Bin {
         // Disconnect everything temporarily to avoid a deathloop
         connect_all (false);
 
-        // Temp variables
-        var newtarget = source_pane.selected_language;
+        // Lets not switch if from auto to system
+        var auto_to_system = (source_pane.selected_language == AUTO_DETECT_LANGUAGE) && (target_pane.selected_language == SYSTEM_LANGUAGE);
+        if (! auto_to_system) {
+            var newtarget = source_pane.selected_language;
+            var newsource = target_pane.selected_language;
+
+            source_pane.selected_language = newsource;
+            target_pane.selected_language = newtarget;
+        }
+
+        var newsource_text = target_pane.text;
         var newtarget_text = source_pane.text;
 
-        var newsource = target_pane.selected_language;
-        var newsource_text = target_pane.text;
-
-        // Letsgo
-        source_pane.selected_language = newsource;
         source_pane.text = newsource_text;
-
-        if (newtarget == AUTO_DETECT_LANGUAGE) {
-            newtarget = SYSTEM_LANGUAGE;
-        } 
-        target_pane.selected_language = newtarget;
         target_pane.text = newtarget_text;
 
         source_pane.textview.refresh ();
