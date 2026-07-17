@@ -18,8 +18,8 @@ public interface Inscriptions.Zoomable : Gtk.Widget {
      *
      * If you need to do some changes, such as display the new value, or refresh some displayed elements, override this.
      */
-    public virtual void on_zoom_changed (ZoomLevel new_zoom) {
+    public virtual void on_zoom_changed (int new_zoom) {
+        debug ("Zoom changed: %i", new_zoom);
         return;
     }
-
 }
