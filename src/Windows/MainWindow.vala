@@ -11,9 +11,10 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
     Inscriptions.HeaderBar headerbar;
     Gtk.Stack stack_window_view;
-    public ZoomController zoom_controller;
 
     public Inscriptions.TranslationView translation_view;
+    public Inscriptions.ZoomedWindow zoomed_window;
+
     Inscriptions.ErrorView? errorview = null;
 
     public const string ACTION_PREFIX = "win.";
@@ -55,10 +56,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
 
         headerbar = new Inscriptions.HeaderBar (stack_window_view);
         insert_action_group ("headerbar", headerbar.actions);
-
-
         set_titlebar (headerbar);
-
 
 
         /* ---------------- MAIN VIEW ---------------- */
@@ -67,48 +65,23 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
         insert_action_group ("sourcepane", translation_view.source_pane.actions);
         insert_action_group ("targetpane", translation_view.target_pane.actions);
 
-        stack_window_view.add_titled (translation_view, "translation", _("Translate"));
+        zoomed_window = new Inscriptions.ZoomedWindow () {
+            child = translation_view
+        };
+        insert_action_group ("zoomed_window", zoomed_window.actions);
+
+        stack_window_view.add_titled (zoomed_window, "translation", _("Translate"));
         stack_window_view.add_titled (new LogView (), "messages", _("Messages"));
+
+        stack_window_view.visible_child = zoomed_window;
+        set_focus (translation_view.source_pane.textview);
 
         child = stack_window_view;
 
-        stack_window_view.visible_child = translation_view;
-        set_focus (translation_view.source_pane.textview);
-
-
-
-
-        zoom_controller = new ZoomController ((Gtk.Widget)this);
-        insert_action_group ("zoom-controller", zoom_controller.actions);
-
-        var keypress_controller = new Gtk.EventControllerKey ();
-        var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        var gesturezoom_controller = new Gtk.GestureZoom ();
-
-
-
-        ((Gtk.Widget)this).add_controller (keypress_controller);
-        ((Gtk.Widget)this).add_controller (scroll_controller);
-        ((Gtk.Widget)this).add_controller (gesturezoom_controller);
-
-
         /* -------------------- CONNECTS AND BINDS -------------------- */
 
-        // We need this for Ctr + Scroll. We delegate everything to zoomcontroller
-        keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
-        keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
-        scroll_controller.scroll.connect (zoom_controller.on_scroll);
-
-        // The menu popover just relays events to the window controller
-        headerbar.menu_popover.keypress_controller.key_pressed.connect (zoom_controller.on_key_press_event);
-        headerbar.menu_popover.keypress_controller.key_released.connect (zoom_controller.on_key_release_event);
-        headerbar.menu_popover.scroll_controller.scroll.connect (zoom_controller.on_scroll);
-        gesturezoom_controller.scale_changed.connect (zoom_controller.on_pinch);
-
         Application.settings_ui.bind (KEY_ZOOM,
-            zoom_controller, "zoom",
+            zoomed_window, "zoom",
             GLib.SettingsBindFlags.DEFAULT);
 
         check_up_key.begin (null);
@@ -157,7 +130,7 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     public void on_back_clicked () {
         print ("\nBack to main view");
         Application.backend.answer_received.connect (on_answer_received);
-        stack_window_view.visible_child = translation_view;
+        stack_window_view.visible_child = zoomed_window;
         stack_window_view.remove (errorview);
         errorview = null;
         headerbar.on_main_view = true;
@@ -201,15 +174,15 @@ public class Inscriptions.MainWindow : Gtk.ApplicationWindow {
     }
 
     public void action_zoom_in () {
-        zoom_controller.zoom_in ();
+        zoomed_window.zoom_in ();
     }
 
     public void action_zoom_default () {
-        zoom_controller.zoom_default ();
+        zoomed_window.zoom_default ();
     }
 
     public void action_zoom_out () {
-        zoom_controller.zoom_out ();
+        zoomed_window.zoom_out ();
     }
 }
 

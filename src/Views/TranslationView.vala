@@ -12,7 +12,7 @@
  * 
  * A debounce allows it to limit translation requests, and you can connect/disconnect all signals at once
  */
-public class Inscriptions.TranslationView : Granite.Bin {
+public class Inscriptions.TranslationView : Granite.Bin, Zoomable {
 
     Gtk.Orientation orientation {
         get {

@@ -11,18 +11,15 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
   //Inscriptions.ApiEntry api_entry;
   //Gtk.Revealer usage_revealer;
 
-  public Gtk.EventControllerKey keypress_controller;
-  public Gtk.EventControllerScroll scroll_controller;
-
   construct {
     width_request = 280;
     halign = Gtk.Align.CENTER;
 
     // Allow the various accels with the popover open
-    add_binding_action (Gdk.Key.plus, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_IN, null);
-    add_binding_action (Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_DEFAULT, null);
-    add_binding_action (48, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_DEFAULT, null);
-    add_binding_action (Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, ZoomController.ACTION_PREFIX + ZoomController.ACTION_ZOOM_OUT, null);
+    add_binding_action (Gdk.Key.plus, Gdk.ModifierType.CONTROL_MASK, ZoomedWindow.ACTION_PREFIX + ZoomedWindow.ACTION_ZOOM_IN, null);
+    add_binding_action (Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, ZoomedWindow.ACTION_PREFIX + ZoomedWindow.ACTION_ZOOM_DEFAULT, null);
+    add_binding_action (48, Gdk.ModifierType.CONTROL_MASK, ZoomedWindow.ACTION_PREFIX + ZoomedWindow.ACTION_ZOOM_DEFAULT, null);
+    add_binding_action (Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, ZoomedWindow.ACTION_PREFIX + ZoomedWindow.ACTION_ZOOM_OUT, null);
 
     add_binding_action (Gdk.Key.H, Gdk.ModifierType.CONTROL_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_HIGHLIGHT, null);
     add_binding_action (Gdk.Key.O, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_ORIENTATION, null);
@@ -30,18 +27,6 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     add_binding_action (Gdk.Key.T, Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TOGGLE_AUTO_TRANSLATE, null);
     add_binding_action (Gdk.Key.Return, Gdk.ModifierType.CONTROL_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE, null);
     add_binding_action (Gdk.Key.T, Gdk.ModifierType.CONTROL_MASK, TranslationView.ACTION_PREFIX + TranslationView.ACTION_TRANSLATE, null);
-
-
-    keypress_controller = new Gtk.EventControllerKey ();
-    scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
-        propagation_phase = Gtk.PropagationPhase.CAPTURE
-    };
-
-    ((Gtk.Widget)this).add_controller (keypress_controller);
-    ((Gtk.Widget)this).add_controller (scroll_controller);
-
-
-
 
     var box = new Gtk.Box (VERTICAL, MARGIN_MENU_BIG) {
       margin_top = MARGIN_MENU_BIG,
@@ -115,5 +100,28 @@ public class Inscriptions.SettingsPopover : Gtk.Popover {
     Application.settings_ui.bind (KEY_ZOOM,
       zoombox, "zoom",
       SettingsBindFlags.DEFAULT);
+
+    // Allow zooming shenanigans from popover
+    ((Gtk.Widget)this).realize.connect (on_realize);
+  }
+
+  private void on_realize () {
+    var ancestor_window = (Inscriptions.MainWindow)(this.get_ancestor (typeof (Inscriptions.MainWindow)));
+    var zoomed_window = ancestor_window.zoomed_window;
+
+    var keypress_controller = new Gtk.EventControllerKey ();
+    var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
+        propagation_phase = Gtk.PropagationPhase.CAPTURE
+    };
+    var gesturezoom_controller = new Gtk.GestureZoom ();
+
+    ((Gtk.Widget)this).add_controller (keypress_controller);
+    ((Gtk.Widget)this).add_controller (scroll_controller);
+    ((Gtk.Widget)this).add_controller (gesturezoom_controller);
+
+    keypress_controller.key_pressed.connect (zoomed_window.on_key_press_event);
+    keypress_controller.key_released.connect (zoomed_window.on_key_release_event);
+    scroll_controller.scroll.connect (zoomed_window.on_scroll);
+    gesturezoom_controller.scale_changed.connect (zoomed_window.on_pinch);
   }
 }

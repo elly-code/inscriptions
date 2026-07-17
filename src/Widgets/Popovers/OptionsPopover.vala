@@ -89,6 +89,28 @@ public class Inscriptions.OptionsPopover : Gtk.Popover {
     context_entry.icon_release.connect (on_clear_clicked);
     formal_level.value_changed.connect (on_formality_changed);
     show.connect (formalities_supported);
+
+    // Allow zooming shenanigans from popover
+    ((Gtk.Widget)this).realize.connect (on_realize);
+  }
+
+  private void on_realize () {
+    var zoomed_window = (ZoomedWindow)(this.get_ancestor (typeof (ZoomedWindow)));
+
+    var keypress_controller = new Gtk.EventControllerKey ();
+    var scroll_controller = new Gtk.EventControllerScroll (VERTICAL) {
+        propagation_phase = Gtk.PropagationPhase.CAPTURE
+    };
+    var gesturezoom_controller = new Gtk.GestureZoom ();
+
+    ((Gtk.Widget)this).add_controller (keypress_controller);
+    ((Gtk.Widget)this).add_controller (scroll_controller);
+    ((Gtk.Widget)this).add_controller (gesturezoom_controller);
+
+    keypress_controller.key_pressed.connect (zoomed_window.on_key_press_event);
+    keypress_controller.key_released.connect (zoomed_window.on_key_release_event);
+    scroll_controller.scroll.connect (zoomed_window.on_scroll);
+    gesturezoom_controller.scale_changed.connect (zoomed_window.on_pinch);
   }
 
   /**

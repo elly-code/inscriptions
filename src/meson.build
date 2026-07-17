@@ -36,11 +36,12 @@ sources = files (
   'Enums' / 'HighlightColor.vala',
 #  'Enums' / 'HeatmapLevel.vala',
 
+  'Interfaces' / 'Zoomable.vala',
+
   'Objects' / 'Lang.vala',
   'Objects' / 'DDModel.vala',
 
   'Services' / 'Secrets.vala',
-  'Services' / 'ZoomController.vala',
 
   'Backend' / 'DeepL' / 'DeepL.vala',
   'Backend' / 'DeepL' / 'DeepLUtils.vala',
@@ -50,6 +51,7 @@ sources = files (
   'Widgets' / 'Panes' / 'TargetPane.vala',
   'Widgets' / 'Panes' / 'PaneSeparator.vala',
 
+  'Widgets' / 'ZoomedWindow.vala',
   'Widgets' / 'LanguageItem.vala',
   'Widgets' / 'LogToolbar.vala',
   'Widgets' / 'ErrorBonusBox.vala',

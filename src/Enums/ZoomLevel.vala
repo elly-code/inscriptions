@@ -33,7 +33,7 @@ public enum Inscriptions.ZoomLevel {
     /**
     * Returns an Int representation we can use to display and store the value
     */
-    public uint to_uint () {
+    public uint to_int () {
         switch (this) {
             case ANTSIZED: return 20;
             case MUCHSMALLER: return 40;
@@ -64,14 +64,14 @@ public enum Inscriptions.ZoomLevel {
     * CSS name is s + size. CSS classes cannot start name with number
     */
     public string to_css_class () {
-        return "s" + this.to_uint ().to_string ();
+        return "s" + this.to_int ().to_string ();
     }
 
     /*************************************************/
     /**
     * We cannot save Enums in JSON, so this recovers the enum from stored int
     */
-    public static ZoomLevel from_uint (uint wtf_is_this) {
+    public static ZoomLevel from_int (int wtf_is_this) {
         switch (wtf_is_this) {
             case 20: return ANTSIZED;
             case 40: return MUCHSMALLER;
