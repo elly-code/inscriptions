@@ -1,5 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
+data/inscriptions.desktop.in.in
+data/inscriptions.metainfo.xml.in.in
 src/Application.vala
 src/Backend/DeepL/DeepL.vala
 src/Constants.vala
