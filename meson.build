@@ -21,8 +21,13 @@ endif
 
 gnome = import('gnome')
 i18n = import('i18n')
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (app_name), language:'c')
 
+add_project_arguments(
+    '-DGETTEXT_PACKAGE="@0@"'.format (app_id),           # 
+    '-DG_LOG_DOMAIN="@0@"'.format (app_id),              # Dev builds add the app_id to G_MESSAGES_DEBUG
+    '-w',                                                       # Because of Vala we get ten thousand warnings we can do nothing about
+    language:'c'
+    )
 
 #================================
 # OS and Ports related
