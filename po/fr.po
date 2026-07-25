@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 00:33+0200\n"
+"POT-Creation-Date: 2026-07-26 00:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -881,7 +881,6 @@ msgstr "%s (Européen)"
 msgid "%s (Latin American)"
 msgstr "%s (Amérique latine)"
 
-#. Custom status codes feel super evil
 #. TRANSLATORS: The following texts show up respectively, as a title, and error message, when translating has gone wrong. This needs to be as little technical as possible
 #: src/Enums/StatusCode.vala:53
 msgid "Hello, World!"
@@ -895,7 +894,7 @@ msgstr "Vous avez besoin d'une clé API DeepL pour traduire du texte"
 msgid "No Internet"
 msgstr "Non connecté à Internet"
 
-#. /TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
+#. TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
 #: src/Enums/StatusCode.vala:64
 #, c-format
 msgid ""
@@ -1021,9 +1020,6 @@ msgstr ""
 "Code d'état %s, veuillez le signaler au développeur de cette application"
 
 #. TRANSLATORS: This text shows up when the app fails to show technical details on an error
-#. *
-#. * Convenience function to move to dedicated error view, disable and enable whatever is needed
-#.
 #: src/Views/ErrorView.vala:27 src/Windows/MainWindow.vala:147
 msgid "No details available"
 msgstr "Pas de détails disponibles"
@@ -1181,8 +1177,6 @@ msgstr "Soumettre un problème à la développeuse"
 msgid "Inscriptions (Devel)"
 msgstr "Inscriptions (Devel)"
 
-#. headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
-#. ---------------- PACK START ----------------
 #. TRANSLATORS: Back button to go back to translating
 #: src/Widgets/HeaderBar.vala:89
 msgid "Back"
@@ -1196,7 +1190,6 @@ msgstr "Mettre en évidence les phrases source et cible"
 msgid "Settings"
 msgstr "Paramètres"
 
-#. ---------- SEND BUTTON ----------
 #: src/Widgets/LogToolbar.vala:19
 msgid "Get: "
 msgstr "Recevoir : "
@@ -1218,7 +1211,6 @@ msgid "Set the language to translate from"
 msgstr ""
 "Définir la langue à partir de laquelle la traduction doit être effectuée"
 
-#. dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
 #: src/Widgets/Panes/SourcePane.vala:39
 msgid "Options"
 msgstr "Options"
@@ -1266,7 +1258,6 @@ msgstr "Ouvrir"
 msgid "Loaded from file"
 msgstr "Chargé depuis le fichier"
 
-#. textview.editable = false;
 #: src/Widgets/Panes/TargetPane.vala:40
 msgid "Set the language to translate to"
 msgstr "Définir la langue de traduction"
@@ -1275,17 +1266,12 @@ msgstr "Définir la langue de traduction"
 msgid "Ready to translate"
 msgstr "Prêt à traduire"
 
-#. "%.2f" is replaced with a number
 #. TRANSLATORS: This is for a small notification toast. Very little space is available. "%.2f" is replaced with a number
 #: src/Widgets/Panes/TargetPane.vala:65 src/Widgets/Panes/TargetPane.vala:184
 #, c-format
 msgid "Translation %.2fs after typing"
 msgstr "Traduction %.2fs après la frappe"
 
-#. -------- Widget bottom left switching between auto and a button --------
-#. "Auto" appears in a place very limited in space
-#. _("Auto")
-#. "%.2f" is replaced with a number
 #: src/Widgets/Panes/TargetPane.vala:109
 #, fuzzy, c-format
 msgid "Translation will be done %.2fs after typing has stopped"
@@ -1360,7 +1346,6 @@ msgid "Formality control is not available for this target language"
 msgstr ""
 "Le contrôle de la formalité n'est pas disponible pour cette langue cible."
 
-#. -------------------- SEPARATOR --------------------
 #: src/Widgets/Popovers/SettingsPopover.vala:38
 msgid "Translate automatically"
 msgstr "Traduire automatiquement"
@@ -1381,7 +1366,6 @@ msgstr ""
 "Chaque phrase est mise en évidence pour faciliter la comparaison des deux "
 "textes (Ctrl+H)."
 
-#. -------------------- SEPARATOR --------------------
 #: src/Widgets/Popovers/SettingsPopover.vala:51
 msgid "Support us!"
 msgstr "Nous soutenir !"
@@ -1406,24 +1390,6 @@ msgstr "Utilisez une autre clé API de votre choix"
 msgid "Requested by user"
 msgstr "Demandé par l'utilisateur"
 
-#.
-#. // Depending on fill, usage
-#. if (api_usage.value > api_usage.max_value) {
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.add_css_class (Granite.STYLE_CLASS_ERROR);
-#.
-#. } else if (api_usage.value > (api_usage.max_value / 2)) {
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.add_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
-#.
-#. } else {
-#. api_usage.add_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
-#. }
-#. Picking from settings as im not super sure what fires first between connect and binds
 #: src/Widgets/PopoverWidgets/ApiLevel.vala:103
 #, c-format
 msgid "%i characters translated / %i maximum characters on your plan"

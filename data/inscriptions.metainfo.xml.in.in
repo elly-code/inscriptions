@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>@APP_ID@</id>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
-  <translation type="gettext">@APP_NAME@</translation>
+  <translation type="gettext">@APP_ID@</translation>
   <metadata_license>CC-BY-4.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <provides>

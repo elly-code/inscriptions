@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the inscriptions package.
+# This file is distributed under the same license as the io.github.elly_code.inscriptions package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: inscriptions\n"
+"Project-Id-Version: io.github.elly_code.inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 00:33+0200\n"
+"POT-Creation-Date: 2026-07-26 00:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -869,7 +869,6 @@ msgstr ""
 msgid "%s (Latin American)"
 msgstr ""
 
-#. Custom status codes feel super evil
 #. TRANSLATORS: The following texts show up respectively, as a title, and error message, when translating has gone wrong. This needs to be as little technical as possible
 #: src/Enums/StatusCode.vala:53
 msgid "Hello, World!"
@@ -883,7 +882,7 @@ msgstr ""
 msgid "No Internet"
 msgstr ""
 
-#. /TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
+#. TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
 #: src/Enums/StatusCode.vala:64
 #, c-format
 msgid ""
@@ -987,9 +986,6 @@ msgid "Status code %s, please report this to this app's developer"
 msgstr ""
 
 #. TRANSLATORS: This text shows up when the app fails to show technical details on an error
-#. *
-#. * Convenience function to move to dedicated error view, disable and enable whatever is needed
-#.
 #: src/Views/ErrorView.vala:27 src/Windows/MainWindow.vala:147
 msgid "No details available"
 msgstr ""
@@ -1141,8 +1137,6 @@ msgstr ""
 msgid "Inscriptions (Devel)"
 msgstr ""
 
-#. headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
-#. ---------------- PACK START ----------------
 #. TRANSLATORS: Back button to go back to translating
 #: src/Widgets/HeaderBar.vala:89
 msgid "Back"
@@ -1156,7 +1150,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#. ---------- SEND BUTTON ----------
 #: src/Widgets/LogToolbar.vala:19
 msgid "Get: "
 msgstr ""
@@ -1177,7 +1170,6 @@ msgstr ""
 msgid "Set the language to translate from"
 msgstr ""
 
-#. dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
 #: src/Widgets/Panes/SourcePane.vala:39
 msgid "Options"
 msgstr ""
@@ -1225,7 +1217,6 @@ msgstr ""
 msgid "Loaded from file"
 msgstr ""
 
-#. textview.editable = false;
 #: src/Widgets/Panes/TargetPane.vala:40
 msgid "Set the language to translate to"
 msgstr ""
@@ -1234,17 +1225,12 @@ msgstr ""
 msgid "Ready to translate"
 msgstr ""
 
-#. "%.2f" is replaced with a number
 #. TRANSLATORS: This is for a small notification toast. Very little space is available. "%.2f" is replaced with a number
 #: src/Widgets/Panes/TargetPane.vala:65 src/Widgets/Panes/TargetPane.vala:184
 #, c-format
 msgid "Translation %.2fs after typing"
 msgstr ""
 
-#. -------- Widget bottom left switching between auto and a button --------
-#. "Auto" appears in a place very limited in space
-#. _("Auto")
-#. "%.2f" is replaced with a number
 #: src/Widgets/Panes/TargetPane.vala:109
 #, c-format
 msgid "Translation will be done %.2fs after typing has stopped"
@@ -1318,7 +1304,6 @@ msgstr ""
 msgid "Formality control is not available for this target language"
 msgstr ""
 
-#. -------------------- SEPARATOR --------------------
 #: src/Widgets/Popovers/SettingsPopover.vala:38
 msgid "Translate automatically"
 msgstr ""
@@ -1336,7 +1321,6 @@ msgstr ""
 msgid "Each sentence will be highlighted to help compare both texts (Ctrl+H)"
 msgstr ""
 
-#. -------------------- SEPARATOR --------------------
 #: src/Widgets/Popovers/SettingsPopover.vala:51
 msgid "Support us!"
 msgstr ""
@@ -1361,24 +1345,6 @@ msgstr ""
 msgid "Requested by user"
 msgstr ""
 
-#.
-#. // Depending on fill, usage
-#. if (api_usage.value > api_usage.max_value) {
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.add_css_class (Granite.STYLE_CLASS_ERROR);
-#.
-#. } else if (api_usage.value > (api_usage.max_value / 2)) {
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.add_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
-#.
-#. } else {
-#. api_usage.add_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
-#. }
-#. Picking from settings as im not super sure what fires first between connect and binds
 #: src/Widgets/PopoverWidgets/ApiLevel.vala:103
 #, c-format
 msgid "%i characters translated / %i maximum characters on your plan"

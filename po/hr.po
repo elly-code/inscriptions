@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inscriptions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-19 00:33+0200\n"
+"POT-Creation-Date: 2026-07-26 00:51+0200\n"
 "PO-Revision-Date: 2026-05-12 14:15+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -887,7 +887,6 @@ msgstr "%s (europski)"
 msgid "%s (Latin American)"
 msgstr "%s (latinoamerički)"
 
-#. Custom status codes feel super evil
 #. TRANSLATORS: The following texts show up respectively, as a title, and error message, when translating has gone wrong. This needs to be as little technical as possible
 #: src/Enums/StatusCode.vala:53
 msgid "Hello, World!"
@@ -901,7 +900,7 @@ msgstr "Za prevođenje teksta trebaš DeepL API ključ"
 msgid "No Internet"
 msgstr "Nema interneta"
 
-#. /TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
+#. TRANSLATORS: This is twice the same text, but the first one has links for elementary OS
 #: src/Enums/StatusCode.vala:64
 #, c-format
 msgid ""
@@ -1020,9 +1019,6 @@ msgid "Status code %s, please report this to this app's developer"
 msgstr "Kod statusa %s. Prijavi ovo programeru ove aplikacije"
 
 #. TRANSLATORS: This text shows up when the app fails to show technical details on an error
-#. *
-#. * Convenience function to move to dedicated error view, disable and enable whatever is needed
-#.
 #: src/Views/ErrorView.vala:27 src/Windows/MainWindow.vala:147
 msgid "No details available"
 msgstr "Nema detalja"
@@ -1179,8 +1175,6 @@ msgstr "Prijavi problem programeru"
 msgid "Inscriptions (Devel)"
 msgstr ""
 
-#. headerbar.add_css_class (STYLE_CLASS_COLORED_HEADER);
-#. ---------------- PACK START ----------------
 #. TRANSLATORS: Back button to go back to translating
 #: src/Widgets/HeaderBar.vala:89
 msgid "Back"
@@ -1194,7 +1188,6 @@ msgstr "Istakni izvorne i ciljne rečenice"
 msgid "Settings"
 msgstr "Postavke"
 
-#. ---------- SEND BUTTON ----------
 #: src/Widgets/LogToolbar.vala:19
 msgid "Get: "
 msgstr "Get: "
@@ -1215,7 +1208,6 @@ msgstr "Poništi"
 msgid "Set the language to translate from"
 msgstr "Postavi jezik iz kojeg se prevodi"
 
-#. dropdown.selected = Application.settings.get_string (KEY_SOURCE_LANGUAGE);
 #: src/Widgets/Panes/SourcePane.vala:39
 msgid "Options"
 msgstr "Opcije"
@@ -1263,7 +1255,6 @@ msgstr "Otvori"
 msgid "Loaded from file"
 msgstr "Učitaj iz datoteke"
 
-#. textview.editable = false;
 #: src/Widgets/Panes/TargetPane.vala:40
 msgid "Set the language to translate to"
 msgstr "Postavi jezik u koji se prevodi"
@@ -1272,17 +1263,12 @@ msgstr "Postavi jezik u koji se prevodi"
 msgid "Ready to translate"
 msgstr "Spremno za prijevod"
 
-#. "%.2f" is replaced with a number
 #. TRANSLATORS: This is for a small notification toast. Very little space is available. "%.2f" is replaced with a number
 #: src/Widgets/Panes/TargetPane.vala:65 src/Widgets/Panes/TargetPane.vala:184
 #, c-format
 msgid "Translation %.2fs after typing"
 msgstr "Prijevod %.2f s nakon tipkanja"
 
-#. -------- Widget bottom left switching between auto and a button --------
-#. "Auto" appears in a place very limited in space
-#. _("Auto")
-#. "%.2f" is replaced with a number
 #: src/Widgets/Panes/TargetPane.vala:109
 #, c-format
 msgid "Translation will be done %.2fs after typing has stopped"
@@ -1356,7 +1342,6 @@ msgstr "Unesi kontekst ovdje"
 msgid "Formality control is not available for this target language"
 msgstr "Kontrola formalnosti nije dostupna za ovaj ciljni jezik"
 
-#. -------------------- SEPARATOR --------------------
 #: src/Widgets/Popovers/SettingsPopover.vala:38
 msgid "Translate automatically"
 msgstr "Prevedi automatski"
@@ -1376,7 +1361,6 @@ msgstr ""
 "Svaka rečenica će se istaknuti kako bi se lakše usporedila oba teksta "
 "(Ctrl+H)"
 
-#. -------------------- SEPARATOR --------------------
 #: src/Widgets/Popovers/SettingsPopover.vala:51
 msgid "Support us!"
 msgstr "Podrži nas!"
@@ -1401,24 +1385,6 @@ msgstr "Koristi jedan drugi API ključ po tvom izboru"
 msgid "Requested by user"
 msgstr "Podnositelj zahtjeva"
 
-#.
-#. // Depending on fill, usage
-#. if (api_usage.value > api_usage.max_value) {
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.add_css_class (Granite.STYLE_CLASS_ERROR);
-#.
-#. } else if (api_usage.value > (api_usage.max_value / 2)) {
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.add_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
-#.
-#. } else {
-#. api_usage.add_css_class (Granite.STYLE_CLASS_SUCCESS);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_WARNING);
-#. api_usage.remove_css_class (Granite.STYLE_CLASS_ERROR);
-#. }
-#. Picking from settings as im not super sure what fires first between connect and binds
 #: src/Widgets/PopoverWidgets/ApiLevel.vala:103
 #, c-format
 msgid "%i characters translated / %i maximum characters on your plan"
