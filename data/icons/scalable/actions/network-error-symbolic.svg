@@ -1,0 +1,40 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        id='svg6'
+        width='16'
+        height='16'>
+  <path
+          id='path925'
+          opacity='1'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke-opacity='1'
+          stroke-width='1'
+          stroke-linecap='butt'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          d='M 3.20117 4 A 0.8 0.8 0 0 0 2.51953 4.37891 L 0.203125 7.46875 A 0.8 0.8 0 0 0 0 7.99805 A 0.8 0.8 0 0 0 0.164062 8.48438 A 0.8 0.8 0 0 0 0.1875 8.51367 L 2.53711 11.6484 A 0.8 0.8 0 0 0 3.19922 12 A 0.8 0.8 0 0 0 4 11.2012 A 0.8 0.8 0 0 0 3.8418 10.7246 L 3.84375 10.7227 L 1.80273 8.00195 L 3.84375 5.2793 L 3.83984 5.27734 A 0.8 0.8 0 0 0 4 4.80078 A 0.8 0.8 0 0 0 3.20117 4 Z M 12.7988 4 A 0.8 0.8 0 0 0 12 4.80078 A 0.8 0.8 0 0 0 12.1602 5.27734 L 12.1562 5.2793 L 14.1973 8.00195 L 14 8.26367 A 4.5 4.5 0 0 1 15.4023 9.0625 L 15.8125 8.51367 A 0.8 0.8 0 0 0 15.8359 8.48438 A 0.8 0.8 0 0 0 16 7.99805 A 0.8 0.8 0 0 0 15.7969 7.46875 L 13.4805 4.37891 A 0.8 0.8 0 0 0 12.7988 4 Z M 5.59961 7.19922 A 0.800781 0.800781 0 0 0 5.59961 8.80078 A 0.800781 0.800781 0 0 0 5.59961 7.19922 Z M 8 7.19922 A 0.800781 0.800781 0 0 0 8 8.80078 A 0.800781 0.800781 0 0 0 8 7.19922 Z M 10.4004 7.19922 A 0.800781 0.800781 0 0 0 10.0547 8.72266 A 4.5 4.5 0 0 1 11.1738 8.20508 A 0.800781 0.800781 0 0 0 10.4004 7.19922 Z'
+          class="foreground">
+  </path>
+  <path
+          id='path2'
+          color='rgb(190,190,190)'
+          fill='url(#gpa:error) #ef2929'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          overflow='visible'
+          d='M 12.5 8.997 A 3.5 3.5 0 1 0 12.5 15.997 A 3.5 3.5 0 0 0 12.5 8.997 Z M 12 9.997 L 13 9.997 L 13 12.997 L 12 12.997 Z M 12 13.997 L 13 13.997 L 13 14.997 L 12 14.997 Z'
+          class="error">
+  </path>
+</svg>

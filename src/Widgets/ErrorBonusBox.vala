@@ -61,7 +61,7 @@ public class Inscriptions.ErrorBonusBox : Gtk.Box {
                 margin_bottom = MARGIN_MENU_STANDARD
             };
 
-            var instruction = new Granite.HeaderLabel (_("To be able to do translations, paste your API Key in the field below")) {
+            var instruction = new Granite.HeaderLabel (_("API Key")) {
                 halign = Gtk.Align.START,
                 size = Granite.HeaderLabel.Size.H4
             };

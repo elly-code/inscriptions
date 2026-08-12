@@ -22,7 +22,8 @@ deps = [
   dependency ('granite-7', version: '>=7.7.0'),   # Due to using new custom widgets
   dependency ('json-glib-1.0'),
   dependency ('libsoup-3.0'),
-  dependency ('libsecret-1')
+  dependency ('libsecret-1'),
+  dependency('gioopenssl', required: host_machine.system() == 'android')
 ]
 
 
@@ -109,5 +110,6 @@ executable(
     sources,
     dependencies: deps,
     win_subsystem: 'windows',
+    android_exe_type: 'application',
     install: true
 )

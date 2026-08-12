@@ -125,6 +125,13 @@ public class Inscriptions.Application : Gtk.Application {
     }
 
     public static int main (string[] args) {
+        #if ANDROID
+            GLib.Environment.set_variable ("SECRET_BACKEND", "file", false);
+            if (GLib.Environment.get_variable ("SECRET_BACKEND") == "file")
+                GLib.Environment.set_variable ("SECRET_FILE_TEST_PASSWORD", @"$(GLib.Environment.get_user_name ())", false);
+            g_io_openssl_load (null);
+        #endif
+
         return new Application ().run (args);
     }
 }

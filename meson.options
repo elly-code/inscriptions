@@ -1,6 +1,6 @@
 option('profile',
     type : 'combo',
-    choices : ['linux', 'windows'],
+    choices : ['linux', 'windows', 'android'],
     value : 'linux',
     description : 'What we build for. Switched on automatically on windows machines, usually'
 )

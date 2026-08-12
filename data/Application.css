@@ -22,6 +22,10 @@ Picked: #2c3944d9
 Base from wpkelso: #33434eff
 */
 
+window * {
+	font-weight: 700;
+}
+
 @define-color accent_color #33434e;
 
 /* Used in the OrientationsBox for the preview icon */

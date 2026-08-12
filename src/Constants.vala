@@ -5,6 +5,11 @@
 
 namespace Inscriptions {
 
+    #if ANDROID
+		[CCode (cname = "g_io_openssl_load")]
+		extern void g_io_openssl_load (GLib.IOModule? module);
+	#endif
+
 	// Alkrjnlgjrt
 	const string DONATE_LINK = "https://ko-fi.com/teamcons/tip";
 	const string LINK = "https://www.deepl.com/your-account/keys";
