@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
+<component type="desktop-application" xmlns="https://specifications.freedesktop.org/metainfo/1.0">
   <id>@APP_ID@</id>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <translation type="gettext">@APP_ID@</translation>
@@ -24,6 +24,11 @@
     <p>If you like this app please do not hesitate to donate to encourage its development!</p>
     <p>Libretranslate support is considered, but a heavy time and energy investment, so may or may not happen.</p>
   </description>
+
+  <requires>
+    <display_length compare="ge">360</display_length>
+    <internet>always</internet>
+  </requires>
 
   <screenshots>
     <screenshot type="default" environment="pantheon">

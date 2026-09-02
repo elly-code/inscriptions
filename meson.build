@@ -34,14 +34,20 @@ add_project_arguments(
 
 linux = get_option('profile') == 'linux'
 windows = get_option('profile') == 'windows'
+android = get_option('profile') == 'android'
 
 
 # Here is to autodetect and adjust
 # Remember however that people may do cross compiling, so do not assume by default it is for linux
 # So avoid else conditions adding linux stuff
 build_machine_system = build_machine.system()
-if build_machine_system == 'windows'
+host_machine_system = host_machine.system()
+
+if host_machine_system == 'windows'
     windows = true
+
+elif host_machine_system == 'android'
+    android = true
 
 endif
 
@@ -50,6 +56,19 @@ endif
 
 if windows
     add_project_arguments('--define=WINDOWS', language: 'vala')
+
+elif android
+     add_project_arguments([
+      '--define=ANDROID',
+      '--pkg=gtk4',
+      '--pkg=json-glib-1.0',
+      '--pkg=glib-2.0',
+      '--pkg=libsecret-1',
+      '--pkg=libsoup-3.0'
+    ], language: 'vala')
+
+    subproject('granite-stylesheet')
+    subproject('glib-networking', default_options: ['default_library=static'])
 
 elif linux
     add_project_arguments('--define=LINUX', language: 'vala')
@@ -87,6 +106,6 @@ subdir ('src')
 
 gnome.post_install(
   glib_compile_schemas: true,
-  gtk_update_icon_cache: true,
+  gtk_update_icon_cache: not android,
   update_desktop_database: true,
 )

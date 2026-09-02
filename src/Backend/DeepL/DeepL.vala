@@ -54,7 +54,7 @@ public class Inscriptions.DeepL : Object {
 
     secrets = Secrets.get_default ();
 
-    system_language = DeepLUtils.detect_system ();
+    system_language = "EN-GB"; //DeepLUtils.detect_system ();
 
     // Fallback
     this.current_usage = Application.settings_translate.get_int (KEY_CURRENT_USAGE);

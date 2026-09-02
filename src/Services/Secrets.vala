@@ -30,7 +30,7 @@ public class Inscriptions.Secrets : Object {
     GLib.HashTable<string,string> attributes;
 
     construct {
-        schema = new Secret.Schema (APP_ID, Secret.SchemaFlags.NONE,
+        schema = new Secret.Schema (APP_ID, Secret.SchemaFlags.DONT_MATCH_NAME,
                                         "label", Secret.SchemaAttributeType.STRING);
 
         attributes = new GLib.HashTable<string,string> (str_hash, str_equal);

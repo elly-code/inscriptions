@@ -1,0 +1,49 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        id='svg6'
+        width='16'
+        height='16'>
+  <path
+          id='path4-1-2'
+          opacity='0.5'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          stroke-opacity='1'
+          stroke-width='4'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          d='M 12.7988 4 A 0.8 0.8 0 0 0 12 4.80078 A 0.8 0.8 0 0 0 12.1602 5.27734 L 12.1562 5.2793 L 14.1973 8.00195 L 12.1562 10.7227 L 12.1582 10.7246 A 0.8 0.8 0 0 0 12 11.2012 A 0.8 0.8 0 0 0 12.8008 12 A 0.8 0.8 0 0 0 13.4629 11.6484 L 15.8125 8.51367 A 0.8 0.8 0 0 0 15.8359 8.48438 A 0.8 0.8 0 0 0 16 7.99805 A 0.8 0.8 0 0 0 15.7969 7.46875 L 13.4805 4.37891 A 0.8 0.8 0 0 0 12.7988 4 Z M 3.31055 4.00781 L 3.99219 4.69141 A 0.8 0.8 0 0 0 3.31055 4.00781 Z M 2.26172 4.72461 L 0.203125 7.46875 A 0.8 0.8 0 0 0 0 7.99805 A 0.8 0.8 0 0 0 0.164062 8.48438 A 0.8 0.8 0 0 0 0.1875 8.51367 L 2.53711 11.6484 A 0.8 0.8 0 0 0 3.19922 12 A 0.8 0.8 0 0 0 4 11.2012 A 0.8 0.8 0 0 0 3.8418 10.7246 L 3.84375 10.7227 L 1.80273 8.00195 L 3.4043 5.86719 L 2.26172 4.72461 Z M 8 7.19922 A 0.8 0.8 0 0 0 7.2168 7.91602 L 8.08594 8.7832 A 0.8 0.8 0 0 0 8 7.19922 Z M 10.4004 7.19922 A 0.800781 0.800781 0 0 0 10.4004 8.80078 A 0.800781 0.800781 0 0 0 10.4004 7.19922 Z M 5.00977 7.47266 A 0.8 0.8 0 0 0 5.59961 8.80078 A 0.8 0.8 0 0 0 6.12695 8.58984 L 5.00977 7.47266 Z'
+          class="foreground">
+  </path>
+  <rect
+          id='rect2480-1-6'
+          transform='rotate(-45, 0, 0)'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          stroke-opacity='1'
+          stroke-width='0.992001'
+          stroke-linecap='square'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          x='-0.625765'
+          y='1.41619'
+          width='1.248'
+          height='19.8'
+          rx='0.5'
+          ry='0.5'
+          class="foreground">
+  </rect>
+</svg>

@@ -30,6 +30,7 @@ gschema_file = configure_file(
 install_data(
     gschema_file,
     install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
+    install_tag: 'runtime'
 )
 
 compile_schemas = find_program('glib-compile-schemas', required: false)
